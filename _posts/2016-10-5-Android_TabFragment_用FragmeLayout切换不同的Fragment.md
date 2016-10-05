@@ -81,7 +81,5 @@ viewpager+fragment也可以实现切换fragment，但是这次使用的是一个
 	}
 
 
-横竖屏切换的时候还是会出现页面重叠的问题，解决办法是AndroidManifest.xml文件下的对应的activity添加android:configChanges = "orientation|screenSize"这个属性，并在在fragment里面重写onConfigurationChanged这个方法，里面什么都不操作。就可以避免横竖屏切换时的界面重叠问题
-
 ![_config.yml]({{ site.baseurl }}/images/TabFragment.gif)
 
