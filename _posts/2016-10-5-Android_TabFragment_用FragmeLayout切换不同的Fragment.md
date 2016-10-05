@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TabFragment_用FragmeLayout切换不同的Fragment
+title: Android_TabFragment_用FragmeLayout切换不同的Fragment
 ---
 
 viewpager+fragment也可以实现切换fragment，但是这次使用的是一个FrameLayout去切换不同的fragment
