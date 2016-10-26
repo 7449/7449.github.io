@@ -88,8 +88,12 @@ title: Android_BannerLayout
 
 代码中提供了三个枚举
 
-BANNER_ROUND_CONTAINER_POSITION 	 提示栏在布局中的位置，TOP,BUTTOM,CENTERED三种可选  BANNER_ROUND_POSITION  	小圆点在提示栏的位置，LEFT,CENTERED,RIGHT三种可选 
+BANNER_ROUND_CONTAINER_POSITION 	 提示栏在布局中的位置，TOP,BUTTOM,CENTERED三种可选
+
+BANNER_ROUND_POSITION  	小圆点在提示栏的位置，LEFT,CENTERED,RIGHT三种可选 
+
 BANNER_TITLE_POSITION  	title在提示栏的位置，LEFT,CENTERED,RIGHT三种可选   
+
 
 最后调用start（）的时候可以决定是否开启自动轮播，不管在fragment还是activity里面，应该在合适的生命周期里选择暂停或者恢复轮播（如果开启了自动轮播），BannerLayout已经提供了方法，使用者直接调用就可以了，如果使用List数据，请使用BannerModel
 
