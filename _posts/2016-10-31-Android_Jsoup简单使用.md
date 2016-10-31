@@ -3,14 +3,16 @@ layout: post
 title: Android_Jsoup简单使用
 ---
 
-![_config.yml]({{ site.baseurl }}/images/jsoupsimple.gif)
-
-代码示例：[https://github.com/7449/AndroidDevelop/tree/master/JsoupSimple](https://github.com/7449/AndroidDevelop/tree/master/JsoupSimple)
-
 Jsoup简介：
 
 	jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。
 	它提供了一套非常省力的API，可通过DOM，CSS以及类似于jQuery的操作方法来取出和操作数据。
+
+
+![_config.yml]({{ site.baseurl }}/images/jsoupsimple.gif)
+
+代码示例：[https://github.com/7449/AndroidDevelop/tree/master/JsoupSimple](https://github.com/7449/AndroidDevelop/tree/master/JsoupSimple)
+
 
 >Jsoup对js动态加载抓取比较困难，如果想抓取请使用其他的工具，不建议使用Jsoup
 
