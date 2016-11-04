@@ -104,6 +104,14 @@ Tinker开源不久，截至目前已获得5K+ star ,其火热程度可见一斑�
 Tinker不建议设置为apk结尾，因为某些运营商会劫持apk结尾的文件，这里就是简单的测试下，就没改
 
 这个时候打开app/build.gradle 根据我的图片修改，命名必须要对上
+,图片看不清，就是生成的那两个文件的名字要手动写到app/build.gradle 里面的 ext 里面
+
+	ext {
+	    tinkerEnabled = true
+	    tinkerOldApkPath = "${bakPath}/app-debug-1103-18-13-12.apk" //这里
+	    tinkerApplyMappingPath = "${bakPath}/"
+	    tinkerApplyResourcePath = "${bakPath}/app-debug-1103-18-13-12-R.txt" //还有这里
+	}
 
 
 ![_config.yml]({{ site.baseurl }}/images/tinker_demo.jpg)
