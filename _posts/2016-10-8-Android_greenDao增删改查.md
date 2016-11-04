@@ -27,11 +27,14 @@ app下的build.gradle添加
 
 	compile 'org.greenrobot:greendao:3.2.0'
 
-	//修改生成类的位置
-	//    greendao {
-	//        targetGenDir 'src/main/java/'
-	//    }
-
+	    //修改生成类的位置
+	    greendao {
+	        targetGenDir 'src/main/java/' //生成源文件的目录，默认是build目录中的(build/generated/source/greendao)
+	//        daoPackage //生成的DAO，DaoMaster和DaoSession的包名。默认是实体的包名
+	//        schemaVersion //当前数据库结构的版本
+	//        generateTests //设置是否自动生成单元测
+	//        targetGenDirTest //生成的单元测试的根目录
+	    }
 
 然后自定义UserBean类
 
