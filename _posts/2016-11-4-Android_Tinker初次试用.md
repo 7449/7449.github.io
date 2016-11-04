@@ -105,7 +105,7 @@ Tinker不建议设置为apk结尾，因为某些运营商会劫持apk结尾的�
 
 这个时候打开app/build.gradle 根据我的图片修改，命名必须要对上
 
-![_config.yml]({{ site.baseurl }}/images/tinker_demo.gif)
+![_config.yml]({{ site.baseurl }}/images/tinker_demo.ipg)
 
 确认修改好了之后开始修改代码，只是简单的把Toast tinker error 改成tinker success
 改好之后开始制作补丁，进入项目的app目录下的Dos窗口，执行 gradle tinkerPatchDebug
@@ -115,6 +115,6 @@ Tinker不建议设置为apk结尾，因为某些运营商会劫持apk结尾的�
 
 这个时候看build文件夹下的outputs新生成了tinkerPatch目录，里面的patch_singned_7zip.apk就是新打好的补丁
 
-![_config.yml]({{ site.baseurl }}/images/tinker_demo_.gif)
+![_config.yml]({{ site.baseurl }}/images/tinker_demo_.png)
 
 拖出来命名为我之前MainActivity里面的tinkerDemo，放到手机的根目录下，彻底关掉app（因为Tinker不支持直接应用，必须要重启一次）,重新打开，点击button就会发现会Tost tinker success，那就证明简单的运行测试没有出现什么问题，这里要确定的是，app必须获取读取sd卡的权限
