@@ -2,11 +2,78 @@
 layout: post
 title: Android_greenDao增删改查
 ---
-
+/已更新3.0/   
 greenDao是一个使用于android的ORM框架,现在主流的ORM框架有OrmLite,SugarORM,Active Android,Realm以及GreenDAO.greenDao的性能远远高于同类的ORM框架,具体的测试结果官网有。
 
 
 示例代码：[https://github.com/7449/AndroidDevelop/tree/master/greenDao](https://github.com/7449/AndroidDevelop/tree/master/greenDao)
+
+3.0示例代码：[https://github.com/7449/AndroidDevelop/tree/master/greendao_3.0](https://github.com/7449/AndroidDevelop/tree/master/greendao_3.0)
+
+
+
+
+>3.0更新
+
+
+项目build.gradle添加
+
+	classpath 'org.greenrobot:greendao-gradle-plugin:3.2.0'
+
+app下的build.gradle添加
+
+	
+	apply plugin: 'org.greenrobot.greendao'
+
+	compile 'org.greenrobot:greendao:3.2.0'
+
+	//修改生成类的位置
+	//    greendao {
+	//        targetGenDir 'src/main/java/'
+	//    }
+
+
+然后自定义UserBean类
+
+	@Entity
+	public class UserBean {
+	
+	    @Id
+	    private Long id;
+	    private String name;
+	    private int age;
+	    @Generated(hash = 1032023074)
+	    public UserBean(Long id, String name, int age) {
+	        this.id = id;
+	        this.name = name;
+	        this.age = age;
+	    }
+	    @Generated(hash = 1203313951)
+	    public UserBean() {
+	    }
+	}
+
+注解：
+
+	@Entity 定义实体
+	@nameInDb 在数据库中的名字，如不写则为实体中类名
+	@indexes 索引
+	@createInDb 是否创建表，默认为true,false时不创建
+	@schema 指定架构名称为实体
+	@active 无论是更新生成都刷新
+	@Id
+	@NotNull 不为null
+	@Unique 唯一约束
+	@ToMany 一对多
+	@OrderBy 排序
+	@ToOne 一对一
+	@Transient 不存储在数据库中
+	@generated 由greendao产生的构造函数或方法
+
+
+重新rebuild 一下项目，就可以看到greenDao自动生成的数据库相关类，比2.X时确实好用多了，之后用法还和以前一样
+
+>2.x ---------------  3.x  分割线
 
 用greenDao实现了数据库的增删改查,确实比以前自己写SQL语句舒服多了,不用再考虑SQL语句很方便。
 
