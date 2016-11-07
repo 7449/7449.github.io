@@ -57,14 +57,14 @@ Tinker开源不久，截至目前已获得5K+ star ,其火热程度可见一斑�
 
 示例：[https://github.com/7449/AndroidDevelop/blob/master/TinkerDemo/app/build.gradle](https://github.com/7449/AndroidDevelop/blob/master/TinkerDemo/app/build.gradle)
 
-4.在清单文件的application填写 ，规定写法，暂时不要管
+4.在清单文件的application填写 ，规定写法，暂时不要管,这里名字可以随便写但是要和之后的MyApplication 里面的application名字一样
 
-		android:name="ook.yzx.tinker.Application"
+		android:name="tinker.Application"
 
 然后新建MyApplication 继承DefaultApplicationLike，重写onBaseContextAttached，在里面初始化一些东西，具体内容如下
 
 	@DefaultLifeCycle(
-	        application = "ook.yzx.tinker.Application", flags = ShareConstants.TINKER_ENABLE_ALL)
+	        application = "tinker.Application", flags = ShareConstants.TINKER_ENABLE_ALL)
 	public class App extends DefaultApplicationLike {
 	
 	
