@@ -8,7 +8,7 @@ title: Android_BannerLayout
 
 一些自定义参数请看示例代码里面的说明，这里就不再多说
 
-代码示例：[https://github.com/7449/BannerLayout(https://github.com/7449/BannerLayout)
+代码示例：[[https://github.com/7449/BannerLayout(https://github.com/7449/BannerLayout)](https://github.com/7449/BannerLayout)
 
 ##支持功能
 
