@@ -8,7 +8,7 @@ title: Android_BannerLayout
 
 一些自定义参数请看示例代码里面的说明，这里就不再多说
 
-代码示例：[https://github.com/7449/BannerLayoutSimple](https://github.com/7449/BannerLayoutSimple)
+代码示例：[https://github.com/7449/BannerLayout(https://github.com/7449/BannerLayout)
 
 ##支持功能
 
@@ -31,7 +31,7 @@ title: Android_BannerLayout
 
 - 支持动画(随机动画需要List动画集合)
 
-####使用效果
+使用效果
 
 >simple只有第一个示例默认开启轮播，其余的示例不开启轮播,simple录制有点丢帧
 
