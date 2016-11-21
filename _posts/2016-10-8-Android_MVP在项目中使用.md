@@ -58,7 +58,7 @@ BasePresenterImpl:
 	
 	    protected final V view;
 	
-	    protected BasePresenterImpl(V view) {
+	    public BasePresenterImpl(V view) {
 	        this.view = view;
 	    }
 
