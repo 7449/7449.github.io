@@ -10,17 +10,17 @@ title: Android_XAdapter
 
 [https://github.com/7449/XAdapter/blob/master/xadapter.gif](https://github.com/7449/XAdapter/blob/master/xadapter.gif)
 
-###gradle
+gradle
 
 >compile 'com.xadapter:xadapter:0.0.2'
 
-###更新日志
+更新日志
 
 	0.0.2 : XAdapter 添加setEmptyView功能。
 	
 	0.0.1 : 添加完整示例以及项目
 
-##完整示例
+完整示例
 
 
         recyclerView.setAdapter(
@@ -60,7 +60,7 @@ onXBind
         holder.setTextView(R.id.tv_age, mainBean.getAge() + "");
     }
 
-##emptyView
+emptyView
 
 >setEmptyView一定要在addRecyclerView之前调用，否则无效，具体的内容可以看simple以及源码
 
@@ -80,7 +80,7 @@ onXBind
 
 点击事件可以自己用emptyView实现，但是建议使用XRecyclerViewAdapter 的 onXEmptyViewListener来实现emptyView的点击事件
 
-##下拉刷新和上拉加载
+下拉刷新和上拉加载
 
 默认不打开，如果有必要，请手动打开，并调用addRecyclerView
 
@@ -116,13 +116,13 @@ onXBind
 >xRecyclerViewAdapter.loadMoreComplete(XFooterLayout.STATE_NOMORE);
 
 
-###添加header和footer
+添加header和footer
 
 		xRecyclerViewAdapter
 		 .addHeaderView(LayoutInflater.from(this).inflate(R.layout.item_header_1, (ViewGroup) findViewById(android.R.id.content), false))
 		 .addFooterView(LayoutInflater.from(this).inflate(R.layout.item_footer_1, (ViewGroup) findViewById(android.R.id.content), false))
 
-###加载动画
+加载动画
 
 XAdapter 的刷新头部以及底部都是来自 [XRecyclerView](https://github.com/jianghejie/XRecyclerView), 所以 [XRecyclerView](https://github.com/jianghejie/XRecyclerView) 支持的动画XAdapter 都支持,并且对Layout进行扩展，可以设置背景色和字体色，字体大小
 
@@ -138,6 +138,6 @@ XAdapter 的刷新头部以及底部都是来自 [XRecyclerView](https://github.
                         .setHeaderTextColor(R.color.textColor)
                         .setFooterTextColor(R.color.textColor)
 
-#感谢
+感谢
 
 [https://github.com/jianghejie/XRecyclerView](https://github.com/jianghejie/XRecyclerView)
