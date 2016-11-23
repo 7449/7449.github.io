@@ -12,9 +12,11 @@ title: Android_XAdapter
 
 ### gradle
 
->compile 'com.xadapter:xadapter:0.0.4'
+>compile 'com.xadapter:xadapter:0.0.5'
 
 ### 更新日志
+	
+	0.0.5 ：是否显示EmptyView由使用者自己决定
 
 	0.0.4 : 修复EmptyView一些使用问题
 
@@ -66,7 +68,7 @@ onXBind
 
 ## emptyView
 
->setEmptyView一定要在addRecyclerView之前调用，否则无效，具体的内容可以看simple以及源码
+>setEmptyView一定要在addRecyclerView之前调用，否则无效，具体的内容可以看simple以及源码 是否显示由用户自己手动决定，在网络异常或者数据为空的时候调用xRecyclerViewAdapter.isShowEmptyView();具体情况simple有例子
 
 	 recyclerView.setAdapter(
 	                xRecyclerViewAdapter
