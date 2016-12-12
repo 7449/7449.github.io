@@ -13,6 +13,80 @@ greenDao是一个使用于android的ORM框架,现在主流的ORM框架有OrmLite
 
 
 
+>读写第三方数据表，示例代码：[https://github.com/7449/AndroidDevelop/tree/master/greenDaoExternal](https://github.com/7449/AndroidDevelop/tree/master/greenDaoExternal)
+
+	有时候数据表会由后台分发而不是自动生成，所以这里简单介绍下怎么使用greendao操作这种情况下的数据表
+
+	需要注意以下几点
+		
+		1：android数据库操作都是在databases文件夹下，所以要把需要动的数据库复制到databases文件夹下
+
+	 	/**
+	     * assets目录下的db转移到databases
+	     */
+	    public void copyDBToDatabases() {
+	        try {
+	            String outFileName = DB_PATH + DB_NAME;
+	            File file = new File(DB_PATH);
+	            if (!file.mkdirs()) {
+	                file.mkdirs();
+	            }
+	            File dataFile = new File(outFileName);
+	            if (dataFile.exists()) {
+	                dataFile.delete();
+	            }
+	            InputStream myInput;
+	            myInput = getApplicationContext().getAssets().open(DB_NAME);
+	            OutputStream myOutput = new FileOutputStream(outFileName);
+	            byte[] buffer = new byte[1024];
+	            int length;
+	            while ((length = myInput.read(buffer)) > 0) {
+	                myOutput.write(buffer, 0, length);
+	            }
+	            myOutput.flush();
+	            myOutput.close();
+	            myInput.close();
+	        } catch (IOException e) {
+	            Log.i(TAG, "error--->" + e.toString());
+	            e.printStackTrace();
+	        }
+	
+	    }
+
+
+		2：geenDao自动生成的时候table 默认为TABLENAME，默认id生成时"_id",这些生成的字段必须要和数据表中的字段一致，可以用 nameInDb="" 指定字段name和tableName
+
+	
+		@Entity(nameInDb = "blacklist")
+		public class ExternalBean {
+		    @Property(nameInDb = "id")
+		    private Integer id;
+		    @Property(nameInDb = "email")
+		    private String email;
+		    @Generated(hash = 1314000312)
+		    public ExternalBean(Integer id, String email) {
+		        this.id = id;
+		        this.email = email;
+		    }
+		    @Generated(hash = 981826822)
+		    public ExternalBean() {
+		    }
+		    public Integer getId() {
+		        return this.id;
+		    }
+		    public void setId(Integer id) {
+		        this.id = id;
+		    }
+		    public String getEmail() {
+		        return this.email;
+		    }
+		    public void setEmail(String email) {
+		        this.email = email;
+		    }
+		}
+
+		
+
 >3.0更新
 
 
