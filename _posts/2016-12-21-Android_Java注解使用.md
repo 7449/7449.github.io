@@ -12,7 +12,8 @@ title: Android_Java注解简单使用
   
   
   
-  /**
+  
+  	/**
 	 * by y on 2016/12/21
 	 */
 	@Retention(RetentionPolicy.RUNTIME)
@@ -20,6 +21,8 @@ title: Android_Java注解简单使用
 	public @interface ViewId {
 	    int value();
 	}
+	
+	
 
 	public class Injector {
 	
