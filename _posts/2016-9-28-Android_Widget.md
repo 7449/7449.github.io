@@ -5,11 +5,10 @@ subtitle:   "Android自定义控件"
 date:       2016-9-28
 author:     "y"
 header-mask: 0.3
-header-img: "img/post-bg-2017.jpg"
+header-img: "img/android.jpg"
 catalog: true
 tags:
     - Android
-    - 开发
     - widget
 ---
 
