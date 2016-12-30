@@ -20,11 +20,11 @@ tags:
 有兴趣的也可以看看我之前写的自定义组件
 
 ## 自定义view实现的下载进度展示：
-<br>
+
 [https://github.com/7449/ProgressView](https://github.com/7449/ProgressView)
 
 ## 自定义view实现的通讯录快速索引：
-<br>
+
 [https://github.com/7449/SlideView](https://github.com/7449/SlideView)
 
 

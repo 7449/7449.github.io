@@ -8,7 +8,7 @@ header-mask: 0.3
 header-img: "img/java.jpg"
 catalog: false
 tags:
-    - Android
+    - android
     - 注解
 ---
 

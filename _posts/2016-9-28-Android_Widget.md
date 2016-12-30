@@ -8,7 +8,7 @@ header-mask: 0.3
 header-img: "img/android.jpg"
 catalog: true
 tags:
-    - Android
+    - android
     - widget
 ---
 

@@ -16,7 +16,7 @@ tags:
 
 
 ## 示例代码：
-<br>
+
 [https://github.com/7449/AndroidDevelop/tree/master/SaveImage](https://github.com/7449/AndroidDevelop/tree/master/SaveImage)
 
 >本身没有什么难点，关键是在国内某些机型上面直接获取bitmap会为null,这个时候就要处理一下兼容某些机型了
