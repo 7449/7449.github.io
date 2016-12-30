@@ -1,0 +1,45 @@
+---
+layout:     post
+title:      "Hello 2017"
+subtitle:   "Hello World, Hello Blog"
+date:       2016-12-30
+author:     "y"
+header-mask: 0.3
+header-img: "img/post-bg-2017.jpg"
+catalog: true
+tags:
+    - 生活
+    - 总结
+---
+
+> “Go!”
+
+
+## 前言
+---
+
+2016 年初，我建立了自己的git博客，使用[barryclark](https://github.com/barryclark)的主题，但是太过简单，由于我比较懒一直都没怎么管，如果有人喜欢非常简洁的Blog，那么这个强烈推荐！
+
+
+起初在CSDN写博客，CSDN难用的一比，so,想起了gitpages.
+
+我的github主页：[GitHub](https://github.com/7449)
+
+## 正文
+---
+
+Blog搭建非常简单，首先安装好[jekyll](http://jekyll.com.cn/),clone下[HuxproBlog](https://github.com/Huxpro/huxpro.github.io)<br>
+`jekyll serve`或者`jekyll serve --watch`看下效果,ok就可以了
+
+安装方法这里不做过多解释，自行百度或者google
+
+
+## 后记
+---
+
+回顾2016,发现自己好像什么都没干，又好像学了好多东西，这估计是没有一个稳定可靠的学习计划造成的弊端吧；<br>
+也不想说肯定怎么怎么得，只想说希望2017年能踏踏实实的稳定下来学习以及编程
+
+—— y 记于 2016.12
+
+
