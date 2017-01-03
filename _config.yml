@@ -5,7 +5,7 @@ header-img: img/home-bg.jpg
 email: yuebigmeow@gmail.com
 description: "this is my blog"
 keyword: ""
-url: ""              # your host, for absolute URL
+url: "https:7449.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
