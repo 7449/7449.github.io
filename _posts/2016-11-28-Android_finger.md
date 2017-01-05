@@ -22,7 +22,7 @@ tags:
 
 ## 申请权限
 
->  <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+>  `<uses-permission android:name="android.permission.USE_FINGERPRINT" />`
 
 ## 获取FingerprintManager对象
 	
