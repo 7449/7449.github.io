@@ -16,6 +16,7 @@ tags:
 
 [macdown](http://macdown.uranusjr.com/):编辑MD文件<br>
 [touchswitcher](https://hazeover.com/touchswitcher.html?ref=producthunt):16年末Mac可以用这个自定义touchbar<br>
+[dr.-unarchiver](https://itunes.apple.com/cn/app/dr.-unarchiver-rar-zip-archive/id1127253508?l=en&mt=12):解压工具，7z,rar,zip之类的都可以<br>
 
 
 ## Mac,Win通用
