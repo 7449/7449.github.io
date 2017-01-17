@@ -273,3 +273,27 @@ tags:
 			    }  
 			    return date.getTime();  
 			} 
+
+	
+	  		@SuppressLint("SimpleDateFormat")
+		    public static String getData() {
+		        return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		    }
+		
+		    @SuppressLint("SimpleDateFormat")
+		    public static String getTime() {
+		        return new SimpleDateFormat("HH:mm").format(new Date());
+		    }
+		
+		
+		    public static String getWeek() {
+		        String[] weeks = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
+		        Calendar cal = Calendar.getInstance();
+		        cal.setTime(new Date());
+		        int week_index = cal.get(Calendar.DAY_OF_WEEK) - 1;
+		        if (week_index < 0) {
+		            week_index = 0;
+		        }
+		        return weeks[week_index];
+		    }
+
