@@ -19,6 +19,7 @@ tags:
 [dr.-unarchiver](https://itunes.apple.com/cn/app/dr.-unarchiver-rar-zip-archive/id1127253508?l=en&mt=12):解压工具，7z,rar,zip之类的都可以<br>
 [iina](https://github.com/lhc70000/iina):视频播放器<br>
 [macOS（OS X）有哪些冷门但是一但发现就无法自拔的软件？](https://www.zhihu.com/question/35050387):mac os软件推荐，来自知乎<br>
+[Mac BiliBili客户端](https://github.com/typcn/bilibili-mac-client)<br>
 [OS X 应用](https://www.zhihu.com/topic/19551349/hot):知乎OSX应用推荐<br>
 
 
@@ -47,6 +48,16 @@ tags:
 [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo):运行脚本，可破解百度云大文件限制下载的问题<br>
 [印象笔记·剪藏](https://chrome.google.com/webstore/detail/evernote-web-clipper/pioclpoplcdbaefihamjohnefbikjilc):如果是印象笔记用户这个非常好用
 
+
+## 开发
+
+[AndroidStudio](https://developer.android.com/studio/index.html?hl=zh-cn)<br>
+[Chrome](https://www.google.com/chrome/browser/desktop/index.html)<br>
+[IDEA](http://www.jetbrains.com/idea/)<br>
+[JDK](http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk8-downloads-2133151-zhs.html)<br>
+[WebStorm](http://www.jetbrains.com/webstorm/)<br>
+
+软件使用较多，例如node之类的这里不一一记下
 
 ## 网站
 
