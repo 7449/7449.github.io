@@ -17,6 +17,9 @@ tags:
 [macdown](http://macdown.uranusjr.com/):编辑MD文件<br>
 [touchswitcher](https://hazeover.com/touchswitcher.html?ref=producthunt):16年末Mac可以用这个自定义touchbar<br>
 [dr.-unarchiver](https://itunes.apple.com/cn/app/dr.-unarchiver-rar-zip-archive/id1127253508?l=en&mt=12):解压工具，7z,rar,zip之类的都可以<br>
+[iina](https://github.com/lhc70000/iina):视频播放器<br>
+[macOS（OS X）有哪些冷门但是一但发现就无法自拔的软件？](https://www.zhihu.com/question/35050387):mac os软件推荐，来自知乎<br>
+[OS X 应用](https://www.zhihu.com/topic/19551349/hot):知乎OSX应用推荐<br>
 
 
 ## Mac,Win通用
