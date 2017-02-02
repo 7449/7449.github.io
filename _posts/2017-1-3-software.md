@@ -18,7 +18,10 @@ tags:
 [touchswitcher](https://hazeover.com/touchswitcher.html?ref=producthunt):16年末Mac可以用这个自定义touchbar<br>
 [dr.-unarchiver](https://itunes.apple.com/cn/app/dr.-unarchiver-rar-zip-archive/id1127253508?l=en&mt=12):解压工具，7z,rar,zip之类的都可以<br>
 [iina](https://github.com/lhc70000/iina):视频播放器<br>
-[macOS（OS X）有哪些冷门但是一但发现就无法自拔的软件？](https://www.zhihu.com/question/35050387):mac os软件推荐，来自知乎<br>
+[daisydisk](https://daisydiskapp.com/):查看和管理硬盘，查看 Mac 磁盘占用情况，app store收费，官网有免费版，平常使用免费版足以<br>
+[dr.cleaner](https://itunes.apple.com/cn/app/dr.cleaner-qing-li-ci-pan/id921458519?mt=12)：dr清理工具<br>
+[macOS（OS X）有哪些冷门但是一但发现就无法自拔的软件？]
+(https://www.zhihu.com/question/35050387):mac os软件推荐，来自知乎<br>
 [Mac BiliBili客户端](https://github.com/typcn/bilibili-mac-client)<br>
 [OS X 应用](https://www.zhihu.com/topic/19551349/hot):知乎OSX应用推荐<br>
 
@@ -27,8 +30,8 @@ tags:
 
 [licecap](http://www.cockos.com/licecap/):录制视频工具<br>
 [shadowsocks](https://github.com/shadowsocks):买个vps还不是美滋滋<br>
-[charles](https://www.charlesproxy.com/):抓包神器
-
+[charles](https://www.charlesproxy.com/):抓包神器<br>
+[ccleaner](https://www.piriform.com/ccleaner):清理工具，MAC端 腾讯电脑管家也有类似功能<br>
 
 ## win
 
