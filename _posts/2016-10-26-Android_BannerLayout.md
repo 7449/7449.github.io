@@ -21,7 +21,7 @@ tags:
 
 [https://github.com/7449/BannerLayout(https://github.com/7449/BannerLayout)](https://github.com/7449/BannerLayout)
 
-## 支持功能
+##支持功能
 
 
 - 可自定义小圆点,title,提示栏位置，支持自定义selector选择器
@@ -42,19 +42,19 @@ tags:
 
 - 支持动画以及垂直滚动
 
-## 使用效果
+####使用效果
 
-![](http://i.imgur.com/yLQUFvQ.gif)
+![](http://i.imgur.com/WnrNvI4.gif)
 
-## 基础使用方法
+##基础使用方法
 
 >项目中引用 
 
-		compile 'com.ydevelop:bannerlayout:1.0.3'
+		compile 'com.ydevelop:bannerlayout:1.0.5'
 
 >更新状态
 
-	1.0.3 : 增加小圆点颜色的设置以及attr增加tips位置的枚举，分别为 tips_site，dots_site，title_site
+	1.0.5 : 代码重构，增加获取轮播状态的方法
 	...
 
 
@@ -75,7 +75,18 @@ tags:
 	stopBanner(); //停止轮播
 	restoreBanner(); //恢复轮播
 
-## 数组
+0.页码展示：
+
+           bannerLayout
+                    .initListResources(initImageModel())
+                    .setPageNumViewMargin(10, 0, 0, 10)
+                    .setPageNumViewTextColor(R.color.colorAccent)
+                    .setPageNumViewBackgroundColor(R.color.colorWhite)
+                    .initPageNumView()
+                    .initTips(true, true, true)
+                    .start(true);
+
+1.数组
 
 >数组使用也是在内部转化成List数据，所以点击事件以及自定义ImageLoaderManager传递的泛型均为BannerModel
 
@@ -85,7 +96,7 @@ tags:
                 .initArrayResources(mImage, mTitle)
                 .initTips();
 
-## List
+2.List
 
         List<BannerModel> mDatas = new ArrayList<>();
 		...
@@ -94,7 +105,7 @@ tags:
                 .initTips()
                 .start(true);	
 
-## 点击事件
+3.点击事件
 
 >如果不传递泛型，返回的model就是当前Bean类，强转即可，建议传递泛型
 
@@ -102,12 +113,12 @@ tags:
              .initListResources(initImageModel())
              .setOnBannerClickListener(new OnBannerClickListener<ImageModel>() {
                  @Override
-                 public void onBannerClick(int position, ImageModel model) {
+                 public void onBannerClick(View view, int position, ImageModel model) {
                    Toast.makeText(holder.getContext(), model.getTestText(), Toast.LENGTH_SHORT).show();
                         }
                     });
 
-## 提示栏及小圆点、title位置的改变
+4.提示栏及小圆点、title位置的改变
 
 	setTipsSite() 	 			提示栏在布局中的位置，top,bottom,centered三种可选 
 	setDotsSite()	  			小圆点在提示栏的位置，left,centered,right三种可选 
@@ -118,7 +129,7 @@ tags:
 		        ...
 		        app:tips_site="centered" />
 
-## 使用自定义Bean类
+5.使用自定义Bean类
 	
 >简单的使用BannerModel就可以满足需求，如果点击要传递Id之类的参数，就自定义Model类
 
@@ -140,7 +151,7 @@ tags:
                     .initImageListResources(initBannerBean())
                     .initTips(true, true, true);
 
-## 使用自定义加载图片框架
+6.使用自定义加载图片框架
 
 >BannerLayout内部引用Glide3.7.0，如果不想在你的项目中使用这个版本，请用exclude将它排除掉，再自行引入你使用的版本
 	  
@@ -155,8 +166,8 @@ tags:
 	public class ImageManager implements ImageLoaderManager<BannerBean> {
 	
 	    @Override
-	    public void display(Context context, ImageView imageView, BannerBean model) {
-	        Picasso.with(context)
+	    public void display(ImageView imageView, BannerBean model) {
+	        Picasso.with(imageView.getContext())
 	                .load(model.getImageUrl())
 	                .placeholder(R.mipmap.ic_launcher)
 	                .error(R.mipmap.ic_launcher)
@@ -164,7 +175,7 @@ tags:
 	    }
 	}
 
-## 切换动画以及速度
+7.切换动画以及速度
 
 >垂直滚动的动画
 
@@ -183,17 +194,17 @@ viewpager的垂直这里用的是动画，所以只要选择了垂直滚动，�
 	                .setDuration(3000) //切换速度
 	                .start();
 	
-	如果只想使用内置的动画可以用 BannerAnimationType 进行选择
+	如果只想使用内置的动画可以用 BannerAnimation 进行选择
 	
 	例：
 	
 		   bannerLayout
 	                .initImageListResources(list) //自定义model类
 	                .initTips()
-	                .setBannerTransformer(BannerAnimationType.CUBE_IN)
+	                .setBannerTransformer(BannerAnimation.CUBE_IN)
 	                .start();
 
-## 动画集合：
+8.动画集合：
 
 
 >自定义动画集合
@@ -204,11 +215,11 @@ viewpager的垂直这里用的是动画，所以只要选择了垂直滚动，�
 
 >系统动画集合
 
-		 List<BannerAnimationType> enumTransformer = new ArrayList<>();
+		 List<BannerAnimation> enumTransformer = new ArrayList<>();
 
 		bannerLayout.setBannerSystemTransformerList(enumTransformer);
 
-## 自定义提示栏
+9.自定义提示栏
 
 >自定义提示栏不建议使用，没有什么能快速设置的功能请尽量提[lssues](https://github.com/7449/BannerLayoutSimple/issues)
 
@@ -274,5 +285,27 @@ normalColor							|选中小圆点颜色				|默认白色
 tips_site							|tips在布局中位置    			|默认底部，可选上中下
 dots_site							|小圆点在布局中位置    		|默认底部，可选左中右
 title_site							|title在布局中位置    		|默认底部，可选左中右
+page_num_view_radius				|pageNumView shape radius   |默认25f
+page_num_view_paddingTop			|pageNumView padding Top	|默认5
+page_num_view_paddingLeft			|pageNumView padding Left	|默认20
+page_num_view_paddingRight			|pageNumView padding Right	|默认20
+page_num_view_paddingBottom			|pageNumView padding Bottom	|默认5
+page_num_view_marginTop				|pageNumView margin 	 	|默认0
+page_num_view_marginLeft			|pageNumView margin		  	|默认0
+page_num_view_marginRight			|pageNumView margin  		|默认0
+page_num_view_marginBottom			|pageNumView margin  		|默认0
+page_num_view_textColor				|pageNumView textColor	 	|默认白色
+page_num_view_BackgroundColor		|pageNumView BackgroundColor|默认半透明
+page_num_view_textSize				|pageNumView textSize	  	|默认10
+pageNumView_site					|pageNumView 位置			|默认初始化之后在左上角
 
-
+        <attr name="pageNumView_site">
+            <enum name="topLeft" value="0" />
+            <enum name="topRight" value="1" />
+            <enum name="bottomLeft" value="2" />
+            <enum name="bottomRight" value="3" />
+            <enum name="centeredLeft" value="4" />
+            <enum name="centeredRight" value="5" />
+            <enum name="topCentered" value="6" />
+            <enum name="bottomCentered" value="7" />
+        </attr>
