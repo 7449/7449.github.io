@@ -20,8 +20,7 @@ tags:
 [iina](https://github.com/lhc70000/iina):视频播放器<br>
 [daisydisk](https://daisydiskapp.com/):查看和管理硬盘，查看 Mac 磁盘占用情况，app store收费，官网有免费版，平常使用免费版足以<br>
 [dr.cleaner](https://itunes.apple.com/cn/app/dr.cleaner-qing-li-ci-pan/id921458519?mt=12)：dr清理工具<br>
-[macOS（OS X）有哪些冷门但是一但发现就无法自拔的软件？]
-(https://www.zhihu.com/question/35050387):mac os软件推荐，来自知乎<br>
+[macOS有哪些冷门但是一但发现就无法自拔的软件？](https://www.zhihu.com/question/35050387):mac os软件推荐，来自知乎<br>
 [Mac BiliBili客户端](https://github.com/typcn/bilibili-mac-client)<br>
 [OS X 应用](https://www.zhihu.com/topic/19551349/hot):知乎OSX应用推荐<br>
 
