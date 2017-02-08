@@ -21,7 +21,7 @@ tags:
 
 [https://github.com/7449/BannerLayout(https://github.com/7449/BannerLayout)](https://github.com/7449/BannerLayout)
 
-##支持功能
+## 支持功能
 
 
 - 可自定义小圆点,title,提示栏位置，支持自定义selector选择器
@@ -42,11 +42,11 @@ tags:
 
 - 支持动画以及垂直滚动
 
-####使用效果
+#### 使用效果
 
 ![](http://i.imgur.com/WnrNvI4.gif)
 
-##基础使用方法
+## 基础使用方法
 
 >项目中引用 
 
