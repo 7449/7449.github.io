@@ -8,8 +8,7 @@ header-mask: 0.3
 header-img: "img/android.jpg"
 catalog: false
 tags:
-    - ImageView
-    - RxJava
+    - Rx系列
     - android
 ---
 

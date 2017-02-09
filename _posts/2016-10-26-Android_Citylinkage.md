@@ -9,9 +9,7 @@ header-img: "img/android.jpg"
 catalog: true
 tags:
     - wheelView
-    - 自定义View
     - android
-    - 城市联动
 ---
 
 

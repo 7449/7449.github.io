@@ -8,8 +8,6 @@ header-mask: 0.3
 header-img: "img/android.jpg"
 catalog: false
 tags:
-    - 隐藏应用
-    - root
 ---
 
 

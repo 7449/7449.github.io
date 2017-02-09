@@ -9,8 +9,7 @@ header-img: "img/android.jpg"
 catalog: true
 tags:
     - android
-    - RecyclerView
-    - Adapter
+    - widget
 ---
 
 

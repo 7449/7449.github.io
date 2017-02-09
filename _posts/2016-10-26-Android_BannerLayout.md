@@ -9,7 +9,6 @@ header-img: "img/android.jpg"
 catalog: true
 tags:
     - banner
-    - 封装
     - android
     - widget
 ---

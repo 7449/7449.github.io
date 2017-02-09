@@ -9,9 +9,7 @@ header-img: "img/android.jpg"
 catalog: true
 tags:
     - android
-    - ViewPager
     - fragment
-    - widget
 ---
 
 

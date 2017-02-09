@@ -10,7 +10,6 @@ catalog: true
 tags:
     - android
     - 热修复
-    - tinker
 ---
 
 

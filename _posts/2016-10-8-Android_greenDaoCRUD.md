@@ -9,8 +9,6 @@ header-img: "img/android.jpg"
 catalog: true
 tags:
     - android
-    - greenDao
-    - 数据库
     - sql
 ---
 

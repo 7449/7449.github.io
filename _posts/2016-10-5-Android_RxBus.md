@@ -9,8 +9,7 @@ header-img: "img/rxjava.jpg"
 catalog: true
 tags:
     - android
-    - RxJava
-    - RxBus
+    - Rx系列
 ---
 
 

@@ -8,9 +8,7 @@ header-mask: 0.3
 header-img: "img/android.jpg"
 catalog: true
 tags:
-    - develop
     - android
-    - skills
 ---
 
 ## AlertDialog改变Theme

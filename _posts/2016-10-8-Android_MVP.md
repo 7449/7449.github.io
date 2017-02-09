@@ -9,7 +9,6 @@ header-img: "img/android.jpg"
 catalog: true
 tags:
     - mvp
-    - 框架
     - android
 ---
 

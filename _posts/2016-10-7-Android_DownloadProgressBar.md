@@ -8,7 +8,6 @@ header-mask: 0.3
 header-img: "img/android.jpg"
 catalog: true
 tags:
-    - progressBar
     - 自定义View
     - android
 ---

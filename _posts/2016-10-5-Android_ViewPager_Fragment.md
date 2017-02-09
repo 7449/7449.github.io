@@ -10,7 +10,6 @@ catalog: true
 tags:
     - android
     - fragment
-    - ViewPager
 ---
 
 
