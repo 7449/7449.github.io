@@ -11,6 +11,12 @@ tags:
     - android
 ---
 
+## Layout属性
+
+android:clipToPadding：配合paddingTop可简单实现View距离顶部一定距离
+
+android:clipChildren：是否限制子View在其范围内
+
 ## 调用显示触摸位置功能
 
 	android.provider.Settings.System.putInt(getContentResolver(), "show_touches", 1);

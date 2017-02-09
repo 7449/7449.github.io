@@ -22,6 +22,10 @@ tags:
 [macOS有哪些冷门但是一但发现就无法自拔的软件？](https://www.zhihu.com/question/35050387):mac os软件推荐，来自知乎<br>
 [Mac BiliBili客户端](https://github.com/typcn/bilibili-mac-client)<br>
 [OS X 应用](https://www.zhihu.com/topic/19551349/hot):知乎OSX应用推荐<br>
+[skim](https://skim.en.softonic.com/mac):阅读PDF<br>
+[Maipo](https://itunes.apple.com/cn/app/weibox/id789066512?mt=12): 极致微博体验<br>
+[handshaker](http://www.smartisan.com/apps/handshaker):锤子出品的一款MAC管理android手机文件的软件<br>
+[mweb](https://itunes.apple.com/cn/app/mweb-lite-zhuan-ye-demarkdown/id979033429?mt=12):MarkDown写作软件<br>
 
 
 ## Mac,Win通用
@@ -60,6 +64,22 @@ tags:
 
 软件使用较多，例如node之类的这里不一一记下
 
+## AndroidStudio插件
+
+[Android ButterKnife Zelezny](https://github.com/avast/android-butterknife-zelezny):可视化一键生成ButterKnife<br>
+[GsonFormat](https://github.com/zzz40500/GsonFormat):自动生成实体类参数<br>
+[Android Drawable Importer](https://github.com/winterDroid/android-drawable-importer-intellij-plugin):不同分辨率导入画板或缩放指定图像到定义分辨率<br>
+[android-selector-chapek / SelectorChapek for Android](https://github.com/inmite/android-selector-chapek):根据资源自动生成相应的selector<br>
+[Android Parcelable code generator](https://github.com/mcharmas/android-parcelable-intellij-plugin/):快速实现Parcelable接口的插件<br>
+[Markdown](https://github.com/nicoulaj/idea-markdown):Markdown是一种可以使用普通文本编辑器编写的标记语言<br>
+[Lifecycle Sorter](https://github.com/armandAkop/Lifecycle-Sorter):可以根据Activity或者fragment的生命周期对其生命周期方法位置进行先后排序<br>
+[ADB WIFI](https://github.com/layerlre/ADBWIFI):无需root就能wifi调试<br>
+[CodeGlance](https://github.com/Vektah/CodeGlance):可用于快速定位代码<br>
+[JSONOnlineViewer](https://plugins.jetbrains.com/idea/plugin/7838-jsononlineviewer):可实现直接在android studio中调试接口数据<br>
+[FindBugs-IDEA](https://github.com/andrepdo/findbugs-idea/tree/master):类似自带Lint<br>
+[PermissionsDispatcher](https://github.com/shiraji/permissions-dispatcher-plugin):针对API 23，可在Activity/Fragment中快速生成Runtime Permissions代码的插件<br>
+
+
 ## 网站
 
 [gapps](http://opengapps.org/):针对魔趣，cm之类的类似于原生但是没有google服务提供下载google服务包<br>
@@ -87,7 +107,7 @@ tags:
 
 #### Shadowsocks代理
 
->手机端
+手机端
 
 确认电脑端的SS开启了 `允许来自局域网的连接`<br>
 
@@ -109,5 +129,21 @@ tags:
 
 	Chrome:
 		设置 - 显示高级设置 - 更改代理服务器设置 - 局域网设置 - 代理服务器
+
+#### Ubuntu
+
+`Ubuntu修改profile文件或者environment之后无法登陆`<br>
+
+修改profile文件之后，好多命令要用绝对路径才能使用，系统也无法登陆。<br>
+Ctrl + Alt + F1(F1-F6) 都可以，可以登陆。
+此时使用绝对路径编辑或者恢复profile文件即可。
+
+	/usr/bin/sudo /usr/bin/vim /etc/environment
+	/usr/bin/sudo /usr/bin/vim /etc/profile
+
+`E: Unable to lock the administration directory (/var/lib/dpkg/), is another process using it?`
+
+	sudo rm /var/lib/dpkg/lock
+	sudo dpkg --configure -a
 
 ## 未完待续
