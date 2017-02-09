@@ -8,8 +8,7 @@ header-mask: 0.3
 header-img: "img/android.jpg"
 catalog: true
 tags:
-    - 软件
-    - 网站
+    - 工作记录
 ---
 
 ## Mac
