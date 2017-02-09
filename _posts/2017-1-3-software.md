@@ -83,4 +83,31 @@ tags:
 [AndroidSource](https://android.googlesource.com/?format=HTML):<br>
 
 
+## 日常小功能
+
+#### Shadowsocks代理
+
+>手机端
+
+确认电脑端的SS开启了 `允许来自局域网的连接`<br>
+
+以Iphone为例(Android类似)： 
+
+	打开设置 - 无线局域网 - 点击你所连接的wifi旁边的“i”进入该网络的设置
+	拉到最下面 - HTTP代理 - 点自动
+	在URL里填写你的电脑内网IP地址+端口号+/pac
+	举例： http://192.168.1.57:1080/pac
+
+电脑通过电脑FQ:
+
+	IE:
+		设置 - Internet选项 - 连接 - 局域网设置，在代理服务器一栏，勾上为lan使用代理服务器，填法和上面类似
+
+		服务器地址填上面电脑的内网IP：192.168.1.57
+		
+		端口填shadowsocks客户端的代理端口：1080
+
+	Chrome:
+		设置 - 显示高级设置 - 更改代理服务器设置 - 局域网设置 - 代理服务器
+
 ## 未完待续

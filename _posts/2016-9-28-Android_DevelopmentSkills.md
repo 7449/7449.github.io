@@ -2,7 +2,7 @@
 layout:     post
 title:      "Android_DevelopmentSkills"
 subtitle:   "android开发技巧集合"
-date:       2016-9-28
+date:       2017-2-9
 author:     "y"
 header-mask: 0.3
 header-img: "img/android.jpg"
@@ -10,6 +10,234 @@ catalog: true
 tags:
     - android
 ---
+
+## 调用显示触摸位置功能
+
+	android.provider.Settings.System.putInt(getContentResolver(), "show_touches", 1);
+
+## 代码切换全屏
+
+        //切换到全屏 
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //切换到非全屏
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+
+## Activity透明
+
+    <style name="TransparentActivity" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+## 展开、收起状态栏
+
+		 public static final void collapseStatusBar(Context ctx) {
+		        Object sbservice = ctx.getSystemService("statusbar");
+		        try {
+		            Class<?> statusBarManager = Class.forName("android.app.StatusBarManager");
+		            Method collapse;
+		            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+		                collapse = statusBarManager.getMethod("collapsePanels");
+		            } else {
+		                collapse = statusBarManager.getMethod("collapse");
+		            }
+		            collapse.invoke(sbservice);
+		        } catch (Exception e) {
+		            e.printStackTrace();
+		        }
+		    }
+	
+	    public static final void expandStatusBar(Context ctx) {
+	        Object sbservice = ctx.getSystemService("statusbar");
+	        try {
+	            Class<?> statusBarManager = Class.forName("android.app.StatusBarManager");
+	            Method expand;
+	            if (Build.VERSION.SDK_INT >= 17) {
+	                expand = statusBarManager.getMethod("expandNotificationsPanel");
+	            } else {
+	                expand = statusBarManager.getMethod("expand");
+	            }
+	            expand.invoke(sbservice);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+## 获取网络类型名称
+
+	 public static String getNetworkTypeName(Context context) {
+	        if (context != null) {
+	            ConnectivityManager connectMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+	            if (connectMgr != null) {
+	                NetworkInfo info = connectMgr.getActiveNetworkInfo();
+	                if (info != null) {
+	                    switch (info.getType()) {
+	                        case ConnectivityManager.TYPE_WIFI:
+	                            return "WIFI";
+	                        case ConnectivityManager.TYPE_MOBILE:
+	                            return getNetworkTypeName(info.getSubtype());
+	                    }
+	                }
+	            }
+	        }
+	        return getNetworkTypeName(TelephonyManager.NETWORK_TYPE_UNKNOWN);
+	    }
+	
+	    public static String getNetworkTypeName(int type) {
+	        switch (type) {
+	            case TelephonyManager.NETWORK_TYPE_GPRS:
+	                return "GPRS";
+	            case TelephonyManager.NETWORK_TYPE_EDGE:
+	                return "EDGE";
+	            case TelephonyManager.NETWORK_TYPE_UMTS:
+	                return "UMTS";
+	            case TelephonyManager.NETWORK_TYPE_HSDPA:
+	                return "HSDPA";
+	            case TelephonyManager.NETWORK_TYPE_HSUPA:
+	                return "HSUPA";
+	            case TelephonyManager.NETWORK_TYPE_HSPA:
+	                return "HSPA";
+	            case TelephonyManager.NETWORK_TYPE_CDMA:
+	                return "CDMA";
+	            case TelephonyManager.NETWORK_TYPE_EVDO_0:
+	                return "CDMA - EvDo rev. 0";
+	            case TelephonyManager.NETWORK_TYPE_EVDO_A:
+	                return "CDMA - EvDo rev. A";
+	            case TelephonyManager.NETWORK_TYPE_EVDO_B:
+	                return "CDMA - EvDo rev. B";
+	            case TelephonyManager.NETWORK_TYPE_1xRTT:
+	                return "CDMA - 1xRTT";
+	            case TelephonyManager.NETWORK_TYPE_LTE:
+	                return "LTE";
+	            case TelephonyManager.NETWORK_TYPE_EHRPD:
+	                return "CDMA - eHRPD";
+	            case TelephonyManager.NETWORK_TYPE_IDEN:
+	                return "iDEN";
+	            case TelephonyManager.NETWORK_TYPE_HSPAP:
+	                return "HSPA+";
+	            default:
+	                return "UNKNOWN";
+	        }
+	    }
+
+
+
+## 扫描指定的文件
+
+	sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
+
+## 有没有应用程序处理你发出的intent
+
+    public static boolean isIntentAvailable(Context context, String action) {
+        final PackageManager packageManager = context.getPackageManager();
+        final Intent intent = new Intent(action);
+        List<ResolveInfo> list = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        return list.size() > 0;
+    }
+
+## TransitionDrawable实现渐变效果
+
+    private void setImageBitmap(ImageView imageView, Bitmap bitmap) {
+        final TransitionDrawable td = new TransitionDrawable(new Drawable[]{new ColorDrawable(R.color.colorAccent), new BitmapDrawable(imageView.getContext().getResources(), bitmap)});
+        imageView.setBackgroundDrawable(imageView.getDrawable());
+        imageView.setImageDrawable(td);
+        td.startTransition(200);
+    }
+
+## 字符串中只能包含：中文、数字、下划线(_)、横线(-)
+
+    public static boolean checkNickname(String sequence) {
+        final String format = "[^\\u4E00-\\u9FA5\\uF900-\\uFA2D\\w-_]";
+        Pattern pattern = Pattern.compile(format);
+        Matcher matcher = pattern.matcher(sequence);
+        return !matcher.find();
+    }
+
+## 字符串中是否包含汉字
+
+    public static boolean checkChinese(String sequence) {
+        final String format = "[\\u4E00-\\u9FA5\\uF900-\\uFA2D]";
+        boolean result = false;
+        Pattern pattern = Pattern.compile(format);
+        Matcher matcher = pattern.matcher(sequence);
+        result = matcher.find();
+        return result;
+    }
+
+## 获取应用程序下所有Activity
+
+    public static ArrayList<String> getActivities(Context ctx) {
+        ArrayList<String> result = new ArrayList<String>();
+        Intent intent = new Intent(Intent.ACTION_MAIN, null);
+        intent.setPackage(ctx.getPackageName());
+        for (ResolveInfo info : ctx.getPackageManager().queryIntentActivities(intent, 0)) {
+            result.add(info.activityInfo.name);
+        }
+        return result;
+    }
+
+## 计算字宽
+
+注意如果设置了textStyle，还需要进一步设置TextPaint
+
+    public static float GetTextWidth(String text, float Size) {
+        TextPaint FontPaint = new TextPaint();
+        FontPaint.setTextSize(Size);
+        return FontPaint.measureText(text);
+    }
+	
+
+## 判断是否是平板
+
+    public static boolean isTablet(Context context) {
+        return (context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+    }
+
+## 获取屏幕尺寸
+
+    public static double getScreenPhysicalSize(Activity ctx) {
+        DisplayMetrics dm = new DisplayMetrics();
+        ctx.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        double diagonalPixels = Math.sqrt(Math.pow(dm.widthPixels, 2) + Math.pow(dm.heightPixels, 2));
+        return diagonalPixels / (160 * dm.density);
+    }
+
+## 代码设置TextView的样式
+
+	new TextView(new ContextThemeWrapper(this, R.style.text_style))
+
+## TextView 显示文字阴影效果
+
+1. 
+	TextView.setShadowLayer(10F, 11F,5F, Color.YELLOW); 
+	第一个参数为模糊半径，越大越模糊。 
+	第二个参数是阴影离开文字的 x 横向距离。 	
+	第三个参数是阴影离开文字的 Y 横向距离。 
+	第四个参数是阴影颜色。
+
+2. 
+	将 TextView 控件的 style 单独写成一个. xml 文件进行添加
+	
+     <style name="AudioFileInfoOverlayText">
+         <item name="android:shadowColor">#4d4d4d</item>
+         <item name="android:shadowDx">0</item>
+         <item name="android:shadowDy">-3</item>
+         <item name="android:shadowRadius">3</item>
+     </style>
+
+## CRUD语句
+
+insert: `insert into tab_name (field,field,field) values(?,?,?)`<br>
+update: `update tab_name set field = value where field = value`<br>
+select: `select * from tab_name`<br>
+delete: `delete from tab_name where field = value`<br>
+
+简单的四个语句，复杂的需要自己添加，例如select时候可以添加 `where` 实现过滤功能<br>
 
 ## AlertDialog改变Theme
 
