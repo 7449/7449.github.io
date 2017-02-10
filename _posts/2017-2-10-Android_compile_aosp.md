@@ -47,8 +47,7 @@ repo由一系列python脚本组成,通过调用Git命令实现对AOSP项目的�
 
 1.  首先安装[macports](https://www.macports.org/install.php)，可以选择安装包安装或者直接下载Macport，解压之后终端进入该目录，输入`./configure make sudo make install`进行安装
 
-2.  打开 `.base_profile` 文件，此文件在`你的用户名`文件夹下,例如我的用户名是`test`,那么这个文件就是`test`文件夹下，看里面是否有`export PATH="/opt/local/bin:/opt/local/sbin:$PATH"`,
-没有就加上,修改后在终端输入`source .bash_profile` 让其即时生效
+2.  打开 `.base_profile` 文件，此文件在`你的用户名`文件夹下,例如我的用户名是`test`,那么这个文件就是`test`文件夹下，看里面是否有`export PATH="/opt/local/bin:/opt/local/sbin:$PATH"`,没有就加上,修改后在终端输入`source .bash_profile` 让其即时生效
 
 3.  打开终端，输入`POSIXLY_CORRECT=1 sudo port install gmake libsdl Git gnupg`,等自动下载完成后如果提示`gmake not found`,就输入`sudo port -d sync` 同步一下，如果提示`port not found`请检查环境变量
 
@@ -116,7 +115,7 @@ JDK设置参考：
 一般启动方式如下：
 
 	source build/envsetup.sh
-	lunch(你设置的目标版本,例如 full-eng 是 1)
+	lunch(你设置的目标版本)
 	emulator
 
 #### 编译模块
@@ -131,7 +130,7 @@ JDK设置参考：
 
 `make sdk`
 
-#### 导入Android Studio
+## 导入Android Studio
 
 1.  确保`aosp/out/host/darwin-x86/framework`目录中没有`idegen.jar`的情况下在终端中输入`mmm development/tools/idegen`即可看见生成了`idegen.jar`
 
@@ -141,17 +140,13 @@ JDK设置参考：
 
 ## Android Studio查看源码
 
-第一次导入`android.ipr`会很慢，甚至会卡，因为同步的东西比较多，请静静等待即可<br>
+第一次导入`android.ipr`会很慢，甚至会卡，因为同步的东西比较多，请静静等待即可，如何不想加载某项，可以在Modules中右键 Excluded 排除掉，路径为： File/Project Structrue/Modules，这样可以加快加载速度<br>
 
 建议在 setting - Build,Execution,Deployment - compiler 下 把 Build process heap size(Mbytes) 的默认值设置的大一些，避免编译时内存溢出<br>
 
-然后在 Project Structure 里面 对 JDK 和 SDK 进行设置,路径为：File/Project Structrue/Project,
-把 SDK 和 JDK 都设置为空，在 SDKs 中 选中 java 删掉所有选中项，然后选中你对应的api版本清空即可
-
-如何不想加载某项，可以在Modules中右键 Excluded 排除掉，路径为： File/Project Structrue/Modules，这样可以加快加载速度<br>
-
 一般查看的都在 `framewords` 和 `packages` 目录下<br>
 
+有空截图详细说明下我的设置，但不代表适合每一个人
 
 ## BUILD
 
