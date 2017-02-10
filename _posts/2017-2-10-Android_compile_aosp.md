@@ -38,6 +38,8 @@ repo由一系列python脚本组成,通过调用Git命令实现对AOSP项目的�
 
 然后创建AndroidAosp磁盘，建议大小在100GB左右，但是宁可多，不要少，格式则选择 Mac OS 扩展(区分大小写,日志式)，其他的默认<br>
 
+![_config.yml]({{ site.baseurl }}/img/aosp_disk.png)
+
 这里建议首先把隐藏的文件显示出来:
 
 	显示：defaults write com.apple.finder AppleShowAllFiles -bool true
@@ -101,7 +103,7 @@ JDK设置参考：
 
 1.  终端输入 `source build/envsetup.sh`
 
-2.  选择需要编译的目标，我这里选择 `full-eng` ，执行命令 `lunch full-eng`
+2.  选择需要编译的目标，我这里选择 `aosp_arm-eng` ，执行命令 `lunch aosp_arm-eng`
 
 3.  输入 `make` 或者 `make -j8` 开始编译,这里 `-j` 的参数一般是cpu核心*2，`cat /proc/cpuinfo`查看相关cpu信息
 
@@ -115,7 +117,7 @@ JDK设置参考：
 一般启动方式如下：
 
 	source build/envsetup.sh
-	lunch(你设置的目标版本)
+	lunch(你设置的目标版本,例如我上面的aosp_arm-eng是1)
 	emulator
 
 #### 编译模块
@@ -140,13 +142,25 @@ JDK设置参考：
 
 ## Android Studio查看源码
 
+我导入之后的列表：
+
+![_config.yml]({{ site.baseurl }}/img/aosp_list.png)
+
+
 第一次导入`android.ipr`会很慢，甚至会卡，因为同步的东西比较多，请静静等待即可，如何不想加载某项，可以在Modules中右键 Excluded 排除掉，路径为： File/Project Structrue/Modules，这样可以加快加载速度<br>
+
+![_config.yml]({{ site.baseurl }}/img/aosp_modules.png)
+
 
 建议在 setting - Build,Execution,Deployment - compiler 下 把 Build process heap size(Mbytes) 的默认值设置的大一些，避免编译时内存溢出<br>
 
-一般查看的都在 `framewords` 和 `packages` 目录下<br>
+![_config.yml]({{ site.baseurl }}/img/aosp_compiler.png)
 
-有空截图详细说明下我的设置，但不代表适合每一个人
+一般查看的都在 `frameworks` 和 `packages` 目录下<br>
+
+这个时候就可以看一些系统的源码了，例如直接搜索RecyclerView，跳转进去直接就可以跟着源码走了<br>
+
+packages目录下是aosp的自带app，可以借鉴Google工程师是如何开发app的
 
 ## BUILD
 
@@ -284,7 +298,7 @@ repo安装方法和Mac一样
 
 `source build/envsetup.sh` <br>
 
-`lunch full-eng ` <br>
+`lunch aosp_arm-eng ` <br>
 
 输入 `make` 或者 `make -j8` 开始编译 <br>
 
