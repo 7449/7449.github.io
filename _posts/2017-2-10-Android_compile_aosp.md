@@ -199,11 +199,15 @@ BUILD TYPE则指的是编译类型,通常有三种:
 
 在编译命令之前,修改`prebuilts/sdk/tools/jack-admin`文件,找到文件中的这一行:
 	
-	JACK_SERVER_COMMAND="java -Djava.io.tmpdir=$TMPDIR $JACK_SERVER_VM_ARGUMENTS -cp $LAUNCHER_JAR $LAUNCHER_NAME"
+		JACK_SERVER_COMMAND="java -Djava.io.tmpdir=$TMPDIR $JACK_SERVER_VM_ARGUMENTS -cp $LAUNCHER_JAR $LAUNCHER_NAME"
+	
+	
 然后在该行添加`-Xmx4096m`<br>
 例如:
 	
-	JACK_SERVER_COMMAND="java -Djava.io.tmpdir=$TMPDIR $JACK_SERVER_VM_ARGUMENTS -Xmx4096m -cp $LAUNCHER_JAR $LAUNCHER_NAME"
+		JACK_SERVER_COMMAND="java -Djava.io.tmpdir=$TMPDIR $JACK_SERVER_VM_ARGUMENTS -Xmx4096m -cp $LAUNCHER_JAR $LAUNCHER_NAME"
+	
+	
 然后再执行time make
 
 >使用emulator时,虚拟机停在黑屏界面,点击无任何响应.此时,可能是kerner内核问题
