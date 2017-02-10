@@ -114,7 +114,7 @@ Mac的包管理器，用于安装NodeJs和其他一些工具,指令如下：<br>
 
 如果提示你权限不足之类的，请 加上 `sudo` 重新试试<br>
 
-如果`/usr/local`目录不可写,请使用 `sudo chown -R `whoami` /usr/local` 修复此问题<br>
+如果`/usr/local`目录不可写,请使用 `sudo chown -R 'whoami' /usr/local` 修复此问题<br>
 
 #### 安装NodeJs
 
