@@ -11,6 +11,47 @@ tags:
     - android
 ---
 
+## 自定义View
+
+	（1）定义一个Class继承于系统View;
+	
+	（2）在xml中配置layout布局文件；
+	
+	（3）重写父类的一些方法，如onMeasure、onDraw、onLayout等；
+	
+	（4）在程序中应用自定义的View；
+
+	onMeasure()用来设置视图的大小，即视图的宽度和高度
+	onLayout()用于设置视图在屏幕中显示的位置
+	onDraw()利用前面两部分得到的参数，将视图显示在屏幕上
+
+## android的设计模式
+
+#### 模版模式
+
+	每次新建一个Activity时都会覆盖onCreate(),onStart()方法等，这些方法在父类中就相当于一个模板
+
+#### 观察者模式
+
+	点击事件
+
+#### 适配器模式
+
+	adapter
+
+#### 单例模式
+
+	Application
+
+#### 工厂模式
+
+	BitmapFactory.decodeResource();BitmapFactory相当于位图工厂
+
+#### 代理模式
+	
+	AIDL	
+
+
 ## Layout属性
 
 android:clipToPadding：配合paddingTop可简单实现View距离顶部一定距离
@@ -529,3 +570,51 @@ delete: `delete from tab_name where field = value`<br>
 		        return weeks[week_index];
 		    }
 
+
+## activity生命周期
+	
+	（1）启动Activity：系统会先调用onCreate方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。
+	
+	（2）当前Activity被其他Activity覆盖其上或被锁屏：系统会调用onPause方法，暂停当前Activity的执行。
+	
+	（3）当前Activity由被覆盖状态回到前台或解锁屏：系统会调用onResume方法，再次进入运行状态。
+	
+	（4）当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台：系统会先调用onPause方法，然后调用onStop方法，进入停滞状态。
+	
+	（5）用户后退回到此Activity：系统会先调用onRestart方法，然后调用onStart方法，最后调用onResume方法，再次进入运行状态。
+	
+	（6）当前Activity处于被覆盖状态或者后台不可见状态，即第2步和第4步，系统内存不足，杀死当前Activity，而后用户退回当前Activity：再次调用onCreate方法、onStart方法、onResume方法，进入运行状态。
+	
+	（7）用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。
+
+## activity四种启动模式
+	
+	（1）standard
+	
+	模式启动模式，每次激活Activity时都会创建Activity，并放入任务栈中。
+	
+	（2）singleTop
+	
+	 如果在任务的栈顶正好存在该Activity的实例， 就重用该实例，否者就会创建新的实例并放入栈顶(即使栈中已经存在该Activity实例，只要不在栈顶，都会创建实例)。
+	
+	（3）singleTask
+	
+	如果在栈中已经有该Activity的实例，就重用该实例(会调用实例的onNewIntent())。重用时，会让该实例回到栈顶，因此在它上面的实例将会被移除栈。如果栈中不存在该实例，将会创建新的实例放入栈中。
+	
+	（4）singleInstance
+	
+	 在一个新栈中创建该Activity实例，并让多个应用共享改栈中的该Activity实例。一旦改模式的Activity的实例存在于某个栈中，任何应用再激活改Activity时都会重用该栈中的实例，其效果相当于多个应用程序共享一个应用，不管谁激活该Activity都会进入同一个应用中。
+
+## 屏幕切换
+
+	1、不设置Activity的android:configChanges时，切屏会重新调用各个生命周期，切横屏时会执行一次，切竖屏时会执行两次
+	2、设置Activity的android:configChanges=”orientation”时，切屏还是会重新调用各个生命周期，切横、竖屏时只会执行一次
+	3、设置Activity的android:configChanges=”orientation|keyboardHidden”时，切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法
+
+## 五种存储方法
+
+	1 使用SharedPreferences存储数据；
+	2 文件存储数据；
+	3 SQLite数据库存储数据；
+	4 使用ContentProvider存储数据；
+	5 网络存储数据；
