@@ -11,6 +11,61 @@ tags:
     - android
 ---
 
+
+## Fragment和Activity的交互
+
+需要注意的是 getActivity() 有可能会返回null
+
+	View xxx = getActivity().findViewById(R.id.xxx);
+
+获得fragment的引用要用FragmentManager，之后可以调用findFragmentById() 或者 findFragmentByTag()	
+
+	ExampleFragment fragment = (ExampleFragment) getFragmentManager().findFragmentById(R.id.example_fragment);
+
+#### 事件回调
+
+一些情况下，可能需要fragment和activity共享事件，一个比较好的做法是在fragment里面定义一个回调接口，然后要求activity实现它，当activity通过这个接口接收到一个回调，它可以同布局中的其他fragment分享这个信息。
+
+#### 监听Fragment Back的两个方法
+
+ * 写回调实现
+
+ * 判断RootView
+
+		@Override
+		public void onResume() {
+		
+		    super.onResume();
+		
+		    getView().setFocusableInTouchMode(true);
+		    getView().requestFocus();
+		    getView().setOnKeyListener(new View.OnKeyListener() {
+		        @Override
+		        public boolean onKey(View v, int keyCode, KeyEvent event) {
+		
+		            if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+		
+		                // handle back button
+		
+		                return true;
+		
+		            }
+		
+		            return false;
+		        }
+		    });
+		}
+
+## 调用市场play
+
+	Uri uri = Uri.parse("market://details?id=" + context.getPackageName());
+	Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+	try {
+	    startActivity(goToMarket);
+	} catch (ActivityNotFoundException e) {
+	  
+	}
+
 ## 自定义View
 
 	（1）定义一个Class继承于系统View;
@@ -515,6 +570,21 @@ delete: `delete from tab_name where field = value`<br>
         sendBroadcast(shortcut);
     }
 
+## 最简单好用的单利模式
+
+    public  class Dog {
+
+        private Dog() {
+        }
+
+        private static class DogHolder {
+            private static final Dog dog = new Dog();
+        }
+
+        public static Dog getInstance() {
+            return DogHolder.dog;
+        }
+    }
 
 ## 几个时间方法
 
