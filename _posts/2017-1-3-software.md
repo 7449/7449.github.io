@@ -110,6 +110,7 @@ tags:
 进入`Terminal`，在命令行输入 `xattr -d com.apple.FinderInfo  文件路径` 
 
 
+
 #### Shadowsocks代理
 
 手机端
