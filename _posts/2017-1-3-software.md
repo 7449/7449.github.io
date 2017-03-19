@@ -105,6 +105,11 @@ tags:
 
 ## 日常小功能
 
+#### OS X  NTFS 移动硬盘中文件呈灰白色且无法读取
+
+进入`Terminal`，在命令行输入 `xattr -d com.apple.FinderInfo  文件路径` 
+
+
 #### Shadowsocks代理
 
 手机端
