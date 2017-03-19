@@ -105,7 +105,7 @@ JDK设置参考：
 
 2.  选择需要编译的目标，我这里选择 `aosp_arm-eng` ，执行命令 `lunch aosp_arm-eng`
 
-3.  输入 `make` 或者 `make -j8` 开始编译,这里 `-j` 的参数一般是cpu核心*2，`cat /proc/cpuinfo`查看相关cpu信息
+3.  输入 `make` 或者 `make -j8` 开始编译,这里 `-j` 的参数一般是cpu核心*2
 
 
 如果不出意外，等半个小时左右就可以编译完成<br>
