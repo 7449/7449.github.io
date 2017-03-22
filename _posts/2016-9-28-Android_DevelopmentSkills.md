@@ -11,6 +11,16 @@ tags:
     - android
 ---
 
+## 简单的btn状态选择器
+
+	<selector xmlns:android="http://schemas.android.com/apk/res/android">
+	    <item android:state_pressed="true">
+	        <color android:color="@color/selector_btn_false" />
+	    </item>
+	    <item android:state_pressed="false">
+	        <color android:color="@color/selector_btn_true" />
+	    </item>
+	</selector>
 
 ## Fragment和Activity的交互
 
