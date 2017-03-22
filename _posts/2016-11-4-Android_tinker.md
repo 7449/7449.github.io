@@ -20,7 +20,7 @@ Tinker是微信官方的Android热补丁解决方案，它支持动态下发代�
 
 github地址：[https://github.com/Tencent/tinker](https://github.com/Tencent/tinker)
 
-我的Demo地址：[https://github.com/7449/AndroidDevelop/tree/master/TinkerDemo](https://github.com/7449/AndroidDevelop/tree/master/TinkerDemo)
+我的Demo地址：[https://github.com/7449/AndroidDevelop/tree/master/Tinker](https://github.com/7449/AndroidDevelop/tree/master/Tinker)
 
 ## 介绍
 
@@ -57,7 +57,7 @@ clone地址：[https://github.com/Tencent/tinker.git](https://github.com/Tencent
 - 在Demo的build.gradle 的dependencied填写
 
 		classpath 'com.tencent.tinker:tinker-patch-gradle-plugin:1.7.3'
- 示例：	[https://github.com/7449/AndroidDevelop/blob/master/TinkerDemo/build.gradle](https://github.com/7449/AndroidDevelop/blob/master/TinkerDemo/build.gradle)
+ 示例：	[https://github.com/7449/AndroidDevelop/blob/master/build.gradle](https://github.com/7449/AndroidDevelop/blob/master/build.gradle)
 
 - 在Demo的app目录下的build.gradle填写
 
@@ -76,7 +76,7 @@ clone地址：[https://github.com/Tencent/tinker.git](https://github.com/Tencent
 
 大概在134行左右 往下的内容全部copy到自己的build.gradle目录下，但是应该会报错，具体需要copy内容请看我的示例代码
 
-示例：[https://github.com/7449/AndroidDevelop/blob/master/TinkerDemo/app/build.gradle](https://github.com/7449/AndroidDevelop/blob/master/TinkerDemo/app/build.gradle)
+示例：[https://github.com/7449/AndroidDevelop/blob/master/Tinker/build.gradle](https://github.com/7449/AndroidDevelop/blob/master/Tinker/build.gradle)
 
 #### 新建application
  
@@ -106,7 +106,7 @@ clone地址：[https://github.com/Tencent/tinker.git](https://github.com/Tencent
 这个时候重新rebuild 一下项目就可以找到那个application了
 
 >示例：
-[https://github.com/7449/AndroidDevelop/blob/master/TinkerDemo/app/src/main/java/com/tinkerdemo/App.java](https://github.com/7449/AndroidDevelop/blob/master/TinkerDemo/app/src/main/java/com/tinkerdemo/App.java)
+[https://github.com/7449/AndroidDevelop/blob/master/Tinker/src/main/java/com/tinkerdemo/App.java](https://github.com/7449/AndroidDevelop/blob/master/Tinker/src/main/java/com/tinkerdemo/App.java)
 
 >这个时候基本的依赖已经完成了，接下来看如何在代码中实现热修复
 

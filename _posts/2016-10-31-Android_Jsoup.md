@@ -21,7 +21,7 @@ jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文�
 ![_config.yml]({{ site.baseurl }}/img/jsoupsimple.gif)
 
 ## 代码示例
-[https://github.com/7449/AndroidDevelop/tree/master/JsoupSimple](https://github.com/7449/AndroidDevelop/tree/master/JsoupSimple)
+[https://github.com/7449/AndroidDevelop/tree/master/Jsoup](https://github.com/7449/AndroidDevelop/tree/master/Jsoup)
 
 
 >Jsoup对js动态加载抓取比较困难，如果想抓取请使用其他的工具，不建议使用Jsoup

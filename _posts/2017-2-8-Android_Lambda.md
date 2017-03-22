@@ -15,7 +15,7 @@ tags:
 
 ## 代码示例：
 
-[https://github.com/7449/AndroidDevelop/tree/master/LambdaSample](https://github.com/7449/AndroidDevelop/tree/master/LambdaSample)
+[https://github.com/7449/AndroidDevelop/tree/master/Lambda](https://github.com/7449/AndroidDevelop/tree/master/Lambda)
 
 ## 加入Lambda依赖
 

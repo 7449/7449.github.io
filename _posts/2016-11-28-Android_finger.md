@@ -13,7 +13,7 @@ tags:
 ---
 
 ## Demo地址
-[https://github.com/7449/AndroidDevelop/tree/master/FingerDemo](https://github.com/7449/AndroidDevelop/tree/master/FingerDemo)
+[https://github.com/7449/AndroidDevelop/tree/master/Finger](https://github.com/7449/AndroidDevelop/tree/master/Finger)
 
 ## 注意
 必须要了解的是指纹识别是从6.0开始添加的 这样的话，想要使用Api就要把App改到23以上
