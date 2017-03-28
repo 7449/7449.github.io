@@ -14,18 +14,23 @@ tags:
 
 
 
-## Screenshots
+# XAdapter
+支持下拉刷新加载和添加多个header和footer的RecyclerViewAdapter
+
+
+#Screenshots
 
 ![](https://github.com/7449/XAdapter/blob/master/xadapter.gif)
 
 [https://github.com/7449/XAdapter/blob/master/xadapter.gif](https://github.com/7449/XAdapter/blob/master/xadapter.gif)
 
-## gradle
+###gradle
 
->compile 'com.xadapter:xadapter:0.0.6'
+>compile 'com.xadapter:xadapter:0.1.4'
 
 
-## 完整示例
+
+##完整示例
 
 
         recyclerView.setAdapter(
@@ -65,28 +70,23 @@ onXBind
         holder.setTextView(R.id.tv_age, mainBean.getAge() + "");
     }
 
-## emptyView
+##emptyView
 
->setEmptyView一定要在addRecyclerView之前调用，否则无效，具体的内容可以看simple以及源码
 >是否显示由用户自己手动决定，在网络异常或者数据为空的时候调用xRecyclerViewAdapter.isShowEmptyView();具体情况simple有例子
+>true 可选，自己响应点击事件，点击自动触发 下拉刷新
 
-	 recyclerView.setAdapter(
-	                xRecyclerViewAdapter
-	                        .initXData(mainBean)
-	                        .setEmptyView(findViewById(R.id.emptyView))
-	                        .addRecyclerView(recyclerView)
-	                        .setLayoutId(R.layout.item)
-	                        .setOnXEmptyViewListener(new XBaseAdapter.OnXEmptyViewListener() {
-	                            @Override
-	                            public void onXEmptyViewClick(View view) {
-	                                Toast.makeText(EmptyViewActivity.this, "emptyView", Toast.LENGTH_SHORT).show();
-	                            }
-	                        })
-	        );
+        recyclerView.setAdapter(
+                xRecyclerViewAdapter
+                        .initXData(mainBean)
+                        .addRecyclerView(recyclerView)
+                        .setEmptyView(viewById, true) 
+                        .setPullRefreshEnabled(true)
+                        .setLoadListener(this)
+                        .setLayoutId(R.layout.item)
+        );
 
-点击事件可以自己用emptyView实现，但是建议使用XRecyclerViewAdapter 的 onXEmptyViewListener来实现emptyView的点击事件
 
-## 下拉刷新和上拉加载
+##下拉刷新和上拉加载
 
 默认不打开，如果有必要，请手动打开，并调用addRecyclerView
 
@@ -112,23 +112,29 @@ onXBind
 
 这取决于用户选择刷新是否失败或成功
 
->xRecyclerViewAdapter.refreshComplete(BaseRefreshHeader.STATE_DONE);
+>xRecyclerViewAdapter.refreshComplete(HeaderLayout.STATE_DONE);
 
 
 上拉加载完成之后
 
 这取决于用户选择加载是否失败或成功
 
->xRecyclerViewAdapter.loadMoreComplete(XFooterLayout.STATE_NOMORE);
+>xRecyclerViewAdapter.loadMoreComplete(FooterLayout.STATE_NOMORE);
 
 
-## 添加header和footer
+###添加header和footer
 
 		xRecyclerViewAdapter
 		 .addHeaderView(LayoutInflater.from(this).inflate(R.layout.item_header_1, (ViewGroup) findViewById(android.R.id.content), false))
 		 .addFooterView(LayoutInflater.from(this).inflate(R.layout.item_footer_1, (ViewGroup) findViewById(android.R.id.content), false))
+		 
+		 
+###多种type
 
-## 加载动画
+继承 `MultiAdapter` 并且`T`必须继承`MultiCallBack`
+已经内置了一个简单的示例，详情查看 `SimpleMultiItem`
+
+###加载动画
 
 XAdapter 的刷新头部以及底部都是来自 [XRecyclerView](https://github.com/jianghejie/XRecyclerView), 所以 [XRecyclerView](https://github.com/jianghejie/XRecyclerView) 支持的动画XAdapter 都支持,并且对Layout进行扩展，可以设置背景色和字体色，字体大小
 
@@ -144,7 +150,23 @@ XAdapter 的刷新头部以及底部都是来自 [XRecyclerView](https://github.
                         .setHeaderTextColor(R.color.textColor)
                         .setFooterTextColor(R.color.textColor)
 
-
-## 感谢
+#感谢
 
 [https://github.com/jianghejie/XRecyclerView](https://github.com/jianghejie/XRecyclerView)
+
+
+License
+--
+    Copyright (C) 2016 yuezhaoyang7449@163.com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
