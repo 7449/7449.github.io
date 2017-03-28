@@ -18,19 +18,19 @@ tags:
 支持下拉刷新加载和添加多个header和footer的RecyclerViewAdapter
 
 
-#Screenshots
+# Screenshots
 
 ![](https://github.com/7449/XAdapter/blob/master/xadapter.gif)
 
 [https://github.com/7449/XAdapter/blob/master/xadapter.gif](https://github.com/7449/XAdapter/blob/master/xadapter.gif)
 
-###gradle
+### gradle
 
 >compile 'com.xadapter:xadapter:0.1.4'
 
 
 
-##完整示例
+## 完整示例
 
 
         recyclerView.setAdapter(
@@ -70,7 +70,7 @@ onXBind
         holder.setTextView(R.id.tv_age, mainBean.getAge() + "");
     }
 
-##emptyView
+## emptyView
 
 >是否显示由用户自己手动决定，在网络异常或者数据为空的时候调用xRecyclerViewAdapter.isShowEmptyView();具体情况simple有例子
 >true 可选，自己响应点击事件，点击自动触发 下拉刷新
@@ -86,7 +86,7 @@ onXBind
         );
 
 
-##下拉刷新和上拉加载
+## 下拉刷新和上拉加载
 
 默认不打开，如果有必要，请手动打开，并调用addRecyclerView
 
@@ -122,19 +122,19 @@ onXBind
 >xRecyclerViewAdapter.loadMoreComplete(FooterLayout.STATE_NOMORE);
 
 
-###添加header和footer
+### 添加header和footer
 
 		xRecyclerViewAdapter
 		 .addHeaderView(LayoutInflater.from(this).inflate(R.layout.item_header_1, (ViewGroup) findViewById(android.R.id.content), false))
 		 .addFooterView(LayoutInflater.from(this).inflate(R.layout.item_footer_1, (ViewGroup) findViewById(android.R.id.content), false))
 		 
 		 
-###多种type
+### 多种type
 
 继承 `MultiAdapter` 并且`T`必须继承`MultiCallBack`
 已经内置了一个简单的示例，详情查看 `SimpleMultiItem`
 
-###加载动画
+### 加载动画
 
 XAdapter 的刷新头部以及底部都是来自 [XRecyclerView](https://github.com/jianghejie/XRecyclerView), 所以 [XRecyclerView](https://github.com/jianghejie/XRecyclerView) 支持的动画XAdapter 都支持,并且对Layout进行扩展，可以设置背景色和字体色，字体大小
 
@@ -150,7 +150,7 @@ XAdapter 的刷新头部以及底部都是来自 [XRecyclerView](https://github.
                         .setHeaderTextColor(R.color.textColor)
                         .setFooterTextColor(R.color.textColor)
 
-#感谢
+# 感谢
 
 [https://github.com/jianghejie/XRecyclerView](https://github.com/jianghejie/XRecyclerView)
 

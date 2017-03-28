@@ -20,6 +20,11 @@ tags:
 
 [https://github.com/7449/BannerLayout(https://github.com/7449/BannerLayout)](https://github.com/7449/BannerLayout)
 
+# BannerLayoutSimple
+
+支持图片无限轮播的BannerLayout
+
+
 ## 支持功能
 
 
@@ -49,12 +54,11 @@ tags:
 
 >项目中引用 
 
-		compile 'com.ydevelop:bannerlayout:1.0.5'
+		compile 'com.ydevelop:bannerlayout:1.0.8'
 
 >更新状态
 
-	1.0.5 : 代码重构，增加获取轮播状态的方法
-	...
+	1.0.8 : 修改部分逻辑，由BannerLayout接管避免下拉刷新时概率性的ANR，增加部分getXXX属性
 
 
 >如果是网络加载图片 记得添加
@@ -77,13 +81,7 @@ tags:
 0.页码展示：
 
            bannerLayout
-                    .initListResources(initImageModel())
-                    .setPageNumViewMargin(10, 0, 0, 10)
-                    .setPageNumViewTextColor(R.color.colorAccent)
-                    .setPageNumViewBackgroundColor(R.color.colorWhite)
-                    .initPageNumView()
-                    .initTips(true, true, true)
-                    .start(true);
+                    .initPageNumView();
 
 1.数组
 
@@ -119,14 +117,14 @@ tags:
 
 4.提示栏及小圆点、title位置的改变
 
-	setTipsSite() 	 			提示栏在布局中的位置，top,bottom,centered三种可选 
-	setDotsSite()	  			小圆点在提示栏的位置，left,centered,right三种可选 
-	setTitleSite()  			title在提示栏的位置，left,centered,right三种可选 
+	setTipsSite() 	 			提示栏在布局中的位置，top,bottom,center三种可选 
+	setDotsSite()	  			小圆点在提示栏的位置，left,center,right三种可选 
+	setTitleSite()  			title在提示栏的位置，left,center,right三种可选 
 
 	xml:
 		    <com.bannerlayout.widget.BannerLayout
 		        ...
-		        app:tips_site="centered" />
+		        app:tips_site="center" />
 
 5.使用自定义Bean类
 	
@@ -277,8 +275,8 @@ title_width		 					|字体width					|默认自适应
 title_height		 				|字体height					|默认自适应
 title_left_margin   				|title marginLeft			|默认10	
 title_right_margin   				|title marginRight			|默认10	
-enabledRadius						|未选中小圆点Radius  			|默认0.5f
-normalRadius						|选中小圆点Radius  			|默认0.5f
+enabledRadius						|未选中小圆点Radius  			|默认20f
+normalRadius						|选中小圆点Radius  			|默认20f
 enabledColor						|未选中小圆点颜色				|默认蓝色
 normalColor							|选中小圆点颜色				|默认白色
 tips_site							|tips在布局中位置    			|默认底部，可选上中下
@@ -297,6 +295,7 @@ page_num_view_textColor				|pageNumView textColor	 	|默认白色
 page_num_view_BackgroundColor		|pageNumView BackgroundColor|默认半透明
 page_num_view_textSize				|pageNumView textSize	  	|默认10
 pageNumView_site					|pageNumView 位置			|默认初始化之后在左上角
+page_num_view_mark				|pageNumView 符号 |默认 /
 
         <attr name="pageNumView_site">
             <enum name="topLeft" value="0" />
@@ -305,6 +304,24 @@ pageNumView_site					|pageNumView 位置			|默认初始化之后在左上角
             <enum name="bottomRight" value="3" />
             <enum name="centeredLeft" value="4" />
             <enum name="centeredRight" value="5" />
-            <enum name="topCentered" value="6" />
-            <enum name="bottomCentered" value="7" />
+            <enum name="topCenter" value="6" />
+            <enum name="bottomCenter" value="7" />
         </attr>
+
+
+
+License
+--
+    Copyright (C) 2016 yuezhaoyang7449@163.com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
