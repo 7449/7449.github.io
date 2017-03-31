@@ -28,7 +28,9 @@ tags:
 
 >compile 'com.xadapter:xadapter:0.1.4'
 
+### tips
 
+initXData(); 并不是强制性的，只有RecyclerView刚开始就需要有数据的List集合时才必须要调用 initXData();
 
 ## 完整示例
 
