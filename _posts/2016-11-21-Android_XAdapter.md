@@ -26,7 +26,7 @@ tags:
 
 ### gradle
 
->compile 'com.xadapter:xadapter:0.1.4'
+>compile 'com.xadapter:xadapter:0.1.5'
 
 ### tips
 
