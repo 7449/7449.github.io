@@ -26,7 +26,12 @@ tags:
 
 ### gradle
 
->compile 'com.xadapter:xadapter:0.1.5'
+>compile 'com.xadapter:xadapter:0.1.6' 
+
+### 分割线
+
+内置了一个简单的示例  适用于开启了上拉加载和下拉刷新的分割线。
+详见 `XDividerItemDecoration`
 
 ### tips
 
