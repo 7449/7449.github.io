@@ -26,7 +26,7 @@ tags:
 
 ### gradle
 
->compile 'com.xadapter:xadapter:0.1.6' 
+>compile 'com.xadapter:xadapter:0.1.7' 
 
 ### 分割线
 
