@@ -32,8 +32,6 @@ tags:
 
 - 可自定义是否自动轮播，轮播时间
 
-- 支持List 、数组 两种数据格式
-
 - 支持点击事件以及轮播速度及viewPager滑动切换速度
 
 - 支持是否显示小圆点，title,或者整个提示栏
@@ -41,8 +39,6 @@ tags:
 - 支持加载时和加载失败时显示自定义图片
 
 - 支持选择暂停 恢复 轮播状态
-
-- 支持自定义提示栏（不建议使用）
 
 - 支持动画以及垂直滚动
 
@@ -54,18 +50,25 @@ tags:
 
 >项目中引用 
 
-		compile 'com.ydevelop:bannerlayout:1.0.8'
+		compile 'com.ydevelop:bannerlayout:1.1'
 
->更新状态
 
-	1.0.8 : 修改部分逻辑，由BannerLayout接管避免下拉刷新时概率性的ANR，增加部分getXXX属性
 
+使用者如果用自带的加载框架，请自行依赖 Glide
+
+因为框架中
+
+    provided 'com.github.bumptech.glide:glide:3.7.0'
 
 >如果是网络加载图片 记得添加
 
 	<uses-permission android:name="android.permission.INTERNET" />
 
 >简单使用方式
+
+Bean类请实现`BannerModelCallBack`
+
+具体可参考 `SimpleBannerModel`
 
             bannerLayout
                     .initListResources(initImageModel())//初始化数据
@@ -83,17 +86,8 @@ tags:
            bannerLayout
                     .initPageNumView();
 
-1.数组
 
->数组使用也是在内部转化成List数据，所以点击事件以及自定义ImageLoaderManager传递的泛型均为BannerModel
-
-        Object[] mImage = ;
-        String[] mTitle = ;
-      	bannerLayout
-                .initArrayResources(mImage, mTitle)
-                .initTips();
-
-2.List
+1.List
 
         List<BannerModel> mDatas = new ArrayList<>();
 		...
@@ -126,31 +120,7 @@ tags:
 		        ...
 		        app:tips_site="center" />
 
-5.使用自定义Bean类
-	
->简单的使用BannerModel就可以满足需求，如果点击要传递Id之类的参数，就自定义Model类
-
-	1.url和title和BannerModle的image,title.命名方式一样，那么直接继承BannerModel即可，其余的参数写在自定义Bean类.
-	2.url和BannerModle的image命名方式不同，就必须要自定义ImageLoaderManage,因为BannerLayout默认的是获取BannerModel里面的image
-	3.title和BannerModle的title命名方式不同，实现OnBannerTitleListener，返回title即可
-
-	自定义ImageLoaderManager请看第六条
-
-	自定义Bean类完整示例：
-		 bannerLayout
-                    .setImageLoaderManager(new ImageManager())
-                    .addOnBannerTitleListener(new OnBannerTitleListener() {
-                        @Override
-                        public String getTitle(int newPosition) {
-                            return initBannerBean().get(newPosition).getThisTitle();
-                        }
-                    })
-                    .initImageListResources(initBannerBean())
-                    .initTips(true, true, true);
-
-6.使用自定义加载图片框架
-
->BannerLayout内部引用Glide3.7.0，如果不想在你的项目中使用这个版本，请用exclude将它排除掉，再自行引入你使用的版本
+5.使用自定义加载图片框架
 	  
 	默认使用Glide加载图片，如果不喜欢的继承 ImageLoaderManager 然后在代码中 setImageLoaderManager.
 
@@ -172,7 +142,7 @@ tags:
 	    }
 	}
 
-7.切换动画以及速度
+6.切换动画以及速度
 
 >垂直滚动的动画
 
@@ -196,12 +166,9 @@ viewpager的垂直这里用的是动画，所以只要选择了垂直滚动，�
 	例：
 	
 		   bannerLayout
-	                .initImageListResources(list) //自定义model类
-	                .initTips()
-	                .setBannerTransformer(BannerAnimation.CUBE_IN)
-	                .start();
+	                .setBannerTransformer(BannerAnimation.CUBE_IN);
 
-8.动画集合：
+7.动画集合：
 
 
 >自定义动画集合
@@ -215,37 +182,6 @@ viewpager的垂直这里用的是动画，所以只要选择了垂直滚动，�
 		 List<BannerAnimation> enumTransformer = new ArrayList<>();
 
 		bannerLayout.setBannerSystemTransformerList(enumTransformer);
-
-9.自定义提示栏
-
->自定义提示栏不建议使用，没有什么能快速设置的功能请尽量提[lssues](https://github.com/7449/BannerLayoutSimple/issues)
-
-        bannerLayout
-                .initListResources(mDatas)
-                .addOnBannerPageChangeListener(new BannerOnPage())
-				.setTipsView(new PromptBarView(getBaseContext())) 
-                .start(true);
-
-     /**
-     * 接管viewpager的onPage方法
-     */
-    public class BannerOnPage implements OnBannerPageChangeListener {
-
-	    @Override
-	    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-	
-	    }
-	
-	    @Override
-	    public void onPageSelected(int position) {
-	    }
-	
-	    @Override
-	    public void onPageScrollStateChanged(int state) {
-	
-	    }
-	}
-
 
 ## 自定义参数详解
 
