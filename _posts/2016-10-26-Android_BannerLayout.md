@@ -66,9 +66,9 @@ tags:
 
 >简单使用方式
 
-Bean类请实现`BannerModelCallBack`
+Bean类请实现 [BannerModelCallBack](https://github.com/7449/BannerLayout/blob/master/bannerlayout/src/main/java/com/bannerlayout/Interface/BannerModelCallBack.java)
 
-具体可参考 `SimpleBannerModel`
+具体可参考  [SimpleBannerModel](https://github.com/7449/BannerLayout/blob/master/app/src/main/java/com/bannersimple/bean/SimpleBannerModel.java)
 
             bannerLayout
                     .initListResources(initImageModel())//初始化数据
@@ -77,9 +77,7 @@ Bean类请实现`BannerModelCallBack`
 
 >调用start()的时候可以决定是否开启自动轮播，如果开启了自动轮播应该在合适的生命周期里选择暂停或者恢复轮播
 
-	startBanner(); //开启轮播
-	stopBanner(); //停止轮播
-	restoreBanner(); //恢复轮播
+	startBanner(true/false);
 
 0.页码展示：
 
@@ -96,7 +94,7 @@ Bean类请实现`BannerModelCallBack`
                 .initTips()
                 .start(true);	
 
-3.点击事件
+2.点击事件
 
 >如果不传递泛型，返回的model就是当前Bean类，强转即可，建议传递泛型
 
@@ -109,7 +107,7 @@ Bean类请实现`BannerModelCallBack`
                         }
                     });
 
-4.提示栏及小圆点、title位置的改变
+3.提示栏及小圆点、title位置的改变
 
 	setTipsSite() 	 			提示栏在布局中的位置，top,bottom,center三种可选 
 	setDotsSite()	  			小圆点在提示栏的位置，left,center,right三种可选 
@@ -120,7 +118,7 @@ Bean类请实现`BannerModelCallBack`
 		        ...
 		        app:tips_site="center" />
 
-5.使用自定义加载图片框架
+4.使用自定义加载图片框架
 	  
 	默认使用Glide加载图片，如果不喜欢的继承 ImageLoaderManager 然后在代码中 setImageLoaderManager.
 
@@ -142,7 +140,7 @@ Bean类请实现`BannerModelCallBack`
 	    }
 	}
 
-6.切换动画以及速度
+5.切换动画以及速度
 
 >垂直滚动的动画
 
@@ -168,7 +166,7 @@ viewpager的垂直这里用的是动画，所以只要选择了垂直滚动，�
 		   bannerLayout
 	                .setBannerTransformer(BannerAnimation.CUBE_IN);
 
-7.动画集合：
+6.动画集合：
 
 
 >自定义动画集合
