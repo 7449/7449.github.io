@@ -42,19 +42,19 @@ layout: default
     </div>
 </header>
 
-<!-- Post Content -->
+
 <article>
     <div class="container">
         <div class="row">
 
-    <!-- Post Container -->
+
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 post-container">
-
+				
 				{{ content }}
-
+				
                 <ul class="pager">
                     {% if page.previous.url %}
                     <li class="previous">
@@ -84,7 +84,7 @@ layout: default
 
             </div>  
 
-    <!-- Side Catalog Container -->
+
         {% if page.catalog %}
             <div class="
                 col-lg-2 col-lg-offset-0
@@ -101,13 +101,14 @@ layout: default
             </div>
         {% endif %}
 
-    <!-- Sidebar Container -->
+
+			
+
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 sidebar-container">
-
-                <!-- Featured Tags -->
+				
                 {% if site.featured-tags %}
                 <section>
                     <hr class="hidden-sm hidden-xs">
@@ -124,7 +125,6 @@ layout: default
                 </section>
                 {% endif %}
 
-                <!-- Friends Blog -->
                 {% if site.friends %}
                 <hr>
                 <h5>FRIENDS</h5>
@@ -157,7 +157,7 @@ layout: default
 
 
 {% if site.anchorjs %}
-<!-- async load function -->
+
 <script>
     function async(u, c) {
       var d = document, t = 'script',
@@ -168,7 +168,7 @@ layout: default
       s.parentNode.insertBefore(o, s);
     }
 </script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+
 <script>
     async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
         anchors.options = {

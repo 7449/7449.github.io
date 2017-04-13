@@ -5,14 +5,6 @@ description: "Hey, Welcome to my blog"
 header-img: "img/about-bg.jpg"
 ---
 
-<!-- Language Selector -->
-<!--
-<select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
-    <option value="0" selected> 中文 Chinese </option>
-    <option value="1"> 英文 English </option>
-</select>
--->
-<!-- Chinese Version -->
 <div class="zh post-container">
 
     <!--copied from markdown -->
@@ -32,20 +24,6 @@ header-img: "img/about-bg.jpg"
     </ul>
 </div>
 
-<!-- English Version -->
-<!--
-<div class="en post-container">
-  
-
-    <h5>thanks</h5>
-
-    <ul>
-	<li><a href="http://jekyll.com.cn/">Jekyll</a></li>
-    <li><a href="https://github.com/Huxpro">Huxpro，JekyllTheme clone HuxproBlog</a></li>
-    </ul>
-</div>
--->
-<!-- Handle Language Change -->
 <script type="text/javascript">
     // get nodes
     var $zh = document.querySelector(".zh");
@@ -84,40 +62,6 @@ header-img: "img/about-bg.jpg"
     // init
     _render();
 </script>
-
-
-
-{% if site.duoshuo_username %}
-<!-- 多说评论框 start -->
-<div class="comment">
-  <!-- This id is used for indexing my loss comments forcedly -->
-    <div class="ds-thread"
-		data-thread-key="{{site.duoshuo_username}}/about"
-		data-title="{{page.title}}"
-		data-url="{{site.url}}/about/">
-	</div>
-</div>
-<!-- 多说评论框 end -->
-
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    // dynamic User hacking by Hux
-    var _user = '{{site.duoshuo_username}}';
-
-    // duoshuo comment query.
-    var duoshuoQuery = {short_name: _user };
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-</script>
-<!-- 多说公共JS代码 end -->
-{% endif %}
-
 
 {% if site.disqus_username %}
 <!-- disqus 评论框 start -->
