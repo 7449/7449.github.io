@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
 
@@ -9,7 +8,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
         </div>
 
         <div id="huxblog_navbar">
@@ -29,37 +27,36 @@
     </div>
 </nav>
 <script>
-    var $body   = document.body;
     var $toggle = document.querySelector('.navbar-toggle');
     var $navbar = document.querySelector('#huxblog_navbar');
     var $collapse = document.querySelector('.navbar-collapse');
 
     var __HuxNav__ = {
-        close: function(){
+        close: function () {
             $navbar.className = " ";
-            setTimeout(function(){
-                if($navbar.className.indexOf('in') < 0) {
+            setTimeout(function () {
+                if ($navbar.className.indexOf('in') < 0) {
                     $collapse.style.height = "0px"
                 }
-            },400)
+            }, 400)
         },
-        open: function(){
-            $collapse.style.height = "auto"
+        open: function () {
+            $collapse.style.height = "auto";
             $navbar.className += " in";
         }
-    }
+    };
 
-    $toggle.addEventListener('click', function(e){
+    $toggle.addEventListener('click', function (e) {
         if ($navbar.className.indexOf('in') > 0) {
             __HuxNav__.close()
-        }else{
+        } else {
             __HuxNav__.open()
         }
-    })
+    });
 
-    document.addEventListener('click', function(e){
-        if(e.target == $toggle) return;
-        if(e.target.className == 'icon-bar') return;
+    document.addEventListener('click', function (e) {
+        if (e.target === $toggle) return;
+        if (e.target.className === 'icon-bar') return;
         __HuxNav__.close();
     })
 </script>
