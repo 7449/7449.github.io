@@ -41,6 +41,9 @@ kramdown:
 # Baidu Analytics 
 ba_track_id: 5edf92f51848209f68f95c841d40a5f0
 
+# youyan
+youyan: 2131088
+
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "写写代码，听听歌"
