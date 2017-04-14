@@ -32,115 +32,89 @@
 </footer>
 
 
-<!--<script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>-->
+<script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
+
+<script src="{{ "/js/bootstrap.min.js " | prepend: site.baseurl }}"></script>
+
+<script src="{{ "/js/hux-blog.min.js " | prepend: site.baseurl }}"></script>
+
+{% if site.service-worker %}
+<script type="text/javascript">
+if(navigator.serviceWorker){
+    navigator.serviceWorker
+        .register('/sw.js')
+        .then((registration) => {console.log('Service Worker Registered. ', registration)})
+.catch((error) => {console.log('ServiceWorker registration failed: ', error)})
+}
+</script>
+{% endif %}
 
 
-<!--<script src="{{ "/js/bootstrap.min.js " | prepend: site.baseurl }}"></script>-->
+<script>
+    function async(u, c) {
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
 
+<script>
+    if($('#tag_cloud').length !== 0){
+        async('{{ "/js/jquery.tagcloud.js" | prepend: site.baseurl }}',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'}
+            };
+            $('#tag_cloud').find('a').tagcloud();
+        })
+    }
+</script>
 
-<!--<script src="{{ "/js/hux-blog.min.js " | prepend: site.baseurl }}"></script>-->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
 
-
-<!--{% if site.service-worker %}-->
-<!--<script type="text/javascript">-->
-<!--if(navigator.serviceWorker){-->
-<!--navigator.serviceWorker-->
-<!--.register('/sw.js')-->
-<!--.then((registration) => {console.log('Service Worker Registered. ', registration)})-->
-<!--.catch((error) => {console.log('ServiceWorker registration failed: ', error)})-->
-<!--}-->
-<!--</script>-->
-<!--{% endif %}-->
-
-
-<!--<script>-->
-    <!--function async(u, c) {-->
-        <!--var d = document, t = 'script',-->
-            <!--o = d.createElement(t),-->
-            <!--s = d.getElementsByTagName(t)[0];-->
-        <!--o.src = u;-->
-        <!--if (c) {-->
-            <!--o.addEventListener('load', function (e) {-->
-                <!--c(null, e);-->
-            <!--}, false);-->
-        <!--}-->
-        <!--s.parentNode.insertBefore(o, s);-->
-    <!--}-->
-<!--</script>-->
-
-
-<!--<script>-->
-
-    <!--if ($('#tag_cloud').length !== 0) {-->
-        <!--async('{{ "/js/jquery.tagcloud.js" | prepend: site.baseurl }}', function () {-->
-            <!--$.fn.tagcloud.defaults = {-->
-                <!--color: {start: '#bbbbee', end: '#0085a1'},-->
-            <!--};-->
-            <!--$('#tag_cloud').find('a').tagcloud();-->
-        <!--})-->
-    <!--}-->
-<!--</script>-->
-
-
-<!--<script>-->
-    <!--async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {-->
-        <!--var $nav = document.querySelector("nav");-->
-        <!--if ($nav) FastClick.attach($nav);-->
-    <!--})-->
-<!--</script>-->
-
-<!--&lt;!&ndash; 百度统计 &ndash;&gt;-->
-<!--{% if site.ba_track_id %}-->
-<!--<script>-->
-    <!--var _baId = '{{ site.ba_track_id }}';-->
-    <!--var _hmt = _hmt || [];-->
-    <!--(function () {-->
-        <!--var hm = document.createElement("script");-->
-        <!--hm.src = "//hm.baidu.com/hm.js?" + _baId;-->
-        <!--var s = document.getElementsByTagName("script")[0];-->
-        <!--s.parentNode.insertBefore(hm, s);-->
-    <!--})();-->
-<!--</script>-->
-<!--{% endif %}-->
-
-<!--{% if page.catalog %}-->
-<!--<script type="text/javascript">-->
-    <!--function generateCatalog(selector) {-->
-        <!--var P = $('div.post-container'), a, n, t, l, i, c;-->
-        <!--a = P.find('h1,h2,h3,h4,h5,h6');-->
-        <!--a.each(function () {-->
-            <!--n = $(this).prop('tagName').toLowerCase();-->
-            <!--i = "#" + $(this).prop('id');-->
-            <!--t = $(this).text();-->
-            <!--c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');-->
-            <!--l = $('<li class="' + n + '_nav"></li>').append(c);-->
-            <!--$(selector).append(l);-->
-        <!--});-->
-        <!--return true;-->
-    <!--}-->
-
-    <!--generateCatalog(".catalog-body");-->
-
-    <!--$(".catalog-toggle").click((function (e) {-->
-        <!--e.preventDefault();-->
-        <!--$('.side-catalog').toggleClass("fold")-->
-    <!--}));-->
-
-    <!--async("{{ '/js/jquery.nav.js' | prepend: site.baseurl }}", function () {-->
-        <!--$('.catalog-body').onePageNav({-->
-            <!--currentClass: "active",-->
-            <!--changeHash: !1,-->
-            <!--easing: "swing",-->
-            <!--filter: "",-->
-            <!--scrollSpeed: 700,-->
-            <!--scrollOffset: 0,-->
-            <!--scrollThreshold: .2,-->
-            <!--begin: null,-->
-            <!--end: null,-->
-            <!--scrollChange: null,-->
-            <!--padding: 80-->
-        <!--});-->
-    <!--});-->
-<!--</script>-->
-<!--{% endif %}-->
-
+{% if page.catalog %}
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+    generateCatalog(".catalog-body");
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }));
+    async("{{ '/js/jquery.nav.js' | prepend: site.baseurl }}", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+{% endif %}
