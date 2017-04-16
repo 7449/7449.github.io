@@ -42,8 +42,10 @@ repo由一系列python脚本组成,通过调用Git命令实现对AOSP项目的�
 
 这里建议首先把隐藏的文件显示出来:
 
-	显示：defaults write com.apple.finder AppleShowAllFiles -bool true
-	隐藏：defaults write com.apple.finder AppleShowAllFiles -bool false 
+	显示：defaults write com.apple.finder AppleShowAllFiles -bool true; 
+	     KillAll Finder
+	隐藏：defaults write com.apple.finder AppleShowAllFiles -bool false;
+	     KillAll Finder
 
 #### 安装make,git,GPG
 
