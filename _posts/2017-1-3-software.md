@@ -22,7 +22,7 @@ tags:
 [macOS有哪些冷门但是一但发现就无法自拔的软件？](https://www.zhihu.com/question/35050387):mac os软件推荐，来自知乎<br>
 [Mac BiliBili客户端](https://github.com/typcn/bilibili-mac-client)<br>
 [OS X 应用](https://www.zhihu.com/topic/19551349/hot):知乎OSX应用推荐<br>
-[skim](https://skim.en.softonic.com/mac):阅读PDF<br>
+[skim](http://skim-app.sourceforge.net/):阅读PDF<br>
 [Maipo](https://itunes.apple.com/cn/app/weibox/id789066512?mt=12): 极致微博体验<br>
 [handshaker](http://www.smartisan.com/apps/handshaker):锤子出品的一款MAC管理android手机文件的软件<br>
 [mweb](https://itunes.apple.com/cn/app/mweb-lite-zhuan-ye-demarkdown/id979033429?mt=12):MarkDown写作软件<br>
@@ -103,7 +103,17 @@ tags:
 [AndroidSource](https://android.googlesource.com/?format=HTML):<br>
 
 
-## 日常小功能
+## 日常小功能	
+
+#### Mac 安装git
+
+	XCode 自带git，而且 MAC下XCODE 是不可避免要安装的
+	
+	git config --global user.name "user.name"
+	git config --global user.email "user.email"
+	cd ~ 进入根目录
+	
+	ssh-keygen：生成Key，添加到GitHub
 
 #### OS X  NTFS 移动硬盘中文件呈灰白色且无法读取
 
