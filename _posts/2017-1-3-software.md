@@ -26,6 +26,13 @@ tags:
 [Maipo](https://itunes.apple.com/cn/app/weibox/id789066512?mt=12): 极致微博体验<br>
 [handshaker](http://www.smartisan.com/apps/handshaker):锤子出品的一款MAC管理android手机文件的软件<br>
 [mweb](https://itunes.apple.com/cn/app/mweb-lite-zhuan-ye-demarkdown/id979033429?mt=12):MarkDown写作软件<br>
+[Android File Transfer](https://www.android.com/filetransfer/):android与mac传输文件的软件,google出品,大小限制为4G<br>
+[brew](https://brew.sh/index_zh-cn.html):macOS 缺失的软件包管理器<br>
+[RVM](http://ruby-china.org/wiki/rvm-guide):RVM 是一个命令行工具，可以提供一个便捷的多版本 Ruby 环境的管理和切换。<br>
+[Aria2GUI](https://github.com/yangshun1029/aria2gui):Aria2图形化界面<br>
+
+
+
 
 
 ## Mac,Win通用
@@ -34,6 +41,7 @@ tags:
 [shadowsocks](https://github.com/shadowsocks):买个vps还不是美滋滋<br>
 [charles](https://www.charlesproxy.com/):抓包神器<br>
 [ccleaner](https://www.piriform.com/ccleaner):清理工具，MAC端 腾讯电脑管家也有类似功能<br>
+[mumu](http://mumu.163.com/):网易出品的android模拟器,非常不错<br>
 
 ## win
 
@@ -105,6 +113,42 @@ tags:
 
 ## 日常小功能	
 
+#### MAC jekyll
+
+首先 git 必须安装
+
+安装[brew](https://brew.sh/index_zh-cn.html)用来安装`ruby`
+
+千万记住不能使用自带的`ruby`，使用自带的`ruby`安装`jekyll`时会报错...
+
+安装ruby
+
+	brew install ruby
+
+安装Jekyll
+
+	sudo gem install jekyll
+	
+启动：
+
+	jekyll server
+
+
+#### MAC adb  gradle
+
+进入根目录的`.bash_profile`,如果没有就自己创建
+
+> sdk
+
+	export PATH=${PATH}: sdk file
+	
+> gradle,这里配置AS里面的gradle,要有`\`对名称中的空格进行转意
+	
+	export PATH=${PATH}:/Applications/Android\ Studio.app/Contents/gradle/gradle-3.2/bin
+	
+保存之后退出执行`source .bash_profile`
+
+
 #### Mac 安装git
 
 	XCode 自带git，而且 MAC下XCODE 是不可避免要安装的
@@ -161,5 +205,3 @@ Ctrl + Alt + F1(F1-F6) 都可以，可以登陆。
 
 	sudo rm /var/lib/dpkg/lock
 	sudo dpkg --configure -a
-
-## 未完待续
