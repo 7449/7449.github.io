@@ -54,6 +54,8 @@ Note: Menu items in the Icon Menu (from the Options Menu) cannot display a check
 
 大致意思就是如果要动态改变`MenuItem`的图标就必须手动在代码中去更换图标
 
+其实这里用`onPrepareOptionsMenu`也可以,为了方便就没有改,直接用的`onCreateOptionsMenu`
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.collection_menu, menu);
