@@ -14,7 +14,7 @@ tags:
 
 
 ## 代码示例
-[https://github.com/7449/AndroidDevelop/tree/master/WheelView](https://github.com/7449/AndroidDevelop/tree/master/WheelView)
+[https://github.com/7449/AndroidDevelop/tree/master/wheelView](https://github.com/7449/AndroidDevelop/tree/master/wheelView)
 
 ## 效果图
 

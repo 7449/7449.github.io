@@ -15,7 +15,7 @@ tags:
 
 
 ## 代码地址 
-[https://github.com/7449/AndroidDevelop/tree/master/TabFragment](https://github.com/7449/AndroidDevelop/tree/master/TabFragment)
+[https://github.com/7449/AndroidDevelop/tree/master/tabFragment](https://github.com/7449/AndroidDevelop/tree/master/tabFragment)
 
 ## 代码
 >市面上很多app都是底部几个Tab然后点击切换页面，ViewPager和Fragment也可以实现，但是这里使用的是一个FrageLayou切换不同的Fragment.

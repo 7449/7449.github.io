@@ -15,7 +15,7 @@ tags:
 
 
 ## 代码地址
-[https://github.com/7449/AndroidDevelop/tree/master/LazyFragment](https://github.com/7449/AndroidDevelop/tree/master/LazyFragment)
+[https://github.com/7449/AndroidDevelop/tree/master/lazyFragment](https://github.com/7449/AndroidDevelop/tree/master/lazyFragment)
 
 
 ## ViewPager预加载问题

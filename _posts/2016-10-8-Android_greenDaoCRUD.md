@@ -21,7 +21,7 @@ greenDao是一个使用于android的ORM框架,现在主流的ORM框架有OrmLite
 [https://github.com/7449/AndroidDevelop/tree/master/greenDao](https://github.com/7449/AndroidDevelop/tree/master/greenDao)
 
 ## 3.0示例代码
-[https://github.com/7449/AndroidDevelop/tree/master/greendao_3.0](https://github.com/7449/AndroidDevelop/tree/master/greendao_3.0)
+[https://github.com/7449/AndroidDevelop/tree/master/greendao3.0](https://github.com/7449/AndroidDevelop/tree/master/greendao3.0)
 
 
 
