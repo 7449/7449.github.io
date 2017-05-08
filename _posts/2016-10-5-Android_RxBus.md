@@ -13,6 +13,145 @@ tags:
 ---
 
 
+## 17.5.8 UpData
+
+[RxBus.java](https://github.com/7449/RxNetWork/blob/master/RxNetWork/src/main/java/com/rxnetwork/bus/RxBus.java)
+
+	public class RxBus {
+	
+	    private final ArrayMap<Object, Subject<Object, Object>> rxMap;
+	    private CompositeSubscription compositeSubscription;
+	
+	    private static final String TAG = "RxBus";
+	
+	    private RxBus() {
+	        rxMap = new ArrayMap<>();
+	        compositeSubscription = new CompositeSubscription();
+	    }
+	
+	    public static RxBus getInstance() {
+	        return RxBusHolder.rxBus;
+	    }
+	
+	    private static class RxBusHolder {
+	        private static final RxBus rxBus = new RxBus();
+	    }
+	
+	    /**
+	     * 发送一个带tag,但不携带信息的消息
+	     *
+	     * @param tag 标志
+	     */
+	    public void send(@NonNull Object tag) {
+	        send(tag, tag);
+	    }
+	
+	    /**
+	     * 发送一个带tag,携带信息的消息
+	     *
+	     * @param tag     标志
+	     * @param message 内容
+	     */
+	    public void send(@NonNull Object tag,
+	                     @NonNull Object message) {
+	        if (RxUtils.isEmpty(rxMap, tag)) {
+	            LogI.i(TAG, "tag:" + tag + "  message:" + message);
+	            rxMap.get(tag).onNext(message);
+	        }
+	    }
+	
+	    /**
+	     * 接受消息
+	     *
+	     * @param tag      标志
+	     * @param service  类型
+	     * @param callBack 回调
+	     */
+	    public <T> Subscription toSubscription(@NonNull final Object tag,
+	                                           @NonNull Class<T> service,
+	                                           @NonNull final RxBusCallBack<T> callBack) {
+	        Subject<Object, Object> subject = rxMap.get(tag);
+	        if (RxUtils.isEmpty(subject)) {
+	            subject = new SerializedSubject<>(PublishSubject.create());
+	            rxMap.put(tag, subject);
+	        }
+	        Subscription subscribe = subject
+	                .ofType(service)
+	                .subscribeOn(Schedulers.io())
+	                .observeOn(AndroidSchedulers.mainThread())
+	                .subscribe(
+	                        new RxBusSubscriber<T>() {
+	                            @Override
+	                            public void onError(Throwable e) {
+	                                super.onError(e);
+	                                callBack.onError(e);
+	                            }
+	
+	                            @Override
+	                            public void onNext(T t) {
+	                                super.onNext(t);
+	                                callBack.onNext(t);
+	                            }
+	                        });
+	        compositeSubscription.add(subscribe);
+	        return subscribe;
+	
+	    }
+	
+	
+	    /**
+	     * 取消订阅
+	     *
+	     * @param tag          标志
+	     * @param subscription 当前tag关联的subscription
+	     */
+	    public void unregister(@NonNull Object tag, @NonNull Subscription subscription) {
+	        compositeSubscription.remove(subscription);
+	        if (RxUtils.isEmpty(rxMap, tag)) {
+	            rxMap.remove(tag);
+	        }
+	    }
+	
+	    /**
+	     * 取消所有订阅
+	     */
+	    public void unregisterAll() {
+	        compositeSubscription.clear();
+	        rxMap.clear();
+	    }
+	
+	    public CompositeSubscription getCompositeSubscription() {
+	        return compositeSubscription;
+	    }
+	
+	    private static class RxBusSubscriber<T> extends Subscriber<T> {
+	
+	        @Override
+	        public void onCompleted() {
+	
+	        }
+	
+	        @Override
+	        public void onError(Throwable e) {
+	
+	        }
+	
+	        @Override
+	        public void onNext(T t) {
+	
+	        }
+	    }
+	}
+	
+	
+	
+	public interface RxBusCallBack<T> {
+	    void onNext(T data);
+	
+	    void onError(Throwable throwable);
+	}
+
+
 ## RxBus 无Tag，发送一个消息，全局响应
 
 	public class RxBus {    
