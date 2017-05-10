@@ -13,16 +13,62 @@ tags:
 ---
 
 
-## 代码示例
+## json数据展示
+
+#### 代码示例
+
+[https://github.com/7449/AndroidDevelop/tree/master/numberPickerView](https://github.com/7449/AndroidDevelop/tree/master/numberPickerView)
+
+#### 效果图
+
+![_config.yml]({{ site.baseurl }}/img/number_picker.gif)
+
+#### 代码相关
+
+和下面不同的是这次用`DialogFragment`实现，并且使用了`Builder`模式
+
+使用时：
+
+        new EasyCityView
+                .Builder(this)
+                .setCancelable(true)
+                .setTitle("请选择所在城市")
+                .setProvinceName("陕西省") // 默认选中省
+                .setCityName("西安市") //默认选中市
+                .setAreaName("雁塔区") //默认选中区
+                .setDividerColor(R.color.colorPrimary)
+                .setSelectTextColor(R.color.colorPrimary)
+                .show(getSupportFragmentManager(), "city");
+
+主要就是为`DialogFragment`设置了一个从下到上出现的动画，并且消除了`dialog`左右留白的问题
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Dialog dialog = getDialog();
+        if (dialog != null && dialog.getWindow() != null) {
+            dialog.getWindow()
+                    .setLayout(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
+        }
+    }
+
+
+
+## xml数据展示
+
+#### 代码示例
+
 [https://github.com/7449/AndroidDevelop/tree/master/wheelView](https://github.com/7449/AndroidDevelop/tree/master/wheelView)
 
-## 效果图
+#### 效果图
 
 ![_config.yml]({{ site.baseurl }}/img/wheelview.gif)
 
-## 核心代码
+#### 核心代码
 
-通过WheelView实现了数据的展示，然后用popupwindow实现。
+通过`WheelView`实现了数据的展示，然后用`popupwindow`实现。
 
 这里就贴一点核心代码，如果想查看所有的代码或者Demo，请看代码示例
 

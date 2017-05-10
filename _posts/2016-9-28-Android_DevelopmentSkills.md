@@ -11,6 +11,16 @@ tags:
     - android
 ---
 
+## DialogFragment设置背景透明
+
+> onCreateView
+
+        Window window = getDialog().getWindow();
+        if (window != null) {
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+
 ## 简单的btn状态选择器
 
 	<selector xmlns:android="http://schemas.android.com/apk/res/android">
