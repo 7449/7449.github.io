@@ -13,11 +13,16 @@ tags:
     - widget
 ---
 
+
+
 支持图片无限轮播的BannerLayout
+
 
 > RecyclerView Banner
 
+
 利用`RecyclerView`实现的Banner轮播
+
 
 [RecyclerBanner](https://github.com/7449/BannerLayout/tree/RecyclerBanner)
 
@@ -26,7 +31,7 @@ tags:
 
 [https://github.com/7449/BannerLayout(https://github.com/7449/BannerLayout)](https://github.com/7449/BannerLayout)
 
-# BannerLayoutSimple
+# BannerLayout
 
 支持图片无限轮播的BannerLayout
 
