@@ -108,7 +108,27 @@ tags:
 [fresco中文文档](http://www.fresco-cn.org/about.html):fresco中文文档<br>
 [清华AOSP](https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/):清华大学开源软件镜像Android镜像<br>
 [androiddevtools](http://www.androiddevtools.cn/):国内私人维护的Android开发工具网站<br>
-[AndroidSource](https://android.googlesource.com/?format=HTML):<br>
+[AndroidSource](https://android.googlesource.com/?format=HTML):android 源码<br>
+[微信小程序集成Redux](http://www.helloxcx.com/article-32.php#):微信小程序<br>
+[Android开源项目](https://source.android.com/):Android unites the world! Use the open source Android operating system to power your device.<br>
+[developer.android](https://developer.android.com/index.html):android官网<br>
+[platform](https://android.googlesource.com/platform):aosp源码<br>
+[tinypng](https://tinypng.com/):压缩图片<br>
+[kotlin-cn](http://tanfujun.com/kotlin-web-site-cn/docs/reference/):kotlin中文网站<br>
+[kotlin-cn-api](https://huanglizhuo.gitbooks.io/kotlin-in-chinese/content/GettingStarted/Basic-Syntax.html):kotlin中文api<br>
+[jekylltheme](http://jekyllthemes.org/):jekyll theme 模板<br>
+[lintcode](http://www.lintcode.com/zh-cn/):在线刷题(中文)<br>
+[leetcode](https://leetcode.com/):在线刷题<br>
+[gradle](http://services.gradle.org/distributions/):gradle在线下载压缩包<br>
+[xclient](http://xclient.info/):MAC软件下载<br>
+[]():<br>
+[]():<br>
+[]():<br>
+
+
+
+
+[尤克里里中国网](http://ukulelecn.xiaoyun.com/m/?from=bbsh5)<br>
 
 
 ## 日常小功能	
