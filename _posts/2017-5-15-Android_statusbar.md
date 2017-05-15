@@ -17,6 +17,10 @@ tags:
 
 > 目前只有MIUI和Flyme开放了如何在他们自己的手机上改变状态栏颜色
 
+[laobie/StatusBarUtil](https://github.com/laobie/StatusBarUtil):这是一个为Android App 设置状态栏的工具类， 可以在4.4及其以上系统中实现 沉浸式状态栏/状态栏变色
+
+这个是自己彻底绘制一个状态栏View添加到屏幕上
+
 
 ## 简单测试
 
