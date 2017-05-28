@@ -55,10 +55,12 @@ tags:
 
 #### 使用效果
 
-![](https://github.com/7449/BannerLayout/blob/master/screenshot/banner_simple.gif)
-![](https://github.com/7449/BannerLayout/blob/master/screenshot/banner_transformer.gif)
-![](https://github.com/7449/BannerLayout/blob/master/screenshot/banner_refresh.gif)
-![](https://github.com/7449/BannerLayout/blob/master/screenshot/banner_imagemanager.gif)
+
+![_config.yml]({{ site.baseurl }}/img/banner_simple.gif)
+![_config.yml]({{ site.baseurl }}/img/banner_transformer.gif)
+![_config.yml]({{ site.baseurl }}/img/banner_refresh.gif)
+![_config.yml]({{ site.baseurl }}/img/banner_imagemanager.gif)
+
 
 ## 基础使用方法
 
