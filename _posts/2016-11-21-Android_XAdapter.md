@@ -26,12 +26,8 @@ tags:
 
 ### gradle
 
->compile 'com.xadapter:xadapter:0.1.7' 
+>compile 'com.xadapter:xadapter:0.1.8' 
 
-### 分割线
-
-内置了一个简单的示例  适用于开启了上拉加载和下拉刷新的分割线。
-详见 `XDividerItemDecoration`
 
 ### tips
 
@@ -40,33 +36,24 @@ initXData(); 并不是强制性的，只有RecyclerView刚开始就需要有数�
 ## 完整示例
 
 
-        recyclerView.setAdapter(
-                xRecyclerViewAdapter
-                        .initXData(mainBeen)
-                        .addRecyclerView(recyclerView)
-                        .setLayoutId(R.layout.item)
-                        .setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader)
-                        .setLoadingMoreProgressStyle(ProgressStyle.BallRotate)
-                        .setImageView(R.drawable.iconfont_downgrey)
-                        .setHeaderBackgroundColor(R.color.colorBlack)
-                        .setFooterBackgroundColor(R.color.colorBlack)
-                        .setHeaderTextColor(R.color.textColor)
-                        .setFooterTextColor(R.color.textColor)
-                        .setPullRefreshEnabled(true)
-                        .setLoadingMoreEnabled(true)
-                        .addHeaderView(LayoutInflater.from(this).inflate(R.layout.item_header_1, (ViewGroup) findViewById(android.R.id.content), false))
-                        .addHeaderView(LayoutInflater.from(this).inflate(R.layout.item_header_2, (ViewGroup) findViewById(android.R.id.content), false))
-                        .addHeaderView(LayoutInflater.from(this).inflate(R.layout.item_header_3, (ViewGroup) findViewById(android.R.id.content), false))
-                        .addFooterView(LayoutInflater.from(this).inflate(R.layout.item_footer_1, (ViewGroup) findViewById(android.R.id.content), false))
-                        .addFooterView(LayoutInflater.from(this).inflate(R.layout.item_footer_2, (ViewGroup) findViewById(android.R.id.content), false))
-                        .addFooterView(LayoutInflater.from(this).inflate(R.layout.item_footer_3, (ViewGroup) findViewById(android.R.id.content), false))
-                        .onXBind(this)
-                        .setOnLongClickListener(this)
-                        .setOnItemClickListener(this)
-                        .setLoadingListener(this)
-                        .setFooterListener(this)
-                        .setRefreshing(true)
-        );
+    recyclerView.setAdapter(
+            xRecyclerViewAdapter
+                    .initXData(mainBeen)
+                    .setLoadMoreView(View)
+                    .setRefreshView(View)
+                    .addRecyclerView(recyclerView)
+                    .setLayoutId(R.layout.item)
+                    .setPullRefreshEnabled(true)
+                    .setLoadingMoreEnabled(true)
+                    .addHeaderView(View)
+                    .addFooterView(View)
+                    .onXBind(this)
+                    .setOnLongClickListener(this)
+                    .setOnItemClickListener(this)
+                    .setLoadListener(this)
+                    .setFooterListener(this)
+                    .refresh()
+    );
 
 onXBind  
 这里进行数据的展示
@@ -119,14 +106,15 @@ onXBind
 
 这取决于用户选择刷新是否失败或成功
 
->xRecyclerViewAdapter.refreshComplete(HeaderLayout.STATE_DONE);
+>xRecyclerViewAdapter.refreshState(XRefresh.SUCCESS);
+
 
 
 上拉加载完成之后
 
 这取决于用户选择加载是否失败或成功
 
->xRecyclerViewAdapter.loadMoreComplete(FooterLayout.STATE_NOMORE);
+>xRecyclerViewAdapter.loadMoreState(XLoadMore.ERROR);
 
 
 ### 添加header和footer
@@ -141,21 +129,107 @@ onXBind
 继承 `MultiAdapter` 并且`T`必须继承`MultiCallBack`
 已经内置了一个简单的示例，详情查看 `SimpleMultiItem`
 
-### 加载动画
+### 自定义刷新头部和尾部
 
-XAdapter 的刷新头部以及底部都是来自 [XRecyclerView](https://github.com/jianghejie/XRecyclerView), 所以 [XRecyclerView](https://github.com/jianghejie/XRecyclerView) 支持的动画XAdapter 都支持,并且对Layout进行扩展，可以设置背景色和字体色，字体大小
-
-              	 xRecyclerViewAdapter
-                        .initXData(mainBeen)
-                        .addRecyclerView(recyclerView)
-                        .setLayoutId(R.layout.item)
-                        .setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader)
-                        .setLoadingMoreProgressStyle(ProgressStyle.BallRotate)
-                        .setImageView(R.drawable.iconfont_downgrey)
-                        .setHeaderBackgroundColor(R.color.colorBlack)
-                        .setFooterBackgroundColor(R.color.colorBlack)
-                        .setHeaderTextColor(R.color.textColor)
-                        .setFooterTextColor(R.color.textColor)
+	public class RefreshView extends XRefreshView {
+	
+	    public RefreshView(Context context) {
+	        super(context);
+	    }
+	
+	    public RefreshView(Context context, @Nullable AttributeSet attrs) {
+	        super(context, attrs);
+	    }
+	
+	    public RefreshView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+	        super(context, attrs, defStyleAttr);
+	    }
+	
+	    @Override
+	    public void initView() {
+	    }
+	    
+	    @Override
+	    protected int getLayoutId() {
+	        return 0;
+	    }
+	
+	    @Override
+	    protected void onStart() {
+	    }
+	
+	    @Override
+	    protected void onNormal() {
+	    }
+	
+	    @Override
+	    protected void onReady() {
+	    }
+	
+	    @Override
+	    protected void onRefresh() {
+	    }
+	
+	    @Override
+	    protected void onSuccess() {
+	    }
+	
+	    @Override
+	    protected void onError() {
+	    }
+	
+	
+	}
+	
+	
+	public class LoadMoreView extends XLoadMoreView {
+	
+	
+	    public LoadMoreView(Context context) {
+	        super(context);
+	    }
+	
+	    public LoadMoreView(Context context, @Nullable AttributeSet attrs) {
+	        super(context, attrs);
+	    }
+	
+	    public LoadMoreView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+	        super(context, attrs, defStyleAttr);
+	    }
+	
+	    @Override
+	    protected void initView() {
+	    }
+	
+	    @Override
+	    protected int getLayoutId() {
+	        return 0;
+	    }
+	
+	    @Override
+	    protected void onStart() {
+	    }
+	
+	    @Override
+	    protected void onLoad() {
+	    }
+	
+	    @Override
+	    protected void onNoMore() {
+	    }
+	
+	    @Override
+	    protected void onSuccess() {
+	    }
+	
+	    @Override
+	    protected void onError() {
+	    }
+	
+	    @Override
+	    protected void onNormal() {
+	    }
+	}
 
 # 感谢
 
