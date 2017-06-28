@@ -86,6 +86,9 @@ tags:
 [JSONOnlineViewer](https://plugins.jetbrains.com/idea/plugin/7838-jsononlineviewer):可实现直接在android studio中调试接口数据<br>
 [FindBugs-IDEA](https://github.com/andrepdo/findbugs-idea/tree/master):类似自带Lint<br>
 [PermissionsDispatcher](https://github.com/shiraji/permissions-dispatcher-plugin):针对API 23，可在Activity/Fragment中快速生成Runtime Permissions代码的插件<br>
+[ECTranslation](https://github.com/Skykai521/ECTranslation):Android Studio 翻译插件,可以将英文翻译为中文<br>
+[dagger-intellij-plugin](https://github.com/square/dagger-intellij-plugin):dagger 插件<br>
+[BorePlugin](https://github.com/boredream/BorePlugin):Android Studio 自动生成布局代码插件<br>
 
 
 ## 网站
