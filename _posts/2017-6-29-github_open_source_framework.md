@@ -14,7 +14,7 @@ tags:
 
 ## Tips
 
-* 收集GitHub开源框架，不止是`Android`,也会有其他的，但是我个人现在主要工作为`Android`开发，所以里面的收集会比较偏向`JAVA-Android`方向;
+* 收集GitHub开源框架
 
 #### 请善用搜索
 
@@ -160,6 +160,7 @@ tags:
 [AndroidPdfViewer](https://github.com/barteksc/AndroidPdfViewer):解析PDF<br>
 [MaterialDesignLibrary](https://github.com/navasmdc/MaterialDesignLibrary): MaterialDesign 控件，兼容到2.2<br>
 [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart):Android图表视图/图表视图库<br>
+[material-design-icons](https://github.com/google/material-design-icons): google  material design icon<br>
 [CameraFilter](https://github.com/nekocode/CameraFilter):相机<br>
 [MaterialProgressBar](https://github.com/DreaminginCodeZH/MaterialProgressBar):Material Design ProgressBar ,兼容到4.+<br>
 [MaterialDesign](https://github.com/Templarian/MaterialDesign): MaterialDesign 图标库<br>
@@ -242,11 +243,14 @@ tags:
 [kotlin](https://github.com/JetBrains/kotlin): kotlin <br>
 [butterknife](https://github.com/JakeWharton/butterknife):极大的简化一些繁琐的操作，例如 finviewById <br>
 [jsoup](https://github.com/jhy/jsoup): jsoup <br>
+[jsoup-annotations](https://github.com/fcannizzaro/jsoup-annotations):注解使用 JSOUP<br>
 [dagger2](https://github.com/google/dagger):dagger2<br>
 [litho](https://github.com/facebook/litho):Litho是一个高效构建Android UI的声名式框架（declarative framework for building efficient UIs on Android）<br>
 [FreeBuilder](https://github.com/google/FreeBuilder): 快速实现 Builder 模式<br>
 [AndroidChromium](https://github.com/JackyAndroid/AndroidChromium):谷歌浏览器安卓版源码项目<br>
 [leakcanary](https://github.com/square/leakcanary): 检查 Android 内存泄露<br>
+
+[Apktool](https://github.com/iBotPeaches/Apktool) [jd-gui](https://github.com/java-decompiler/jd-gui) [dex2jar](https://github.com/pxb1988/dex2jar) [jadx](https://github.com/skylot/jadx)
 
 [AndroidEventBus](https://github.com/hehonghui/AndroidEventBus):已停止开发，推荐EventBus，3.x之后，使用更方便<br>
 [EventBus](https://github.com/greenrobot/EventBus):使用观察者模式，简化各个组件之间的通信<br>
@@ -263,6 +267,7 @@ tags:
 
 [ZeusPlugin](https://github.com/iReaderAndroid/ZeusPlugin):掌阅推出的插件补丁框架<br>
 [atlas](https://github.com/alibaba/atlas):Atlas是伴随着手机淘宝的不断发展而衍生出来的一个运行于Android系统上的一个容器化框架，也叫动态组件化框架<br>
+[mars](https://github.com/Tencent/mars): 微信组件化<br>
 
 [FileDownloader](https://github.com/lingochamp/FileDownloader):老牌的文件下载框架了<br>
 [ActivityRouter](https://github.com/mzule/ActivityRouter):支持给Activity定义 URL，这样可以通过 URL 跳转到Activity，支持在浏览器以及 app 中跳入<br>
@@ -290,3 +295,6 @@ tags:
 
 
 
+## APPLE
+
+[swift](https://github.com/apple/swift): swift <br>
