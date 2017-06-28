@@ -29,10 +29,7 @@ tags:
 [Android File Transfer](https://www.android.com/filetransfer/):android与mac传输文件的软件,google出品,大小限制为4G<br>
 [brew](https://brew.sh/index_zh-cn.html):macOS 缺失的软件包管理器<br>
 [RVM](http://ruby-china.org/wiki/rvm-guide):RVM 是一个命令行工具，可以提供一个便捷的多版本 Ruby 环境的管理和切换。<br>
-[Aria2GUI](https://github.com/yangshun1029/aria2gui):Aria2图形化界面<br>
-
-
-
+[Aria2GUI](https://github.com/yangshun1029/aria2gui):Aria2图形化界面，配合[BaiduExporter使用](https://github.com/acgotaku/BaiduExporter)<br>
 
 
 ## Mac,Win通用
@@ -59,7 +56,10 @@ tags:
 [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop): 调试接口神器<br>
 [一键管理所有扩展](https://chrome.google.com/webstore/detail/%E4%B8%80%E9%94%AE%E7%AE%A1%E7%90%86%E6%89%80%E6%9C%89%E6%89%A9%E5%B1%95/niemebbfnfbjfojajlmnbiikmcpjkkja):管理chrome插件<br>
 [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo):运行脚本，可破解百度云大文件限制下载的问题<br>
-[印象笔记·剪藏](https://chrome.google.com/webstore/detail/evernote-web-clipper/pioclpoplcdbaefihamjohnefbikjilc):如果是印象笔记用户这个非常好用
+[印象笔记·剪藏](https://chrome.google.com/webstore/detail/evernote-web-clipper/pioclpoplcdbaefihamjohnefbikjilc):如果是印象笔记用户这个非常好用<br>
+[videospeed](https://github.com/igrigorik/videospeed):为YouTube 或者其他视频网站提供加速慢速播放功能，比较实用<br>
+[Infinity New Tab](https://chrome.google.com/webstore/detail/infinity-new-tab/dbfmnekepjoapopniengjbcpnbljalfg):新页面<br>
+
 
 
 ## 开发
@@ -155,6 +155,9 @@ tags:
 
 
 #### MAC adb  gradle
+
+
+* 路径如果害怕自己填写错误，可以直接拖动到 `.bash_profile`
 
 进入根目录的`.bash_profile`,如果没有就自己创建
 
