@@ -6,7 +6,7 @@ date:       2017-7-4
 author:     "y"
 header-mask: 0.3
 header-img: "img/about-bg.jpg"
-catalog: false
+catalog: true
 tags:
     - mac
 ---
