@@ -42,9 +42,7 @@ simple:
 
 #### 启动到恢复界面：
 
-关机状态下按下电源按钮，开始重新启动之后，立即在键盘上按住` Command-R `
-
-看到 Apple 标志或旋转的地球松开，看到“实用工具”窗口时，启动工程！
+关机状态下按下电源按钮，开始重新启动之后，立即在键盘上按住` option ` ,直到硬盘标志出来选择制作好的安装器盘符
 
 * [关于 macOS 恢复功能](https://support.apple.com/zh-cn/HT201314)
 
@@ -63,6 +61,44 @@ simple:
 	     KillAll Finder
 
 ## 基础安装
+
+
+
+#### zsh
+
+可选另外一种：[fish-shell](https://github.com/fish-shell/fish-shell)
+
+zsh替代bash后，以前~/.bash_profile的配置应该写入~/.zshrc中
+
+系统自带了 zsh,但是不是最新版的，如果想使用最新版可自行下载：
+
+		brew install zsh
+		
+安装完成后，新版的zsh是安装到`/usr/local/bin`下的,修改`/etc/shells`,在最下面重启一行写入`/usr/local/bin/zsh`
+
+改完之后执行`chsh -s /usr/local/bin/zsh` 就OK了
+		
+系统自带：
+
+		chsh -s /bin/zsh
+		
+重启terminal
+
+
+* [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+
+zsh复杂的配置使人望而却步，所以 oh-my-zsh 应运而生..
+
+比较好的字体：[FiraCode](https://github.com/tonsky/FiraCode)
+
+
+#### iTerm2
+
+	brew cask install iTerm2
+	
+官方地址：[iTerm2](http://www.iterm2.com/downloads.html)
+
+[iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
 
 #### 终端开启代理
 
@@ -196,7 +232,7 @@ brew 自动建立的 formula 已经包含了基本的configure和make install命
 
 [homebrew-cask](https://github.com/caskroom/homebrew-cask):github地址，下载软件可在里面自行搜索，没有或者版本较低的可 pull requests;
 
-* brew install caskroom/cask/brew-cask
+* brew tap phinze/homebrew-cask && brew install brew-cask 
 
 		brew cask install # 下载安装软件
 		brew cask uninstall # 卸载软件
@@ -227,43 +263,6 @@ brew安装：
 	
 eval $(thefuck --alias)
 eval $(thefuck --alias name) // 别名
-
-
-#### zsh
-
-可选另外一种：[fish-shell](https://github.com/fish-shell/fish-shell)
-
-zsh替代bash后，以前~/.bash_profile的配置应该写入~/.zshrc中
-
-系统自带了 zsh,但是不是最新版的，如果想使用最新版可自行下载：
-
-		brew install zsh
-		
-安装完成后，新版的zsh是安装到`/usr/local/bin`下的,修改`/etc/shells`,在最下面重启一行写入`/usr/local/bin/zsh`
-
-改完之后执行`chsh -s /usr/local/bin/zsh` 就OK了
-		
-系统自带：
-
-		chsh -s /bin/zsh
-		
-重启terminal
-
-
-* [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-
-zsh复杂的配置使人望而却步，所以 oh-my-zsh 应运而生..
-
-比较好的字体：[FiraCode](https://github.com/tonsky/FiraCode)
-
-
-#### iTerm2
-
-	brew cask install iTerm2
-	
-官方地址：[iTerm2](http://www.iterm2.com/downloads.html)
-
-[iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
 
 
 #### go2Shell
