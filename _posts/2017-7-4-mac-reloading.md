@@ -386,6 +386,7 @@ ssh-keygen：
 [calibre](https://calibre-ebook.com/):转换Kindle文件格式<br>
 [youdao](https://www.youdao.com/):有道词典<br>
 [Dash](https://kapeli.com/dash):查阅Api<br>
+[sougou]():搜狗输入法<br>
 
 
 
