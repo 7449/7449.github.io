@@ -369,7 +369,8 @@ ssh-keygen：
 [Chrome](https://www.google.com/chrome/browser/desktop/index.html)<br>
 [qq](https://im.qq.com/download/):QQ<br>
 [Wechat](https://weixin.qq.com/):微信<br>
-[shadowsocks](https://github.com/shadowsocks):vps<br>
+~~[shadowsocks](https://github.com/shadowsocks):vps<br>~~
+[ShadowsocksX-NG](https://github.com/shadowsocks/ShadowsocksX-NG)上面那个好久没更新了，这个直接就支持kcp，不过大了很多:<br>
 [Mac BiliBili客户端](https://github.com/typcn/bilibili-mac-client):bilibili客户端<br>
 [Kindle](https://itunes.apple.com/us/app/kindle/id405399194?mt=12):kindle<br>
 [wangyiMusci](https://music.163.com/):网易云音乐<br>
