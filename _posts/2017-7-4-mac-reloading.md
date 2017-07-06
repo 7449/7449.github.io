@@ -104,30 +104,25 @@ zsh复杂的配置使人望而却步，所以 oh-my-zsh 应运而生..
 
 mac终端默认不走代理，例如git clone 的时候就算开vpn 也会很慢，开启代理方式如下
 
-* zsh
+以shadowsocksx为例，添加在 ~/.bash_profile 或者 ~/.zshrc：
 
-
-		openvpn () {
-		  export http_proxy="http://127.0.0.1:8888"
-		  export https_proxy="http://127.0.0.1:8888"
-		  echo "HTTP Proxy on"
-		}
-		
-		
-		offvpn () {
-		  unset http_proxy
-		  unset https_proxy
-		  echo "HTTP Proxy off"
-		}
-
-
+	alias openvpn="export ALL_PROXY=socks5://127.0.0.1:1080" 
+	alias offvpn="unset ALL_PROXY"
 
 以后想打开代理  直接输入 openvpen,关闭输入 offvpn 即可
 
-* 默认
 
-可以从 Surge Mac 菜单里选择「Copy Shell Export Command」，然后粘贴到终端来打开代理
+或者使用 `brew install proxychains-ng` ,安装好之后在 `/usr/local/etc/proxychains.conf` 下，
+在 `ProxyList` 下面加入代理类型，代理地址和端口
 
+	socks5 127.0.0.1 1080
+	
+test:
+
+	proxychains4 curl ip.cn
+	or
+	openvpn
+	curl ip.cn
 
 #### xcode
 
