@@ -227,8 +227,6 @@ brew 自动建立的 formula 已经包含了基本的configure和make install命
 
 [homebrew-cask](https://github.com/caskroom/homebrew-cask):github地址，下载软件可在里面自行搜索，没有或者版本较低的可 pull requests;
 
-* brew tap phinze/homebrew-cask && brew install brew-cask 
-
 		brew cask install # 下载安装软件
 		brew cask uninstall # 卸载软件
 		brew cask search # 模糊搜索软件，如果不加软件名，就列出所有它支持的软件
@@ -289,15 +287,7 @@ GUI:
 
 repo由一系列python脚本组成
 
-	mkdir ~/bin  //创建bin目录
-	PATH=~/bin:$PATH  //添加到环境变量
-	curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo  //安装repo
-	chmod a+x ~/bin/repo  //将repo的权限改成可执行
-	
-这个时候你要在.bash_profile里面看下repo的环境变量是否添加成功，如果没有，请自行添加：
-
-		export PATH=${PATH}:/Users/userName/bin
-	
+	brew install repo
 	
 #### git
 
