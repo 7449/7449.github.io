@@ -89,7 +89,7 @@ tags:
 [ECTranslation](https://github.com/Skykai521/ECTranslation):Android Studio 翻译插件,可以将英文翻译为中文<br>
 [dagger-intellij-plugin](https://github.com/square/dagger-intellij-plugin):dagger 插件<br>
 [BorePlugin](https://github.com/boredream/BorePlugin):Android Studio 自动生成布局代码插件<br>
-
+[lint-cleaner-plugin](https://github.com/marcoRS/lint-cleaner-plugin):删除未使用资源<br>
 
 ## 网站
 
@@ -124,9 +124,6 @@ tags:
 [leetcode](https://leetcode.com/):在线刷题<br>
 [gradle](http://services.gradle.org/distributions/):gradle在线下载压缩包<br>
 [xclient](http://xclient.info/):MAC软件下载<br>
-[]():<br>
-[]():<br>
-[]():<br>
 
 
 

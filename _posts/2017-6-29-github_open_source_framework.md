@@ -101,8 +101,11 @@ tags:
 [DanmakuFlameMaster](https://github.com/Bilibili/DanmakuFlameMaster):B站弹幕引擎<br>
 [CircleImageView](https://github.com/hdodenhof/CircleImageView):扩展ImageView，圆形头像...<br>
 [PhotoView](https://github.com/chrisbanes/PhotoView):轻松放大 ImageView，类似的还有 TouchImageView,有兴趣的可以自行搜索下，这里就不贴了<br>
+
 [AndroidVideoPlayer](https://github.com/xiongwei-git/AndroidVideoPlayer):视频播放器<br>
 [JieCaoVideoPlayer](https://github.com/lipangit/JieCaoVideoPlayer):节操视频播放器，使用比较简单<br>
+[AndroidYouTubePlayer](https://github.com/PierfrancescoSoffritti/AndroidYouTubePlayer):基于WebView的YouTube播放器<br>
+
 [materialish-progress](https://github.com/pnikosis/materialish-progress):Material Design 风格的Progress ，兼容到2.3<br>
 [TSnackBar](https://github.com/AndreiD/TSnackBar):扩展的SnackBar，可从任意位置吐出<br>
 [android-Ultra-Pull-To-Refresh](https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh):下拉刷新控件，兼容任何View<br>
@@ -204,7 +207,7 @@ tags:
 [AwesomeQRCode](https://github.com/SumiMakito/AwesomeQRCode):二维码扫描工具<br>
 
 
-#### 压缩，theme，编译，混淆
+#### 压缩，theme，编译，混淆，hotfix
 
 [MultipleTheme](https://github.com/dersoncheng/MultipleTheme):Android换肤／夜间模式的Android框架<br>
 [PluginTheme](https://github.com/jiangyinbin/PluginTheme):在线切换主题(换肤)，支持直接替换整个布局<br>
@@ -212,6 +215,9 @@ tags:
 [Android-skin-support](https://github.com/ximsfei/Android-skin-support):Android 换肤框架, 极低的学习成本, 极好的用户体验. 只需要两行代码, 就可以实现换肤<br>
 [SkinSprite](https://github.com/geminiwen/SkinSprite): 换肤库<br>
 [Android-Skin-Loader](https://github.com/fengjundev/Android-Skin-Loader):一个通过动态加载本地皮肤包进行换肤的皮肤框架<br>
+
+[RePlugin](https://github.com/Qihoo360/RePlugin):360插件化开发<br>
+[VirtualAPK](https://github.com/didi/VirtualAPK):滴滴插件化开发<br>
 
 [tinker](https://github.com/Tencent/tinker):微信热修复<br>
 [Robust](https://github.com/Meituan-Dianping/Robust):美团热修复<br>
@@ -238,6 +244,7 @@ tags:
 
 #### ...
 
+[MVVMLight](https://github.com/Kelin-Hong/MVVMLight):MVVM示例<br>
 [okhttp](https://github.com/square/okhttp):现在网络请求几乎都是用这个<br>
 [retrofit](https://github.com/square/retrofit):结合`RxJava`使用效果更佳，底层封装的就是`OKHTTP`<br>
 [kotlin](https://github.com/JetBrains/kotlin): kotlin <br>
@@ -291,10 +298,61 @@ tags:
 [LessCode](https://github.com/openproject/LessCode):Android工具库<br>
 [mosby](https://github.com/sockeqwe/mosby): Android 的 MVP or  MVI 库(快速开发)<br>
 [Moxy](https://github.com/Arello-Mobile/Moxy): MVP 快速开发框架<br>
+[Store](https://github.com/NYTimes/Store):用于异步数据加载和缓存的Android库<br>
+[android-training-course-in-chinese](https://github.com/kesenhoo/android-training-course-in-chinese):Android官方培训课程中文版<br>
+[Android-Session-Slides](https://github.com/MDCC2016/Android-Session-Slides):MDCC 2016  资料<br>
+[AndroidDecompiler](https://github.com/dirkvranckaert/AndroidDecompiler):反编译<br>
 
+#### sample
 
+[android-Camera2Video](https://github.com/googlesamples/android-Camera2Video):google sample<br>
+[android-Camera2Basic](https://github.com/googlesamples/android-Camera2Basic):google sample<br>
+[android-PictureInPicture](https://github.com/googlesamples/android-PictureInPicture):google sample<br>
+[android-UniversalMusicPlayer](https://github.com/googlesamples/android-UniversalMusicPlayer):google sample<br>
+[android-ndk](https://github.com/googlesamples/android-ndk):google sample<br>
+[android-architecture](https://github.com/googlesamples/android-architecture):讨论和展示Android应用程序的不同架构工具和模式<br>
+[UltimateAndroidReference](https://github.com/aritraroy/UltimateAndroidReference):App 开发参考<br>
+[u2020](https://github.com/JakeWharton/u2020):示例Android应用程序，其中展示了Dagger与其他开源库之间的高级用法<br>
+[f8app](https://github.com/fbsamples/f8app):2016年官方F8应用程序的源代码<br>
+[Gitskarios](https://github.com/gitskarios/Gitskarios):第三方GitHub客户端<br>
+[PocketHub](https://github.com/pockethub/PocketHub):PocketHub 客户端<br>
+[Android-CleanArchitecture](https://github.com/android10/Android-CleanArchitecture):构建Android应用程序。<br>
+[android-common](https://github.com/Trinea/android-common):主要包括：缓存、公共View及Android常用工具类<br>
+[plaid](https://github.com/nickbutcher/plaid):一个新闻的Android应用程序<br>
+[iosched](https://github.com/google/iosched):io 大会app<br>
+
+#### react-native
+
+[react-native](https://github.com/facebook/react-native):源码地址<br>
+[react-native-docs-cn](https://github.com/reactnativecn/react-native-docs-cn):React Native中文文档<br>
+
+#### kotlin
+
+[kotlin-in-chinese](https://github.com/huanglizhuo/kotlin-in-chinese):kotlin 官方文档翻译<br>
+[KotlinDoc-cn](https://github.com/kymjs/KotlinDoc-cn):Kotlin语言文档翻译项目<br>
+
+#### 社区，文档，笔记
+
+[android-open-project](https://github.com/Trinea/android-open-project):Android 开源项目分类汇总<br>
+[AndroidNote](https://github.com/venshine/AndroidNote):Android 进阶笔记，包含常用的技术框架、博客社区、书籍等。<br>
+[android-tech-frontier](https://github.com/hehonghui/android-tech-frontier):【停止维护】一个定期翻译国外Android优质的技术、开源库、软件架构设计、测试等文章的开源项目<br>
+[android-open-project-analysis](https://github.com/android-cn/android-open-project-analysis):Android 开源项目源码解析<br>
+[AndroidSdkSourceAnalysis](https://github.com/LittleFriendsGroup/AndroidSdkSourceAnalysis):android sdk 源码解析<br>
+[android-discuss](https://github.com/android-cn/android-discuss):Android 问题交流讨论坛<br>
+[AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode):包含很多Util<br>
+[free-programming-books-zh_CN](https://github.com/justjavac/free-programming-books-zh_CN):免费的计算机编程类中文书籍<br>
+[TimLiu-Android](https://github.com/Tim9Liu9/TimLiu-Android):总结的Android开源项目及库<br>
+[android-dev-bookmarks](https://github.com/zhengxiaopeng/android-dev-bookmarks):Android 开发者的浏览器书签 <br>
+[android-dev-cn](https://github.com/android-cn/android-dev-cn):一些国内 Android 开发者信息<br>
+[android-dev-com](https://github.com/android-cn/android-dev-com):一些国外 Android 开发者信息<br>
+## 小程序
+
+[wxParse](https://github.com/icindy/wxParse):小程序富文本解析,支持HTML及markdown<br>
+[awesome-wechat-weapp](https://github.com/justjavac/awesome-wechat-weapp):微信小程序开发资源汇总<br>
 
 
 ## APPLE
 
 [swift](https://github.com/apple/swift): swift <br>
+[iOS-Swift-Demos](https://github.com/Lax/iOS-Swift-Demos):分类整理的Swift开发学习资源<br>
+[the-swift-programming-language-in-chinese](https://github.com/numbbbbb/the-swift-programming-language-in-chinese):中文版 Apple 官方 Swift 教程《The Swift Programming Language》<br>
