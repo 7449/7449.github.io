@@ -238,7 +238,7 @@ onXBind
 
 License
 --
-    Copyright (C) 2016 yuezhaoyang7449@163.com
+    Copyright (C) 2016 yuebigmeow@gamil.com
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
