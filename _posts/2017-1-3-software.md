@@ -133,61 +133,6 @@ tags:
 
 ## 日常小功能	
 
-#### MAC jekyll
-
-首先 git 必须安装
-
-安装[brew](https://brew.sh/index_zh-cn.html)用来安装`ruby`
-
-千万记住不能使用自带的`ruby`，使用自带的`ruby`安装`jekyll`时会报错...
-
-安装ruby
-
-	brew install ruby
-
-安装Jekyll
-
-	sudo gem install jekyll
-	
-启动：
-
-	jekyll server
-
-
-#### MAC adb  gradle
-
-
-* 路径如果害怕自己填写错误，可以直接拖动到 `.bash_profile`
-
-进入根目录的`.bash_profile`,如果没有就自己创建
-
-> sdk
-
-	export PATH=${PATH}: sdk file
-	
-> gradle,这里配置AS里面的gradle,要有`\`对名称中的空格进行转意
-	
-	export PATH=${PATH}:/Applications/Android\ Studio.app/Contents/gradle/gradle-3.2/bin
-	
-保存之后退出执行`source .bash_profile`
-
-
-#### Mac 安装git
-
-	XCode 自带git，而且 MAC下XCODE 是不可避免要安装的
-	
-	git config --global user.name "user.name"
-	git config --global user.email "user.email"
-	cd ~ 进入根目录
-	
-	ssh-keygen：生成Key，添加到GitHub
-
-#### OS X  NTFS 移动硬盘中文件呈灰白色且无法读取
-
-进入`Terminal`，在命令行输入 `xattr -d com.apple.FinderInfo  文件路径` 
-
-
-
 #### Shadowsocks代理
 
 手机端

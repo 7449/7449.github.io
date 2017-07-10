@@ -300,7 +300,6 @@ cd ~
 
 ssh-keygen：
 
-
 * 用shadowsocks加速 git clone
 
 
@@ -335,6 +334,50 @@ ssh-keygen：
 [Flashlight](https://github.com/nate-parrott/Flashlight)
 
 扩展系统自带搜索功能
+
+#### jekyll
+
+首先 git 必须安装
+
+安装[brew](https://brew.sh/index_zh-cn.html)用来安装`ruby`
+
+千万记住不能使用自带的`ruby`，使用自带的`ruby`安装`jekyll`时会报错...
+
+安装ruby
+
+	brew install ruby
+
+安装Jekyll
+
+	sudo gem install jekyll
+	
+启动：
+
+	jekyll server
+
+
+#### adb  gradle
+
+
+* 路径如果害怕自己填写错误，可以直接拖动到 `.bash_profile`
+
+进入根目录的`.bash_profile`,如果没有就自己创建
+
+> sdk
+
+	export PATH=${PATH}: sdk file
+	
+> gradle,这里配置AS里面的gradle,要有`\`对名称中的空格进行转意
+	
+	export PATH=${PATH}:/Applications/Android\ Studio.app/Contents/gradle/gradle-3.2/bin
+	
+保存之后退出执行`source .bash_profile`
+
+
+#### OS X  NTFS 移动硬盘中文件呈灰白色且无法读取
+
+进入`Terminal`，在命令行输入 `xattr -d com.apple.FinderInfo  文件路径` 
+
 		
 		
 ## 安装软件

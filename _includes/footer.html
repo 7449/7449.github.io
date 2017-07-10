@@ -5,7 +5,8 @@
                 <ul class="list-inline text-center">
                     {% if site.zhihu_username %}
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
+                        <a target="_blank"
+                           href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -58,6 +59,7 @@ if(navigator.serviceWorker){
         if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
         s.parentNode.insertBefore(o, s);
     }
+
 </script>
 
 <script>
@@ -70,6 +72,7 @@ if(navigator.serviceWorker){
             $('#tag_cloud').find('a').tagcloud();
         })
     }
+
 </script>
 
 <script>
@@ -77,6 +80,7 @@ if(navigator.serviceWorker){
         var $nav = document.querySelector("nav");
         if($nav) FastClick.attach($nav);
     })
+
 </script>
 
 {% if page.catalog %}
@@ -115,5 +119,6 @@ if(navigator.serviceWorker){
             padding: 80
         });
     });
+
 </script>
 {% endif %}

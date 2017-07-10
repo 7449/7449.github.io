@@ -6,6 +6,7 @@ layout: default
     header.intro-header {
         background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
     }
+
 </style>
 <header class="intro-header">
     <div class="header-mask"></div>
@@ -15,7 +16,8 @@ layout: default
                 <div class="post-heading">
                     <div class="tags">
                         {% for tag in page.tags %}
-                        <a class="tag" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+                        <a class="tag" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{
+                            tag }}</a>
                         {% endfor %}
                     </div>
                     <h1>{{ page.title }}</h1>
@@ -50,7 +52,8 @@ layout: default
                     {% if page.previous.url %}
                     <li class="previous">
                         <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}"
-                           data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
+                           data-toggle="tooltip" data-placement="top"
+                           title="{{page.previous.title}}">
                             上一篇<br>
                             <span>{{page.previous.title}}</span>
                         </a>
@@ -58,7 +61,8 @@ layout: default
                     {% endif %}
                     {% if page.next.url %}
                     <li class="next">
-                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
+                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}"
+                           data-toggle="tooltip"
                            data-placement="top" title="{{page.next.title}}">
                             下一篇<br>
                             <span>{{page.next.title}}</span>
@@ -137,6 +141,7 @@ layout: default
         }
         s.parentNode.insertBefore(o, s);
     }
+
 </script>
 
 <script>
@@ -148,6 +153,7 @@ layout: default
         };
         anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })
+
 </script>
 <style>
     @media all and (min-width: 800px) {
@@ -158,5 +164,6 @@ layout: default
             margin-top: -0.1em;
         }
     }
+
 </style>
 {% endif %}
