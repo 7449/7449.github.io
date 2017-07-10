@@ -231,11 +231,6 @@ onXBind
 	    }
 	}
 
-# 感谢
-
-[https://github.com/jianghejie/XRecyclerView](https://github.com/jianghejie/XRecyclerView)
-
-
 License
 --
     Copyright (C) 2016 yuebigmeow@gamil.com
