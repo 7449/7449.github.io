@@ -320,6 +320,8 @@ tags:
 [android-common](https://github.com/Trinea/android-common):主要包括：缓存、公共View及Android常用工具类<br>
 [plaid](https://github.com/nickbutcher/plaid):一个新闻的Android应用程序<br>
 [iosched](https://github.com/google/iosched):io 大会app<br>
+[FileExplorer](https://github.com/MiCode/FileExplorer):MIUI文件管理器社区开源版<br>
+[Notes](https://github.com/MiCode/Notes):小米便签社区开源版<br>
 
 #### react-native
 
