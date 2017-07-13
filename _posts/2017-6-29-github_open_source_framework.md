@@ -322,6 +322,7 @@ tags:
 [iosched](https://github.com/google/iosched):io 大会app<br>
 [FileExplorer](https://github.com/MiCode/FileExplorer):MIUI文件管理器社区开源版<br>
 [Notes](https://github.com/MiCode/Notes):小米便签社区开源版<br>
+[BookReader](https://github.com/JustWayward/BookReader):"任阅" 网络小说阅读器<br>
 
 #### react-native
 
@@ -358,3 +359,7 @@ tags:
 [swift](https://github.com/apple/swift): swift <br>
 [iOS-Swift-Demos](https://github.com/Lax/iOS-Swift-Demos):分类整理的Swift开发学习资源<br>
 [the-swift-programming-language-in-chinese](https://github.com/numbbbbb/the-swift-programming-language-in-chinese):中文版 Apple 官方 Swift 教程《The Swift Programming Language》<br>
+
+[cartool](https://github.com/steventroughtonsmith/cartool):Export images from OS X / iOS .car CoreUI archives<br>
+[Assets.carTool](https://github.com/yuedong56/Assets.carTool):Mac上解压Assets.car文件的小工具<br>
+[AssetsExtractor](https://github.com/pcjbird/AssetsExtractor):Assets提取工具(推荐)<br>
