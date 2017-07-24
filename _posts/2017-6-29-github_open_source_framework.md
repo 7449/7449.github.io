@@ -309,6 +309,7 @@ tags:
 [android-Camera2Basic](https://github.com/googlesamples/android-Camera2Basic):google sample<br>
 [android-PictureInPicture](https://github.com/googlesamples/android-PictureInPicture):google sample<br>
 [android-UniversalMusicPlayer](https://github.com/googlesamples/android-UniversalMusicPlayer):google sample<br>
+[android-instant-apps](https://github.com/googlesamples/android-instant-apps):google sample android-instant-apps<br>
 [android-ndk](https://github.com/googlesamples/android-ndk):google sample<br>
 [android-architecture](https://github.com/googlesamples/android-architecture):讨论和展示Android应用程序的不同架构工具和模式<br>
 [UltimateAndroidReference](https://github.com/aritraroy/UltimateAndroidReference):App 开发参考<br>
@@ -324,7 +325,7 @@ tags:
 [Notes](https://github.com/MiCode/Notes):小米便签社区开源版<br>
 [BookReader](https://github.com/JustWayward/BookReader):"任阅" 网络小说阅读器<br>
 [codeKK-Android](https://github.com/7449/codeKK-Android): code kk  第三方android客户端<br>
-[ZLSimple](https://github.com/7449/ZLSimple):之乎专栏，包括一个简单的小程序版和Kotlin版，都在分支<br>
+[ZLSimple](https://github.com/7449/ZLSimple):知乎专栏，包括一个简单的小程序版和Kotlin版，都在分支<br>
 
 #### react-native
 
