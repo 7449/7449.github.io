@@ -12,6 +12,28 @@ tags:
 ---
 
 
+## update
+
+	brew
+
+		gdbm		node		python3		ruby		wget
+		icu4c		openssl		readline	sqlite		xz
+		libyaml		openssl@1.1	repo		thefuck
+	
+	brew cask 
+
+		android-file-transfer      go2shell                   qq
+		android-studio             google-chrome              skim
+		aria2gui                   iina                       sogouinput
+		bilibili                   intellij-idea              steam
+		calibre                    istat-menus                sublime-text
+		charles                    iterm2                     thunder
+		datagrip                   java                       touch-bar-pong
+		dbeaver-enterprise         kindle                     touch-bar-simulator
+		duet                       licecap                    touchswitcher
+		electronic-wechat          macdown                    webstorm
+		evernote                   neteasemusic               youdaodict
+
 ## 准备：
 
 * 一台可联网的MAC
