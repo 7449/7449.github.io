@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "第二章：Cordova插件的使用"
-subtitle:   "第二章：本章介绍了如何使用Cordova插件以及自己编写插件"
+title:      "Cordova系列---第二章：Cordova插件的使用"
+subtitle:   "本章介绍了如何使用Cordova插件以及自己编写插件"
 date:       2017-7-31
 author:     "y"
 header-mask: 0.3
@@ -52,10 +52,6 @@ GitHub上面已经有详细的使用方法以及示例，所以这里就不多�
 
 
 所以适配的话还是由自己去写插件比较容易适配
-
-
-## 准备
-
 
 * 怎么去编写一个Cordova插件？
 
@@ -343,5 +339,5 @@ GitHub上面已经有详细的使用方法以及示例，所以这里就不多�
 ![_config.yml]({{ site.baseurl }}/img/cordova_plugin_success_type.jpg)
 
 
-
+那么，我们下一章见！
 

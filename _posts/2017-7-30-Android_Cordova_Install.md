@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "第一章：Cordova安装及运行"
-subtitle:   "第一章：安装Cordova及配置环境"
+title:      "Cordova系列---第一章：Cordova安装及运行"
+subtitle:   "安装Cordova及配置环境"
 date:       2017-7-30
 author:     "y"
 header-mask: 0.3
