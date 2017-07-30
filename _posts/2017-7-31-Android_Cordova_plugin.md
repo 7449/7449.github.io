@@ -193,7 +193,7 @@ GitHub上面已经有详细的使用方法以及示例，所以这里就不多�
 
 作者删掉了一些其他插件的代码避免看起来困难
 
-接下来创建调用插件需要的js文件。在`www`目录下创建`plugins.cordova-plugin-dialog.www`目录，并且创建`Dialog.js`，如图所示：
+接下来创建调用插件需要的js文件。在`www/plugins`目录下创建`cordova-plugin-dialog`目录，并且创建`Dialog.js`，如图所示：
 
 ![_config.yml]({{ site.baseurl }}/img/cordova_plugin_dialog.png)
 
