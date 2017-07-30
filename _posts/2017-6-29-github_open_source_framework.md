@@ -5,7 +5,7 @@ subtitle:   "记录GitHub常用的开源项目"
 date:       2017-6-29
 author:     "y"
 header-mask: 0.3
-header-img: "img/android.jpg"
+header-img: "img/github.png"
 catalog: true
 tags:
     - 工作记录
