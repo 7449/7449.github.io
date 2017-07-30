@@ -33,6 +33,7 @@ tags:
 		duet                       licecap                    touchswitcher
 		electronic-wechat          macdown                    webstorm
 		evernote                   neteasemusic               youdaodict
+		ShadowsocksX-NG
 
 ## 准备：
 
