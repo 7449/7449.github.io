@@ -317,7 +317,7 @@ GitHub上面已经有详细的使用方法以及示例，所以这里就不多�
 	dialogExport.showDialog = function(successCallback, errorCallback, options) {
 	
 	    var getValue = argscheck.getValue;
-	    var dialogType = getValue(options.dialogType, Camera.Direction.BACK);
+	    var dialogType = getValue(options.dialogType, -1);
 	    var args = [dialogType];
 	    exec(successCallback, errorCallback, "Dialog", "dialog:action", args);
 	};
@@ -338,6 +338,184 @@ GitHub上面已经有详细的使用方法以及示例，所以这里就不多�
 
 ![_config.yml]({{ site.baseurl }}/img/cordova_plugin_success_type.jpg)
 
+
+## 编写可安装的插件
+
+目的：编写一个可以 通过 `cordova plugin add file(git)` 命令来安装的插件
+
+通过安装Camera插件得知，插件都在`plugins`目录下，
+
+通过阅读[Plugin配置文件指南](https://github.com/CordovaCn/CordovaCn/blob/master/01%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(Basic%20Knowledge)/08.Plugin.xml%20Guide(Plugin%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%8C%87%E5%8D%97).md) [PluginDemoReadme](https://github.com/CordovaCn/CordovaPluginsDemo/blob/master/cordova-plugin-custom/README.md),掌握的信息足以我们编写一个可安装的插件
+
+* 创建相应的文件，这里可以直接创建一个`dialog`文件夹，然后直接把`camera`插件文件夹下的东西copy过来，不需要的直接删除即可
+，大概会剩下`LICENSE` `package.json` `plugin.xml` `readme` `src` `www`
+
+LICENSE 可以不用去管，这只是一个开源协议
+
+package.json: 里面包含了插件名称，描述，版本，id,平台，远程库地址，和一些作者信息
+
+plugin.xml: 这个文件主要包含了 一些注入时需要的信息
+
+src：文件夹里面放置 java 文件
+
+www: 文件夹里面放置 js 文件
+
+
+修改 package.json 文件，这里并没有添加远程库相关的东西：
+
+	{
+	      "name": "cordova-plugin-dialog",   // 插件名称
+	      "version": "1.0.0",                // 版本号
+	      "description": "Cordova dialog Plugin",  //版本说明
+	      "cordova": {
+	        "id": "cordova-plugin-dialog",   // id，重要，要和 plugin 目录名保持一致
+	        "platforms": [                    
+	          "android" //支持的平台，这里只是支持android平台
+	        ]
+	      },
+	      // 用于搜索时的Key
+	      "keywords": [                       
+	        "cordova",
+	        "dialog"
+	      ],
+	      "author": "xxx.com",      //作者信息 
+	      "license": "Apache 2.0"   //开源协议 
+	}
+
+修改 plugin.xml :
+
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	
+	<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	           id="cordova-plugin-dialog"
+	      version="1.0.0">
+	    <name>cordova-plugin-dialog</name>
+	    <description>Cordova dialog Plugin</description>
+	    <license>Apache 2.0</license>
+	    <keywords>cordova,dialog</keywords>
+	    <js-module src="www/Dialog.js" name="dialog">
+	        <clobbers target="navigator.dialog" />
+	    </js-module>
+	  
+	    <platform name="android">
+	        <config-file target="res/xml/config.xml" parent="/*">
+	            <feature name="Dialog" >
+	                <param name="android-package" value="org.apache.cordova.dialog.DialogPlugin"/>
+	                <param name="onload" value="true" />
+	            </feature>
+	        </config-file>
+	        <source-file src="src/android/DialogPlugin.java" target-dir="src/org/apache/cordova/dialog" />
+	    </platform>
+	</plugin>
+	
+src：
+
+		新建目录，名为Android，放置 DialogPlugin.java
+	
+	
+		public class DialogPlugin extends CordovaPlugin {
+	
+	    private static final String DIALOG_ACTION = "dialog:action";
+	
+	    @Override
+	    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+	        if (TextUtils.equals(action, DIALOG_ACTION)) {
+	            new AlertDialog.Builder(cordova.getActivity())
+	                    .setTitle("接受到的消息")
+	                    .setMessage("通过可安装的插件接收到消息").show();
+	            return true;
+	        }
+	        return false;
+	    }
+	}
+	
+www:
+
+		放置 Dialog.js，这里需要注意的是，如果是编写可安装的插件时，js目录中不能出现 cordova.define 安装插件时会自动安装的
+	
+		var exec = require('cordova/exec');
+		var dialogExport = {};
+	
+		dialogExport.showDialog = function(successCallback, errorCallback, options) {
+		    exec(successCallback, errorCallback, "Dialog", "dialog:action", []);
+		};
+		module.exports = dialogExport;
+	
+如果没有问题，在 cordova 项目中`cordova plugin add file` 来安装插件
+
+![_config.yml]({{ site.baseurl }}/img/cordova_plugins_success.jpg)
+
+
+#### 携带参数
+
+plugin.xml :
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	
+	<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	           id="cordova-plugin-dialog"
+	      version="1.0.0">
+	    <name>cordova-plugin-dialog</name>
+	    <description>Cordova dialog Plugin</description>
+	    <license>Apache 2.0</license>
+	    <keywords>cordova,dialog</keywords>
+	    <js-module src="www/Dialog.js" name="dialog">
+	        <clobbers target="navigator.dialog" />
+	    </js-module>
+		// 新增对 DialogConstants.js 的支持
+	    <js-module src="www/DialogConstants.js" name="Dialog">
+	        <clobbers target="Dialog" />
+	    </js-module>
+	
+	  
+	    <platform name="android">
+	        <config-file target="res/xml/config.xml" parent="/*">
+	            <feature name="Dialog" >
+	                <param name="android-package" value="org.apache.cordova.dialog.DialogPlugin"/>
+	                <param name="onload" value="true" />
+	            </feature>
+	        </config-file>
+	        <source-file src="src/android/DialogPlugin.java" target-dir="src/org/apache/cordova/dialog" />
+	    </platform>
+	</plugin>
+
+www 目录下新增 `DialogConstants.js` 
+
+		module.exports = {
+		  DialogType:{
+		    NIGHT: 666
+		  }
+		};
+		
+Dialog.js修改如下所示：
+
+	var exec = require('cordova/exec');
+	var argscheck = require('cordova/argscheck');
+	var dialogExport = {};
+	
+	dialogExport.showDialog = function(successCallback, errorCallback, options) {
+	
+	    var getValue = argscheck.getValue;
+	    var dialogType = getValue(options.dialogType, -1);
+	    var args = [dialogType];
+	    exec(successCallback, errorCallback, "Dialog", "dialog:action", args);
+	};
+	module.exports = dialogExport;
+	
+然后执行`cordova plugin remove dialog` `cordova plugin add file`重新安装插件，
+
+index.html调用方法修改：
+
+		document.querySelector("#showDialog").addEventListener("touchend", function() {
+			     navigator.dialog.showDialog(onSuccess, onFail, {
+
+			         dialogType: Dialog.DialogType.NIGHT,
+
+			      });
+		});
+		
+至此一个完整的插件编写完成，当然本文没有对git库进行支持，如果有兴趣的可以自行添加对Git库的支持，因为 Cordova 支持 远程从Github安装
 
 那么，我们下一章见！
 
