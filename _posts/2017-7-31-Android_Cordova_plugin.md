@@ -507,6 +507,33 @@ Dialog.js修改如下所示：
 	};
 	module.exports = dialogExport;
 	
+	
+	
+	//上面这个是简易版，在Cordova中传参数是可以生效的，但是作者在VUE中使用时这样调用时得不到传到的参数，略微修改了下，
+	//按照下面的代码在VUE中穿参是可以拿到参数的，至于VUE和Cordova一起使用，往后会抽空更新Blog
+	
+	
+	var argscheck = require('cordova/argscheck'),
+	    exec = require('cordova/exec'),
+	    Dialog = require('./Dialog');
+	
+	var dialogExport = {};
+	
+	for (var key in Dialog) {
+	    dialogExport[key] = Dialog[key];
+	}
+	
+	dialogExport.showDialog = function(successCallback, errorCallback, options) {
+	    argscheck.checkArgs('fFO', 'Dialog.showDialog', arguments);
+	    options = options || {};
+	    var getValue = argscheck.getValue;
+	    var dialogType = getValue(options.dialogType, -1);
+	    var args = [dialogType];
+	    exec(successCallback, errorCallback, "Dialog", "dialog:action", args);
+	};
+	
+	module.exports = dialogExport;
+	
 然后执行`cordova plugin remove dialog` `cordova plugin add file`重新安装插件，
 
 index.html调用方法修改：
