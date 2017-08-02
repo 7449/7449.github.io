@@ -43,6 +43,8 @@ GitHub上面已经有详细的使用方法以及示例，所以这里就不多�
 
 ## 编写插件
 
+> 需要注意的是，这个示例是在android代码中直接添加插件，所以`config.xml`为`android/res/xml/config.xml`而不是cordova目录下的`config.xml`
+
 * 为什么编写插件？
 
 * 答案很简单，现有的插件不足以满足我们多变的需求，或者已有的插件存在bug<br>
@@ -68,14 +70,14 @@ GitHub上面已经有详细的使用方法以及示例，所以这里就不多�
 	        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
 	    </feature>
     
-* `/assets/www/cordova_plugins.js` 中多了`plugins.cordova-plugin-camera.www`目录并且多了如下格式的代码：
+* `/assets/www` 目录下多了`plugins.cordova-plugin-camera.www`文件夹并且`cordova_plugins.js`多了如下格式的代码：
 
 	    {
 	        "id": "cordova-plugin-camera.camera",
-	        "file": "plugins/cordova-plugin-camera/www/Camera.js",
+	        "file": "plugins/cordova-plugin-camera/www/Camera.js", // js路径
 	        "pluginId": "cordova-plugin-camera",
 	        "clobbers": [
-	            "navigator.camera"
+	            "navigator.camera"//调用方法名
 	        ]
 	    }
 
@@ -340,6 +342,8 @@ GitHub上面已经有详细的使用方法以及示例，所以这里就不多�
 
 
 ## 编写可安装的插件
+
+> 这里的`config.xml`为cordova目录下的`config.xml`
 
 目的：编写一个可以 通过 `cordova plugin add file(git)` 命令来安装的插件
 
