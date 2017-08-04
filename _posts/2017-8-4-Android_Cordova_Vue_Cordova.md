@@ -329,7 +329,7 @@ chrome打开
 
 
 
-![_config.yml]({{ site.baseurl }}/img/cordova_vue_plugin_dialog.png)
+![_config.yml]({{ site.baseurl }}/img/cordova_vue_plugin_dialog.jpg)
 
 
 
