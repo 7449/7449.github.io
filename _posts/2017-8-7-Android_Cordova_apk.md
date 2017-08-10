@@ -18,13 +18,108 @@ tags:
 
 ## 前言
 
-本文主要内容都摘录自 相关资料的连接，看到最后作者发现完全不如用Android Studio 打包，
+本文主要内容都摘录自 相关资料的连接，看到最后作者发现完全不如用 Android Studio 打包，
 
 
 推荐使用 Android Studio 打包，不建议用命令行，相比较 Android Studio 打包流程更为清晰直观
 
 
 `cordova build android` 会在 `android/build/outputs/apk/` 目录下生成 debug 包
+
+
+## update
+
+检查安装包是否是DeBug版，如果包含`Android DeBug`字样则为测试版
+
+	jarsigner -verify -verbose -certs apkfile
+	
+	
+#### gradle配置打包(推荐)
+
+gradle 配置好，执行`cordova build android`生成的就是签了名的正式包
+
+`platforms/android`目录下建立 `release-signing.properties` 文件
+
+	storeFile=jksFile
+	storePassword=password
+	keyAlias=alias
+	keyPassword= password
+	
+
+`build.gradle` （android Module）下可以看见：
+
+
+    if (!project.hasProperty('cdvReleaseSigningPropertiesFile')) {
+        cdvReleaseSigningPropertiesFile = null
+    }
+    
+ 判断`cdvReleaseSigningPropertiesFile ` 有没有值，有值则置为Null
+ 
+	 if (ext.cdvReleaseSigningPropertiesFile == null && file('release-signing.properties').exists()) {
+	    ext.cdvReleaseSigningPropertiesFile = 'release-signing.properties'
+	}
+	
+如果`ext.cdvReleaseSigningPropertiesFile ` == null , 并且 目录下含有`release-signing.properties`，则赋值
+
+再往下看 ，可以看到 gradle 的 android 模块 做了判断
+
+	
+	    if (cdvReleaseSigningPropertiesFile) {
+	        signingConfigs {
+	            release {
+	                keyAlias = ""
+	                keyPassword = "__unset"
+	                storeFile = null
+	                storePassword = "__unset"
+	            }
+	        }
+	        buildTypes {
+	            release {
+	                signingConfig signingConfigs.release
+	            }
+	            debug {
+             		signingConfig signingConfigs.release
+	            }
+	        }
+	        addSigningProps(cdvReleaseSigningPropertiesFile, signingConfigs.release)
+	    }
+	    //这是 DeBug 的判断，代码和 release 的差不多
+	    if (cdvDebugSigningPropertiesFile) {
+	        addSigningProps(cdvDebugSigningPropertiesFile, signingConfigs.debug)
+	    }
+
+由代码可得知：
+
+ 如果`cdvReleaseSigningPropertiesFile ` == null ,则不会走 `signingConfigs ` 和 `buildTypes ` ,如果我们需要 在`buildTypes `中配置 BuildConfig 的变量，有两种办法：
+ 
+ * 配置`release-signing.properties`
+ * 注释掉 if 判断（不推荐）
+
+ 这里推荐第一种 配置 文件的方法
+ 
+ 我们可以将 `signingConfig signingConfigs.release` 在 `debug` 中也执行，这样`cordova build android` 的 apk包虽然名字是debug的，但是是签了名的apk,属于 `release` 包
+ 
+#### cordova 配置打包
+ 
+ 在 cordova  的 目录下 新建一个`build.json`
+ 
+	 {
+	  "android": {
+	    "release": {
+	      "keystore": "jksFile",
+	      "alias": "alias",
+	      "storePassword": "password",
+	      "password": "password"
+	    }
+	  }
+	}
+ 
+ 
+ 然后执行：
+ 
+ 
+ 		cordova build --release
+ 
 
 
 ## Android APK 手动打包流程
