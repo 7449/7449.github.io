@@ -22,6 +22,22 @@ tags:
 
 [cordova_plugin_network](https://github.com/7449/AndroidDevelop/tree/master/cordova_plugin_network)<br>
 
+
+##  update 
+
+cordova 改变了获取插件的方式,如果是本地安装，有两种办法：
+
+* 将cordova的版本限制到 6.5.0
+
+		sudo npm i -g cordova@6.5.0
+		
+* 使用旧版本的方法安装
+
+		cordova plugin add ../my-plugin --nofetch
+
+
+[failed-to-get-absolute-path-to-installed-module](https://stackoverflow.com/questions/43856285/failed-to-get-absolute-path-to-installed-module)
+
 ## 插件
 
 android的Cordova插件是由webview来触发相应的功能
