@@ -187,6 +187,7 @@ tags:
 [ImagePicker](https://github.com/martin90s/ImagePicker):Android 图片选择器<br>
 [boxing](https://github.com/Bilibili/boxing):B站开源图片选择器<br>
 [Matisse](https://github.com/zhihu/Matisse):知乎推出的图片选择器<br>
+[Album](https://github.com/7449/Album):图片选择器，自由定制，参数几乎满足所有的需求<br>
 [cropiwa](https://github.com/steelkiwi/cropiwa):图片裁剪<br>
 [TimePickerDialog](https://github.com/JZXiang/TimePickerDialog):Android时间选择器，支持年月日时分，年月日，年月，月日时分，时分格式<br>
 [AndroidFileExplorer](https://github.com/dibakarece/AndroidFileExplorer):Android 文件选择管理器<br>
@@ -302,6 +303,7 @@ tags:
 [android-training-course-in-chinese](https://github.com/kesenhoo/android-training-course-in-chinese):Android官方培训课程中文版<br>
 [Android-Session-Slides](https://github.com/MDCC2016/Android-Session-Slides):MDCC 2016  资料<br>
 [AndroidDecompiler](https://github.com/dirkvranckaert/AndroidDecompiler):反编译<br>
+[AndroidLibs](https://github.com/XXApple/AndroidLibs):Android 开源代码大全<br>
 
 #### sample
 
@@ -327,6 +329,7 @@ tags:
 [codeKK-Android](https://github.com/7449/codeKK-Android): code kk  第三方android客户端<br>
 [ZLSimple](https://github.com/7449/ZLSimple):知乎专栏，包括一个简单的小程序版和Kotlin版，都在分支<br>
 [Lawnchair](https://github.com/Deletescape-Media/Lawnchair):launcher<br>
+[JsoupSample](https://github.com/7449/JsoupSample):jsoupSample<br>
 
 #### react-native
 
@@ -342,6 +345,7 @@ tags:
 
 [android-open-project](https://github.com/Trinea/android-open-project):Android 开源项目分类汇总<br>
 [AndroidNote](https://github.com/venshine/AndroidNote):Android 进阶笔记，包含常用的技术框架、博客社区、书籍等。<br>
+[AndroidNote](https://github.com/GcsSloop/AndroidNote):安卓学习笔记<br>
 [android-tech-frontier](https://github.com/hehonghui/android-tech-frontier):【停止维护】一个定期翻译国外Android优质的技术、开源库、软件架构设计、测试等文章的开源项目<br>
 [android-open-project-analysis](https://github.com/android-cn/android-open-project-analysis):Android 开源项目源码解析<br>
 [AndroidSdkSourceAnalysis](https://github.com/LittleFriendsGroup/AndroidSdkSourceAnalysis):android sdk 源码解析<br>
