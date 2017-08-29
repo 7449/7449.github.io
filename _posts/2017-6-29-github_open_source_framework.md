@@ -307,6 +307,7 @@ tags:
 
 #### sample
 
+[android-architecture-components](https://github.com/googlesamples/android-architecture-components):google 官方推出的架构示例Demo<br>
 [android-Camera2Video](https://github.com/googlesamples/android-Camera2Video):google sample<br>
 [android-Camera2Basic](https://github.com/googlesamples/android-Camera2Basic):google sample<br>
 [android-PictureInPicture](https://github.com/googlesamples/android-PictureInPicture):google sample<br>
