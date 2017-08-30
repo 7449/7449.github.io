@@ -16,24 +16,27 @@ tags:
 
 	brew
 
-		gdbm		node		python3		ruby		wget
-		icu4c		openssl		readline	sqlite		xz
-		libyaml		openssl@1.1	repo		thefuck
+        cmatrix		gradle		node		readline	sqlite
+        cowsay		icu4c		openssl		repo		thefuck
+        fortune		libyaml		openssl@1.1	ruby		wget
+        gdbm		maven		python3		sl		xz
 	
 	brew cask 
 
-		android-file-transfer      go2shell                   qq
-		android-studio             google-chrome              skim
-		aria2gui                   iina                       sogouinput
-		bilibili                   intellij-idea              steam
-		calibre                    istat-menus                sublime-text
-		charles                    iterm2                     thunder
-		datagrip                   java                       touch-bar-pong
-		dbeaver-enterprise         kindle                     touch-bar-simulator
-		duet                       licecap                    touchswitcher
-		electronic-wechat          macdown                    webstorm
-		evernote                   neteasemusic               youdaodict
-		ShadowsocksX-NG
+        alfred                     gifrocket                  qq
+        android-file-transfer      go2shell                   shadowsocksx-ng
+        android-studio             google-chrome              skim
+        aria2gui                   iina                       sogouinput
+        baidunetdisk               intellij-idea              steam
+        battle-net                 istat-menus                sublime-text
+        bilibili                   iterm2                     thunder
+        calibre                    java                       touch-bar-pong
+        charles                    jd-gui                     touch-bar-simulator
+        datagrip                   kindle                     touchswitcher
+        dbeaver-enterprise         licecap                    webstorm
+        duet                       macdown                    youdaodict
+        electronic-wechat          neteasemusic
+        evernote                   openemu
 
 ## 准备：
 
@@ -149,6 +152,8 @@ test:
 
 #### xcode
 
+> 如果不安装的话，安装`brew`的时候会自动安装
+
 直接在AppStore安装即可，
 
 命令行工具：`xcode-select --install`
@@ -175,9 +180,6 @@ test:
 	export PATH=${PATH}:brewAddress/bin
 	
 执行`source .bash_profile` 使其即时生效
-
-如果使用的是zsh，执行`source ~/.zshrc`
-
 
 `brew --prefix` :确定 brew 安装位置
 
@@ -248,6 +250,8 @@ brew 自动建立的 formula 已经包含了基本的configure和make install命
 
 #### brew cask
 
+> 需要注意的是，目前`brew`已经默认附带了`cask`，因此不用刻意去更新`cask`
+
 [homebrew-cask](https://github.com/caskroom/homebrew-cask):github地址，下载软件可在里面自行搜索，没有或者版本较低的可 pull requests;
 
 		brew cask install # 下载安装软件
@@ -256,7 +260,6 @@ brew 自动建立的 formula 已经包含了基本的configure和make install命
 		brew cask info # 显示这个软件的详细信息，如果已经用cask安装了，也会显示其安装目录信息等
 		brew cask list 列出本机按照过的软件列表
 		brew cask cleanup #  清除下载的缓存以及各种链接信息
-		brew update && brew upgrade brew-cask # 更新cask自身
 
 
 brew cask 是在 brew 的基础上一个增强的工具，用来安装Mac上的Gui程序应用包（.dmg/.pkg）, 比如qq。
@@ -391,7 +394,9 @@ ssh-keygen：
 	export PATH=${PATH}: sdk file
 	
 > gradle,这里配置AS里面的gradle,要有`\`对名称中的空格进行转意
-	
+
+gradle可以直接使用`brew`安装
+
 	export PATH=${PATH}:/Applications/Android\ Studio.app/Contents/gradle/gradle-3.2/bin
 	
 保存之后退出执行`source .bash_profile`
