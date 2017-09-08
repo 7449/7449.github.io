@@ -307,6 +307,7 @@ tags:
 
 #### sample
 
+[android-architecture-components](https://github.com/googlesamples/android-architecture-components):google架构示例<br>
 [android-architecture-components](https://github.com/googlesamples/android-architecture-components):google 官方推出的架构示例Demo<br>
 [android-Camera2Video](https://github.com/googlesamples/android-Camera2Video):google sample<br>
 [android-Camera2Basic](https://github.com/googlesamples/android-Camera2Basic):google sample<br>
@@ -331,6 +332,11 @@ tags:
 [ZLSimple](https://github.com/7449/ZLSimple):知乎专栏，包括一个简单的小程序版和Kotlin版，都在分支<br>
 [Lawnchair](https://github.com/Deletescape-Media/Lawnchair):launcher<br>
 [JsoupSample](https://github.com/7449/JsoupSample):jsoupSample<br>
+[AndroidTVLauncher](https://github.com/JackyAndroid/AndroidTVLauncher):TV桌面<br>
+
+#### cordova 
+
+[CordovaCn](https://github.com/CordovaCn/CordovaCn):cordova 中文
 
 #### react-native
 
