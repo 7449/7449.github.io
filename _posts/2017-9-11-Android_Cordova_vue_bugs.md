@@ -55,3 +55,47 @@ tags:
  使用插件时，发现只有第一次进来的时候控制台输出的`this`相同，往后除非退出app，否则拿到的`this`一直是第一次进来的`this`
  ，通过测试发现，是因为`callbackContext`发送消息时是在子线程发送，如果在主线程发送则没有这个问题
  
+ 
+## 连续调用插件
+
+因为插件是异步的，所以只要连续调用插件,最后只会回调最后一次调用插件的`callbackContext`,
+`cordova` 为每个`callbackContext`设置了一个`CallbackId`,
+`callbackContext.getCallbackId()`可以获取到,这里为了处理这种问题(例如网络插件一个页面多次调用)
+
+使用一个`SimpleArrayMap`记录下每个`CallbackContext`,然后通过`callbackId`获取对应的`CallbackContext`发送消息
+
+    private SimpleArrayMap<String, CallbackContext> simpleMap;
+
+    @Override
+    public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
+        if (simpleMap == null) {
+            simpleMap = new SimpleArrayMap<>();
+        }
+        if (TextUtils.equals(action, NET_WORK_ACTION)) {
+            EventBus eventBus = EventBus.getDefault();
+            String type = args.getString(0);
+            String parameter = args.getString(1);
+
+            String callbackId = callbackContext.getCallbackId();
+            if (simpleMap.containsKey(callbackId)) {
+                simpleMap.remove(callbackId);
+            }
+            simpleMap.put(callbackId, callbackContext);
+            return true;
+        }
+        callbackContext.error("action != requestNetWork");
+        return false;
+    }
+
+    @SuppressWarnings("unused")
+    @Subscribe
+    public void onNetWorkEvent(SendJSEvent event) {
+        if (simpleMap == null || !simpleMap.containsKey(event.callbackId) || simpleMap.get(event.callbackId) == null) {
+            callbackContext.error("出现错误");
+            return;
+        }
+        KLog.i(simpleMap.get(event.callbackId).getCallbackId());
+        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, event.message);
+        pluginResult.setKeepCallback(true);
+        simpleMap.get(event.callbackId).sendPluginResult(pluginResult);
+    }
