@@ -8,3 +8,15 @@ npm-debug.log
 .idea
 .idea/
 /.gradle/
+# Created by .ignore support plugin (hsz.mobi)
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+.idea/libraries
+build
+captures
+.externalNativeBuild
+app/build.gradle
+/BlogApp/gradle.properties
+/BlogApp/local.properties
