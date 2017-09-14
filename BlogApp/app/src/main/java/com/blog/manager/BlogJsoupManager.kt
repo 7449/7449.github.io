@@ -22,11 +22,9 @@ class BlogJsoupManager {
         return list
     }
 
-    fun getDetail(document: Document): NetModel {
-
-        val model = NetModel("", "", "")
-
-        return model
-    }
+    /**
+     * 数据会抓到 上一篇，标签，tag 的 html,懒得处理了,如果以后想处理,可以使用 document.remove() 删除脏数据
+     */
+    fun getDetail(document: Document): NetModel = NetModel(document.select("div.row").eq(1).html(), "", "")
 
 }

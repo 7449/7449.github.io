@@ -1,5 +1,6 @@
 package com.blog
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.widget.SwipeRefreshLayout
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        title = "主页"
         recyclerView = findViewById(R.id.recyclerView) as LoadMoreRecyclerView
         refreshLayout = findViewById(R.id.refresh_layout) as SwipeRefreshLayout
 
@@ -91,6 +93,11 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onItemClick(view: View, position: Int, info: NetModel) {
+        val intent = Intent(view.context, DetailActivity().javaClass)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        intent.putExtra("title", info.title)
+        intent.putExtra("detailUrl", info.detailUrl)
+        startActivity(intent)
     }
 
     private fun startNetWorkRequest(url: String) {
