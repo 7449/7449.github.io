@@ -6,6 +6,8 @@ import android.support.design.widget.Snackbar
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.StaggeredGridLayoutManager
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import com.blog.manager.BlogJsoupManager
 import com.blog.net.Net
@@ -120,4 +122,17 @@ class MainActivity : AppCompatActivity(),
         super.onDestroy()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.bar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.tag) {
+            val intent = Intent(applicationContext, TagActivity().javaClass)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }
