@@ -36,7 +36,7 @@ tags:
         dbeaver-enterprise         licecap                    webstorm
         duet                       macdown                    youdaodict
         electronic-wechat          neteasemusic
-        evernote                   openemu
+        evernote                 
 
 ## 准备：
 
@@ -89,75 +89,6 @@ simple:
 ## 基础安装
 
 
-
-#### zsh
-
-可选另外一种：[fish-shell](https://github.com/fish-shell/fish-shell)
-
-zsh替代bash后，以前~/.bash_profile的配置应该写入~/.zshrc中
-
-系统自带了 zsh,但是不是最新版的，如果想使用最新版可自行下载：
-
-		brew install zsh
-		
-安装完成后，新版的zsh是安装到`/usr/local/bin`下的,修改`/etc/shells`,在最下面重启一行写入`/usr/local/bin/zsh`
-
-改完之后执行`chsh -s /usr/local/bin/zsh` 就OK了
-		
-系统自带：
-
-		chsh -s /bin/zsh
-		
-重启terminal
-
-
-* [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-
-zsh复杂的配置使人望而却步，所以 oh-my-zsh 应运而生..
-
-比较好的字体：[FiraCode](https://github.com/tonsky/FiraCode)
-
-
-#### iTerm2
-
-	brew cask install iTerm2
-	
-官方地址：[iTerm2](http://www.iterm2.com/downloads.html)
-
-[iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
-
-#### 终端开启代理
-
-mac终端默认不走代理，例如git clone 的时候就算开vpn 也会很慢，开启代理方式如下
-
-以shadowsocksx为例，添加在 ~/.bash_profile 或者 ~/.zshrc：
-
-	alias openvpn="export ALL_PROXY=socks5://127.0.0.1:1080" 
-	alias offvpn="unset ALL_PROXY"
-
-以后想打开代理  直接输入 openvpen,关闭输入 offvpn 即可
-
-
-或者使用 `brew install proxychains-ng` ,安装好之后在 `/usr/local/etc/proxychains.conf` 下，
-在 `ProxyList` 下面加入代理类型，代理地址和端口
-
-	socks5 127.0.0.1 1080
-	
-test:
-
-	proxychains4 curl ip.cn
-	or
-	openvpn
-	curl ip.cn
-
-#### xcode
-
-> 如果不安装的话，安装`brew`的时候会自动安装
-
-直接在AppStore安装即可，
-
-命令行工具：`xcode-select --install`
-
 #### brew
 
 ~~[GitHubAddress](https://github.com/Homebrew/legacy-homebrew)~~ ：被废弃
@@ -168,6 +99,10 @@ test:
 
 
 安装[brew.sh](https://brew.sh/index_zh-cn.html),往后 只要是 brew 有的软件，尽量使用 brew 安装或者更新卸载。例如：git,java,google-chrome
+
+
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 
 建议直接执行官网提供的命令,`/usr/local` 已在系统 PATH 之中，brew 无须任何配置。
 
@@ -270,6 +205,79 @@ brew cask 是在 brew 的基础上一个增强的工具，用来安装Mac上的G
 
 然后再软链到~/Applications/目录下, 非常方便，而且还包含很多在 AppStore 里没有的常用软件。
 
+
+#### zsh
+
+可选另外一种：[fish-shell](https://github.com/fish-shell/fish-shell)
+
+zsh替代bash后，以前~/.bash_profile的配置应该写入~/.zshrc中
+
+系统自带了 zsh,但是不是最新版的，如果想使用最新版可自行下载：
+
+		brew install zsh
+		
+安装完成后，新版的zsh是安装到`/usr/local/bin`下的,修改`/etc/shells`,在最下面重启一行写入`/usr/local/bin/zsh`
+
+改完之后执行`chsh -s /usr/local/bin/zsh` 就OK了
+		
+系统自带：
+
+		chsh -s /bin/zsh
+		
+重启terminal
+
+
+* [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+
+		sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+
+zsh复杂的配置使人望而却步，所以 oh-my-zsh 应运而生..
+
+比较好的字体：[FiraCode](https://github.com/tonsky/FiraCode)
+
+
+#### iTerm2
+
+	brew cask install iTerm2
+	
+官方地址：[iTerm2](http://www.iterm2.com/downloads.html)
+
+[iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
+
+#### 终端开启代理
+
+mac终端默认不走代理，例如git clone 的时候就算开vpn 也会很慢，开启代理方式如下
+
+以shadowsocksx为例，添加在 ~/.bash_profile 或者 ~/.zshrc：
+
+	alias openvpn="export ALL_PROXY=socks5://127.0.0.1:1080" 
+	alias offvpn="unset ALL_PROXY"
+
+以后想打开代理  直接输入 openvpen,关闭输入 offvpn 即可
+
+
+或者使用 `brew install proxychains-ng` ,安装好之后在 `/usr/local/etc/proxychains.conf` 下，
+在 `ProxyList` 下面加入代理类型，代理地址和端口
+
+	socks5 127.0.0.1 1080
+	
+test:
+
+	proxychains4 curl ip.cn
+	or
+	openvpn
+	curl ip.cn
+
+#### xcode
+
+> 如果不安装的话，安装`brew`的时候会自动安装命令行工具
+
+直接在AppStore安装即可，
+
+命令行工具：`xcode-select --install`
+
+
 #### the fuck
 
 [GitHubAddress](https://github.com/nvbn/thefuck)
@@ -280,8 +288,8 @@ brew安装：
 
 	brew install thefuck
 	
-eval $(thefuck --alias)
-eval $(thefuck --alias name) // 别名
+	eval $(thefuck --alias)
+	eval $(thefuck --alias name) // 别名
 
 
 #### go2Shell
@@ -291,6 +299,8 @@ eval $(thefuck --alias name) // 别名
 可以直接添加在 Finder 上，点击直接在 shell 打开选中的文件夹目录。
 
 如果使用 iTerm2,不要使用 App Store版，版本过旧，不会主动跳转到 相应的文件路径
+
+按住`command`,然后拖动图标到`Finder`的状态栏或者打开自行安装
 
 
 #### Vim
@@ -402,51 +412,22 @@ gradle可以直接使用`brew`安装
 保存之后退出执行`source .bash_profile`
 
 
+#### vps
+
+直接打开 `vps`，如果`git`配置了的话根目录会出现`.ssh`目录，如果没有就自行建立，
+新建`config`，配置如下：
+
+    Host                  name
+    HostName              ip
+    Port                  port
+    User                  userName
+
+
+以后链接`VPS`直接在命令行输入`ssh name`，就会提醒你输入密码链接
+
+
+
+
 #### OS X  NTFS 移动硬盘中文件呈灰白色且无法读取
 
 进入`Terminal`，在命令行输入 `xattr -d com.apple.FinderInfo  文件路径` 
-
-		
-		
-## 安装软件
-
-
-[dr.unarchiver](https://itunes.apple.com/cn/app/dr.-unarchiver-rar-zip-archive/id1127253508?l=en&mt=12):解压工具<br>
-[dr.cleaner](https://itunes.apple.com/cn/app/dr.cleaner-qing-li-ci-pan/id921458519?mt=12)：清理工具<br>
-[licecap](http://www.cockos.com/licecap/):录制视频工具<br>
-[Android File Transfer](https://www.android.com/filetransfer/):android与mac传输文件<br>
-[Aria2GUI](https://github.com/yangshun1029/aria2gui):Aria2图形化界面，配合[BaiduExporter使用](https://github.com/acgotaku/BaiduExporter)<br>
-[skim](http://skim-app.sourceforge.net/):阅读PDF<br>
-[touchswitcher](https://hazeover.com/touchswitcher.html?ref=producthunt):自定义touchbar<br>
-[macdown](http://macdown.uranusjr.com/):编辑MD文件<br>
-[iina](https://github.com/lhc70000/iina):视频播放器<br>
-[Duet](https://www.duetdisplay.com/cn/):利用ipad<br>
-[iStat Menus](https://bjango.com/mac/istatmenus/):查看系统信息<br>
-[WebStorm](http://www.jetbrains.com/webstorm/)<br>
-[IDEA](http://www.jetbrains.com/idea/)<br>
-[AndroidStudio](https://developer.android.com/studio/index.html?hl=zh-cn)<br>
-[mumu](http://mumu.163.com/):网易出品的android模拟器,非常不错<br>
-[charles](https://www.charlesproxy.com/):抓包神器<br>
-[Chrome](https://www.google.com/chrome/browser/desktop/index.html)<br>
-[qq](https://im.qq.com/download/):QQ<br>
-[Wechat](https://weixin.qq.com/):微信<br>
-~~[shadowsocks](https://github.com/shadowsocks):vps<br>~~
-[ShadowsocksX-NG](https://github.com/shadowsocks/ShadowsocksX-NG)上面那个好久没更新了，这个直接就支持kcp，不过大了很多:<br>
-[Mac BiliBili客户端](https://github.com/typcn/bilibili-mac-client):bilibili客户端<br>
-[Kindle](https://itunes.apple.com/us/app/kindle/id405399194?mt=12):kindle<br>
-[wangyiMusci](https://music.163.com/):网易云音乐<br>
-[Evernote](https://www.yinxiang.com/):印象笔记<br>
-[kcptun_xclient](https://github.com/dfdragon/kcptun_xclient):kcptun Mac客户端<br>
-[xunlei](http://www.xunlei.com/):迅雷<br>
-[steam](http://store.steampowered.com/):steam<br>
-[calibre](https://calibre-ebook.com/):转换Kindle文件格式<br>
-[youdao](https://www.youdao.com/):有道词典<br>
-[Dash](https://kapeli.com/dash):查阅Api<br>
-[sougou]():搜狗输入法<br>
-
-
-
-
-
-
-
