@@ -16,27 +16,28 @@ tags:
 
 	brew
 
-        cmatrix		gradle		node		readline	sqlite
-        cowsay		icu4c		openssl		repo		thefuck
-        fortune		libyaml		openssl@1.1	ruby		wget
-        gdbm		maven		python3		sl		xz
+	cmatrix		gradle		openssl		ruby		xz
+	cowsay		icu4c		openssl@1.1	sl
+	fortune		libyaml		python3		sqlite
+	gdbm		maven		readline	thefuck
+	go		    node		repo		wget
 	
 	brew cask 
 
-        alfred                     gifrocket                  qq
-        android-file-transfer      go2shell                   shadowsocksx-ng
-        android-studio             google-chrome              skim
-        aria2gui                   iina                       sogouinput
-        baidunetdisk               intellij-idea              steam
-        battle-net                 istat-menus                sublime-text
-        bilibili                   iterm2                     thunder
-        calibre                    java                       touch-bar-pong
-        charles                    jd-gui                     touch-bar-simulator
-        datagrip                   kindle                     touchswitcher
-        dbeaver-enterprise         licecap                    webstorm
-        duet                       macdown                    youdaodict
-        electronic-wechat          neteasemusic
-        evernote                 
+	alfred                     gifrocket                  shadowsocksx-ng
+	android-file-transfer      go2shell                   skim
+	android-studio             google-chrome              sogouinput
+	aria2gui                   iina                       steam
+	baidunetdisk               intellij-idea              sublime-text
+	battle-net                 istat-menus                thunder
+	bilibili                   iterm2                     touch-bar-pong
+	calibre                    java                       touch-bar-simulator
+	charles                    jd-gui                     touchswitcher
+	datagrip                   kindle                     virtualbox
+	dbeaver-enterprise         licecap                    webstorm
+	duet                       macdown                    youdaodict
+	electronic-wechat          neteasemusic
+	evernote                   qq                
 
 ## 准备：
 
@@ -47,6 +48,8 @@ tags:
 tips: 硬盘可分出来 10G 左右，做成系统盘。
 
 #### 做系统盘
+
+* 17.9.26 : 新版本MacOs发布
 
 App Store 搜索 ` macOS Sierra ` 下载完成之后退出，插上U盘
 
@@ -90,8 +93,6 @@ simple:
 
 
 #### brew
-
-~~[GitHubAddress](https://github.com/Homebrew/legacy-homebrew)~~ ：被废弃
 
 [homebrew-core](https://github.com/Homebrew/homebrew-core)
 
@@ -139,7 +140,7 @@ simple:
 	brew uninstall wget
 	
 	搜索
-	brew search git  //模糊搜索 brew 支持的软件。如果不加软件名，会列出所有它支持的软件。
+	brew search git  
 	
 	更新 brew
 	brew update 
@@ -210,7 +211,7 @@ brew cask 是在 brew 的基础上一个增强的工具，用来安装Mac上的G
 
 可选另外一种：[fish-shell](https://github.com/fish-shell/fish-shell)
 
-zsh替代bash后，以前~/.bash_profile的配置应该写入~/.zshrc中
+zsh替代bash后，以前`~/.bash_profile`的配置应该写入`~/.zshrc`中
 
 系统自带了 zsh,但是不是最新版的，如果想使用最新版可自行下载：
 
@@ -229,10 +230,15 @@ zsh替代bash后，以前~/.bash_profile的配置应该写入~/.zshrc中
 
 * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
+
+> zsh复杂的配置使人望而却步，所以 oh-my-zsh 应运而生..
+
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+		or
 
-zsh复杂的配置使人望而却步，所以 oh-my-zsh 应运而生..
+		sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
 
 比较好的字体：[FiraCode](https://github.com/tonsky/FiraCode)
 
@@ -249,12 +255,12 @@ zsh复杂的配置使人望而却步，所以 oh-my-zsh 应运而生..
 
 mac终端默认不走代理，例如git clone 的时候就算开vpn 也会很慢，开启代理方式如下
 
-以shadowsocksx为例，添加在 ~/.bash_profile 或者 ~/.zshrc：
+以shadowsocksx为例，添加在 `~/.bash_profile` 或者 `~/.zshrc`：
 
 	alias openvpn="export ALL_PROXY=socks5://127.0.0.1:1080" 
 	alias offvpn="unset ALL_PROXY"
 
-以后想打开代理  直接输入 openvpen,关闭输入 offvpn 即可
+以后想打开代理  直接输入 `openvpen`,关闭输入 `offvpn` 即可
 
 
 或者使用 `brew install proxychains-ng` ,安装好之后在 `/usr/local/etc/proxychains.conf` 下，
@@ -330,13 +336,14 @@ repo由一系列python脚本组成
 XCODE自带
 
 
-git config --global user.name "user.name"
-git config --global user.email "user.email"
+	git config --global user.name "user.name"
+	git config --global user.email "user.email"
+
 cd ~ 
 
 ssh-keygen：
 
-* 用shadowsocks加速 git clone
+* 用`shadowsocks`加速 `git clone`
 
 
 		git config --global http.proxy 'socks5://127.0.0.1:1080' 
@@ -426,8 +433,21 @@ gradle可以直接使用`brew`安装
 以后链接`VPS`直接在命令行输入`ssh name`，就会提醒你输入密码链接
 
 
-
-
 #### OS X  NTFS 移动硬盘中文件呈灰白色且无法读取
 
 进入`Terminal`，在命令行输入 `xattr -d com.apple.FinderInfo  文件路径` 
+
+#### OS X 读写 NTFS
+
+> 其实可以借助软件，这里再介绍一种可行的方法
+
+在`etc`目录下新建一个名为`fstab`的文件
+
+	LABEL=DISK_NAME none ntfs rw,auto,nobrowse
+
+	or
+
+	UUID=DISK_UUID  none ntfs rw,auto,nobrowse
+
+然后重新拔插，在`Volumes`可以找到该硬盘
+
