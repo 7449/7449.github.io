@@ -59,7 +59,7 @@ class DetailActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener
     }
 
     private fun startNetWorkRequest(url: String) {
-        RxJsoupNetWork.getInstance().getApi(url, object : RxJsoupNetWorkListener<NetModel> {
+        RxJsoupNetWork.getInstance().getApi(javaClass.simpleName, url, object : RxJsoupNetWorkListener<NetModel> {
             override fun onNetWorkSuccess(t: NetModel) = netWorkSuccess(t)
             override fun onNetWorkStart() = showProgress()
             override fun onNetWorkError(e: Throwable) {
@@ -76,7 +76,7 @@ class DetailActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener
         if (webView != null) {
             webView!!.destroy()
         }
-        RxJsoupNetWork.getInstance().cancel(RxJsoupNetWork.TAG)
+        RxJsoupNetWork.getInstance().cancel(javaClass.simpleName)
         super.onDestroy()
     }
 }

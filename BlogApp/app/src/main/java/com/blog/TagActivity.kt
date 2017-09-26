@@ -32,7 +32,6 @@ class TagActivity : AppCompatActivity(),
         OnItemClickListener<TagModel> {
 
 
-    private val TYPE_LINE = 1
     private var recyclerView: LoadMoreRecyclerView? = null
     private var refreshLayout: SwipeRefreshLayout? = null
     private var mAdapter: MultiAdapter<TagModel>? = null
@@ -64,7 +63,7 @@ class TagActivity : AppCompatActivity(),
     }
 
     override fun onRefresh() {
-        startNetWorkRequest(Net.BASE_URL + "tags")
+        startNetWorkRequest(Net.BASE_URL + "tags/")
     }
 
     override fun showProgress() {
@@ -84,7 +83,7 @@ class TagActivity : AppCompatActivity(),
     }
 
     override fun multiLayoutId(viewItemType: Int): Int = when (viewItemType) {
-        TYPE_LINE -> R.layout.item_tag_line
+        1 -> R.layout.item_tag_line
         else -> R.layout.item_tag_item
     }
 
@@ -96,7 +95,7 @@ class TagActivity : AppCompatActivity(),
                 holder.setTextView(R.id.item_tag_title_item, t.title)
                 holder.setTextView(R.id.item_tag_little_title, t.littleTitle)
             }
-            TYPE_LINE -> {
+            1 -> {
                 holder.setTextView(R.id.item_tag_title, t.littleTitle)
             }
         }
@@ -112,13 +111,8 @@ class TagActivity : AppCompatActivity(),
 
     override fun getStaggeredGridLayoutManagerFullSpan(itemViewType: Int): Boolean = itemViewType != MultiCallBack.TYPE_ITEM
 
-    override fun onDestroy() {
-        RxJsoupNetWork.getInstance().cancelAll()
-        super.onDestroy()
-    }
-
     private fun startNetWorkRequest(url: String) {
-        RxJsoupNetWork.getInstance().getApi(url, object : RxJsoupNetWorkListener<List<TagModel>> {
+        RxJsoupNetWork.getInstance().getApi(javaClass.simpleName, url, object : RxJsoupNetWorkListener<List<TagModel>> {
             override fun onNetWorkSuccess(t: List<TagModel>) = netWorkSuccess(t)
             override fun onNetWorkStart() = showProgress()
             override fun onNetWorkError(e: Throwable) {
@@ -129,5 +123,10 @@ class TagActivity : AppCompatActivity(),
             override fun onNetWorkComplete() = hideProgress()
             override fun getT(document: Document): List<TagModel> = BlogJsoupManager().getTag(document)
         })
+    }
+
+    override fun onDestroy() {
+        RxJsoupNetWork.getInstance().cancel(javaClass.simpleName)
+        super.onDestroy()
     }
 }

@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun startNetWorkRequest(url: String) {
-        RxJsoupNetWork.getInstance().getApi(url, object : RxJsoupNetWorkListener<List<NetModel>> {
+        RxJsoupNetWork.getInstance().getApi(javaClass.simpleName, url, object : RxJsoupNetWorkListener<List<NetModel>> {
             override fun onNetWorkSuccess(t: List<NetModel>) = netWorkSuccess(t)
             override fun onNetWorkStart() = showProgress()
             override fun onNetWorkError(e: Throwable) {
@@ -118,8 +118,8 @@ class MainActivity : AppCompatActivity(),
 
 
     override fun onDestroy() {
-        RxJsoupNetWork.getInstance().cancelAll()
         super.onDestroy()
+        RxJsoupNetWork.getInstance().cancelAll()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
