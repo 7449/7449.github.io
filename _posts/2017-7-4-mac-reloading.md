@@ -16,28 +16,28 @@ tags:
 
 	brew
 
-	cmatrix		gradle		openssl		ruby		xz
+	cmatrix		go		node		repo		wget
+	cocoapods	gradle		openssl		ruby		xz
 	cowsay		icu4c		openssl@1.1	sl
 	fortune		libyaml		python3		sqlite
 	gdbm		maven		readline	thefuck
-	go		    node		repo		wget
 	
 	brew cask 
 
-	alfred                     gifrocket                  shadowsocksx-ng
-	android-file-transfer      go2shell                   skim
-	android-studio             google-chrome              sogouinput
-	aria2gui                   iina                       steam
-	baidunetdisk               intellij-idea              sublime-text
-	battle-net                 istat-menus                thunder
-	bilibili                   iterm2                     touch-bar-pong
-	calibre                    java                       touch-bar-simulator
-	charles                    jd-gui                     touchswitcher
-	datagrip                   kindle                     virtualbox
-	dbeaver-enterprise         licecap                    webstorm
-	duet                       macdown                    youdaodict
-	electronic-wechat          neteasemusic
-	evernote                   qq                
+	alfred                     gifrocket                  qq
+	android-file-transfer      go2shell                   shadowsocksx-ng
+	android-studio             google-chrome              skim
+	aria2gui                   iina                       sogouinput
+	baidunetdisk               intellij-idea              steam
+	battle-net                 istat-menus                sublime-text
+	bilibili                   iterm2                     thunder
+	calibre                    java                       touch-bar-pong
+	charles                    jd-gui                     touch-bar-simulator
+	datagrip                   kindle                     touchswitcher
+	dbeaver-enterprise         licecap                    vmware-fusion8
+	duet                       macdown                    webstorm
+	electronic-wechat          neteasemusic               youdaodict
+	evernote                   pphelper            
 
 ## 准备：
 
