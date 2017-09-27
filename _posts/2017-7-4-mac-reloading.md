@@ -200,7 +200,7 @@ brew 自动建立的 formula 已经包含了基本的configure和make install命
 
 brew cask 是在 brew 的基础上一个增强的工具，用来安装Mac上的Gui程序应用包（.dmg/.pkg）, 比如qq。
 
-它先下载解压到统一的目录中（/opt/homebrew-cask/Caskroom），省掉了自己去下载、解压、安装，
+它先下载解压到统一的目录中（Library/Caches/Homebrew/Cask），省掉了自己去下载、解压、安装，
 
 同样，卸载相当容易与干净。
 
