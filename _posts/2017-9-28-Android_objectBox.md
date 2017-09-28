@@ -97,7 +97,7 @@ tags:
 
 同步一下，等待同步完成之后项目就已经成功的依赖了`objectBox`
 
-如果需要`RxJava`的支持，则需要添加
+如果需要`Rx`的支持，则需要添加
 
     compile "io.objectbox:objectbox-daocompat:1.0.1"
 
@@ -186,6 +186,9 @@ tags:
 
 首先要获取`Box`对象
 
+
+> 主要的操作都在`Box`类里面，而且代码看起来非常清晰，建议通过阅读来了解如何增删改查
+
 	BoxStore boxStore = ObjectBoxUtils.getBoxStore();
 	objectBoxEntityBox = boxStore.boxFor(ObjectBoxEntity.class);
 
@@ -204,8 +207,14 @@ tags:
 
 * 查：
 
+> 可以直接返回全部数据，也可以根据条件插件，分页
+
 	objectBoxEntityBox.getAll();
 	objectBoxEntityBox.get();
+
+	QueryBuilder<ObjectBoxEntity> query = objectBoxEntityBox.query();
+    Query<ObjectBoxEntity> build = query.order(ObjectBoxEntity_.name).build();
+    build.find();
 
 ## 多表
 
@@ -215,5 +224,55 @@ tags:
 
 ## Rx 
 
-太晚了，等早上有空了再总结一下，否则要迟到了...
+~~太晚了，等早上有空了再总结一下，否则要迟到了...~~
+
+        Query<ObjectBoxEntity> build = objectBoxEntityBox.query().build();
+        DataSubscription observer = 
+        build.subscribe()
+                .on(AndroidScheduler.mainThread())
+                .onError(new ErrorObserver() {
+                    @Override
+                    public void onError(@NonNull Throwable th) {
+
+                    }
+                })
+                .observer(new DataObserver<List<ObjectBoxEntity>>() {
+                    @Override
+                    public void onData(@NonNull List<ObjectBoxEntity> data) {
+                    }
+                });
+
+
+        if (observer != null && !observer.isCanceled()) {
+            observer.cancel();
+        }
+
+## Dao
+
+在 `build.gradle` 添加
+
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ['objectbox.daoCompat': 'true']
+            }
+        }
+    }
+
+并且要依赖
+
+    compile "io.objectbox:objectbox-daocompat:1.0.1"
+
+重新`build`一下项目就会发现生成了熟悉的`Dao`类
+
+
+## 总结
+
+写个Demo,感受就是像，操作数据库的动作和`greenDao`很像，几乎都一样，相信如果熟悉`greenDao`的人会很容易上手`ObjectBox`
+
+但是目前还处于开发阶段，不建议现在就加入项目中，如果是自己写的小Demo，可以用用
+
+如果想正式应用的话，建议再等一段时间.
+
+
 
