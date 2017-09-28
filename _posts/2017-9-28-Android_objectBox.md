@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "greenrobot objectBox"
+title:      "ObjectBox,目前Android上速度最快的数据库操作库"
 subtitle:   "从greenDao转objectBox"
 date:       2017-9-28
 author:     "y"
@@ -270,9 +270,7 @@ tags:
 
 写个Demo,感受就是像，操作数据库的动作和`greenDao`很像，几乎都一样，相信如果熟悉`greenDao`的人会很容易上手`ObjectBox`
 
-但是目前还处于开发阶段，不建议现在就加入项目中，如果是自己写的小Demo，可以用用
-
-如果想正式应用的话，建议再等一段时间.
+目前第一个正式版已经出来了，如果想正式应用的话，看下github的`lssues`，如果没有涉及到自己的相关问题，可以改为`ObjectBox`，反正我决定就他了！！
 
 
 
