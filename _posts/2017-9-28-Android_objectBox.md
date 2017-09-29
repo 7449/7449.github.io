@@ -65,6 +65,8 @@ tags:
 
 [https://github.com/7449/AndroidDevelop/tree/master/objectBox](https://github.com/7449/AndroidDevelop/tree/master/objectBox)
 
+[https://github.com/7449/AndroidDevelop/tree/master/objectBoxMultiTable](https://github.com/7449/AndroidDevelop/tree/master/objectBoxMultiTable)
+
 ## 准备工作
 
 开始着手第一个`ObjectBox`Demo，激动...
@@ -158,6 +160,8 @@ tags:
 
 这里需要注意的是`greenDao3.x`是自动生成`get` `set`以及构造方法的，但是作者在当前版本使用中发现，相关方法并没有自动生成，需要使用者手动写
 
+或者将所有字段设置为`public`即可，`objectbox`就可以识别了
+
 由于`Entity`过于简单。因此生成的文件也非常简单，容易阅读，这里建议初次使用的过程中可以通过阅读自动生成的代码来增加熟悉感
 
 主要操作就在自动生成的`MyObjectBox`类
@@ -218,9 +222,36 @@ tags:
 
 ## 多表
 
-其实和`greenDao`操作差不多，具体的可以看下我之前的Blog
+* 多表目前作者发现操作时不能生成`Dao`，否则会报错
 
-[Android_greenDaoCRUD](https://7449.github.io/2016/10/08/Android_greenDaoCRUD/)
+	Error:[ObjectBox] Code generation failed: The following has evaluated to null or missing:
+
+
+多表和`greenDao`，操作还是有些变化，不通过注解，而是泛型去生成
+
+例如：
+
+	@Entity
+	public class SchoolEntity {
+
+	    @Id
+	    long id;
+
+	    ToMany<StudentEntity> student;
+	}
+
+
+	@Entity
+	public class StudentEntity {
+
+	    @Id
+	    long id;
+	    String name;
+	}
+
+如果相互关联可以使用`Backlink`注解
+
+相关代码也已提交到`GitHub`上
 
 ## Rx 
 
@@ -263,7 +294,9 @@ tags:
 
     compile "io.objectbox:objectbox-daocompat:1.0.1"
 
-重新`build`一下项目就会发现生成了熟悉的`Dao`类
+重新`build`一下项目就会发现生成了熟悉的`Dao`类，这里要注意的是
+
+目前为止，如果使用`Dao`操作数据表，则需要生成`get` `set` 方法，生成的类里面需要使用
 
 
 ## 总结
@@ -271,6 +304,9 @@ tags:
 写个Demo,感受就是像，操作数据库的动作和`greenDao`很像，几乎都一样，相信如果熟悉`greenDao`的人会很容易上手`ObjectBox`
 
 目前第一个正式版已经出来了，如果想正式应用的话，看下github的`lssues`，如果没有涉及到自己的相关问题，可以改为`ObjectBox`，反正我决定就他了！！
+
+
+
 
 
 
