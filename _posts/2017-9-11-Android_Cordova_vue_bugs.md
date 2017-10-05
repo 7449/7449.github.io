@@ -99,3 +99,27 @@ tags:
         pluginResult.setKeepCallback(true);
         simpleMap.get(event.callbackId).sendPluginResult(pluginResult);
     }
+    
+    
+## 插件初始化
+
+作者在使用插件的时候，发现如果第一次打开，走完整的流程，插件调用是没有任何问题的，但是如果在最近任务里面划掉app之后，再重新打开
+
+这个时候App已经存在数据了，所以会直接进入页面，但是由于插件初始化需要一定的时间，如果进来就立即调用插件，会提示找不到这个插件
+
+解决办法为：在插件初始化成功之后再初始化VUE相关的东西，插件初始化成功会触发`deviceready`，这个时候再初始化app，就没有这个问题了
+
+示例代码：
+
+    document.addEventListener('deviceready', () => {
+        new Vue({
+            el: '#app',
+            router,
+            store,
+            template: '<App/>',
+            data: {
+              eventBus: new Vue(),
+            },
+            components: {App}
+          })
+    })
