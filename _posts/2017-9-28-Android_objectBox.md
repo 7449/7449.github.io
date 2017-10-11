@@ -222,10 +222,13 @@ tags:
 
 ## 多表
 
-* 多表目前作者发现操作时不能生成`Dao`，否则会报错
+ ~~多表目前作者发现操作时不能生成`Dao`，否则会报错~~
 
 	Error:[ObjectBox] Code generation failed: The following has evaluated to null or missing:
 
+作者提了一个[Issues](https://github.com/objectbox/objectbox-java/issues/197)
+
+开发者的回答是会在`1.1.1`版本修复此问题
 
 多表和`greenDao`，操作还是有些变化，不通过注解，而是泛型去生成
 
