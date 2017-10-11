@@ -243,6 +243,12 @@ tags:
 [easypermissions](https://github.com/googlesamples/easypermissions): google 推出的 简化 6.0 权限请求框架<br>
 
 
+#### 解压缩
+
+[zip4j](http://www.lingala.net/zip4j/)
+
+[7z](https://github.com/hzy3774/AndroidUn7zip)
+
 #### ...
 
 [MVVMLight](https://github.com/Kelin-Hong/MVVMLight):MVVM示例<br>
