@@ -177,7 +177,12 @@ tags:
 
 	<preference name="BackgroundColor" value="0xff0000ff"/>
 	
-	
+#### 超链接
+
+`cordova`默认点击超链接是跳转系统浏览器打开网页的，如果需要在当前app里面的打开网页，需要在`config.xml`里面添加
+
+	<allow-navigation href="http://*/*" />
+
 暂时就记下这么多吧，以后用到了再更新。
 
 
