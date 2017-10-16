@@ -11,6 +11,65 @@ tags:
     - android
 ---
 
+
+## 获取缓存路径
+
+    public static File getDiskCacheDir(Context context, String fileName) {
+        String cachePath;
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) || !Environment.isExternalStorageRemovable()) {
+            File externalCacheDir = context.getExternalCacheDir();
+            assert externalCacheDir != null;
+            cachePath = externalCacheDir.getPath();
+        } else {
+            cachePath = context.getCacheDir().getPath();
+        }
+        return new File(cachePath + File.separator + fileName);
+    }
+    
+## content to path
+
+    public static String contentToFilePath(Context context, Uri uri) {
+        if (null == uri) {
+            return null;
+        }
+        String scheme = uri.getScheme();
+        String data = null;
+        if (scheme == null || ContentResolver.SCHEME_FILE.equals(scheme)) {
+            data = uri.getPath();
+        } else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
+            Cursor cursor = context.getContentResolver().query(uri, new String[]{MediaStore.Images.ImageColumns.DATA}, null, null, null);
+            if (cursor != null) {
+                if (cursor.moveToFirst()) {
+                    int index = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+                    if (index > -1) {
+                        data = cursor.getString(index);
+                    }
+                }
+                cursor.close();
+            }
+        }
+        return data;
+    }
+
+## 图片转Base64
+
+    public static String bitmapToBase64(String path) {
+        Bitmap bitmap = BitmapFactory.decodeFile(path);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 50, byteArrayOutputStream);
+        return Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT);
+    }
+
+
+## 获取手机剩余空间
+
+
+    public static long storageSize() {
+        return Environment.getExternalStorageDirectory().getUsableSpace();
+    }
+
+
+
 ## DialogFragment设置背景透明
 
 > onCreateView
