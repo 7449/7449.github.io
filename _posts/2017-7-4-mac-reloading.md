@@ -16,13 +16,29 @@ tags:
 
 	brew
 
-	cmatrix		go		node		repo		wget
-	cocoapods	gradle		openssl		ruby		xz
-	cowsay		icu4c		openssl@1.1	sl
-	fortune		libyaml		python3		sqlite
-	gdbm		maven		readline	thefuck
+	cmatrix		go		node		readline	thefuck
+	cocoapods	gradle		openssl		repo		wget
+	cowsay		icu4c		openssl@1.1	ruby		xz
+	fortune		libyaml		pkg-config	sl
+	gdbm		maven		python3		sqlite
 	
 	brew cask 
+
+	alfred                     google-chrome              qq
+	android-file-transfer      iina                       shadowsocksx-ng
+	android-studio             intellij-idea              skim
+	aria2gui                   istat-menus                sogouinput
+	baidunetdisk               iterm2                     steam
+	battle-net                 java                       sublime-text
+	calibre                    jd-gui                     thunder
+	charles                    kindle                     touch-bar-pong
+	dbeaver-enterprise         licecap                    touchswitcher
+	electronic-wechat          macdown                    webstorm
+	evernote                   neteasemusic               youdaodict
+	go2shell                   pphelper          
+	
+	
+#### old cask app
 
 	alfred                     gifrocket                  qq
 	android-file-transfer      go2shell                   shadowsocksx-ng
@@ -37,7 +53,7 @@ tags:
 	dbeaver-enterprise         licecap                    vmware-fusion8
 	duet                       macdown                    webstorm
 	electronic-wechat          neteasemusic               youdaodict
-	evernote                   pphelper            
+	evernote                   pphelper    
 
 ## 准备：
 
@@ -51,18 +67,27 @@ tips: 硬盘可分出来 10G 左右，做成系统盘。
 
 * 17.9.26 : 新版本MacOs发布
 
-App Store 搜索 ` macOS Sierra ` 下载完成之后退出，插上U盘
+App Store 搜索 ` macOS High Sierra ` 下载完成之后退出，插上U盘
 
 
 以下是命令的基本语法。
 
 将 volumepath 替换为USB闪存驱动器或其他宗卷的相应路径，并将 installerpath 替换为“安装 OS X”应用的相应路径。
 
-示例：
+High Sierra 的语法：
+
+		createinstallmedia --volume volumepath
+
+Sierra 和更早版本的语法：：
 
 		createinstallmedia --volume volumepath --applicationpath installerpath
 
-simple:
+
+High Sierra 的示例：
+
+	sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/diskName
+
+Sierra 的示例：:
 
 		sudo /Applications/Install\ macOS\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/diskName --applicationpath /Applications/Install\ macOS\ Sierra.app
 
