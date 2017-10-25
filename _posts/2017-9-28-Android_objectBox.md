@@ -220,15 +220,49 @@ tags:
     Query<ObjectBoxEntity> build = query.order(ObjectBoxEntity_.name).build();
     build.find();
 
+## Dao
+
+在 `build.gradle` 添加
+
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ['objectbox.daoCompat': 'true']
+            }
+        }
+    }
+
+并且要依赖
+
+    compile "io.objectbox:objectbox-daocompat:1.0.1"
+
+    或者
+
+    compile "org.greenrobot:objectbox-daocompat:1.1.0"
+
+
+
+截止`1.0.1`版本。如果要生成`Dao`，`io.objectbox:objectbox-daocompat` 使用什么版本，`objectBox`也必须要使用什么版本，否则会因为包名的问题找不到`AbstractDao`
+
+因为在`1.1.0`版本的时候作者发现`objectbox`生成的`dao`找的是`org.greenrobot.daocompat.AbstractDao`而不是`io.objectbox.daocompat.AbstractDao`,但是`io.objectbox`并没有更新到`1.1.0`
+
+
+重新`build`一下项目就会发现生成了熟悉的`Dao`类，这里要注意的是
+
+目前为止，如果使用`Dao`操作数据表，则需要生成`get` `set` 方法，生成的类里面需要使用
+
+
 ## 多表
 
- ~~多表目前作者发现操作时不能生成`Dao`，否则会报错~~
+> 此问题已得到修复
 
-	Error:[ObjectBox] Code generation failed: The following has evaluated to null or missing:
+~~多表目前作者发现操作时不能生成`Dao`，否则会报错~~
 
-作者提了一个[Issues](https://github.com/objectbox/objectbox-java/issues/197)
+~~Error:[ObjectBox] Code generation failed: The following has evaluated to null or missing:~~
 
-开发者的回答是会在`1.1.1`版本修复此问题
+~~作者提了一个[Issues](https://github.com/objectbox/objectbox-java/issues/197)~~
+
+~~开发者的回答是会在`1.1.1`版本修复此问题~~
 
 多表和`greenDao`，操作还是有些变化，不通过注解，而是泛型去生成
 
@@ -280,26 +314,6 @@ tags:
         if (observer != null && !observer.isCanceled()) {
             observer.cancel();
         }
-
-## Dao
-
-在 `build.gradle` 添加
-
-    defaultConfig {
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = ['objectbox.daoCompat': 'true']
-            }
-        }
-    }
-
-并且要依赖
-
-    compile "io.objectbox:objectbox-daocompat:1.0.1"
-
-重新`build`一下项目就会发现生成了熟悉的`Dao`类，这里要注意的是
-
-目前为止，如果使用`Dao`操作数据表，则需要生成`get` `set` 方法，生成的类里面需要使用
 
 
 ## 总结
