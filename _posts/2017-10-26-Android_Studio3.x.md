@@ -59,6 +59,23 @@ tags:
         <item name="android:windowExitAnimation">@anim/bottomview_anim_exit</item>
     </style>
     
+#### findViewById
+
+在 api 26之后，源码进行了改变，如果使用Kotlin，会报错
+
+	Type inference failed: Not enough information to infer parameter T in fun <T : View!> findViewById(p0: Int): T!
+	Please specify it explicitly.
+	
+主要是因为返回的泛型是不明确的，kotlin不能推断出类型
+
+	findViewById(id)
+	
+	可改为
+	
+	findViewById<View>(id)
+
+即可编译通过
+    
 ## 改进
 
 gradle升级到`3.0.0`
