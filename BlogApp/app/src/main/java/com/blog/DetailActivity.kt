@@ -17,18 +17,18 @@ import org.jsoup.nodes.Document
 class DetailActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener, NetView<NetModel> {
 
 
-    private var webView: WebView? = null
-    private var refreshLayout: SwipeRefreshLayout? = null
+    private lateinit var webView: WebView
+    private lateinit var refreshLayout: SwipeRefreshLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         webView = findViewById(R.id.webView) as WebView
         refreshLayout = findViewById(R.id.refresh_layout) as SwipeRefreshLayout
-        refreshLayout!!.isEnabled = false
+        refreshLayout.isEnabled = false
         title = intent.getStringExtra("title")
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        refreshLayout!!.post { this.onRefresh() }
+        refreshLayout.post { this.onRefresh() }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -43,15 +43,15 @@ class DetailActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener
     }
 
     override fun showProgress() {
-        refreshLayout!!.isRefreshing = true
+        refreshLayout.isRefreshing = true
     }
 
     override fun hideProgress() {
-        refreshLayout!!.isRefreshing = false
+        refreshLayout.isRefreshing = false
     }
 
     override fun netWorkSuccess(model: NetModel) {
-        webView!!.loadDataWithBaseURL(null, Html.getHtml(model.title), Html.mimeType, Html.coding, null)
+        webView.loadDataWithBaseURL(null, Html.getHtml(model.title), Html.mimeType, Html.coding, null)
     }
 
     override fun netWorkError(error: Throwable) {
@@ -59,6 +59,7 @@ class DetailActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener
     }
 
     private fun startNetWorkRequest(url: String) {
+        RxJsoupNetWork.getInstance().cancel(javaClass.simpleName)
         RxJsoupNetWork.getInstance().getApi(javaClass.simpleName, url, object : RxJsoupNetWorkListener<NetModel> {
             override fun onNetWorkSuccess(t: NetModel) = netWorkSuccess(t)
             override fun onNetWorkStart() = showProgress()
@@ -73,9 +74,7 @@ class DetailActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener
     }
 
     override fun onDestroy() {
-        if (webView != null) {
-            webView!!.destroy()
-        }
+        webView.destroy()
         RxJsoupNetWork.getInstance().cancel(javaClass.simpleName)
         super.onDestroy()
     }

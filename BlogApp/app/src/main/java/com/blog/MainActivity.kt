@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity(),
         OnXBindListener<NetModel> {
 
 
-    private var recyclerView: LoadMoreRecyclerView? = null
-    private var refreshLayout: SwipeRefreshLayout? = null
+    private lateinit var recyclerView: LoadMoreRecyclerView
+    private lateinit var refreshLayout: SwipeRefreshLayout
     private var page: Int = 1
 
     private var mAdapter: XRecyclerViewAdapter<NetModel>? = null
@@ -44,22 +44,22 @@ class MainActivity : AppCompatActivity(),
         refreshLayout = findViewById(R.id.refresh_layout) as SwipeRefreshLayout
 
         mAdapter = XRecyclerViewAdapter()
-        recyclerView!!.setHasFixedSize(true)
-        recyclerView!!.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
-        recyclerView!!.setLoadingMore(object : LoadMoreRecyclerView.LoadMoreListener {
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.setLoadingMore(object : LoadMoreRecyclerView.LoadMoreListener {
             override fun onLoadMore() {
-                if (refreshLayout!!.isRefreshing) return
+                if (refreshLayout.isRefreshing) return
                 startNetWorkRequest(Net.BASE_URL + "/page" + page)
             }
         })
-        recyclerView!!.adapter =
+        recyclerView.adapter =
                 mAdapter!!
-                        .addRecyclerView(recyclerView!!)
+                        .addRecyclerView(recyclerView)
                         .setLayoutId(R.layout.item_list_blog)
                         .onXBind(this)
                         .setOnItemClickListener(this)
-        refreshLayout!!.setOnRefreshListener(this)
-        refreshLayout!!.post { this.onRefresh() }
+        refreshLayout.setOnRefreshListener(this)
+        refreshLayout.post { this.onRefresh() }
     }
 
     override fun onRefresh() {
@@ -69,11 +69,11 @@ class MainActivity : AppCompatActivity(),
 
 
     override fun showProgress() {
-        refreshLayout!!.isRefreshing = true
+        refreshLayout.isRefreshing = true
     }
 
     override fun hideProgress() {
-        refreshLayout!!.isRefreshing = false
+        refreshLayout.isRefreshing = false
     }
 
     override fun netWorkSuccess(model: List<NetModel>) {
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun netWorkError(error: Throwable) {
-        Snackbar.make(refreshLayout!!, error.message.toString(), Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(refreshLayout, error.message.toString(), Snackbar.LENGTH_SHORT).show()
     }
 
 
@@ -103,6 +103,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun startNetWorkRequest(url: String) {
+        RxJsoupNetWork.getInstance().cancel(javaClass.simpleName)
         RxJsoupNetWork.getInstance().getApi(javaClass.simpleName, url, object : RxJsoupNetWorkListener<List<NetModel>> {
             override fun onNetWorkSuccess(t: List<NetModel>) = netWorkSuccess(t)
             override fun onNetWorkStart() = showProgress()
@@ -118,8 +119,8 @@ class MainActivity : AppCompatActivity(),
 
 
     override fun onDestroy() {
-        super.onDestroy()
         RxJsoupNetWork.getInstance().cancelAll()
+        super.onDestroy()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

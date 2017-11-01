@@ -32,9 +32,9 @@ class TagActivity : AppCompatActivity(),
         OnItemClickListener<TagModel> {
 
 
-    private var recyclerView: LoadMoreRecyclerView? = null
-    private var refreshLayout: SwipeRefreshLayout? = null
-    private var mAdapter: MultiAdapter<TagModel>? = null
+    private lateinit var recyclerView: LoadMoreRecyclerView
+    private lateinit var refreshLayout: SwipeRefreshLayout
+    private lateinit var mAdapter: MultiAdapter<TagModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,16 +43,16 @@ class TagActivity : AppCompatActivity(),
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         recyclerView = findViewById(R.id.recyclerView) as LoadMoreRecyclerView
         refreshLayout = findViewById(R.id.refresh_layout) as SwipeRefreshLayout
-        refreshLayout!!.isEnabled = false
-        recyclerView!!.setHasFixedSize(true)
-        recyclerView!!.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+        refreshLayout.isEnabled = false
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         val list = ArrayList<TagModel>()
         mAdapter = MultiAdapter(list)
-        recyclerView!!.adapter = mAdapter!!
+        recyclerView.adapter = mAdapter
                 .setXMultiAdapterListener(this)
                 .setOnItemClickListener(this)
-        refreshLayout!!.setOnRefreshListener(this)
-        refreshLayout!!.post { this.onRefresh() }
+        refreshLayout.setOnRefreshListener(this)
+        refreshLayout.post { this.onRefresh() }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -67,19 +67,19 @@ class TagActivity : AppCompatActivity(),
     }
 
     override fun showProgress() {
-        refreshLayout!!.isRefreshing = true
+        refreshLayout.isRefreshing = true
     }
 
     override fun hideProgress() {
-        refreshLayout!!.isRefreshing = false
+        refreshLayout.isRefreshing = false
     }
 
     override fun netWorkSuccess(model: List<TagModel>) {
-        mAdapter!!.addAll(model)
+        mAdapter.addAll(model)
     }
 
     override fun netWorkError(error: Throwable) {
-        Snackbar.make(refreshLayout!!, error.message.toString(), Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(refreshLayout, error.message.toString(), Snackbar.LENGTH_SHORT).show()
     }
 
     override fun multiLayoutId(viewItemType: Int): Int = when (viewItemType) {
@@ -112,6 +112,7 @@ class TagActivity : AppCompatActivity(),
     override fun getStaggeredGridLayoutManagerFullSpan(itemViewType: Int): Boolean = itemViewType != MultiCallBack.TYPE_ITEM
 
     private fun startNetWorkRequest(url: String) {
+        RxJsoupNetWork.getInstance().cancel(javaClass.simpleName)
         RxJsoupNetWork.getInstance().getApi(javaClass.simpleName, url, object : RxJsoupNetWorkListener<List<TagModel>> {
             override fun onNetWorkSuccess(t: List<TagModel>) = netWorkSuccess(t)
             override fun onNetWorkStart() = showProgress()
