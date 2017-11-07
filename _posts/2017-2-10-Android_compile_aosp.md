@@ -51,7 +51,7 @@ repo由一系列python脚本组成,通过调用Git命令实现对AOSP项目的�
 
 1.  首先安装[macports](https://www.macports.org/install.php)，可以选择安装包安装或者直接下载Macport，解压之后终端进入该目录，输入`./configure make sudo make install`进行安装
 
-2.  打开 `.base_profile` 文件，此文件在`你的用户名`文件夹下,例如我的用户名是`test`,那么这个文件就是`test`文件夹下，看里面是否有`export PATH="/opt/local/bin:/opt/local/sbin:$PATH"`,没有就加上,修改后在终端输入`source .bash_profile` 让其即时生效
+2.  打开 `.bash_profile` 文件，此文件在`你的用户名`文件夹下,例如我的用户名是`test`,那么这个文件就是`test`文件夹下，看里面是否有`export PATH="/opt/local/bin:/opt/local/sbin:$PATH"`,没有就加上,修改后在终端输入`source .bash_profile` 让其即时生效
 
 3.  打开终端，输入`POSIXLY_CORRECT=1 sudo port install gmake libsdl Git gnupg`,等自动下载完成后如果提示`gmake not found`,就输入`sudo port -d sync` 同步一下，如果提示`port not found`请检查环境变量
 
