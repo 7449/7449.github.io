@@ -311,6 +311,7 @@ tags:
 [Android-Session-Slides](https://github.com/MDCC2016/Android-Session-Slides):MDCC 2016  资料<br>
 [AndroidDecompiler](https://github.com/dirkvranckaert/AndroidDecompiler):反编译<br>
 [AndroidLibs](https://github.com/XXApple/AndroidLibs):Android 开源代码大全<br>
+[RapidView](https://github.com/Tencent/RapidView):用于开发Android客户端界面、逻辑以及功能的开发组件<br>
 
 #### sample
 
@@ -393,3 +394,10 @@ tags:
 
 [TouchBarDemoApp](https://github.com/bikkelbroeders/TouchBarDemoApp):包含了集中touchbar<br>
 [zsh-iterm-touchbar](https://github.com/iam4x/zsh-iterm-touchbar):zsh的touchbar加强版<br>
+
+
+## brew
+
+[brew](https://github.com/Homebrew/brew):<br>
+[homebrew-cask](https://github.com/caskroom/homebrew-cask):app安装<br>
+[homebrew-cask-upgrade](https://github.com/buo/homebrew-cask-upgrade):brew cask 升级<br>
