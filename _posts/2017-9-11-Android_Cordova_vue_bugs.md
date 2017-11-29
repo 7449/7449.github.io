@@ -123,3 +123,7 @@ tags:
             components: {App}
           })
     })
+    
+## tips
+
+ 在 vue 中， `img`标签可直接加载手机本地图片,`file://`开头即可
