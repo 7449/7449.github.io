@@ -11,6 +11,16 @@ tags:
     - android
 ---
 
+## base64
+
+> 这里使用 NO_WRAP 的问题是，使用默认的 DEFAULT 会出现转义问题，导致解析失败
+
+      public static String bitmapToBase64(String path) {
+          Bitmap bitmap = BitmapFactory.decodeFile(path);
+          ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+          bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
+          return TextUtils.concat("data:image/jpeg;base64,", Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.NO_WRAP));
+      }
 
 ## 获取缓存路径
 
