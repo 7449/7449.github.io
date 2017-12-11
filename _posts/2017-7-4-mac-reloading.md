@@ -89,7 +89,7 @@ High Sierra 的示例：
 
 Sierra 的示例：:
 
-		sudo /Applications/Install\ macOS\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/diskName --applicationpath /Applications/Install\ macOS\ Sierra.app
+	sudo /Applications/Install\ macOS\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/diskName --applicationpath /Applications/Install\ macOS\ Sierra.app
 
 
 * [创建可引导的 macOS 安装器](https://support.apple.com/zh-cn/HT201372)
@@ -113,6 +113,15 @@ Sierra 的示例：:
 	     KillAll Finder
 	隐藏：defaults write com.apple.finder AppleShowAllFiles -bool false;
 	     KillAll Finder
+
+## xcode
+
+> 如果不安装的话，安装`brew`的时候会自动安装命令行工具
+
+直接在AppStore安装即可，
+
+命令行工具：`xcode-select --install`
+
 
 ## 基础安装
 
@@ -232,6 +241,21 @@ brew cask 是在 brew 的基础上一个增强的工具，用来安装Mac上的G
 然后再软链到~/Applications/目录下, 非常方便，而且还包含很多在 AppStore 里没有的常用软件。
 
 
+####  brew cask upgrade
+
+* cask 没有升级功能，所以有人推出了 upgrade 用来升级 cask 安装的软件
+
+        brew tap buo/cask-upgrade
+
+
+Upgrade outdated apps:
+
+        brew cu
+
+Upgrade a specific app:
+
+        brew cu [CASK]
+
 #### zsh
 
 可选另外一种：[fish-shell](https://github.com/fish-shell/fish-shell)
@@ -299,15 +323,6 @@ test:
 	or
 	openvpn
 	curl ip.cn
-
-#### xcode
-
-> 如果不安装的话，安装`brew`的时候会自动安装命令行工具
-
-直接在AppStore安装即可，
-
-命令行工具：`xcode-select --install`
-
 
 #### the fuck
 
@@ -396,7 +411,12 @@ ssh-keygen：
 
 	brew cask install java
 
-	
+* 目前 brew 默认的是 java9 ，如果想安装 java8 请执行
+
+    brew tap caskroom/versions
+
+    brew cask install java8
+
 #### Flashlight
 
 [Flashlight](https://github.com/nate-parrott/Flashlight)
