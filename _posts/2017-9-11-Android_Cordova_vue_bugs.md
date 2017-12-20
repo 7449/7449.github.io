@@ -58,6 +58,8 @@ tags:
  
 ## 连续调用插件
 
+* 这里建议传递`callbackContext`,使用方便一些
+
 因为插件是异步的，所以只要连续调用插件,最后只会回调最后一次调用插件的`callbackContext`,
 `cordova` 为每个`callbackContext`设置了一个`CallbackId`,
 `callbackContext.getCallbackId()`可以获取到,这里为了处理这种问题(例如网络插件一个页面多次调用)
@@ -123,6 +125,12 @@ tags:
             components: {App}
           })
     })
+    
+## EventBus传递消息
+
+其实算不上bug，充其量是作者在使用过程中没注意到一个处理细节
+
+EventBus注销不能放在`onStop`，不跳转`Activity`还好，跳转了会被注销掉，建议在`onDestroy`注销
     
 ## tips
 
