@@ -13,6 +13,11 @@ tags:
 ---
 
 
+## update
+
+objectBox 生成的`objectbox-models/default.json`，要一直随着代码更新，但不能删除重新更近，否则会导致`UID`不一致而崩溃
+
+跟随git commit记录一起保存起来最好
 
 ## 前言
 
