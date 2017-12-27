@@ -169,3 +169,108 @@ tags:
 
 但是如果在请求途中有个网络请求失败了，是如何知道是哪个接口失败了呢？
 
+
+
+这里使用`onErrorResumeNext`或者`onErrorReturn`去判断,这个方法总之感觉不是很完美，但暂时没找到比较好的方法
+
+或者使用`Response`包裹一下根据`code`去判断，这样也可以
+
+
+代码如下：
+
+		//这里需要注意的是,如果使用`onErrorReturn`返回一个 Exception ,走的是 onNext 而不是 onError
+    	//如果希望一个接口报错了还能继续走下去,使用 onErrorReturn 返回一个需要的对象即可
+        //如果希望一个接口报错了直接停止发射, 使用 onErrorResumeNext 直接return 一个错误,根据 message 去判断是哪个接口出错,或者自定义 Exception
+
+        Observable<Object> objectObservable =
+                daily
+                        .subscribeOn(Schedulers.io())
+                        .onErrorResumeNext(new Function<Throwable, ObservableSource<? extends List<ListModel>>>() {
+                            @Override
+                            public ObservableSource<? extends List<ListModel>> apply(Throwable throwable) throws Exception {
+                                return Observable.error(new RuntimeException("0"));
+                            }
+                        })
+                        .flatMap(new Function<Object, ObservableSource<?>>() {
+                            @Override
+                            public ObservableSource<?> apply(Object o) throws Exception {
+                                return daily.onErrorResumeNext(new Function<Throwable, ObservableSource<? extends List<ListModel>>>() {
+                                    @Override
+                                    public ObservableSource<? extends List<ListModel>> apply(Throwable throwable) throws Exception {
+                                        return Observable.error(new RuntimeException("1"));
+                                    }
+                                });
+                            }
+                        })
+                        .flatMap(new Function<Object, ObservableSource<?>>() {
+                            @Override
+                            public ObservableSource<?> apply(Object o) throws Exception {
+                                return daily4.onErrorReturn(new Function<Throwable, Object>() {
+                                    @Override
+                                    public Object apply(Throwable throwable) throws Exception {
+                                        return "";
+                                    }
+                                });
+                            }
+                        })
+                        .flatMap(new Function<Object, ObservableSource<?>>() {
+                            @Override
+                            public ObservableSource<?> apply(Object o) throws Exception {
+                                return daily4.onErrorResumeNext(new Function<Throwable, ObservableSource<?>>() {
+                                    @Override
+                                    public ObservableSource<?> apply(Throwable throwable) throws Exception {
+                                        return Observable.error(new RuntimeException("3"));
+                                    }
+                                });
+                            }
+                        })
+                        .flatMap(new Function<Object, ObservableSource<?>>() {
+                            @Override
+                            public ObservableSource<?> apply(Object o) throws Exception {
+                                return daily4.onErrorResumeNext(new Function<Throwable, ObservableSource<?>>() {
+                                    @Override
+                                    public ObservableSource<?> apply(Throwable throwable) throws Exception {
+                                        return Observable.error(new RuntimeException("4"));
+                                    }
+                                });
+                            }
+                        });
+
+        RxNetWork.getInstance()
+                .getApi(objectObservable,
+                        new RxNetWorkListener<Object>() {
+                            @Override
+                            public void onNetWorkStart() {
+
+                            }
+
+                            @Override
+                            public void onNetWorkError(Throwable e) {
+                                KLog.i("onError:" + e.toString());
+                                String message = e.getMessage();
+                                switch (message) {
+                                    case "0":
+                                        break;
+                                    case "1":
+                                        break;
+                                    case "2":
+                                        break;
+                                    case "3":
+                                        break;
+                                    case "4":
+                                        break;
+                                }
+                            }
+
+                            @Override
+                            public void onNetWorkComplete() {
+                                KLog.i("onComplete");
+                            }
+
+                            @Override
+                            public void onNetWorkSuccess(Object data) {
+                                KLog.i(data);
+                            }
+                        });
+                        
+                        
