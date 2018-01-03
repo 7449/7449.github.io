@@ -319,6 +319,20 @@ objectBox 生成的`objectbox-models/default.json`，要一直随着代码更新
         if (observer != null && !observer.isCanceled()) {
             observer.cancel();
         }
+        
+        
+## 调试
+
+    debugCompile "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
+
+
+you application onCreate
+
+        if (BuildConfig.DEBUG) {
+            new AndroidObjectBrowser(ObjectBoxManager.getBoxStore()).start(getApplicationContext());
+        }
+        
+ 这里注意的是如果开启调试，`apply plugin: 'io.objectbox'` 必须要放在`dependencies`下面
 
 
 ## 总结
