@@ -371,6 +371,8 @@ tags:
 [android-dev-bookmarks](https://github.com/zhengxiaopeng/android-dev-bookmarks):Android 开发者的浏览器书签 <br>
 [android-dev-cn](https://github.com/android-cn/android-dev-cn):一些国内 Android 开发者信息<br>
 [android-dev-com](https://github.com/android-cn/android-dev-com):一些国外 Android 开发者信息<br>
+
+
 ## 小程序
 
 [wxParse](https://github.com/icindy/wxParse):小程序富文本解析,支持HTML及markdown<br>
@@ -401,3 +403,7 @@ tags:
 [brew](https://github.com/Homebrew/brew):<br>
 [homebrew-cask](https://github.com/caskroom/homebrew-cask):app安装<br>
 [homebrew-cask-upgrade](https://github.com/buo/homebrew-cask-upgrade):brew cask 升级<br>
+
+## gapps
+
+[opengapps](https://github.com/opengapps/opengapps):手机刷入gapps<br>
