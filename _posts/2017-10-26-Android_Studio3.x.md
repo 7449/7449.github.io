@@ -75,6 +75,12 @@ tags:
 	findViewById<View>(id)
 
 即可编译通过
+
+## gradle version
+
+如果升级到 3.x 版本遇到了 gradle build 问题
+
+将 `com.novoda:bintray-release` 升级到`0.5.0`即可
     
 ## 改进
 
