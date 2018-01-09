@@ -350,6 +350,13 @@ tags:
 
 [react-native](https://github.com/facebook/react-native):源码地址<br>
 [react-native-docs-cn](https://github.com/reactnativecn/react-native-docs-cn):React Native中文文档<br>
+[RNStudyNotes](https://github.com/crazycodeboy/RNStudyNotes):React Native笔记<br>
+[react-native-orientation](https://github.com/yamill/react-native-orientation)控制横竖屏:<br>
+
+###### sample
+
+[GitHubPopular](https://github.com/crazycodeboy/GitHubPopular):查看GitHub最受欢迎与最热项目的App<br>
+
 
 #### kotlin
 
@@ -407,3 +414,5 @@ tags:
 ## gapps
 
 [opengapps](https://github.com/opengapps/opengapps):手机刷入gapps<br>
+
+
