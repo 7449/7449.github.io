@@ -353,6 +353,7 @@ tags:
 [RNStudyNotes](https://github.com/crazycodeboy/RNStudyNotes):React Native笔记<br>
 [react-native-orientation](https://github.com/yamill/react-native-orientation):控制横竖屏<br>
 [react-native-tab-navigator](https://github.com/happypancake/react-native-tab-navigator):Tab选择器<br>
+[react-navigation](https://github.com/react-community/react-navigation):替代废弃的navigation<br>
 
 ###### sample
 
