@@ -351,7 +351,8 @@ tags:
 [react-native](https://github.com/facebook/react-native):源码地址<br>
 [react-native-docs-cn](https://github.com/reactnativecn/react-native-docs-cn):React Native中文文档<br>
 [RNStudyNotes](https://github.com/crazycodeboy/RNStudyNotes):React Native笔记<br>
-[react-native-orientation](https://github.com/yamill/react-native-orientation)控制横竖屏:<br>
+[react-native-orientation](https://github.com/yamill/react-native-orientation):控制横竖屏<br>
+[react-native-tab-navigator](https://github.com/happypancake/react-native-tab-navigator):Tab选择器<br>
 
 ###### sample
 
