@@ -354,6 +354,10 @@ tags:
 [react-native-orientation](https://github.com/yamill/react-native-orientation):控制横竖屏<br>
 [react-native-tab-navigator](https://github.com/happypancake/react-native-tab-navigator):Tab选择器<br>
 [react-navigation](https://github.com/react-community/react-navigation):替代废弃的navigation<br>
+[ant-design-mobile](https://github.com/ant-design/ant-design-mobile):阿里组件库<br>
+[ant-design-mobile](https://github.com/ant-design/ant-design-mobile):阿里组件库<br>
+[react-native-splash-screen](https://github.com/crazycodeboy/react-native-splash-screen):splash<br>
+[realm](https://github.com/realm):rn数据库,原生上用的ObjectBox<br>
 
 ###### sample
 
