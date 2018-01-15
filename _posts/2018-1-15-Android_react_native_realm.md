@@ -62,7 +62,7 @@ Java，Objective-C，Swift，React Native，Xamarin，都支持
 
 ## 简单使用
 
->将一下代码复制到App.js里面，如果没有问题,打开一次App就会看到数据库的Size+1，如果Reload效果也是一样的
+>将以下代码复制到App.js里面，如果没有问题,打开一次App就会看到数据库的Size+1，如果Reload效果也是一样的
 
     import React, {Component} from 'react';
     import {
