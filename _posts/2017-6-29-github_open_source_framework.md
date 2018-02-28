@@ -354,9 +354,23 @@ tags:
 [react-native-orientation](https://github.com/yamill/react-native-orientation):控制横竖屏<br>
 [react-native-tab-navigator](https://github.com/happypancake/react-native-tab-navigator):Tab选择器<br>
 [react-navigation](https://github.com/react-community/react-navigation):替代废弃的navigation<br>
+[react-navigation-redux-helpers](https://github.com/react-navigation/react-navigation-redux-helpers): Navigation继承Redux<br>
 [ant-design-mobile](https://github.com/ant-design/ant-design-mobile):阿里组件库<br>
 [react-native-splash-screen](https://github.com/crazycodeboy/react-native-splash-screen):splash<br>
-[realm](https://github.com/realm):rn数据库,原生上用的ObjectBox<br>
+[axios](https://github.com/axios/axios):网络请求<br>
+[react-native-keyboard-aware-scroll-view](https://github.com/APSL/react-native-keyboard-aware-scroll-view):解决键盘问题<br>
+[react-native-modal-dropdown](https://github.com/sohobloo/react-native-modal-dropdown)下拉选择框<br>
+[react-native-orientation](https://github.com/yamill/react-native-orientation):检测横竖屏<br>
+
+
+[react-redux](https://github.com/reactjs/react-redux):react-redux<br>
+[redux](https://github.com/reactjs/redux):redux<br>
+[redux-logger](https://github.com/evgenyrodionov/redux-logger):redux-logger<br>
+[redux-persist](https://github.com/rt2zz/redux-persist):redux-persist<br>
+[redux-thunk](https://github.com/gaearon/redux-thunk):rredux-thunk<br>
+
+
+
 
 ###### sample
 
