@@ -355,6 +355,7 @@ tags:
 [react-native-tab-navigator](https://github.com/happypancake/react-native-tab-navigator):Tab选择器<br>
 [react-navigation](https://github.com/react-community/react-navigation):替代废弃的navigation<br>
 [react-navigation-redux-helpers](https://github.com/react-navigation/react-navigation-redux-helpers): Navigation继承Redux<br>
+[react-native-navigation](https://github.com/wix/react-native-navigation):又一个开源tab<br>
 [ant-design-mobile](https://github.com/ant-design/ant-design-mobile):阿里组件库<br>
 [react-native-splash-screen](https://github.com/crazycodeboy/react-native-splash-screen):splash<br>
 [axios](https://github.com/axios/axios):网络请求<br>
