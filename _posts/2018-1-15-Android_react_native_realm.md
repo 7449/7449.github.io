@@ -12,6 +12,10 @@ tags:
     - React-Native
 ---
 
+## update
+
+最后还是使用了 Redux 和 persist 解决了持久化数据的问题
+
 ## 存储的几种方式
 
 * AsyncStorage
