@@ -15,6 +15,10 @@ tags:
 
 ## RN
 
+> 签名 可以直接使用 Android Studio 生成，然后按照官方的配置
+
+[signed-apk-android](http://facebook.github.io/react-native/docs/signed-apk-android.html)
+
 > 直接运行 release 
 
     react-native run-android --variant=release
