@@ -11,6 +11,20 @@ tags:
     - android
 ---
 
+
+
+## RN
+
+> 直接运行 release 
+
+    react-native run-android --variant=release
+    
+> 打包 release
+
+    cd android && ./gradlew assembleRelease
+    
+    
+
 ## base64
 
 > 这里使用 NO_WRAP 的问题是，使用默认的 DEFAULT 会出现转义问题，导致解析失败
