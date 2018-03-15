@@ -15,27 +15,41 @@ tags:
 ## update
 
 	brew
-
-	cmatrix		go		node		readline	thefuck
-	cocoapods	gradle		openssl		repo		wget
-	cowsay		icu4c		openssl@1.1	ruby		xz
-	fortune		libyaml		pkg-config	sl
-	gdbm		maven		python3		sqlite
+	
+    archey			ios-deploy		python3
+    autoconf		libidn2			readline
+    automake		libplist		repo
+    bash			libtasn1		ruby
+    carthage		libtool			sl
+    cocoapods		libunistring		sqlite
+    docker			libusb			thefuck
+    docker-compose		libxml2			ucl
+    docker-machine		libyaml			upx
+    flow			libzip			usbmuxd
+    gdbm			mongodb			watchman
+    gettext			node			wget
+    googler			openssl			xz
+    gradle			pcre			yarn
+    icu4c			pkg-config
+    ideviceinstaller	python
 	
 	brew cask 
 
-	alfred                     google-chrome              qq
-	android-file-transfer      iina                       shadowsocksx-ng
-	android-studio             intellij-idea              skim
-	aria2gui                   istat-menus                sogouinput
-	baidunetdisk               iterm2                     steam
-	battle-net                 java                       sublime-text
-	calibre                    jd-gui                     thunder
-	charles                    kindle                     touch-bar-pong
-	dbeaver-enterprise         licecap                    touchswitcher
-	electronic-wechat          macdown                    webstorm
-	evernote                   neteasemusic               youdaodict
-	go2shell                   pphelper          
+    alfred                     intellij-idea              shadowsocksx-ng
+    android-file-transfer      istat-menus                skim
+    android-studio             iterm2                     sogouinput
+    aria2gui                   java8                      sourcetree
+    baidunetdisk               jd-gui                     steam
+    battle-net                 kindle                     sublime-text
+    calibre                    kugoumusic                 thunder
+    charles                    licecap                    touch-bar-pong
+    cheatsheet                 macdown                    touchswitcher
+    dbeaver-enterprise         microsoft-office           virtualbox
+    electronic-wechat          neteasemusic               visual-studio-code
+    evernote                   pphelper                   webstorm
+    go2shell                   qq                         youdaodict
+    google-chrome              realm-browser
+    iina                       realm-studio         
 	
 	
 #### old cask app
