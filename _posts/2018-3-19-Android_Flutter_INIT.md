@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Flutter-什么是Flutter"
+title:      "Flutter系列--第一章:什么是Flutter"
 subtitle:   "本章简单讲述下Flutter是什么,有什么用"
 date:       2018-3-19
 author:     "y"
@@ -18,6 +18,15 @@ tags:
 [官方地址](https://flutter.io/)<br>
 [官方文档地址](https://flutter.io/docs/)<br>
 
+
+> 本系列文章更多的可以认为是Flutter的官翻文档并且添加一点自己的想法，作者也知道不少的Flutter论坛已经开始了Flutter的翻译计划
+> 但是为了自己的学习以及加深对Flutter的理解,还是决定自己记录
+
+
+> 由于 Flutter 刚推出了beta版,处于快速迭代,所以记录下本系列的Flutter提交记录
+
+
+[github提交记录为`9c49255f3eeb4873e6398c805b4bb6b9737be962`](https://github.com/flutter/flutter/commit/9c49255f3eeb4873e6398c805b4bb6b9737be962)
 
 #### 什么是Flutter?
 

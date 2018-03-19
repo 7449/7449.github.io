@@ -26,7 +26,8 @@ tags:
 
 ### gradle
 
->compile 'com.xadapter:xadapter:0.1.8' 
+>compile 'com.ydevelop:rv-adapter:0.0.1
+ 
 
 
 ### tips
