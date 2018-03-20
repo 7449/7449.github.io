@@ -31,6 +31,9 @@ tags:
 #### 语法
 
 
-    ...
+[Dart开始入门](http://dart.goodev.org/guides/get-started)
+
+[Dart 语法预览](http://dart.goodev.org/guides/language/language-tour)
 
 
+本来想独自摘录一份,最后放弃了,本篇`blog`以后只会记录使用`Dart`中自己的忽略点
