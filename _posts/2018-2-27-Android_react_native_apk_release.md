@@ -12,6 +12,19 @@ tags:
     - React-Native
 ---
 
+> 加载本地html debug版正常，release显示空白
+
+android要把`html`放在`assets`目录下才能正常加载，但是放在这里无法使用 `hot code`,所以加载的时候需要一个判断
+
+                        <WebView
+                            ref={'WebView'}
+                            automaticallyAdjustContentInsets={false}
+                            style={{flex: 1}}
+                            source={__DEV__ ? require('../../Simple.html') : {uri: 'file:///android_asset/Simple.html'}}
+                            javaScriptEnabled={true}
+                            domStorageEnabled={true}
+                            startInLoadingState={true}/>
+
 ## 打开崩溃
 
 正常打包成功，但是打开就崩溃，而且Bundle是正常生成的，报错日志为
