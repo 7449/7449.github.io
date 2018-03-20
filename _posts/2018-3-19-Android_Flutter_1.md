@@ -17,6 +17,8 @@ tags:
 [github地址](https://github.com/flutter/flutter)<br>
 [官方地址](https://flutter.io/)<br>
 [官方文档地址](https://flutter.io/docs/)<br>
+[Flutter中文开发者论坛](http://flutter-dev.com/)<br>
+[中文文档](http://doc.flutter-dev.cn/)<br>
 
 
 > 本系列文章更多的可以认为是Flutter的官翻文档并且添加一点自己的想法，作者也知道不少的Flutter论坛已经开始了Flutter的翻译计划

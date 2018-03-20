@@ -16,7 +16,8 @@ tags:
 [github地址](https://github.com/flutter/flutter)<br>
 [官方地址](https://flutter.io/)<br>
 [官方文档地址](https://flutter.io/docs/)<br>
-
+[Flutter中文开发者论坛](http://flutter-dev.com/)<br>
+[中文文档](http://doc.flutter-dev.cn/)<br>
 
 #### blog
 
