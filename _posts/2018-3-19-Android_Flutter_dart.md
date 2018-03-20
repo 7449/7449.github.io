@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Flutter系列--番外篇:Dart"
+title:      "Flutter番外篇:Dart"
 subtitle:   "本章讲解Dart"
 date:       2018-3-19
 author:     "y"
