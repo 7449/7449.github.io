@@ -5,7 +5,7 @@ subtitle:   "本章简单讲述下Flutter是什么,有什么用"
 date:       2018-3-19
 author:     "y"
 header-mask: 0.3
-header-img: "img/android.png"
+header-img: "img/header_flutter.png"
 catalog: true
 tags:
     - android

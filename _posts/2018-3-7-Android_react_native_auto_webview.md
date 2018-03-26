@@ -5,7 +5,7 @@ subtitle:   "代码"
 date:       2018-3-7
 author:     "y"
 header-mask: 0.3
-header-img: "img/android.png"
+header-img: "img/header_rn.png"
 catalog: true
 tags:
     - android

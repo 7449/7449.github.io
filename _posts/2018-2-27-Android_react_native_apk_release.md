@@ -5,7 +5,7 @@ subtitle:   "遇到的问题"
 date:       2018-2-27
 author:     "y"
 header-mask: 0.3
-header-img: "img/android.png"
+header-img: "img/header_rn.png"
 catalog: true
 tags:
     - android
@@ -19,7 +19,6 @@ android要把`html`放在`assets`目录下才能正常加载，但是放在这�
                         <WebView
                             ref={'WebView'}
                             automaticallyAdjustContentInsets={false}
-                            style={{flex: 1}}
                             source={__DEV__ ? require('../../Simple.html') : {uri: 'file:///android_asset/Simple.html'}}
                             javaScriptEnabled={true}
                             domStorageEnabled={true}

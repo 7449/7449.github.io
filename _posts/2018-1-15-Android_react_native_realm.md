@@ -5,7 +5,7 @@ subtitle:   "RN中使用Realm数据库"
 date:       2018-1-15
 author:     "y"
 header-mask: 0.3
-header-img: "img/android.png"
+header-img: "img/header_rn.png"
 catalog: true
 tags:
     - android

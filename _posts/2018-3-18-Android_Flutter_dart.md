@@ -5,7 +5,7 @@ subtitle:   "本章讲解Dart"
 date:       2018-3-18
 author:     "y"
 header-mask: 0.3
-header-img: "img/android.png"
+header-img: "img/header_flutter.png"
 catalog: true
 tags:
     - android
