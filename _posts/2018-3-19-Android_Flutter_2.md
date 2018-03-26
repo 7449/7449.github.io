@@ -21,7 +21,7 @@ tags:
 
 #### blog
 
-[第一章：什么是Flutter](https://7449.github.io/2018/03/19/Android_Flutter_INIT/)<br>
+[第一章：什么是Flutter](https://7449.github.io/2018/03/19/Android_Flutter_1/)<br>
 
 ## 安装
 
