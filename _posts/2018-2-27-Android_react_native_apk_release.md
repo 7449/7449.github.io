@@ -12,6 +12,13 @@ tags:
     - React-Native
 ---
 
+
+> 国产手机(MX5)项目无法运行
+
+
+有时候换个手机试试可以解决问题...
+
+
 > 加载本地html debug版正常，release显示空白
 
 android要把`html`放在`assets`目录下才能正常加载，但是放在这里无法使用 `hot code`,所以加载的时候需要一个判断
@@ -29,7 +36,7 @@ android要把`html`放在`assets`目录下才能正常加载，但是放在这�
 正常打包成功，但是打开就崩溃，而且Bundle是正常生成的，报错日志为
 
     super expression must either be null or a function not string...
-    
+
 由于项目中大量使用了自己的封装组件,慢慢排查之后怀疑是自己封装的组件问题.
 第一次找到问题还是错误的方向...，不过幸好最后找到了正确的方向
 
@@ -51,7 +58,7 @@ android要把`html`放在`assets`目录下才能正常加载，但是放在这�
             }
         }
     }
- 
+
 直接继承的`View`,这样在测试版中是可以正常运行的，但是不知道为什么在正式版中无法运行，必须要继承`Component`
 
 
