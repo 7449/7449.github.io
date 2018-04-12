@@ -15,6 +15,23 @@ tags:
 
 ## RN
 
+> 防止快速重复点击
+
+
+    render() {
+        let lastPressTime = 1;
+        return (
+            <TouchableHighlight
+                onPress={() => {
+                    let curTime = new Date().getTime();
+                    if (curTime - lastPressTime > 2000) {
+                        lastPressTime = curTime;
+                        {user code}
+                    } 
+                }}>{this.props.children}</TouchableHighlight>
+        )
+    }
+
 > 签名 可以直接使用 Android Studio 生成，然后按照官方的配置
 
 [signed-apk-android](http://facebook.github.io/react-native/docs/signed-apk-android.html)
@@ -26,7 +43,26 @@ tags:
 > 打包 release
 
     cd android && ./gradlew assembleRelease
+
+> 测量 view 高度
+
+ 原因是封装`FlatList`时发现无论怎么设置`style`，`ListEmptyComponent`属性都无法充满屏幕
+ 
+ 原因是高度问题,只要动态设置高度就没有问题
+ 
+                 onLayout={(e) => {
+                     let layout = e.nativeEvent.layout;
+                     if (layout.height <= 0) {
+                         return;
+                     }
+                     this.setState({
+                         emptyHeight: layout.height,
+                     })
+                 }}
     
+ 然后在`view`里面
+ 
+     <View style={{height: this.state.emptyHeight}}/>
     
 
 ## base64
