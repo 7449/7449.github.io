@@ -144,6 +144,54 @@ tags:
 
 [详细文章](https://flutter.io/widgets/material/)
 
+`Flutter`提供了很多`Material Design`组件,以方便快速开发
+
+还是为了推广`Material Design`,不过好像`google`自身家的应用有的都不上心
+
+示例：
+
+    import 'package:flutter/material.dart';
+    
+    void main() {
+      runApp(new MaterialApp(
+        title: 'Flutter Tutorial',
+        home: new TutorialHome(),
+      ));
+    }
+    
+    class TutorialHome extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        // Scaffold is a layout for the major Material Components.
+        return new Scaffold(
+          appBar: new AppBar(
+            leading: new IconButton(
+              icon: new Icon(Icons.menu),
+              tooltip: 'Navigation menu',
+              onPressed: null,
+            ),
+            title: new Text('Example title'),
+            actions: <Widget>[
+              new IconButton(
+                icon: new Icon(Icons.search),
+                tooltip: 'Search',
+                onPressed: null,
+              ),
+            ],
+          ),
+          // body is the majority of the screen.
+          body: new Center(
+            child: new Text('Hello, world!'),
+          ),
+          floatingActionButton: new FloatingActionButton(
+            tooltip: 'Add', // used by assistive technologies
+            child: new Icon(Icons.add),
+            onPressed: null,
+          ),
+        );
+      }
+    }
+
 
 #### Handling gestures
 
@@ -152,24 +200,70 @@ tags:
 [详细文章](https://flutter.io/gestures/)
 
 
+[GestureDetector](https://docs.flutter.io/flutter/widgets/GestureDetector-class.html)可以包裹一个`text`，然后提供各种手势事件
+
+类似于`React Native`的`Touch`组件
+
+示例:
+
+    class MyButton extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return new GestureDetector(
+          onTap: () {
+            print('MyButton was tapped!');
+          },
+          child: new Container(
+            height: 36.0,
+            padding: const EdgeInsets.all(8.0),
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
+            decoration: new BoxDecoration(
+              borderRadius: new BorderRadius.circular(5.0),
+              color: Colors.lightGreen[500],
+            ),
+            child: new Center(
+              child: new Text('Engage'),
+            ),
+          ),
+        );
+      }
+    }
 
 
 #### Changing widgets in response to input
 
-根据输入更改 `widget`
+根据输入更改 `widget`状态,例如`Text`显示的内容
+
+这里处理的和`React-Native`的`state`一样
+
+都是通过`setState({})`去改变自己的状态
+
+只不过这里要注意的是,以前的文章都是使用无状态的`widget`，如果要改变状态则要使用`StatefulWidgets`
 
 #### Bringing it all together
 
 组合组件
 
+
+简单说明:
+
+    几个小部件封装在一起..
+
+
 #### Responding to widget lifecycle events
 
 `widget`的生命周期
+
+[主要文章](https://docs.flutter.io/flutter/widgets/State-class.html)
 
 #### Keys
 
 按键
 
+[主要文章](https://docs.flutter.io/flutter/foundation/Key-class.html)
+
 #### Global Keys
 
-全局秘钥
+全局秘钥    
+
+[主要文章](https://docs.flutter.io/flutter/widgets/GlobalKey-class.html)
