@@ -15,22 +15,25 @@ tags:
 
 
 ## 代码地址
-[https://github.com/7449/AndroidDevelop/tree/master/lazyFragment](https://github.com/7449/AndroidDevelop/tree/master/lazyFragment)
+
+[LazyFragment](https://github.com/7449/AndroidDevelop/tree/master/lazyFragment)
 
 
 ## ViewPager预加载问题
-在项目中使用Fragment和viewPager是很常见的事情,但是细心的人就会发现如果fragment有多个页面的话,当你还没切换到第二个页面的时候viewpager就已经把第二个页面在后台加载了,这个是viewpager的特性。
+
+在项目中使用`Fragment`和`viewPager`是很常见的事情,但是细心的人就会发现如果`fragment`有多个页面的话,当你还没切换到第二个页面的时候`viewpager`就已经把第二个页面在后台加载了,
+这个是`viewpager`的特性。
 
 >举个简单的例子
 
 
-你在页面加个progressBar,让他显示一秒再消失,但是你打开App,然后等两秒,再切换到第二个页面,这个时候就会发现progressbar早已经消失了。
+你在页面加个`progressBar`,让他显示一秒再消失,但是你打开`App`,然后等两秒,再切换到第二个页面,这个时候就会发现`progressbar`早已经消失了。
 
-阅读viewpager的源码就会发现有这个方法``setOffscreenPageLimit();``
+阅读`viewpager`的源码就会发现有这个方法``setOffscreenPageLimit();``
 
-这个就是控制viewpager一次加载几个页面的方法<br>
-看原源码就会发现就算你传0,viewpager也会默认为1<br>
-通过修改viewpager可以实现不预加载,但是以后SDK更新的话用不到新特性,这个方法明显是不理想的.
+这个就是控制`viewpager`一次加载几个页面的方法<br>
+看原源码就会发现就算你传0,`viewpager`也会默认为1<br>
+通过修改`viewpager`可以实现不预加载,但是以后SDK更新的话用不到新特性,这个方法明显是不理想的.
 
 	public void setOffscreenPageLimit(int limit) {  
 	    if (limit < DEFAULT_OFFSCREEN_PAGES) {  
@@ -46,14 +49,14 @@ tags:
 
 ## fragment与viewpager的碰撞
 
-再来看看Fragment的API,setUserVisibleHint这个方法告诉我们Fragment的UI是否是可见的。<br>
-这个方法只有在Fragment碰到了ViewPager才会触发
+再来看看`Fragment`的`API`,`setUserVisibleHint`这个方法告诉我们`Fragment`的`UI`是否是可见的。<br>
+这个方法只有在`Fragment`碰到了`ViewPager`才会触发
 
 很明显从这里下手可以得到想要的结果。
 
 ## 解决预加载问题
 
-创建一个LazyFragment,只要不想预加载的Fragment只要继承这个LazyFragment就可以了
+创建一个`LazyFragment`,只要不想预加载的`Fragment`只要继承这个`LazyFragment`就可以了
 
 	public abstract class LazyFragment extends Fragment {
 	
@@ -135,7 +138,9 @@ tags:
 
 
 ## 测试 
->然后基于这个写个ViewPager和Fragment的Demo测试下，最后发现是没有任何问题的。
+
+>然后基于这个写个`ViewPager`和`Fragment`的`Demo`测试下，最后发现是没有任何问题的。
+
 Activity:
 
 	public class MainActivity extends AppCompatActivity {

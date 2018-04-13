@@ -14,7 +14,8 @@ tags:
 
 
 ## 代码地址：
-[https://github.com/7449/SlideView](https://github.com/7449/SlideView)
+
+[SlideView](https://github.com/7449/SlideView)
 
 >代码很简单，就不再多余的解释。github上面有完整的Demo示例。
 

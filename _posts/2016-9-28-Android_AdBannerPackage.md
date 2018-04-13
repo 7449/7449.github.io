@@ -16,12 +16,12 @@ tags:
 
 
 ## 代码地址：
-<br>
-[https://github.com/7449/AndroidDevelop/tree/master/banner](https://github.com/7449/AndroidDevelop/tree/master/banner "Android Banner的封装")
+
+[banner](https://github.com/7449/AndroidDevelop/tree/master/banner "Android Banner的封装")
 
 ## 改进版 bannerLayout（强烈建议试用此版本）：
-<br>
-[https://github.com/7449/BannerLayout](https://github.com/7449/BannerLayout "Android Banner的封装")
+
+[BannerLayout](https://github.com/7449/BannerLayout "Android Banner的封装")
 	
 ## 设置一个接口得到想要的数据
 
@@ -247,6 +247,7 @@ tags:
 ## 封装完成，在代码中实现
 
 >adapter
+
 	public class PagerAdapter extends BasePagerAdapter<PagerModel> {
 	
 	    public PagerAdapter(List<PagerModel> mDatas) {
@@ -296,6 +297,7 @@ tags:
 	    }
 	
 	}
+	
 
 至此封装Banner完成，而且在项目中没有出现问题。以后使用起来不管是RecyclerView里面还是activity里面，只要几行简单的代码就可以实现Banner的轮播以及小圆点。
 

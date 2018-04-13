@@ -14,7 +14,8 @@ tags:
 
 ## 简介
 
-greenDao是一个使用于android的ORM框架,现在主流的ORM框架有OrmLite,SugarORM,Active Android,Realm以及GreenDAO.greenDao的性能远远高于同类的ORM框架,具体的测试结果官网有。
+`greenDao`是一个使用于`android`的`ORM`框架,
+现在主流的`ORM`框架有`OrmLite`,`SugarORM`,`Active Android`,`Realm`以及`GreenDAO`.`greenDao`的性能远远高于同类的`ORM`框架,具体的测试结果官网有。
 
 
 ## 2.x示例代码
@@ -105,11 +106,11 @@ greenDao是一个使用于android的ORM框架,现在主流的ORM框架有OrmLite
 ## 3.x更新
 
 
-项目build.gradle添加
+项目`build.gradle`添加
 
 	classpath 'org.greenrobot:greendao-gradle-plugin:3.2.0'
 
-app下的build.gradle添加
+`app`下的`build.gradle`添加
 
 	
 	apply plugin: 'org.greenrobot.greendao'
@@ -125,7 +126,7 @@ app下的build.gradle添加
 	//        targetGenDirTest //生成的单元测试的根目录
 	    }
 
-然后自定义UserBean类
+然后自定义`UserBean`类
 
 	@Entity
 	public class UserBean {
@@ -163,7 +164,7 @@ app下的build.gradle添加
 	@generated 由greendao产生的构造函数或方法
 
 
-重新rebuild 一下项目，就可以看到greenDao自动生成的数据库相关类，比2.X时确实好用多了，之后用法还和以前一样
+重新`rebuild` 一下项目，就可以看到`greenDao`自动生成的数据库相关类，比2.X时确实好用多了，之后用法还和以前一样
 
 ## 2.x使用
 
@@ -180,7 +181,7 @@ IDE工具：AndroidStudio
 
 #### Generator
 
-单独创建一个目录，起名为sql,然后创建一个GreenDaoGenerator,注意一点是这里就要运行一下这个java类，不是app是这个java类，需要单独运行一下生成sql代码
+单独创建一个目录，起名为`sql`,然后创建一个`GreenDaoGenerator`,注意一点是这里就要运行一下这个`java`类，不是`app`是这个`java`类，需要单独运行一下生成`sql`代码
 
 	public class MyGreenDaoGenerator {
 

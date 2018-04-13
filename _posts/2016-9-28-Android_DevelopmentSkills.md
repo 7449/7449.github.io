@@ -62,8 +62,7 @@ tags:
     
  然后在`view`里面
  
-     <View style={{height: this.state.emptyHeight}}/>
-    
+     <View style={{}}/>
 
 ## base64
 
@@ -252,9 +251,9 @@ tags:
 
 ## Layout属性
 
-android:clipToPadding：配合paddingTop可简单实现View距离顶部一定距离
+`android:clipToPadding`：配合`paddingTop`可简单实现`View`距离顶部一定距离
 
-android:clipChildren：是否限制子View在其范围内
+`android:clipChildren`：是否限制子`View`在其范围内
 
 ## 调用显示触摸位置功能
 
@@ -296,6 +295,7 @@ android:clipChildren：是否限制子View在其范围内
 		            e.printStackTrace();
 		        }
 		    }
+	
 	
 	    public static final void expandStatusBar(Context ctx) {
 	        Object sbservice = ctx.getSystemService("statusbar");

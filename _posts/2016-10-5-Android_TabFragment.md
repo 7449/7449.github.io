@@ -15,10 +15,13 @@ tags:
 
 
 ## 代码地址 
-[https://github.com/7449/AndroidDevelop/tree/master/tabFragment](https://github.com/7449/AndroidDevelop/tree/master/tabFragment)
+
+[TabFragment](https://github.com/7449/AndroidDevelop/tree/master/tabFragment)
 
 ## 代码
->市面上很多app都是底部几个Tab然后点击切换页面，ViewPager和Fragment也可以实现，但是这里使用的是一个FrageLayou切换不同的Fragment.
+
+>市面上很多`app`都是底部几个`Tab`然后点击切换页面，`ViewPager`和`Fragment`也可以实现，
+但是这里使用的是一个`FrageLayou`切换不同的`Fragment`.
 博客只给出关键的代码，其余的代码请在上面的链接里查看
 
 	public class MainActivity extends AppCompatActivity {

@@ -12,12 +12,14 @@ tags:
     - android
 ---
 
-本文通过mvp来理解不同项目中mvp模式，并且对MVP进一步封装，所有的模式都是为了方便代码管理，解耦，模式并不重要，重要的是自己的理解以及代码的可读性
+本文通过mvp来理解不同项目中`mvp`模式，并且对`MVP`进一步封装，
+所有的模式都是为了方便代码管理，解耦，模式并不重要，
+重要的是自己的理解以及代码的可读性
 
 
 ## 代码示例：
 
-[https://github.com/7449/ZLSimple](https://github.com/7449/ZLSimple)
+[ZLSimple](https://github.com/7449/ZLSimple)
 
 
 ## 什么是MVP？
@@ -46,7 +48,7 @@ tags:
 
 >这样分层的好处就是减少了 Model 与 View 层之间的耦合度。一方面可以使得 View 层和 Model 层单独开发与测试，互不依赖。另一方面 Model 层可以封装复用，可以极大的减少代码量
 
-项目示例中多一个widget 存放activity或者adapter,fragment之类的文件。
+项目示例中多一个`widget` 存放`activity`或者`adapter`,`fragment`之类的文件。
 
 ## 先封装一下MVP框架
 

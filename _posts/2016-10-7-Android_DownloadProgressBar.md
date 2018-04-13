@@ -14,18 +14,19 @@ tags:
 
 
 ## 代码地址：
-[https://github.com/7449/ProgressView](https://github.com/7449/ProgressView)
 
-这次带来的是通过自定义view去实现下载时圆环进度以及进度数的一个progressView.
+[ProgressView](https://github.com/7449/ProgressView)
+
+这次带来的是通过自定义`view`去实现下载时圆环进度以及进度数的一个`progressView`.
 <br>
 
 ## 自定义控件简单说明：
 
 自定义控件的实现方式大概有三种，组合控件，继承控件和自绘控件
 
-组合控件：使用时只用系统原生的各个控件就行了,例如实际开发中经常会自己定义一个titlebar，需要一个返回键和title，这样的就是组合控件
+组合控件：使用时只用系统原生的各个控件就行了,例如实际开发中经常会自己定义一个`titlebar`，需要一个返回键和`title`，这样的就是组合控件
 
-继承控件：继承系统的原生控件，在他的基础上再添加一些新功能，例如登陆时的验证码60秒倒计时，我们就可以去自定义一个button去实现这个功能
+继承控件：继承系统的原生控件，在他的基础上再添加一些新功能，例如登陆时的验证码60秒倒计时，我们就可以去自定义一个`button`去实现这个功能
 
 自绘控件：页面上展示的东西都是通过代码自己去绘制出来的
 
@@ -34,9 +35,9 @@ tags:
 
 ## 开始
 
-其余的倒不用管，想要绘制圆圈必须在View的onDraw（）;方法中。
+其余的倒不用管，想要绘制圆圈必须在`View`的`onDraw()`;方法中。
 
-先去继承一个View，然后实现它的构造方法
+先去继承一个`View`，然后实现它的构造方法
 
 	public class ProgressBarView extends View {  
 	  
@@ -55,7 +56,7 @@ tags:
 	    }  
 	}
 
-然后再创建一个attrs.xml文件，用来初始化一些变量的,例如进度初始化的颜色,字体颜色,字体大小之类的,而且可以直接在xml中引用
+然后再创建一个`attrs.xml`文件，用来初始化一些变量的,例如进度初始化的颜色,字体颜色,字体大小之类的,而且可以直接在`xml`中引用
 
 	<declare-styleable name="CirclesProgressBar">  
 	  
@@ -92,7 +93,7 @@ tags:
 	    mTypedArray.recycle();  
 	}  
 
-然后重写的onDraw（）;方法去绘制我们需要的圆环以及进度数据
+然后重写的`onDraw()`;方法去绘制我们需要的圆环以及进度数据
 	
 		@Override  
 	    protected void onDraw(Canvas canvas) {  

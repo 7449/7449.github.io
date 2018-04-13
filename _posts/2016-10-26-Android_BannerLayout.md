@@ -171,7 +171,7 @@ Bean类请实现 [BannerModelCallBack](https://github.com/7449/BannerLayout/blob
 
 ## 切换动画以及速度
 
-viewpager的垂直这里用的是动画，所以只要选择了垂直滚动，设置动画无效
+`viewpager`的垂直这里用的是动画，所以只要选择了垂直滚动，设置动画无效
 
 动画内置的 [ViewPagerTransforms](https://github.com/ToxicBakery/ViewPagerTransforms)，多谢作者
 

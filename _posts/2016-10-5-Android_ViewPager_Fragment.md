@@ -14,7 +14,8 @@ tags:
 
 
 ## 代码地址
-[https://github.com/7449/AndroidDevelop/tree/master/viewPagerFragment](https://github.com/7449/AndroidDevelop/tree/master/viewPagerFragment)
+
+[ViewPagerFragment](https://github.com/7449/AndroidDevelop/tree/master/viewPagerFragment)
 
 ## 代码
 
@@ -86,7 +87,7 @@ tags:
 	    }
 	}
 
->由一个Fragment构成的测试页面
+>由一个`Fragment`构成的测试页面
 
 
 	public class ViewPagerFragment extends Fragment {
