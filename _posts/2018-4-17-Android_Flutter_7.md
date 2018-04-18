@@ -529,7 +529,7 @@ tags:
 
 `react-native`中.`view`是一个支持`Flexbox` `style` `touch` `accessibility`的容器
 
-在`Flutter`中，存在特殊属性的小部件，如`container`，`column`，`row`，`center`等。
+在`Flutter`中，存在特殊属性的小部件，如`Container`，`Column`，`Row`，`Center`等。
 还可以使用更高级的`widget`，例如`Scaffold`，它提供了用于显示`drawers`，` snack bars`和`bottom sheets`
 ，高级`widget`是低级`widget`组合而成的
 
@@ -621,24 +621,170 @@ tags:
 
 	<View
 	  style={{
-		flex: 1,
-		flexDirection: "column",
-		justifyContent: "space-between",
-		alignItems: "center"
+		Flex: 1,
+		FlexDirection: "column",
+		JustifyContent: "space-between",
+		AlignItems: "center"
 	  }}
 	>
+	
+与`React-Native`的做法相反，在`flutter`中，大部分布局都是通过使用专门用于提供布局的`widget`完成,
+`flutter`的`Column`和`Row`获取一组`widget`，而不是样式属性（尽管有诸如`CrossAxisAlignment`和`direction`），并分别垂直和水平地对齐它们。
 
+例如，如果想指定布局是水平还是垂直的，在`react-native`中需要指定`flexDirection: “column”`,
+但在`flutter`中，使用一个`Column`并提供所需的`widget`即可
+
+	new Center(
+	  child: new Column(
+		children: <Widget>[
+		  new Container(
+			color: Colors.red,
+			width: 100.0,
+			height: 100.0,
+		  ),
+		  new Container(
+			color: Colors.blue,
+			width: 100.0,
+			height: 100.0,
+		  ),
+		  new Container(
+			color: Colors.green,
+			width: 100.0,
+			height: 100.0,
+		  ),
+		],
+	  ),
+	)
+
+有关其他的`widget`:[Padding](https://docs.flutter.io/flutter/widgets/Padding-class.html)，[Align](https://docs.flutter.io/flutter/widgets/Align-class.html)，[Stack](https://docs.flutter.io/flutter/widgets/Stack-class.html)
+
+更多资料可以查阅[widget](https://flutter.io/widgets/layout/)的文档。
+	
 在这里可以检查[Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/Layout_sample/basiclayout_sample/lib/main.dart)和[React-Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/Layout_sample/rnlayout/App.js)相同功能的代码
 
 #### 重叠小组件
 
+`react-native`中可以使用`absolute`重叠不同的组件,而`flutter`使用[Stack](https://docs.flutter.io/flutter/widgets/Stack-class.html)
+实现`widget`的重叠,`Stack`将它的子`widget`定位于它的边缘，如果只是想重叠几个子`widget`，这个类很有用。
+
+
+示例：
+
+`Stack`叠加一个`Container`（在半透明的黑色背景上显示Text）和`CircleAvatar`,
+`Stack`使用`alignment`和`Alignments`属性偏移`Text`
+
+	new Stack(
+	  alignment: const Alignment(0.6, 0.6),
+	  children: <Widget>[
+		new CircleAvatar(
+		  backgroundImage: new NetworkImage(
+			"https://avatars3.githubusercontent.com/u/14101776?v=4"),
+		),
+		new Container(
+		  decoration: new BoxDecoration(
+			  color: Colors.black45,
+		  ),
+		  child: new Text('Flutter'),
+		),
+	  ],
+	)
+
 #### 自定义组件
+
+`react-native`中可以通过以下方式自定义组件
+
+	<View style={styles.container}>
+	  <Text style={{ fontSize: 32, color: "cyan", fontWeight: "600" }}>
+		This is a sample text
+	  </Text>
+	</View>
+	
+	const styles = StyleSheet.create({
+	  container: {
+		flex: 1,
+		backgroundColor: "#fff",
+		alignItems: "center",
+		justifyContent: "center"
+	  }
+	});
+	
+与其类似的`flutter`存在一些特定组件[Padding](https://docs.flutter.io/flutter/widgets/Padding-class.html),[Center](https://docs.flutter.io/flutter/widgets/Center-class.html),[Card](https://docs.flutter.io/flutter/material/Card-class.html),[Stack](https://docs.flutter.io/flutter/widgets/Stack-class.html)
+,`Text`可以使用`TextStyle`,如果在多个地方使用相同的样式,则可以创建一个`TextStyle`类使用
+
+	var textStyle = new TextStyle(fontSize: 32.0, color: Colors.cyan, fontWeight: FontWeight.w600);
+		...
+	new Center(
+	  child: new Column(
+		children: <Widget>[
+		  new Text(
+			'Sample text',
+			style: textStyle,
+		  ),
+		  new Padding(
+			padding: new EdgeInsets.all(20.0),
+			child: new Icon(Icons.lightbulb_outline,
+			  size: 48.0, color: Colors.redAccent)
+		  ),
+		],
+	  ),
+	)
 
 在这里可以检查[Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/styling/flutterstyling/lib/main.dart)和[React-Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/styling/rnstyling/App.js)相同功能的代码
 
 #### Icons和Colors
 
+`react-native`中没有内置图标库,所以必须使用第三方库,但是`flutter`内置了`Material`和`Cupertino`，
+如果想使用`Material`请使用[Icons](https://docs.flutter.io/flutter/material/Icons-class.html),
+否则使用[CupertinoIcons](https://docs.flutter.io/flutter/cupertino/CupertinoIcons-class.html)，
+需要注意的是,请确保在项目的`pubspec.yaml`文件中添加对`cupertino_icons`的依赖
+
+[Icons-class](https://docs.flutter.io/flutter/material/Icons-class.html#constants):这个是所有的`Material`图标列表
+
+对于颜色,`flutter`内置了[Colors](https://docs.flutter.io/flutter/material/Colors-class.html),
+`Colors`采用的是[material](https://material.io/guidelines/style/color.html)风格的颜色
+
+	new Icon(Icons.lightbulb_outline, color: Colors.redAccent)
+
 #### 样式和主题
+
+在`React-Native`中，通常定义一些常用主题应用在组件上,
+同样，在`flutter`中，可以通过在[ThemeData](https://docs.flutter.io/flutter/material/ThemeData-class.html)
+来添加统一的主题以及属性
+
+示例：
+
+`MaterialApp`包装所有的`widget`并充当应用程序的根`widget`。
+
+	@override
+	Widget build(BuildContext context) {
+	  return new MaterialApp(
+		theme: new ThemeData(
+		  primaryColor: Colors.cyan,
+		  brightness: Brightness.dark,
+		),
+		home: new StylingPage(),
+	  );
+	}
+
+即使不使用`MaterialApp`，也可以设置`Theme`, 需要指定`ThemeData`在它的`data`属性，
+然后会在它的所有子`widget`设置对应的`ThemeData`
+
+示例：
+
+	@override
+	 Widget build(BuildContext context) {
+	   return new Theme(
+		 data: new ThemeData(
+		   primaryColor: Colors.cyan,
+		   brightness: brightness,
+		 ),
+		 child: new Scaffold(
+			backgroundColor: Theme.of(context).primaryColor,
+				 ...
+				 ...
+		 ),
+	   );
+	 }
 
 ## 管理State 
 
