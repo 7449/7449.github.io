@@ -27,7 +27,7 @@ tags:
 [第三章：编写一个FlutterApp](https://7449.github.io/2018/03/19/Android_Flutter_3/)<br>
 [第四章：框架预览](https://7449.github.io/2018/03/26/Android_Flutter_4/)<br>
 [第五章：Widget目录](https://7449.github.io/2018/04/12/Android_Flutter_5/)<br>
-[第六章：面对Android开发的Flutter说明](https://7449.github.io/2018/04/12/Android_Flutter_6/)<br>
+[第六章：面对Android开发的Flutter说明](https://7449.github.io/2018/04/16/Android_Flutter_6/)<br>
 
 ## flutter与react-native的区别
 
