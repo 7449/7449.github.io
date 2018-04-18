@@ -39,17 +39,214 @@ tags:
 
 ## Dart简介
 
+> `React-Native`采用的是`JavaScript`,但是`flutter`采用的是[Dart](https://www.dartlang.org/)，`Dart`是一个可扩展开源的编程语言。
+用于构建web,服务器，和移动应用程序,是一种面向对象的单一继承语言，它使用`AOT`编译为本地语言的`C`风格语法，
+并可选择将其翻译为`JavaScript`。
+它支持接口，抽象类和强类型
+
+注： 虽然讲的很好,但是就目前为止,我还是不太喜欢`Dart`编程,希望以后发力
+
 #### 入口
+
+`JavaScript`没有任何特定的入口函数，但`Dart`有一个入口函数`main()`
+
+* JavaScript 
+
+
+		function main() {
+		  // Can be used as entry point
+		}
+		// but it has to be called manually.
+		main();
+	
+	
+* Dart
+
+
+		main() {
+		}
+
+	
+在[DartPad](https://dartpad.dartlang.org/0df636e00f348bdec2bc1c8ebc7daeb1)中试用
 
 #### 输出控制台
 
+* JavaScript 
+	
+	
+		console.log("Level completed.");
+	
+	
+* Dart
+
+
+		print('Hello World');
+
+		
+在[DartPad](https://dartpad.dartlang.org/cf9e652f77636224d3e37d96dcf238e5)中试用
+
 #### 变量
+
+> 有关更多变量的问题可以查看[变量](https://www.dartlang.org/guides/language/language-tour)文档
+
+###### 创建和分配变量
+
+在`JavaScript`中是没有变量类型的，但是在`Dart`中存在变量类型，创建变量的时候指定类型是一种很好的做法。
+在[dart-2](https://www.dartlang.org/dart-2)中,变量在声明的时候必须是明确的类型,或者变量必须是系统自己能自动推断的类型
+
+* JavaScript 
+	
+	
+		var name = "JavaScript";
+	
+	
+* Dart
+
+
+		String name = 'dart';
+		var otherName = 'Dart'; // Also inferred to be a String in Strong mode.
+		// Both are acceptable in Dart.
+
+		
+在[DartPad](https://dartpad.dartlang.org/3f4625c16e05eec396d6046883739612)中试用
+
+###### 默认值
+
+在`Dart`中，未初始化的变量的初始值为`null`，即使`numeric`变量最初也为`null`,因为`numeric`是`Dart`中的对象，
+但在`JavaScript`中，未初始化的变量是`undefined`
+
+* JavaScript 
+	
+	
+		var name; // == undefined
+	
+	
+* Dart
+
+
+		var name; // == null
+		int x; // == null
+
+		
+在[DartPad](https://dartpad.dartlang.org/57ec21faa8b6fe2326ffd74e9781a2c7)中试用
 
 #### 检查 null/zero
 
+在`Dart`中,只有`bool`会被识别为`true` 或者 `false`，但是在`JavaScript`中,除了`bool`还有
+像`1`或者任何非空的变量都会被认为是一个`bool`
+
+* JavaScript 
+	
+	
+		var myNull = null;
+		if (!myNull) {
+		  console.log("null is treated as false");
+		}
+		var zero = 0;
+		if (!zero) {
+		  console.log("0 is treated as false");
+		}
+	
+	
+* Dart
+
+
+		var myNull = null;
+		if (myNull == null) {
+		  print('use "== null" to check null');
+		}
+		var zero = 0;
+		if (zero == 0) {
+		  print('use "== 0" to check zero');
+		}
+		
+在[DartPad](https://dartpad.dartlang.org/c85038ad677963cb6dc943eb1a0b72e6)中试用
+
 #### 方法
 
+> 更多方法可以查阅[方法](https://www.dartlang.org/resources/dart-tips/dart-tips-ep-6)文档
+
+大多数情况下`Dart`和`JavaScript`的方法是相同的,它们两个唯一的不同在于方法的声明
+
+* JavaScript 
+	
+	
+		function fn() {
+		  return true;
+		}
+	
+	
+* Dart
+
+
+		fn() {
+		  return true;
+		}
+		// can also be written as
+		bool fn() {
+		  return true;
+		}
+				
+在[DartPad](https://dartpad.dartlang.org/5454e8bfadf3000179d19b9bc6be9918)中试用
+
 #### 异步
+
+###### Futures
+
+> 更多的信息可以查阅[futures](https://www.dartlang.org/tutorials/language/futures)文档
+
+和`JavaScript`一样，`Dart`支持单线程执行。
+在`JavaScrip`t中，`Promise`对象表示异步操作及其结果值的最终完成（或失败）
+
+	_getIPAddress = () => {
+	  const url="https://httpbin.org/ip";
+	  return fetch(url)
+		.then(response => response.json())
+		.then(responseJson => {
+		  console.log(responseJson.origin);
+		})
+		.catch(error => {
+		  console.error(error);
+		});
+	};
+
+但是在`Dart`中使用[futures](https://www.dartlang.org/tutorials/language/futures)来处理这个问题
+
+	_getIPAddress() {
+	  final url = 'https://httpbin.org/ip';
+	  HttpRequest.request(url).then((value) {
+		  print(json.decode(value.responseText)['origin']);
+	  }).catchError((error) => print(error));
+	}
+	
+在[DartPad](https://dartpad.dartlang.org/b68eb981456c5eec03daa3c05ee59486)中试用
+
+###### async/await
+
+> 更多的信息可以查阅[await-async](https://www.dartlang.org/articles/language/await-async)文档
+
+在`JavaScript`中，当调用异步函数时，它会返回一个`Promise`,
+`await`则是用来等待`Promise`
+
+	async _getIPAddress() {
+	  const url="https://httpbin.org/ip";
+	  const response = await fetch(url);
+	  const json = await response.json();
+	  const data = await json.origin;
+	  console.log(data);
+	}
+
+而在`Dart`中`async`返回一个`Future`，函数被安排在稍后执行,
+`await`则是用来等待`Future`
+
+	_getIPAddress() async {
+	  final url = 'https://httpbin.org/ip';
+	  var request = await HttpRequest.request(url);
+	  String ip = json.decode(request.responseText)['origin'];
+	  print(ip);
+	}
+
+在[DartPad](https://dartpad.dartlang.org/96e845a844d8f8d91c6f5b826ef38951)中试用
 
 ## Flutter基础知识
 
