@@ -39,6 +39,10 @@ tags:
 注： 以`android`开头的标题,都是讲了在`flutter`里面等价于什么
     例如`android-view`表示在`flutter`里面什么东西相同与`android`里面的`view`
 
+	
+其实这篇`Blog`在写的过程中是越写越不想写,因为作者本身就有一定的`React-Native`开发经验,而`flutter`是类似于那种语法的,
+所以很多东西在还没有写之前就已经知道怎么在`flutter`中写,可能估计大概还是因为懒吧...
+	
 
 ## views
 
@@ -398,31 +402,654 @@ tags:
 
 #### android-intent
 
+`android`中`intent`主要用于跳转或者通信，但是`flutter`没有`intent`这个概念,如果想在`flutter`中启动`intent`
+，可以使用[android_intent](https://pub.dartlang.org/packages/android_intent)实现,`flutter`并不等同于`activity`或者`fragment`，
+尽管在`flutter`中使用`route`和`Navigator`进行界面跳转，其实都是在一个`actity`中实现的。
+
+在`flutter`中`Route`是`app`的`screen`或者`page`，`Navigator`则是管理`route`的`widget`,`navigator`可以使用`push`或者`pop`来进行
+跳转或者退出页面
+
+和`android`的`AndroidManifest`类似,在`flutter`中可以将`routes`传递给顶级的`MaterialApp`来声明所有`route`
+
+	void main() {
+	  runApp(new MaterialApp(
+		home: new MyAppHome(), // becomes the route named '/'
+		routes: <String, WidgetBuilder> {
+		  '/a': (BuildContext context) => new MyPage(title: 'page A'),
+		  '/b': (BuildContext context) => new MyPage(title: 'page B'),
+		  '/c': (BuildContext context) => new MyPage(title: 'page C'),
+		},
+	  ));
+	}
+	
+然后可以使用`Navigator`push到想要的界面
+
+	Navigator.of(context).pushNamed('/b');
+	
+`Intent`还可以调用外部组件,例如`Camera`或者`File picker`,可以使用[现有的插件](https://pub.dartlang.org/flutter/)或者自己集成
+
 #### 处理其他app传入的`intent`
 
+`flutter`可以直接与`activity`通信
+
+这个例子在`flutter`的`android`代码中注册一个文本共享器，然后其他应用分享文本到`flutter`程序
+
+首先注册`intent`
+
+	<activity
+	  android:name=".MainActivity"
+	  android:launchMode="singleTop"
+	  android:theme="@style/LaunchTheme"
+	  android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection"
+	  android:hardwareAccelerated="true"
+	  android:windowSoftInputMode="adjustResize">
+	  <!-- ... -->
+	  <intent-filter>
+		<action android:name="android.intent.action.SEND" />
+		<category android:name="android.intent.category.DEFAULT" />
+		<data android:mimeType="text/plain" />
+	  </intent-filter>
+	</activity>
+
+然后在`MainActivity`中处理接收到的文本并分享给`flutter`
+
+
+	package com.yourcompany.shared;
+
+	import android.content.Intent;
+	import android.os.Bundle;
+
+	import java.nio.ByteBuffer;
+
+	import io.flutter.app.FlutterActivity;
+	import io.flutter.plugin.common.ActivityLifecycleListener;
+	import io.flutter.plugin.common.MethodCall;
+	import io.flutter.plugin.common.MethodChannel;
+	import io.flutter.plugins.GeneratedPluginRegistrant;
+
+	public class MainActivity extends FlutterActivity {
+
+	  private String sharedText;
+
+	  @Override
+	  protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		GeneratedPluginRegistrant.registerWith(this);
+		Intent intent = getIntent();
+		String action = intent.getAction();
+		String type = intent.getType();
+
+		if (Intent.ACTION_SEND.equals(action) && type != null) {
+		  if ("text/plain".equals(type)) {
+			handleSendText(intent); // Handle text being sent
+		  }
+		}
+
+		new MethodChannel(getFlutterView(), "app.channel.shared.data")
+		  .setMethodCallHandler(new MethodChannel.MethodCallHandler() {
+			@Override
+			public void onMethodCall(MethodCall methodCall, MethodChannel.Result result) {
+			  if (methodCall.method.contentEquals("getSharedText")) {
+				result.success(sharedText);
+				sharedText = null;
+			  }
+			}
+		  });
+	  }
+
+	  void handleSendText(Intent intent) {
+		sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+	  }
+	}
+	
+最后在`flutter`的`widget`中获取传递的数据
+
+	import 'package:flutter/material.dart';
+	import 'package:flutter/services.dart';
+
+	void main() {
+	  runApp(new SampleApp());
+	}
+
+	class SampleApp extends StatelessWidget {
+	  // This widget is the root of your application.
+	  @override
+	  Widget build(BuildContext context) {
+		return new MaterialApp(
+		  title: 'Sample Shared App Handler',
+		  theme: new ThemeData(
+			primarySwatch: Colors.blue,
+		  ),
+		  home: new SampleAppPage(),
+		);
+	  }
+	}
+
+	class SampleAppPage extends StatefulWidget {
+	  SampleAppPage({Key key}) : super(key: key);
+
+	  @override
+	  _SampleAppPageState createState() => new _SampleAppPageState();
+	}
+
+	class _SampleAppPageState extends State<SampleAppPage> {
+	  static const platform = const MethodChannel('app.channel.shared.data');
+	  String dataShared = "No data";
+
+	  @override
+	  void initState() {
+		super.initState();
+		getSharedText();
+	  }
+
+	  @override
+	  Widget build(BuildContext context) {
+		return new Scaffold(body: new Center(child: new Text(dataShared)));
+	  }
+
+	  getSharedText() async {
+		var sharedData = await platform.invokeMethod("getSharedText");
+		if (sharedData != null) {
+		  setState(() {
+			dataShared = sharedData;
+		  });
+		}
+	  }
+	}
+
 #### startActivityForResult
+
+在`flutter`中可以通过`Navigator`传递数据,
+
+例如想得知用户选择的结果：
+
+* 跳转到指定的页面
+
+	Map coordinates = await Navigator.of(context).pushNamed('/location');
+	
+* 然后回退的时候传递数据
+
+	Navigator.of(context).pop({"lat":43.821757,"long":-79.226392});
+
 
 ## 异步
 
 #### android-runOnUiThread
 
+`dart`是单线程的,但是支持`Isolate`进行多线程操作、事件循环、异步编程，除非使用`Isolate`，否则`dart`一直
+都会在`UI`线程运行,并由事件循环驱动,`flutter`的事件循环相当于`android`的`Looper`
+
+`dart`的单线程模型并不意味者使用者要把所有的操作都作为阻塞操作去运行,和`android`不同的是,`flutter`可以使用`dart`
+提供的异步工具进行异步操作(例如`async` or `await`).
+
+例如示例,运行网络请求代码并不会导致`UI`线程阻塞
+
+	loadData() async {
+	  String dataURL = "https://jsonplaceholder.typicode.com/posts";
+	  http.Response response = await http.get(dataURL);
+	  setState(() {
+		widgets = json.decode(response.body);
+	  });
+	}
+	
+`await`等网络请求完成之后，可以重新调用`setState`刷新`UI`,官网提供了一个异步请求数据并刷新`ListView`的示例
+
+	import 'dart:convert';
+
+	import 'package:flutter/material.dart';
+	import 'package:http/http.dart' as http;
+
+	void main() {
+	  runApp(new SampleApp());
+	}
+
+	class SampleApp extends StatelessWidget {
+	  @override
+	  Widget build(BuildContext context) {
+		return new MaterialApp(
+		  title: 'Sample App',
+		  theme: new ThemeData(
+			primarySwatch: Colors.blue,
+		  ),
+		  home: new SampleAppPage(),
+		);
+	  }
+	}
+
+	class SampleAppPage extends StatefulWidget {
+	  SampleAppPage({Key key}) : super(key: key);
+
+	  @override
+	  _SampleAppPageState createState() => new _SampleAppPageState();
+	}
+
+	class _SampleAppPageState extends State<SampleAppPage> {
+	  List widgets = [];
+
+	  @override
+	  void initState() {
+		super.initState();
+
+		loadData();
+	  }
+
+	  @override
+	  Widget build(BuildContext context) {
+		return new Scaffold(
+		  appBar: new AppBar(
+			title: new Text("Sample App"),
+		  ),
+		  body: new ListView.builder(
+			  itemCount: widgets.length,
+			  itemBuilder: (BuildContext context, int position) {
+				return getRow(position);
+			  }));
+	  }
+
+	  Widget getRow(int i) {
+		return new Padding(
+		  padding: new EdgeInsets.all(10.0),
+		  child: new Text("Row ${widgets[i]["title"]}")
+		);
+	  }
+
+	  loadData() async {
+		String dataURL = "https://jsonplaceholder.typicode.com/posts";
+		http.Response response = await http.get(dataURL);
+		setState(() {
+		  widgets = json.decode(response.body);
+		});
+	  }
+	}
+
 #### 切换线程
 
-#### 网络请求,android-okhttp
+`android`中如果要进行网络请求都会放在子线程，避免出现`ANR`,例如`AsyncTask`.
+但是`flutter`是单线程并且由事件驱动(例如`node`),所以这里不存在什么`AsyncTask`或者其他的工具。
+
+例如上面的示例：
+
+对于`IO`操作,可以声明为一个`async`，并使用`await`等待方法执行完成即可。
+这在网络请求或者数据库操作中是一个非常常见的例子
+
+	loadData() async {
+	  String dataURL = "https://jsonplaceholder.typicode.com/posts";
+	  http.Response response = await http.get(dataURL);
+	  setState(() {
+		widgets = json.decode(response.body);
+	  });
+	}
+	
+在`android`中有`AsyncTask`去执行耗时操作,但是在`flutter`中没有这么麻烦,使用者只需要`await`住一个方法,剩下的事`dart`会搞定.
+	
+当然网络请求中会有延迟,有时候网络不好的情况下时间会很久,不可能让使用者就在那里傻等着,我们应该给使用者一个进度提示或者其他的
+比较醒目的提示.
+
+如果大量数据的请求操作,可以使用`Isolate`完成,`Isolate`是一个独立的线程,它运行的时候不会和主线程进行任何的内存共享,
+这就意味者如果使用`Isolate`,那么就不能直接从主线程进行`setState`或者使用变量,
+
+官网提供了一个简单的示例,讲了如果在使用`Isolate`的时候共享数据或者刷新`UI`
+
+`dataLoader`方法是使用`Isolate`独立运行的，在这个方法中,可以进行更复杂的数据处理,例如很多的`Json`数据
+
+	loadData() async {
+	  ReceivePort receivePort = new ReceivePort();
+	  await Isolate.spawn(dataLoader, receivePort.sendPort);
+
+	  // The 'echo' isolate sends its SendPort as the first message
+	  SendPort sendPort = await receivePort.first;
+
+	  List msg = await sendReceive(sendPort, "https://jsonplaceholder.typicode.com/posts");
+
+	  setState(() {
+		widgets = msg;
+	  });
+	}
+
+	// The entry point for the isolate
+	static dataLoader(SendPort sendPort) async {
+	  // Open the ReceivePort for incoming messages.
+	  ReceivePort port = new ReceivePort();
+
+	  // Notify any other isolates what port this isolate listens to.
+	  sendPort.send(port.sendPort);
+
+	  await for (var msg in port) {
+		String data = msg[0];
+		SendPort replyTo = msg[1];
+
+		String dataURL = data;
+		http.Response response = await http.get(dataURL);
+		// Lots of JSON to parse
+		replyTo.send(json.decode(response.body));
+	  }
+	}
+
+	Future sendReceive(SendPort port, msg) {
+	  ReceivePort response = new ReceivePort();
+	  port.send([msg, response.sendPort]);
+	  return response.first;
+	}
+	
+下面这个是完整的可运行的一个示例：
+
+	import 'dart:convert';
+
+	import 'package:flutter/material.dart';
+	import 'package:http/http.dart' as http;
+	import 'dart:async';
+	import 'dart:isolate';
+
+	void main() {
+	  runApp(new SampleApp());
+	}
+
+	class SampleApp extends StatelessWidget {
+	  @override
+	  Widget build(BuildContext context) {
+		return new MaterialApp(
+		  title: 'Sample App',
+		  theme: new ThemeData(
+			primarySwatch: Colors.blue,
+		  ),
+		  home: new SampleAppPage(),
+		);
+	  }
+	}
+
+	class SampleAppPage extends StatefulWidget {
+	  SampleAppPage({Key key}) : super(key: key);
+
+	  @override
+	  _SampleAppPageState createState() => new _SampleAppPageState();
+	}
+
+	class _SampleAppPageState extends State<SampleAppPage> {
+	  List widgets = [];
+
+	  @override
+	  void initState() {
+		super.initState();
+		loadData();
+	  }
+
+	  showLoadingDialog() {
+		if (widgets.length == 0) {
+		  return true;
+		}
+
+		return false;
+	  }
+
+	  getBody() {
+		if (showLoadingDialog()) {
+		  return getProgressDialog();
+		} else {
+		  return getListView();
+		}
+	  }
+
+	  getProgressDialog() {
+		return new Center(child: new CircularProgressIndicator());
+	  }
+
+	  @override
+	  Widget build(BuildContext context) {
+		return new Scaffold(
+			appBar: new AppBar(
+			  title: new Text("Sample App"),
+			),
+			body: getBody());
+	  }
+
+	  ListView getListView() => new ListView.builder(
+		  itemCount: widgets.length,
+		  itemBuilder: (BuildContext context, int position) {
+			return getRow(position);
+		  });
+
+	  Widget getRow(int i) {
+		return new Padding(padding: new EdgeInsets.all(10.0), child: new Text("Row ${widgets[i]["title"]}"));
+	  }
+
+	  loadData() async {
+		ReceivePort receivePort = new ReceivePort();
+		await Isolate.spawn(dataLoader, receivePort.sendPort);
+
+		// The 'echo' isolate sends its SendPort as the first message
+		SendPort sendPort = await receivePort.first;
+
+		List msg = await sendReceive(sendPort, "https://jsonplaceholder.typicode.com/posts");
+
+		setState(() {
+		  widgets = msg;
+		});
+	  }
+
+	// the entry point for the isolate
+	  static dataLoader(SendPort sendPort) async {
+		// Open the ReceivePort for incoming messages.
+		ReceivePort port = new ReceivePort();
+
+		// Notify any other isolates what port this isolate listens to.
+		sendPort.send(port.sendPort);
+
+		await for (var msg in port) {
+		  String data = msg[0];
+		  SendPort replyTo = msg[1];
+
+		  String dataURL = data;
+		  http.Response response = await http.get(dataURL);
+		  // Lots of JSON to parse
+		  replyTo.send(json.decode(response.body));
+		}
+	  }
+
+	  Future sendReceive(SendPort port, msg) {
+		ReceivePort response = new ReceivePort();
+		port.send([msg, response.sendPort]);
+		return response.first;
+	  }
+	}
+
+#### android-okhttp
+
+`flutter`中网络请求可以使用[http软件包](https://pub.dartlang.org/packages/http)，
+虽然它没有完全实现`okhttp`的所有功能,但是已经扩展出了很多自己的方法,让网络请求变得非常简单
+
+可以通过在`pubspec.yaml`中添加依赖去使用
+
+	dependencies:
+	  ...
+	  http: '>=0.11.3+16'
+
+然后进行网络请求,使用者只需要`await`执行一个`async`方法即可
+
+	import 'dart:convert';
+
+	import 'package:flutter/material.dart';
+	import 'package:http/http.dart' as http;
+	[...]
+	  loadData() async {
+		String dataURL = "https://jsonplaceholder.typicode.com/posts";
+		http.Response response = await http.get(dataURL);
+		setState(() {
+		  widgets = json.decode(response.body);
+		});
+	  }
+	}
 
 #### 显示进度条
+
+`android`中可以通过`ProgressBar`在执行耗时操作的时候,
+在`flutter`中可以使用`ProgressIndicator`，可以在耗时方法执行之前显示,并在执行完成之后隐藏掉。
+
+	import 'dart:convert';
+
+	import 'package:flutter/material.dart';
+	import 'package:http/http.dart' as http;
+
+	void main() {
+	  runApp(new SampleApp());
+	}
+
+	class SampleApp extends StatelessWidget {
+	  @override
+	  Widget build(BuildContext context) {
+		return new MaterialApp(
+		  title: 'Sample App',
+		  theme: new ThemeData(
+			primarySwatch: Colors.blue,
+		  ),
+		  home: new SampleAppPage(),
+		);
+	  }
+	}
+
+	class SampleAppPage extends StatefulWidget {
+	  SampleAppPage({Key key}) : super(key: key);
+
+	  @override
+	  _SampleAppPageState createState() => new _SampleAppPageState();
+	}
+
+	class _SampleAppPageState extends State<SampleAppPage> {
+	  List widgets = [];
+
+	  @override
+	  void initState() {
+		super.initState();
+		loadData();
+	  }
+
+	  showLoadingDialog() {
+		return widgets.length == 0;
+	  }
+
+	  getBody() {
+		if (showLoadingDialog()) {
+		  return getProgressDialog();
+		} else {
+		  return getListView();
+		}
+	  }
+
+	  getProgressDialog() {
+		return new Center(child: new CircularProgressIndicator());
+	  }
+
+	  @override
+	  Widget build(BuildContext context) {
+		return new Scaffold(
+			appBar: new AppBar(
+			  title: new Text("Sample App"),
+			),
+			body: getBody());
+	  }
+
+	  ListView getListView() => new ListView.builder(
+		  itemCount: widgets.length,
+		  itemBuilder: (BuildContext context, int position) {
+			return getRow(position);
+		  });
+
+	  Widget getRow(int i) {
+		return new Padding(padding: new EdgeInsets.all(10.0), child: new Text("Row ${widgets[i]["title"]}"));
+	  }
+
+	  loadData() async {
+		String dataURL = "https://jsonplaceholder.typicode.com/posts";
+		http.Response response = await http.get(dataURL);
+		setState(() {
+		  widgets = json.decode(response.body);
+		});
+	  }
+	}
 
 ## 项目资源和结构
 
 #### 图片
 
+`android`的图片都是放在`drawable`目录下,但是`flutter`没有这个概念,
+`flutter`采用的是`ios`那种格式,图片可以是`1x`,`2x`,`3x`或者其他的倍数
+
+`flutter`上的图片或者某些文件可以放在任意文件夹中; 没有强制性的文件夹结构。
+只需要将该文件夹在`pubspec`文件中引用,`flutter`会自己处理。
+
+例如新添加一个`my_icon.png`图片,放在`images`文件夹中
+
+	images/my_icon.png       // Base: 1.0x image
+	images/2.0x/my_icon.png  // 2.0x image
+	images/3.0x/my_icon.png  // 3.0x image
+
+然后在`pubspec.yaml`中声明路径：
+
+	assets:
+	 - images/my_icon.jpeg
+	 
+使用`AssetImage`获取图片：
+
+	return new AssetImage("images/a_dot_burr.jpeg");
+
+或者使用`Image Widget`直接获取：
+
+	@override
+	Widget build(BuildContext context) {
+	  return new Image.asset("images/my_image.png");
+	}
+
+`flutter`也不存在`dp`这种概念,具体的可以看看[devicePixelRatio](https://docs.flutter.io/flutter/dart-ui/Window/devicePixelRatio.html)
+
+Android密度限定符 |	  颤动像素比例
+ldpi	         |	  0.75x
+mdpi	         |	  1.0x
+hdpi	         |	  1.5x
+xhdpi	         |	  2.0x
+xxhdpi	         |	  3.0x
+xxxhdpi	         |	  4.0x
+
+
+* 在`flutter beta 2`之前，`flutter`中定义的图片或者某些文件无法从本地访问，
+反之亦然，`flutter`不提供`assets`资产和资源，因为它们位于单独的文件夹中。
+
+从`flutter beta 2`开始，`flutter` `assets`存储在本地`assets`文件夹中，
+可以通过`Android`访问`AssetManager`
+
+	val flutterAssetStream = assetManager.open("flutter_assets/assets/my_flutter_asset.png")
+
+从`flutter beta 2`开始，`flutter`仍然无法访问本地资源，也无法访问本地资源.
+
 #### 字符串
 
+`flutter`没有专门的字符串资源系统,所以直接声明即可：
+
+	class Strings {
+	  static String welcomeMessage = "Welcome To Flutter";
+	}
+
+然后在代码中：
+
+	new Text(Strings.welcomeMessage)
+
+推荐使用[intl](https://pub.dartlang.org/packages/intl)进行国际化和本地化
+	
 #### android-gradle
+
+在`pubspec.yaml`声明依赖
+
+可以在[packages](https://pub.dartlang.org/flutter/packages/)寻找自己需要的依赖
 
 ## Activity or Fragment
 
 #### android-activity-fragment
+
+在`android`中,`activity`就是一个页面,而`fragment`都是依赖于`activity`存在，
+但是在`flutter`中这两种都等价于`widget`
+
+正如`intent`部分所述,`flutter`中的屏幕由`Widget`表示，
+因为所有东西都是`flutter`中的一个`widget`.
+可以使用`Navigator`在不同的`Route`之间移动，这些`Route`代表不同的屏幕或页面，
+或者可能只是不同的状态或同一数据的呈现。
 
 #### 生命周期
 
