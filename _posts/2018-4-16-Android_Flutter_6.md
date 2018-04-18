@@ -1000,7 +1000,7 @@ tags:
 
 `flutter`也不存在`dp`这种概念,具体的可以看看[devicePixelRatio](https://docs.flutter.io/flutter/dart-ui/Window/devicePixelRatio.html)
 
-Android密度限定符 |	  颤动像素比例
+Android密度限定符 |	  flutter像素比例
 ldpi	         |	  0.75x
 mdpi	         |	  1.0x
 hdpi	         |	  1.5x
@@ -1053,60 +1053,726 @@ xxxhdpi	         |	  4.0x
 
 #### 生命周期
 
+`android`中可以重写`activity`的生命周期方法,或者在`Application`注册`ActivityLifecycleCallbacks`.
+
+`flutter`中可以通过注册`WidgetsBinding`的观察者并监听`didChangeAppLifecycleState`来监听生命周期
+
+可以监听到的有以下几种：
+
+* `inactive` - 应用程序处于非活动状态，未接收用户输入。仅适用于`ios`
+* `paused` - 应用程序当前对用户不可见，不响应用户输入，并且在后台运行。这相当于`android`的`onPause()`
+* `resumed` - 应用程序可见并响应用户输入。这相当于`android`的`onPostResume()`
+* `suspending` - 应用程序将暂时中止。这相当于`android`的`onStop()`,仅适用于`android`
+
+更多信息可以阅读[AppLifecycleState](https://docs.flutter.io/flutter/dart-ui/AppLifecycleState-class.html)
+
+尽管在`FlutterActivity`中能监控到`Activity`的所有生命周期，但是使用者能监控到的只有极少数,
+因为在大多数的情况下,无需监控生命周期,一切都由`flutter`处理
+
+简单示例：
+
+	import 'package:flutter/widgets.dart';
+
+	class LifecycleWatcher extends StatefulWidget {
+	  @override
+	  _LifecycleWatcherState createState() => new _LifecycleWatcherState();
+	}
+
+	class _LifecycleWatcherState extends State<LifecycleWatcher> with WidgetsBindingObserver {
+	  AppLifecycleState _lastLifecyleState;
+
+	  @override
+	  void initState() {
+		super.initState();
+		WidgetsBinding.instance.addObserver(this);
+	  }
+
+	  @override
+	  void dispose() {
+		WidgetsBinding.instance.removeObserver(this);
+		super.dispose();
+	  }
+
+	  @override
+	  void didChangeAppLifecycleState(AppLifecycleState state) {
+		setState(() {
+		  _lastLifecyleState = state;
+		});
+	  }
+
+	  @override
+	  Widget build(BuildContext context) {
+		if (_lastLifecyleState == null)
+		  return new Text('This widget has not observed any lifecycle changes.', textDirection: TextDirection.ltr);
+
+		return new Text('The most recent lifecycle state this widget observed was: $_lastLifecyleState.',
+			textDirection: TextDirection.ltr);
+	  }
+	}
+
+	void main() {
+	  runApp(new Center(child: new LifecycleWatcher()));
+	}
+
+
 ## 布局
 
 #### android-LinearLayout
 
+垂直或者水平布局,在`flutter`中可以通过`row` 或者`column`实现相同的结果
+
+row:
+
+	@override
+	Widget build(BuildContext context) {
+	  return new Row(
+		mainAxisAlignment: MainAxisAlignment.center,
+		children: <Widget>[
+		  new Text('Row One'),
+		  new Text('Row Two'),
+		  new Text('Row Three'),
+		  new Text('Row Four'),
+		],
+	  );
+	}
+
+column:
+
+	@override
+	Widget build(BuildContext context) {
+	  return new Column(
+		mainAxisAlignment: MainAxisAlignment.center,
+		children: <Widget>[
+		  new Text('Column One'),
+		  new Text('Column Two'),
+		  new Text('Column Three'),
+		  new Text('Column Four'),
+		],
+	  );
+	}
+
 #### android-RelativeLayout
 
+可以通过使用`column`，`row` 和 `stack` 等 `Widget` 
+的组合来实现 `RelativeLayout` 的效果。可以针对子`widget`指定相对于父布局的规则
+
+[stackoverflow](https://stackoverflow.com/questions/44396075/equivalent-of-relativelayout-in-flutter)有一个很好的示例
+
 #### android-ScrollView
+
+`flutter`中`ListView`既是`ScrollView`又是`Android ListView`
+
+	@override
+	Widget build(BuildContext context) {
+	  return new ListView(
+		children: <Widget>[
+		  new Text('Row One'),
+		  new Text('Row Two'),
+		  new Text('Row Three'),
+		  new Text('Row Four'),
+		],
+	  );
+	}
+
 
 ## 手势,触摸
 
 #### onClick
 
+`android`中是实现`setOnClickListener`将点击附加在按钮上面。
+在`flutter`中有两种点击方式可以实现:
+
+* `widget`本身就支持点击监控，例如`RaisedButton`：
+
+
+        @override
+        Widget build(BuildContext context) {
+          return new RaisedButton(
+              onPressed: () {
+                print("click");
+              },
+              child: new Text("Button"));
+        }
+
+	
+* `widget`本身不支持点击监控,则可以将`widget`包裹在`GestureDetector`里面，将点击传递给`onTap`即可:
+
+
+        class SampleApp extends StatelessWidget {
+          @override
+          Widget build(BuildContext context) {
+            return new Scaffold(
+                body: new Center(
+              child: new GestureDetector(
+                child: new FlutterLogo(
+                  size: 200.0,
+                ),
+                onTap: () {
+                  print("tap");
+                },
+              ),
+            ));
+          }
+        }
+
+	
+这点处理觉得比`react-native`方便一点,因为`react-native`本身是没有`button`的。
+	
 #### 其他手势
+
+可以利用`GestureDetector`监控更多的手势操作
+
+* 点击
+
+	* onTapDown  	按下
+	* onTapUp    	抬起
+	* onTap      	点击
+	* onTapCancel	按下却没有触发 `onTapUp` 事件  
+
+* 双击
+
+	* onDoubleTap   使用者快速两次点击相同的位置
+
+* 长按
+
+	* onLongPress   使用者长按
+
+* 垂直拖动
+
+	* onVerticalDragStart  	垂直移动的起点
+	* onVerticalDragUpdate  垂直移动过程中不断触发
+	* onVerticalDragEnd  	垂直移动结束,停止触摸屏幕
+
+* 水平拖动
+
+	* onHorizontalDragStart  水平移动的起点
+	* onHorizontalDragUpdate 水平移动过程中不断触发
+	* onHorizontalDragEnd    水平移动结束,停止触摸屏幕
+	
+例如点击`FlutterLogo`使其旋转
+
+	AnimationController controller;
+	CurvedAnimation curve;
+
+	@override
+	void initState() {
+	  controller = new AnimationController(duration: const Duration(milliseconds: 2000), vsync: this);
+	  curve = new CurvedAnimation(parent: controller, curve: Curves.easeIn);
+	}
+
+	class SampleApp extends StatelessWidget {
+	  @override
+	  Widget build(BuildContext context) {
+		return new Scaffold(
+			body: new Center(
+			  child: new GestureDetector(
+				child: new RotationTransition(
+					turns: curve,
+					child: new FlutterLogo(
+					  size: 200.0,
+					)),
+				onDoubleTap: () {
+				  if (controller.isCompleted) {
+					controller.reverse();
+				  } else {
+					controller.forward();
+				  }
+				},
+			),
+		));
+	  }
+	}
 
 ## ListView and Adapter
 
 #### android-ListView
 
+`flutter`中的`ListView`就是`android`中的`ListView`.
+
+在`android`中使用`ListView`,如果不使用`ViewHolder`将会造成视觉上的卡顿和大量的内存消耗，
+但是在`flutter`上，由于`widget`的不可变,只需要将`Widget`列表传递给`ListView`，`Flutter`将确保平稳快速的滚动
+
+	import 'package:flutter/material.dart';
+
+	void main() {
+	  runApp(new SampleApp());
+	}
+
+	class SampleApp extends StatelessWidget {
+	  // This widget is the root of your application.
+	  @override
+	  Widget build(BuildContext context) {
+		return new MaterialApp(
+		  title: 'Sample App',
+		  theme: new ThemeData(
+			primarySwatch: Colors.blue,
+		  ),
+		  home: new SampleAppPage(),
+		);
+	  }
+	}
+
+	class SampleAppPage extends StatefulWidget {
+	  SampleAppPage({Key key}) : super(key: key);
+
+	  @override
+	  _SampleAppPageState createState() => new _SampleAppPageState();
+	}
+
+	class _SampleAppPageState extends State<SampleAppPage> {
+	  @override
+	  Widget build(BuildContext context) {
+		return new Scaffold(
+		  appBar: new AppBar(
+			title: new Text("Sample App"),
+		  ),
+		  body: new ListView(children: _getListData()),
+		);
+	  }
+
+	  _getListData() {
+		List<Widget> widgets = [];
+		for (int i = 0; i < 100; i++) {
+		  widgets.add(new Padding(padding: new EdgeInsets.all(10.0), child: new Text("Row $i")));
+		}
+		return widgets;
+	  }
+	}
+
 #### item-onclick
 
+`android`中存在`onItemClickListener`，让使用者可以知道点击了哪个`item`，这一点在`flutter`中更容易实现
+，其实本质上就是为每个`item`包裹一个`GestureDetector`
+
+	import 'package:flutter/material.dart';
+
+	void main() {
+	  runApp(new SampleApp());
+	}
+
+	class SampleApp extends StatelessWidget {
+	  // This widget is the root of your application.
+	  @override
+	  Widget build(BuildContext context) {
+		return new MaterialApp(
+		  title: 'Sample App',
+		  theme: new ThemeData(
+			primarySwatch: Colors.blue,
+		  ),
+		  home: new SampleAppPage(),
+		);
+	  }
+	}
+
+	class SampleAppPage extends StatefulWidget {
+	  SampleAppPage({Key key}) : super(key: key);
+
+	  @override
+	  _SampleAppPageState createState() => new _SampleAppPageState();
+	}
+
+	class _SampleAppPageState extends State<SampleAppPage> {
+	  @override
+	  Widget build(BuildContext context) {
+		return new Scaffold(
+		  appBar: new AppBar(
+			title: new Text("Sample App"),
+		  ),
+		  body: new ListView(children: _getListData()),
+		);
+	  }
+
+	  _getListData() {
+		List<Widget> widgets = [];
+		for (int i = 0; i < 100; i++) {
+		  widgets.add(new GestureDetector(
+			child: new Padding(
+				padding: new EdgeInsets.all(10.0),
+				child: new Text("Row $i")),
+			onTap: () {
+			  print('row tapped');
+			},
+		  ));
+		}
+		return widgets;
+	  }
+	}
+
 #### 刷新ListView 
+
+`android`上如果想更新数据,只需要填充数据之后执行`notifyDataSetChanged`,
+但是在`flutter`上填充数据之后执行`setState`会发现界面不会有任何的变动.
+这是因为如果执行`setState`，`flutter`的渲染引擎会遍历所有的`widget`，
+当遍历到`ListView`的时候,会执行一个`==`操作符。会发现前后两个`ListView`是相同的，所以没有更新数据。
+
+如果想简单的更新数据,有一个简单的方法仅适用于数据不多的时候使用,当然也不建议使用,
+那就是在`setState`中创建一个新的`widget`列表,将所有的旧数据添加到新的`widget`列表就可以了
+
+	import 'package:flutter/material.dart';
+
+	void main() {
+	  runApp(new SampleApp());
+	}
+
+	class SampleApp extends StatelessWidget {
+	  // This widget is the root of your application.
+	  @override
+	  Widget build(BuildContext context) {
+		return new MaterialApp(
+		  title: 'Sample App',
+		  theme: new ThemeData(
+			primarySwatch: Colors.blue,
+		  ),
+		  home: new SampleAppPage(),
+		);
+	  }
+	}
+
+	class SampleAppPage extends StatefulWidget {
+	  SampleAppPage({Key key}) : super(key: key);
+
+	  @override
+	  _SampleAppPageState createState() => new _SampleAppPageState();
+	}
+
+	class _SampleAppPageState extends State<SampleAppPage> {
+	  List widgets = [];
+
+	  @override
+	  void initState() {
+		super.initState();
+		for (int i = 0; i < 100; i++) {
+		  widgets.add(getRow(i));
+		}
+	  }
+
+	  @override
+	  Widget build(BuildContext context) {
+		return new Scaffold(
+		  appBar: new AppBar(
+			title: new Text("Sample App"),
+		  ),
+		  body: new ListView(children: widgets),
+		);
+	  }
+
+	  Widget getRow(int i) {
+		return new GestureDetector(
+		  child: new Padding(
+			  padding: new EdgeInsets.all(10.0),
+			  child: new Text("Row $i")),
+		  onTap: () {
+			setState(() {
+			  widgets = new List.from(widgets);
+			  widgets.add(getRow(widgets.length + 1));
+			  print('row $i');
+			});
+		  },
+		);
+	  }
+	}
+	
+但是更推荐的是使用`ListView.Builder`，当存在动态列表或者大量的数据的时候,使用`ListView.Builder`就相当于
+`android`中的`RecyclerView`,它会自动回收列表元素
+
+	import 'package:flutter/material.dart';
+
+	void main() {
+	  runApp(new SampleApp());
+	}
+
+	class SampleApp extends StatelessWidget {
+	  // This widget is the root of your application.
+	  @override
+	  Widget build(BuildContext context) {
+		return new MaterialApp(
+		  title: 'Sample App',
+		  theme: new ThemeData(
+			primarySwatch: Colors.blue,
+		  ),
+		  home: new SampleAppPage(),
+		);
+	  }
+	}
+
+	class SampleAppPage extends StatefulWidget {
+	  SampleAppPage({Key key}) : super(key: key);
+
+	  @override
+	  _SampleAppPageState createState() => new _SampleAppPageState();
+	}
+
+	class _SampleAppPageState extends State<SampleAppPage> {
+	  List widgets = [];
+
+	  @override
+	  void initState() {
+		super.initState();
+		for (int i = 0; i < 100; i++) {
+		  widgets.add(getRow(i));
+		}
+	  }
+
+	  @override
+	  Widget build(BuildContext context) {
+		return new Scaffold(
+			appBar: new AppBar(
+			  title: new Text("Sample App"),
+			),
+			body: new ListView.builder(
+				itemCount: widgets.length,
+				itemBuilder: (BuildContext context, int position) {
+				  return getRow(position);
+				}));
+	  }
+
+	  Widget getRow(int i) {
+		return new GestureDetector(
+		  child: new Padding(
+			  padding: new EdgeInsets.all(10.0),
+			  child: new Text("Row $i")),
+		  onTap: () {
+			setState(() {
+			  widgets.add(getRow(widgets.length + 1));
+			  print('row $i');
+			});
+		  },
+		);
+	  }
+	}
+	
+这里并不是创建了一个`ListView`，而是一个`ListView.Builder`，它接受两个参数,一个是列表的初始长度,另一个是`ItemBuilder`方法。
+
+`ItemBuilder`类似于`android adapter`中的`getView`，它返回`position`使用者只需要返回对应的`widget`即可
+
+观察`onTap`方法,这一次没有重新创建`widget`，而只是添加新的数据到列表中。
 
 ## 文本
 
 #### 自定义字体
 
+在`android`初始,就可以为`TextView`指定`FontFamily`来改变默认的字体.而在`flutter`中，需要把字体文件放在项目文件夹中
+，最好指定一个文件夹,例如`assets`,接下来声明这个文件夹
+
+	fonts:
+	   - family: MyCustomFont
+		 fonts:
+		   - asset: fonts/MyCustomFont.ttf
+		   - style: italic
+
+最后将字体分配给`widget`即可
+
+	@override
+	Widget build(BuildContext context) {
+	  return new Scaffold(
+		appBar: new AppBar(
+		  title: new Text("Sample App"),
+		),
+		body: new Center(
+		  child: new Text(
+			'This is a custom font text',
+			style: new TextStyle(fontFamily: 'MyCustomFont'),
+		  ),
+		),
+	  );
+	}
+		   
+		   
 #### 修改样式
+
+除了字体还有其他样式可以改变,`Text`需要一个`TextStyle`，它可以自定义很多参数
+
+例如：
+
+* color
+* decoration
+* decorationColor
+* decorationStyle
+* fontFamily
+* fontSize
+* fontStyle
+* fontWeight
+* hashCode
+* height
+* inherit
+* letterSpacing
+* textBaseline
+* wordSpacing
 
 ## 输入框
 
 #### 提示输入hintText
 
+可以添加`InputDecoration`对象，轻松的显示提示或者占位
+
+	body: new Center(
+	  child: new TextField(
+		decoration: new InputDecoration(hintText: "This is a hint"),
+	  )
+	)
+
 #### 显示错误输入
+
+就和显示提示一样,但肯定不想的是刚开始就显示错误,那么就可以通过改变`setState`传递一个新的`InputDecoration`
+
+注： 个人认为较为繁琐
+
+	import 'package:flutter/material.dart';
+
+	void main() {
+	  runApp(new SampleApp());
+	}
+
+	class SampleApp extends StatelessWidget {
+	  // This widget is the root of your application.
+	  @override
+	  Widget build(BuildContext context) {
+		return new MaterialApp(
+		  title: 'Sample App',
+		  theme: new ThemeData(
+			primarySwatch: Colors.blue,
+		  ),
+		  home: new SampleAppPage(),
+		);
+	  }
+	}
+
+	class SampleAppPage extends StatefulWidget {
+	  SampleAppPage({Key key}) : super(key: key);
+
+	  @override
+	  _SampleAppPageState createState() => new _SampleAppPageState();
+	}
+
+	class _SampleAppPageState extends State<SampleAppPage> {
+	  String _errorText;
+
+	  @override
+	  Widget build(BuildContext context) {
+		return new Scaffold(
+		  appBar: new AppBar(
+			title: new Text("Sample App"),
+		  ),
+		  body: new Center(
+			child: new TextField(
+			  onSubmitted: (String text) {
+				setState(() {
+				  if (!isEmail(text)) {
+					_errorText = 'Error: This is not an email';
+				  } else {
+					_errorText = null;
+				  }
+				});
+			  },
+			  decoration: new InputDecoration(hintText: "This is a hint", errorText: _getErrorText()),
+			),
+		  ),
+		);
+	  }
+
+	  _getErrorText() {
+		return _errorText;
+	  }
+
+	  bool isEmail(String em) {
+		String emailRegexp =
+			r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+
+		RegExp regExp = new RegExp(p);
+
+		return regExp.hasMatch(em);
+	  }
+	}
 
 ## 插件
 
 #### GPS
 
+[location]( https://pub.dartlang.org/packages/location)
+
 #### 相机
+
+[image_picker](https://pub.dartlang.org/packages/image_picker)
 
 #### 登陆facebook
 
+[flutter_facebook_login](https://pub.dartlang.org/packages/flutter_facebook_login)
+
 #### 自定义插件
+
+[developing-packages](https://flutter.io/developing-packages/)
 
 ## 主题
 
 #### 设置`Material-style`
 
+不同于`android`的方式(使用XML声明主题，然后通过`AndroidManifest`分配给`activity`)，
+`flutter`可以通过顶层小部件声明主题.
+
+要充分利用系统现有的`widget`，可以将`MaterialApp`声明为顶层入口
+
+`MaterialApp`是一个方便的小部件，它包装了许多实现`Material Design`的应用程序通常需要的小部件。
+`MaterialApp` 是在 `WidgetsApp` 的基础上进行实现的。
+
+如果不想使用`MaterialApp`,那么可以声明一个顶级 `WidgetsApp`，
+它是一个比较通用的类，它包装了一些应用程序通常需要的`widget`。
+
+如果需要自定义主题,可以传递一个`ThemeData`
+
+	class SampleApp extends StatelessWidget {
+	  @override
+	  Widget build(BuildContext context) {
+		return new MaterialApp(
+		  title: 'Sample App',
+		  theme: new ThemeData(
+			primarySwatch: Colors.blue,
+			textSelectionColor: Colors.red
+		  ),
+		  home: new SampleAppPage(),
+		);
+	  }
+	}
+
 ## 数据库和本地存储
 
 #### 数据库
 
+[sqflite](https://pub.dartlang.org/packages/sqflite)
+
 #### 本地存储
+
+可以使用[shared_preferences](https://pub.dartlang.org/packages/shared_preferences)
+
+它的内部也是通过包装`SharedPreferences`和`NSUserDefaults`来实现的。
+
+	import 'package:flutter/material.dart';
+	import 'package:shared_preferences/shared_preferences.dart';
+
+	void main() {
+	  runApp(
+		new MaterialApp(
+		  home: new Scaffold(
+			body: new Center(
+			  child: new RaisedButton(
+				onPressed: _incrementCounter,
+				child: new Text('Increment Counter'),
+			  ),
+			),
+		  ),
+		),
+	  );
+	}
+
+	_incrementCounter() async {
+	  SharedPreferences prefs = await SharedPreferences.getInstance();
+	  int counter = (prefs.getInt('counter') ?? 0) + 1;
+	  print('Pressed $counter times.');
+	  prefs.setInt('counter', counter);
+	}
+
 
 ## 通知
 
 #### 推送
+
+[firebase_messaging](https://github.com/flutter/plugins/tree/master/packages/firebase_messaging)
