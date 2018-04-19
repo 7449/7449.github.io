@@ -1252,9 +1252,9 @@ react-native
 flutter
 
 在`flutter`中，使用[Drawer](https://flutter.io/flutter-for-react-native/)，它符合`material design`，可以从`Scaffold`边缘水平滑动，
-以便在应用程序中显示导航链接,使用者可以提供一个`Button`，一个`Text`或`ListView`显示在抽屉里面。
+以便在应用程序中显示导航链接,使用者可以提供一个`Button`，一个`Text`或`ListView`显示在抽屉里面
 
-在示例中，使用了[ListTile](https://docs.flutter.io/flutter/material/ListTile-class.html)并提供了导航。
+在示例中，使用了[ListTile](https://docs.flutter.io/flutter/material/ListTile-class.html)并提供了导航
 
     new Drawer(
       child:new ListTile(
@@ -1267,7 +1267,7 @@ flutter
       elevation: 20.0,
     ),
 
-`Drawer`通常与`Scaffold.drawer`属性一起使用,`AppBar`会自动显示`IconButton`以便`Scaffold`在适合的地方显示`Drawer`。
+`Drawer`通常与`Scaffold.drawer`属性一起使用,`AppBar`会自动显示`IconButton`以便`Scaffold`在适合的地方显示`Drawer`,
 而`Scaffold`会自动处理手势
 
     @override
@@ -1296,11 +1296,120 @@ flutter
 
 #### 点击
 
+react-native
+
+>`react-native`中没有`button`，只能通过自己封装去实现相应的组件
+
+	<TouchableOpacity
+	  onPress={() => {
+		console.log("Press");
+	  }}
+	  onLongPress={() => {
+		console.log("Long Press");
+	  }}
+	>
+	  <Text>Tap or Long Press</Text>
+	</TouchableOpacity>
+
+对于更复杂的手势操作,可以使用[panresponder](https://facebook.github.io/react-native/docs/panresponder.html)
+	
+	class App extends Component {
+
+	  componentWillMount() {
+		this._panResponder = PanResponder.create({
+		  onMoveShouldSetPanResponder: (event, gestureState) =>
+			!!getDirection(gestureState),
+		  onPanResponderMove: (event, gestureState) => true,
+		  onPanResponderRelease: (event, gestureState) => {
+			const drag = getDirection(gestureState);
+		  },
+		  onPanResponderTerminationRequest: (event, gestureState) => true
+		});
+	  }
+	  
+	  render() {
+		return (
+		  <View style={styles.container} {...this._panResponder.panHandlers}>
+			<View style={styles.center}>
+			  <Text>Swipe Horizontally or Vertically</Text>
+			</View>
+		  </View>
+		);
+	  }
+	}
+
+flutter
+
+> 在`flutter`中想实现这种效果可以使用`button`或者具有`onPress`的可触摸`widget`，
+另一种方法和`react-native`类似,包裹一层[GestureDetector](https://docs.flutter.io/flutter/widgets/GestureDetector-class.html)
+	
+	new GestureDetector(
+	  child: new Scaffold(
+		appBar: new AppBar(
+		  title: new Text("Gestures"),
+		),
+		body: new Center(
+		  child: new Column(
+			mainAxisAlignment: MainAxisAlignment.center,
+			children: <Widget>[
+			  new Text('Tap, Long Press, Swipe Horizontally or Vertically '),
+			],
+		  )
+		),
+	  ),
+	  onTap: () {
+		print('Tapped');
+	  },
+	  onLongPress: () {
+		print('Long Pressed');
+	  },
+	  onVerticalDragEnd: (DragEndDetails value) {
+		print('Swiped Vertically');
+	  },
+	  onHorizontalDragEnd: (DragEndDetails value) {
+		print('Swiped Horizontally');
+	  },
+	);	
+	
 在这里可以检查[Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/gestures/fluttergestures/lib/main.dart)和[React-Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/gestures/rngestures/App.js)相同功能的代码
 
 ## 网络请求
 
 #### 调用api
+
+react-native
+
+	_getIPAddress = () => {
+	  fetch("https://httpbin.org/ip")
+		.then(response => response.json())
+		.then(responseJson => {
+		  this.setState({ _ipAddress: responseJson.origin });
+		})
+		.catch(error => {
+		  console.error(error);
+		});
+	};
+
+flutter
+
+`flutter`的操作大致和`react-native`相同,但是`flutter`使用的是[dart-io-library](https://docs.flutter.io/flutter/dart-io/dart-io-library.html)
+因此如果要网络请求则必须导入
+
+	import 'dart:io';
+	
+支持`HTTP`,例如`get`,`post`...
+
+	final url = new Uri.https('httpbin.org', 'ip');
+	final httpClient = new HttpClient();
+	_getIPAddress() async {
+	  var request = await httpClient.getUrl(url);
+	  var response = await request.close();
+	  var responseBody = await response.transform(utf8.decoder).join();
+	  String ip = json.decode(responseBody)['origin'];
+	  setState(() {
+		_ipAddress = ip;
+	  });
+	}
 
 在这里可以检查[Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/api-calls/flutterapicalls/lib/main.dart)和[React-Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/api-calls/rnapicalls/App.js)相同功能的代码
 
@@ -1308,9 +1417,73 @@ flutter
 
 #### rn-TextInput
 
+react-native
+
+	<TextInput
+	  placeholder="Enter your Password"
+	  onChangeText={password => this.setState({ password })}
+	 />
+	<Button title="Submit" onPress={this.validate} />
+
+flutter
+
+在`flutter`中使用[TextEditingController](https://docs.flutter.io/flutter/widgets/TextEditingController-class.html)管理[TextField](https://docs.flutter.io/flutter/material/TextField-class.html)
+,每当文本发生变动`TextEditingController`都会通知给观察者,可以通过`TextEditingController.text`获取改变后的文本
+	
+	
+在示例中，当用户点击提交按钮时，会弹出一个对话框显示用户输入的内容
+	
+	final TextEditingController _controller = new TextEditingController();
+		  ...
+	new TextField(
+	// 注册观察者
+	  controller: _controller,
+	  decoration: new InputDecoration(
+		hintText: 'Type something', labelText: "Text Field "
+	  ),
+	),
+	new RaisedButton(
+	  child: new Text('Submit'),
+	  onPressed: () {
+		showDialog(
+		  context: context,
+			child: new AlertDialog(
+			  title: new Text('Alert'),
+			  // 获取用户修改后的文本
+			  content: new Text('You typed ${_controller.text}'),
+			),
+		 );
+	   },
+	 ),
+	)
+	
+#### flutter的表单输入
+	
 在这里可以检查[Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/input-fields/flutterinputfields/lib/main.dart)和[React-Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/input-fields/rninputfields/App.js)相同功能的代码
 
 ## 判断系统
+
+react-native
+
+	if (Platform.OS === "ios") {
+	  return "iOS";
+	} else if (Platform.OS === "android") {
+	  return "android";
+	} else {
+	  return "not recognised";
+	}
+
+flutter
+
+	if (Theme.of(context).platform == TargetPlatform.iOS) {
+	  return "iOS";
+	} else if (Theme.of(context).platform == TargetPlatform.android) {
+	  return "android";
+	} else if (Theme.of(context).platform == TargetPlatform.fuchsia) {
+	  return "fuchsia";
+	} else {
+	  return "not recognised ";
+	}
 
 ## 调试
 
