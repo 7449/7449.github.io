@@ -1177,7 +1177,11 @@ tags:
 
 `react-native`可以使用`TabNavigator`和`DrawerNavigator`实现抽屉和`tab`效果
 
-缺少翻译
+在`flutter`中使用了几个较低级别的`widget`，例如[Drawer](https://docs.flutter.io/flutter/material/Drawer-class.html)
+就是一个可以水平滑动的符合`md`的[TabBar](https://docs.flutter.io/flutter/material/TabBar-class.html)
+，[TabBarView](https://docs.flutter.io/flutter/material/TabBarView-class.html)用于显示`tab`和导航中的标签，
+这些较低级别的`widget`与[Scaffold](https://docs.flutter.io/flutter/material/Scaffold-class.html)结合使用。
+ `Scaffold`的`Drawer`和`bottomNavigationBar`参数则由上面提到的低级别的`widget`提供
 
 ###### Tab
 
@@ -1209,6 +1213,9 @@ flutter
 缺少翻译
 
 示例：
+
+`Scaffold`的`body`由`TabBarView`实现，
+与`TabBar`的`Tab`相对应的所有页面都在`TabBarView`里面一起提供,并且两个`widget`都要提供`TabController`
 
     class _NavigationHomePageState extends State<NavigationHomePage> with SingleTickerProviderStateMixin {
       TabController controller=new TabController(length: 2, vsync: this);
@@ -1549,7 +1556,10 @@ flutter
 
 flutter
 
-缺少翻译
+在`flutter`示例中,使用[AnimationController](https://docs.flutter.io/flutter/animation/AnimationController-class.html)并指定其内部的持续时间
+,然后定义一个[Tween](https://docs.flutter.io/flutter/animation/Tween-class.html)动画,然后使用[FadeTransition](https://docs.flutter.io/flutter/widgets/FadeTransition-class.html)
+,然后将`animation`赋值给`opacity`属性,`Tween`的作用就是指定动画开始到结束的范围
+，然后执行`controller.forward()`启动动画,也可以使用`controller`执行其他操作
 
     void main() {
       runApp(new Center(child: new LogoFade()));
