@@ -29,7 +29,6 @@ layout: default
                     {% comment %} endif {% endcomment %}
                     <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
                 </div>
-                {% include music.html %}
             </div>
         </div>
     </div>
@@ -101,7 +100,7 @@ layout: default
                     <h5><a href="/tags/">tag</a></h5>
                     <div class="tags">
                         {% for tag in site.tags %}
-                        {% if tag[1].size > {{site.featured-condition-size}} %}
+                        {% if tag[1].size > site.featured-condition-size %}
                         <a href="/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
                             {{ tag[0] }}
                         </a>
@@ -111,7 +110,6 @@ layout: default
                 </section>
                 {% endif %}
                 <hr>
-                {% include youyan.html %}
                 <!--{% if site.friends %}-->
                 <!--<hr>-->
                 <!--<h5>FRIENDS</h5>-->

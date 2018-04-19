@@ -20,7 +20,7 @@ highlighter: rouge
 permalink: pretty
 paginate: 10
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
-anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+anchorjs: false                          # if you want to customize anchor. check out line:181 of `post.html`
 
 
 
@@ -42,7 +42,7 @@ kramdown:
 ba_track_id: 5edf92f51848209f68f95c841d40a5f0
 
 # youyan
-youyan: 2131088
+# youyan: 2131088
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.

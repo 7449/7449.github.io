@@ -62,7 +62,7 @@ tags:
     
  然后在`view`里面
  
-     <View style={{}}/>
+    <View style={height:this.state.emptyHeight}/>
 
 ## base64
 

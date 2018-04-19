@@ -620,12 +620,12 @@ tags:
 `react-native`中通常通过设置`style`确定布局的位置
 
 	<View
-	  style={{
+	  style={
 		Flex: 1,
 		FlexDirection: "column",
 		JustifyContent: "space-between",
 		AlignItems: "center"
-	  }}
+	  }
 	>
 	
 与`React-Native`的做法相反，在`flutter`中，大部分布局都是通过使用专门用于提供布局的`widget`完成,
@@ -694,7 +694,7 @@ tags:
 `react-native`中可以通过以下方式自定义组件
 
 	<View style={styles.container}>
-	  <Text style={{ fontSize: 32, color: "cyan", fontWeight: "600" }}>
+	  <Text style={ fontSize: 32, color: "cyan", fontWeight: "600" }>
 		This is a sample text
 	  </Text>
 	</View>
