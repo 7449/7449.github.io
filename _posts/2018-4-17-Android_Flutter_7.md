@@ -1298,8 +1298,6 @@ flutter
 
 react-native
 
->`react-native`中没有`button`，只能通过自己封装去实现相应的组件
-
 	<TouchableOpacity
 	  onPress={() => {
 		console.log("Press");
@@ -1489,16 +1487,147 @@ flutter
 
 #### Developer Menu
 
+`react-native`可以通过摇晃设备或者使用快捷键的方式调用开发者菜单
+
+在`flutter`中,如果开发工具使用的是`IDE`则可以使用其内置工具,如果使用`flutter run`启动程序则可以通过点击`h`来打开开发者菜单,在终端运行之后会有大量的快捷键提示
+
 #### 热加载
+
+如果使用`IDEA`或者`android studio`直接`ctrl+s`就可触发热加载或者点击`save all` 或者使用`hot reload`按钮
 
 #### Chrome开发者工具
 
+`flutter`中[observatory](https://dart-lang.github.io/observatory/)用于调试，这个适用于`flutter run`运行的程序,
+推荐使用`IDE`的内置调试器
+
+`flutter`插件在21版本的时候为`IntelliJ`和`Android Studio`发布了一个`Flutter Inspector`的新功能，
+可以更方便的调试程序,它允许使用者：
+
+* 以`widget`树的形式查看应用的`UI`结构。
+* 在设备或模拟器上选择一个点，找到渲染这些像素的对应的`Widget`。
+* 查看各个`widget`的属性。
+* 更好地理解布局问题。
+
+可以` View > Tool Windows > Flutter Inspector `打开检查器（仅在应用程序运行时显示内容）,
+要检查特定的`widget`，请在工具栏中选择`Toggle inspect mode`，
+然后在设备上单击所需的`widget`，该`widget`将在应用的用户界面中突出显示，开发者将在`IntelliJ`中的`widget`层次结构中看到该`widget`，并且将能够查看该`widget`的各个属性。
+
+有关更多详细信息，请查看[调试文档](https://flutter.io/debugging/)。
+
 ## 动画
+
+`react-native`可以用过`api`设置动画,而`flutter`使用[Animation](https://docs.flutter.io/flutter/animation/Animation-class.html)和[AnimationController](https://docs.flutter.io/flutter/animation/AnimationController-class.html)
+设置动画,`Animation`是一个抽象类,可以知道当前的`state`和`value`，而`AnimationController`允许使用者播放动画,或者暂停动画
 
 #### 淡入动画
 
+`react-native`中使用`FadeInView`播放动画
+
+    class FadeInView extends React.Component {
+      state = {
+        fadeAnim: new Animated.Value(0) // Initial value for opacity: 0
+      };
+      componentDidMount() {
+        Animated.timing(this.state.fadeAnim, {
+          toValue: 1,
+          duration: 10000
+        }).start();
+      }
+      render() {
+        return (
+          <Animated.View style={{...this.props.style, opacity: this.state.fadeAnim }} >
+            {this.props.children}
+          </Animated.View>
+        );
+      }
+    }
+        ...
+    <FadeInView>
+      <Text> Fading in </Text>
+    </FadeInView>
+        ...
+
+flutter
+
+缺少翻译
+
+    void main() {
+      runApp(new Center(child: new LogoFade()));
+    }
+    
+    class LogoFade extends StatefulWidget {
+      _LogoFadeState createState() => new _LogoFadeState();
+    }
+    
+    class _LogoFadeState extends State<LogoFade> with TickerProviderStateMixin {
+      Animation animation;
+      AnimationController controller;
+    
+      initState() {
+        super.initState();
+        controller = new AnimationController(
+            duration: const Duration(milliseconds: 3000), vsync: this);
+        final CurvedAnimation curve =
+            new CurvedAnimation(parent: controller, curve: Curves.easeIn);
+        animation = new Tween(begin: 0.0, end: 1.0).animate(curve);
+        controller.forward();
+      }
+    
+      Widget build(BuildContext context) {
+        return new FadeTransition(
+          opacity: animation,
+          child: new Container(
+            height: 300.0,
+            width: 300.0,
+            child: new FlutterLogo(),
+          ),
+        );
+      }
+    
+      dispose() {
+        controller.dispose();
+        super.dispose();
+      }
+    }
+
 在这里可以检查[Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/flutterfade/lib/main.dart)和[React-Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/rnfade/App.js)相同功能的代码
 
-#### 滑动动画
+#### item的滑动动画
+
+在`react-native`中可以使用`PanResponder`或者第三方库进行滑动,而在`flutter`中,可以通过[Dismissible](https://docs.flutter.io/flutter/widgets/Dismissible-class.html)
+嵌套子`widget`来实现动画
+
+	child: new Dismissible(
+	  key: key,
+	  onDismissed: (DismissDirection dir) {
+		cards.removeLast();
+	  },
+	  child: new Container(
+		...
+	  ),
+	),
 
 在这里可以检查[Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/animations/fluttercardswipe/lib/main.dart)代码
+
+## CheatSheet
+
+react-native | flutter
+[button](https://facebook.github.io/react-native/docs/button.html) | [RaisedButton](https://docs.flutter.io/flutter/material/RaisedButton-class.html) 
+[button](https://facebook.github.io/react-native/docs/button.html) | [FlatButton](https://docs.flutter.io/flutter/material/FlatButton-class.html) 
+[scrollview](https://facebook.github.io/react-native/docs/scrollview.html) | [ListView](https://docs.flutter.io/flutter/widgets/ListView-class.html) 
+[flatlist](https://facebook.github.io/react-native/docs/flatlist.html) | [ListView.builder](https://docs.flutter.io/flutter/widgets/ListView/ListView.builder.html) 
+[Image](https://docs.flutter.io/flutter/widgets/Image-class.html) | [Image](https://docs.flutter.io/flutter/widgets/Image-class.html) 
+[modal](https://facebook.github.io/react-native/docs/modal.html) | [ModalRoute](https://docs.flutter.io/flutter/widgets/ModalRoute-class.html) 
+[activityindicator](https://facebook.github.io/react-native/docs/activityindicator.html) | [CircularProgressIndicator](https://docs.flutter.io/flutter/material/CircularProgressIndicator-class.html) 
+[activityindicator](https://facebook.github.io/react-native/docs/activityindicator.html) | [LinearProgressIndicator](https://docs.flutter.io/flutter/material/LinearProgressIndicator-class.html) 
+[refreshcontrol](https://facebook.github.io/react-native/docs/refreshcontrol.html) | [RefreshIndicator](https://docs.flutter.io/flutter/material/RefreshIndicator-class.html)
+[view](https://facebook.github.io/react-native/docs/view.html) | [Container](https://docs.flutter.io/flutter/widgets/Container-class.html) 
+[view](https://facebook.github.io/react-native/docs/view.html) | [Column](https://docs.flutter.io/flutter/widgets/Column-class.html)
+[view](https://facebook.github.io/react-native/docs/view.html) | [Row](https://docs.flutter.io/flutter/widgets/Row-class.html)
+[view](https://facebook.github.io/react-native/docs/view.html) | [Center](https://docs.flutter.io/flutter/widgets/Center-class.html)
+[view](https://facebook.github.io/react-native/docs/view.html) | [Padding](https://docs.flutter.io/flutter/widgets/Padding-class.html) 
+[touchableopacity](https://facebook.github.io/react-native/docs/touchableopacity.html) | [GestureDetector](https://docs.flutter.io/flutter/widgets/GestureDetector-class.html)
+[textinput](https://facebook.github.io/react-native/docs/textinput.html) | [TextInput](https://docs.flutter.io/flutter/services/TextInput-class.html)
+[text](https://facebook.github.io/react-native/docs/text.htmll) | [Text](https://docs.flutter.io/flutter/widgets/Text-class.html)
+[switch](https://facebook.github.io/react-native/docs/switch.html) | [Switch](https://docs.flutter.io/flutter/material/Switch-class.html)
+[slider](https://facebook.github.io/react-native/docs/slider.html) | [Slider](https://docs.flutter.io/flutter/material/Slider-class.html) 
