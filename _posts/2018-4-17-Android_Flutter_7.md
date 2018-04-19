@@ -788,23 +788,507 @@ tags:
 
 ## 管理State 
 
+> 什么是`StatefulWidget`和`StatelessWidget`，应该怎么使用？
+
 #### 有无状态的`widget`
 
+在`react-native`中，没有特定`setState`的组件，使用者可以在任何组件调用`setState`
+
+	export default class BlinkApp extends Component {
+
+	  constructor(props) {
+		super(props);
+		this.state = {
+		  buttonText: "blink",
+		  showText: true,
+		  text: "I love blinking"
+		};
+		this.toggleBlinkState = this.toggleBlinkState.bind(this);
+		var handle;
+	  }
+	  
+	  toggleBlinkState() {
+		if (this.state.buttonText == "blink") {
+		  handle = setInterval(() => {
+			this.setState(previousState => {
+			  return { showText: !previousState.showText };
+			});
+		  }, 1000);
+		  this.setState({
+			buttonText: "Stop blinking"
+		  });
+		} else {
+		  clearInterval(handle);
+		  this.setState({ buttonText: "blink", showText: true });
+		}
+	  }
+
+	  render() {
+		let display = this.state.showText ? this.state.text : " ";
+		return (
+		  <View style={ flex: 1, justifyContent: "center", alignItems: "center" }>
+			<StatusBar hidden={true} />
+			<Text>{display} </Text>
+			<Button onPress={this.toggleBlinkState} title={this.state.buttonText} />
+		  </View>
+		);
+	  }
+	}
+
+在`flutter`中只有[StatefulWidget](https://docs.flutter.io/flutter/widgets/StatefulWidget-class.html)才可以使用`setState`
+
+###### StatelessWidget
+
+无状态的`widget`，没有状态,无法`setState`，例如[Icons](https://docs.flutter.io/flutter/material/Icons-class.html),[IconButton](https://docs.flutter.io/flutter/material/IconButton-class.html),[Text](https://docs.flutter.io/flutter/widgets/Text-class.html)
+,这几个`widget`就是`StatelessWidget`的子部件,都是继承自`StatelessWidget`
+
+`StatelessWidget`适用于一些没有变化,也无需变化的地方,例如首页闪屏的`Image`，或者一些特定地方的内容`Text`
+
+	import 'package:flutter/material.dart';
+
+	void main() => runApp(new MyStatelessWidget(text: "StatelessWidget Example to show immutable data"));
+
+	class MyStatelessWidget extends StatelessWidget {
+	  final String text;
+	  MyStatelessWidget({Key key, this.text}) : super(key: key);
+
+	  @override
+	  Widget build(BuildContext context) {
+		return new Center(
+		  child: new Text(
+			text,
+			textDirection: TextDirection.ltr,
+		  ),
+		);
+	  }
+	}
+	
+`MyStatelessWidget`继承自`StatelessWidget`，可以存在不可变的数据,
+所以上面的示例可以看到`MyStatelessWidget`的构造里面存在一个`text`是`final`修饰的.
+
+`StatelessWidget`的构建方法通常在以下三种情况下调用：
+
+* 当`widget`插入到`widget tree`中时
+
+* `widget`的上级发生了变化
+
+* [InheritedWidget](https://docs.flutter.io/flutter/widgets/InheritedWidget-class.html)发生变化时
+
+###### StatefulWidget
+
+`StatefulWidget`是一个可以通过`setState`改变状态的`widget`,`State`可以在构建的时候同步读取到的信息,并且在`widget`的生命周期中也可能发生改变,
+可以在`state`发生改变的时候通知`StatefulWidget`，然后根据不同的状态反馈给使用者不同的视觉交互，例如滑动滑块,表单输入，网络请求显示进度
+[Checkbox](https://docs.flutter.io/flutter/material/Checkbox-class.html),[Radio](https://docs.flutter.io/flutter/material/Radio-class.html),[Slider](https://docs.flutter.io/flutter/material/Slider-class.html),[InkWell](https://docs.flutter.io/flutter/material/InkWell-class.html),[Form](https://docs.flutter.io/flutter/widgets/Form-class.html),[TextField](https://docs.flutter.io/flutter/material/TextField-class.html)
+都是继承自`StatefulWidget`
+
+> 自定义一个有状态的`widget`，通过`createState`创建这个`widget`的状态
+
+	class MyStatefulWidget extends StatefulWidget {
+	  MyStatefulWidget({Key key, this.title}) : super(key: key);
+	  final String title;
+	  
+	  @override
+	  _MyStatefulWidgetState createState() => new _MyStatefulWidgetState();
+	}
+
+下面这个示例构建一个可以改变状态的`widget`，点击之后会启动一个`Timer`，定时通过`setState`修改`showtext`,
+然后返回不同的`widget`显示在屏幕上,其实这个示例就已经开始体现出了`Dart`的繁琐,不信看看有多少个括号
+
+	class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+	  bool showtext=true;
+	  bool toggleState=true;
+	  Timer t2;
+	  
+	  void toggleBlinkState(){
+		setState((){ 
+		  toggleState=!toggleState;
+		});
+		var twenty = const Duration(milliseconds: 1000);
+		if(toggleState==false) {
+		  t2 = new Timer.periodic(twenty, (Timer t) {
+			toggleShowText();
+		  });
+		} else {
+		  t2.cancel();
+		}
+	  }
+	  
+	  void toggleShowText(){
+		setState((){
+		  showtext=!showtext;
+		});
+	  }
+	  
+	  @override
+	  Widget build(BuildContext context) {
+		return new Scaffold(
+		  body: new Center(
+			child: new Column(
+			  children: <Widget>[
+				(showtext
+				  ?(new Text('This execution will be done before you can blink.'))
+				  :(new Container())
+				),
+				new Padding(
+				  padding: new EdgeInsets.only(top: 70.0),
+				  child: new RaisedButton(
+					onPressed: toggleBlinkState,
+					child: (toggleState
+					  ?( new Text("Blink")) 
+					  :(new Text("Stop Blinking"))
+					)
+				  )
+				)
+			  ],
+			),
+		  ),
+		);
+	  }
+	}
+
 #### 使用`widget`的最佳实践
+
+###### 区分出`widget`是否存在状态
+
+简单的判断出来`widget`是否存在状态.
+如果一个`widget`存在交互,能发生改变,那么就是有状态的,反之则可能是无状态的,
+(这里使用可能字样是因为有可能使用者在使用过程中不细心或者懒得注意细节而统统使用了`StatefulWidget`，相信这样的人大有人在)
+，建议根据`UI`选择不同的`widget`，而不是为了方便统统使用`StatefulWidget`
+
+###### 使用`Stateful`时决定哪个`widget`管理`state`
+
+管理`state`有三种方式：
+
+* 自己内部管理
+* 上级`widget`管理`state`
+* 两者混用
+
+下面这几个原则可以帮助使用者选择哪种方式：
+
+* 如果状态由上层决定,例如`checkbox`，那么应该由上层决定子类的`state`
+* 如果是动画之类的,那么`state`由自己控制即可
+* 如果是在搞不清楚,那么就由上层控制子类的`state`即可
+
+###### 子类`StatefulWidget`和`state`
+
+`MyStatefulWidget`通过重写`createState()`来管理自己的`state`
+而`createState()`在构建`widget`时调用,在这个示例中，`createState()`创建一个`_MyStatefulWidgetState`实例
+
+	class MyStatefulWidget extends StatefulWidget {
+	  MyStatefulWidget({Key key, this.title}) : super(key: key);
+	  final String title;
+	  
+	  @override
+	  _MyStatefulWidgetState createState() => new _MyStatefulWidgetState();
+	}
+
+	class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+	  
+	  @override
+	  Widget build(BuildContext context) {
+		...
+	  }
+	}
+
+###### 将`StatefulWidget`插入到`widget tree`中
+
+使用自定义的`widget`
+
+	class MyStatelessWidget extends StatelessWidget {
+	  // This widget is the root of your application.
+	  
+	  @override
+	  Widget build(BuildContext context) {
+		return new MaterialApp(
+		  title: 'Flutter Demo',
+		  theme: new ThemeData(
+			primarySwatch: Colors.blue,
+		  ),
+		  home: new MyStatefulWidget(title: 'State Change Demo'),
+		);
+	  }
+	}
 
 在这里可以检查[Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/State_sample/flutter_basic_statesample/lib/main.dart)和[React-Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/State_sample/reactnative-state-sample/App.js)相同功能的代码
 
 #### Props
 
+`react-native`中`props`用于上层`widget`传递数据给子`widget`，子`widget`使用`this.props.xx`即可使用上层传递过来的数据以及回调之类的
+，相比于上面的`state`，`props`是上层传递给子`widget`的,而`state`，是自己内部维护的一个状态
+
+	class CustomCard extends React.Component {
+	  render() {
+		return (
+		  <View>
+			<Text> Card {this.props.index} </Text>
+			<Button
+			  title="Press"
+			  onPress={() => this.props.onPress(this.props.index)}
+			/>
+		  </View>
+		);
+	  }
+	}
+	class App extends React.Component {
+	  
+	  onPress = index => {
+		console.log("Card ", index);
+	  };
+	  
+	  render() {
+		return (
+		  <View>
+			<FlatList
+			  data={[ ... ]}
+			  renderItem={({ item }) => (
+				<CustomCard onPress={this.onPress} index={item.key} />
+			  )}
+			/>
+		  </View>
+		);
+	  }
+	}
+	
+而在`flutter`中,只需要用`final`修饰一个变量或者方法,并在构造方法中传递过去即可
+
+	class CustomCard extends StatelessWidget {
+
+	  CustomCard({@required this.index, @required this.onPress});
+	  final index;
+	  final Function onPress;
+	  
+	  @override
+	  Widget build(BuildContext context) {
+	  return new Card(
+		child: new Column(
+		  children: <Widget>[
+			new Text('Card $index'),
+			new FlatButton(
+			  child: const Text('Press'),
+			  onPressed: this.onPress,
+			),
+		  ],
+		));
+	  }
+	}
+		...
+	//Usage
+	new CustomCard(
+	  index: index,
+	  onPress: () {
+		print('Card $index');
+	  },
+	)
+
 在这里可以检查[Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/fluttermodular/lib/main.dart)和[React-Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/modular/rnmodular/App.js)相同功能的代码
 
 #### 本地储存
 
+`react-native`中可以使用`AsyncStorage`，或者数据库`realm`进行数据存储
+
+	await AsyncStorage.setItem( "counterkey", json.stringify(++this.state.counter));
+	AsyncStorage.getItem("counterkey").then(value => {
+	  if (value != null) {
+		this.setState({ counter: value });
+	  }
+	});
+	
+这里推荐使用`Redux` 和 `persist`解决持久化数据.
+
+而在`flutter`中可以使用[shared_preferences](https://github.com/flutter/plugins/tree/master/packages/shared_preferences)
+,首先在`pubspec.yaml`中依赖：
+
+	dependencies:
+	  flutter:
+		sdk: flutter
+	  shared_preferences: "^0.3.0"
+
+导包：
+
+	import 'package:shared_preferences/shared_preferences.dart';
+
+获取实例并使用：
+
+	SharedPreferences prefs = await SharedPreferences.getInstance();
+	_counter=prefs.getInt('counter');
+	prefs.setInt('counter',++_counter);
+	setState(() {
+	  _counter=_counter;
+	});
+	  
 ## Routing
 
 #### Flutter的页面跳转
 
+在`react-native`中使用`react-navigation`(社区维护,官方建议),会有三个导航器：`StackNavigator`,`TabNavigator`,`DrawerNavigator`
+
+示例如下：
+
+	const MyApp = TabNavigator(
+	  { Home: { screen: HomeScreen }, Notifications: { screen: tabNavScreen } },
+	  { tabBarOptions: { activeTintColor: "#e91e63" } }
+	);
+	const SimpleApp = StackNavigator({
+	  Home: { screen: MyApp },
+	  stackScreen: { screen: StackScreen }
+	});
+	export default (MyApp1 = DrawerNavigator({
+	  Home: {
+		screen: SimpleApp
+	  },
+	  Screen2: {
+		screen: drawerScreen
+	  }
+	}));
+
+在`flutter`中,[Route](https://docs.flutter.io/flutter/widgets/Route-class.html)指的app的屏幕或者页面,而[Navigator](https://docs.flutter.io/flutter/widgets/Navigator-class.html)则是管理`route`的`widget`,用于管理一堆具有堆栈规则的`child widget`
+,`Navigator`管理一堆`route`，并提供一些方法,例如`Navigator.push`和`Navigator.pop`
+
+示例：
+
+	class NavigationApp extends StatelessWidget {
+	  // This widget is the root of your application.
+	  @override
+	  Widget build(BuildContext context) {
+		return new MaterialApp(
+				...
+		  routes: <String, WidgetBuilder>{
+			'/a': (BuildContext context) => new usualNavscreen(),
+			'/b': (BuildContext context) => new drawerNavscreen(),
+		  }
+				...
+	  );
+	  }
+	}
+
+如果想跳转页面,可以使用`Navigator`的`pushNamed`方法,将`context`和`routeName`传递给`Navigator`即可
+	
+	Navigator.of(context).pushNamed('/a');
+
+也可以使用`push`,需要提供`context`和`route`，将给定的`route`添加到最靠近给定`context`的`Navigator`的历史记录
+，并跳转到对应的页面
+
+在示例中，使用的是`MaterialPageRoute`，`MaterialPageRoute`是一种模态路由，
+可以通过平台自适应过渡来切换屏幕,想要使用必需提供`WidgetBuilder`。
+
+	Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new UsualNavscreen()));
+
 #### Tab导航和Drawer导航
+
+`react-native`可以使用`TabNavigator`和`DrawerNavigator`实现抽屉和`tab`效果
+
+缺少翻译
+
+###### Tab
+
+react-native
+
+	const MyApp = TabNavigator(
+	  { Home: { screen: HomeScreen }, Notifications: { screen: tabNavScreen } },
+	  { tabBarOptions: { activeTintColor: "#e91e63" } }
+	);
+	
+flutter
+
+在`flutter`中主要使用[TabBar](https://docs.flutter.io/flutter/material/TabBar-class.html)和[TabBarView](https://docs.flutter.io/flutter/material/TabBarView-class.html)
+实现，`TabBar`用于创建`TabBar`，[Tab](https://docs.flutter.io/flutter/material/Tab-class.html)作为子项传递给`TabBar`
+
+示例：
+
+    TabController controller=new TabController(length: 2, vsync: this);
+    
+    new TabBar(
+      tabs: <Tab>[
+        new Tab(icon: new Icon(Icons.person),),
+        new Tab(icon: new Icon(Icons.email),),
+      ],
+      controller: controller,
+    ),
+
+
+缺少翻译
+
+示例：
+
+    class _NavigationHomePageState extends State<NavigationHomePage> with SingleTickerProviderStateMixin {
+      TabController controller=new TabController(length: 2, vsync: this);
+      @override
+      Widget build(BuildContext context) {
+        return new Scaffold(
+          bottomNavigationBar: new Material (
+            child: new TabBar(
+              tabs: <Tab> [
+                new Tab(icon: new Icon(Icons.person),)
+                new Tab(icon: new Icon(Icons.email),),
+              ],
+              controller: controller,
+            ),
+            color: Colors.blue,
+          ),
+          body: new TabBarView(
+            children: <Widget> [
+              new home.homeScreen(),
+              new tabScreen.tabScreen()
+            ],
+            controller: controller,
+          )
+        );
+      }
+    }
+
+###### Drawer
+
+react-native 
+
+    export default (MyApp1 = DrawerNavigator({
+      Home: {
+        screen: SimpleApp
+      },
+      Screen2: {
+        screen: drawerScreen
+      }
+    }));
+    
+flutter
+
+在`flutter`中，使用[Drawer](https://flutter.io/flutter-for-react-native/)，它符合`material design`，可以从`Scaffold`边缘水平滑动，
+以便在应用程序中显示导航链接,使用者可以提供一个`Button`，一个`Text`或`ListView`显示在抽屉里面。
+
+在示例中，使用了[ListTile](https://docs.flutter.io/flutter/material/ListTile-class.html)并提供了导航。
+
+    new Drawer(
+      child:new ListTile(
+        leading: new Icon(Icons.change_history),
+        title: new Text('Screen2'),
+        onTap: () {
+          Navigator.of(context).pushNamed("/b");
+        },
+      ),
+      elevation: 20.0,
+    ),
+
+`Drawer`通常与`Scaffold.drawer`属性一起使用,`AppBar`会自动显示`IconButton`以便`Scaffold`在适合的地方显示`Drawer`。
+而`Scaffold`会自动处理手势
+
+    @override
+    Widget build(BuildContext context) {
+      return new Scaffold(
+        drawer: new Drawer(
+          child: new ListTile(
+            leading: new Icon(Icons.change_history),
+            title: new Text('Screen2'),
+            onTap: () {
+              Navigator.of(context).pushNamed("/b");
+            },
+          ),
+          elevation: 20.0,
+        ),
+        appBar: new AppBar(
+          title: new Text("Home"),
+        ),
+        body: new Container(),
+      );
+    }
 
 在这里可以检查[Flutter](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/Navigation_example/flutternavigation/lib/main.dart)和[React-Native](https://github.com/GeekyAnts/flutter-docs-code-samples/blob/master/Navigation_example/reactnative-navigation-example/App.js)相同功能的代码
 
