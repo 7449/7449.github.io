@@ -143,10 +143,13 @@ tags:
         }
       }
     
-    
       Widget build(BuildContext context) {
         return new FadeTransition(
-            opacity: animation, child: new Image.asset(SplashImage));
+            opacity: animation,
+            child: new Image.asset(
+              SplashImage,
+              fit: BoxFit.cover,
+            ));
       }
     
       dispose() {
@@ -155,7 +158,6 @@ tags:
         super.dispose();
       }
     }
-
 
 这里的`HomeScreen`很简单,只是显示一个`Text`，
 这里为了熟悉源码,并没有使用`MaterialApp`而是自定义了一个`Theme`
@@ -180,3 +182,4 @@ tags:
 
 启动页基本没什么难点,一个简单的思路,其实还可以通过定时器,
 如果项目初始化的时候需要处理一些耗时数据的话,那么定时器的体验肯定会比动画好一点
+![_config.yml]({{ site.baseurl }}/img/flutter-zhihu_splash-android.gif)

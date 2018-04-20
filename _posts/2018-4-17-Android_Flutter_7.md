@@ -1215,7 +1215,10 @@ flutter
     ),
 
 
-缺少翻译
+注：
+
+必须要传递[TabController](https://docs.flutter.io/flutter/material/TabController-class.html),`TabController`是用来协调[TabBar](https://docs.flutter.io/flutter/material/TabBar-class.html)和[TabBarView](https://docs.flutter.io/flutter/material/TabBarView-class.html)的,`TabController`有个参数`length`的作用是表明了一共有多少个`Tab`，`vsync`一般使用[TickerProvider](https://docs.flutter.io/flutter/scheduler/TickerProvider-class.html)即可，`TickerProvider`需要实现一个[Ticker](https://docs.flutter.io/flutter/scheduler/Ticker-class.html)(这个可以通过看源码得知),任何想要在帧进行中被通知的对象都可以用`TickerProvider`,但一般都是通过[AnimationController](https://docs.flutter.io/flutter/animation/AnimationController-class.html)使用，`AnimationControllers`需要一个`TickerProvider`来获取`Ticker`，
+如果想创建一个`AnimationController`，一般使用[TickerProviderStateMixin](https://docs.flutter.io/flutter/widgets/TickerProviderStateMixin-class.html)和[SingleTickerProviderStateMixin](https://docs.flutter.io/flutter/widgets/SingleTickerProviderStateMixin-class.html)就行了
 
 示例：
 
