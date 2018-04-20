@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "Flutter系列--第八章:手势"
-subtitle:   "如何在Flutter中判断各种各样的手势"
-date:       2018-4-20
+title:      "Flutter系列--第十章:组件约束"
+subtitle:   "处理Flutter中的组件约束"
+date:       2018-4-24
 author:     "y"
 header-mask: 0.3
 header-img: "img/header_flutter.png"
@@ -28,10 +28,7 @@ tags:
 [第五章：Widget目录](https://7449.github.io/2018/04/12/Android_Flutter_5/)<br>
 [第六章：面对Android开发的Flutter说明](https://7449.github.io/2018/04/16/Android_Flutter_6/)<br>
 [第七章：面对ReactNative开发的Flutter说明](https://7449.github.io/2018/04/17/Android_Flutter_7/)<br>
+[第八章：手势](https://7449.github.io/2018/04/20/Android_Flutter_8/)<br>
+[第九章：动画](https://7449.github.io/2018/04/22/Android_Flutter_9/)<br>
 
-#### 介绍
-
-#### 指针
-
-#### 手势
 
