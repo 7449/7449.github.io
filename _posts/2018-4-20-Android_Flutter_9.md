@@ -2,7 +2,7 @@
 layout:     post
 title:      "Flutter系列--第九章:动画"
 subtitle:   "Flutter中的动画"
-date:       2018-4-22
+date:       2018-4-20
 author:     "y"
 header-mask: 0.3
 header-img: "img/header_flutter.png"
