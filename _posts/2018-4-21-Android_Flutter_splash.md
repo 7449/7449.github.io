@@ -2,7 +2,7 @@
 layout:     post
 title:      "Flutter项目--初始化项目和闪屏页"
 subtitle:   "初始化一个flutter项目并添加闪屏页"
-date:       2018-4-20
+date:       2018-4-21
 author:     "y"
 header-mask: 0.3
 header-img: "img/header_flutter.png"
