@@ -33,6 +33,9 @@ tags:
 [第五章：Widget目录](https://7449.github.io/2018/04/12/Android_Flutter_5/)<br>
 [第六章：面对Android开发的Flutter说明](https://7449.github.io/2018/04/16/Android_Flutter_6/)<br>
 [第七章：面对ReactNative开发的Flutter说明](https://7449.github.io/2018/04/17/Android_Flutter_7/)<br>
+[第八章：手势](https://7449.github.io/2018/04/20/Android_Flutter_8/)<br>
+[第九章：动画](https://7449.github.io/2018/04/20/Android_Flutter_9/)<br>
+[第十章：布局约束](https://7449.github.io/2018/04/21/Android_Flutter_10/)<br>
 
 #### 介绍
 
