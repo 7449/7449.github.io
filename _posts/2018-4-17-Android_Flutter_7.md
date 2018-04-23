@@ -1239,7 +1239,7 @@ flutter
           bottomNavigationBar: new Material (
             child: new TabBar(
               tabs: <Tab> [
-                new Tab(icon: new Icon(Icons.person),)
+                new Tab(icon: new Icon(Icons.person),),
                 new Tab(icon: new Icon(Icons.email),),
               ],
               controller: controller,
