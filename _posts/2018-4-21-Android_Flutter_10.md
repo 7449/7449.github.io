@@ -16,7 +16,7 @@ tags:
 
 [知乎专栏](https://github.com/7449/flutter-zhihu_zhuanlan)
 
-## Flutter
+## flutter
 
 [github地址](https://github.com/flutter/flutter)<br>
 [官方地址](https://flutter.io/)<br>
@@ -24,8 +24,9 @@ tags:
 [Flutter中文开发者论坛](http://flutter-dev.com/)<br>
 [中文文档](http://doc.flutter-dev.cn/)<br>
 
-#### blog
+## blog
 
+[Flutter番外篇:Dart](https://7449.github.io/2018/03/18/Android_Flutter_dart/)<br>
 [第一章：什么是Flutter](https://7449.github.io/2018/03/19/Android_Flutter_1/)<br>
 [第二章：安装Flutter](https://7449.github.io/2018/03/19/Android_Flutter_2/)<br>
 [第三章：编写一个FlutterApp](https://7449.github.io/2018/03/26/Android_Flutter_3/)<br>
@@ -36,6 +37,7 @@ tags:
 [第八章：手势](https://7449.github.io/2018/04/20/Android_Flutter_8/)<br>
 [第九章：动画](https://7449.github.io/2018/04/20/Android_Flutter_9/)<br>
 [第十章：布局约束](https://7449.github.io/2018/04/21/Android_Flutter_10/)<br>
+[第十一章：处理 assets 和 图像](https://7449.github.io/2018/04/22/Android_Flutter_11/)<br>
 
 ## 介绍
 
@@ -55,7 +57,7 @@ tags:
 
 有些`box`，有`最大`约束，但没有`最小`约束。例如[Center](https://docs.flutter.io/flutter/widgets/Center-class.html)
 
-## 无限制的约束
+#### 无限制的约束
 
 在一些情况下,`box`的约束是无限的,这就意味着宽度或者高度是`double.INFINITY`
 
@@ -66,7 +68,7 @@ tags:
 特别是，`ListView`试图扩充以适应其横向可用空间（即，如果它是一个垂直滚动块，它将尝试与其父`widget`一样宽)，如果`ListView`在水平滚动的情况下嵌套垂直滚动的`ListView`，则内部滚动区域会尽可能宽，这是无限宽的，因为外部滚动区域可以在水平方向上一直滚动
 
 
-## Flex
+#### flex
 
 `flex`自身([Row](https://docs.flutter.io/flutter/widgets/Row-class.html)和[Column](https://docs.flutter.io/flutter/widgets/Column-class.html))的行为有所不同，这取决于它们是否存在限制
 

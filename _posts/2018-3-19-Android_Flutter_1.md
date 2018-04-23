@@ -16,7 +16,7 @@ tags:
 
 [知乎专栏](https://github.com/7449/flutter-zhihu_zhuanlan)
 
-## Flutter
+## flutter
 
 [github地址](https://github.com/flutter/flutter)<br>
 [官方地址](https://flutter.io/)<br>
@@ -24,6 +24,20 @@ tags:
 [Flutter中文开发者论坛](http://flutter-dev.com/)<br>
 [中文文档](http://doc.flutter-dev.cn/)<br>
 
+## blog
+
+[Flutter番外篇:Dart](https://7449.github.io/2018/03/18/Android_Flutter_dart/)<br>
+[第一章：什么是Flutter](https://7449.github.io/2018/03/19/Android_Flutter_1/)<br>
+[第二章：安装Flutter](https://7449.github.io/2018/03/19/Android_Flutter_2/)<br>
+[第三章：编写一个FlutterApp](https://7449.github.io/2018/03/26/Android_Flutter_3/)<br>
+[第四章：框架预览](https://7449.github.io/2018/03/26/Android_Flutter_4/)<br>
+[第五章：Widget目录](https://7449.github.io/2018/04/12/Android_Flutter_5/)<br>
+[第六章：面对Android开发的Flutter说明](https://7449.github.io/2018/04/16/Android_Flutter_6/)<br>
+[第七章：面对ReactNative开发的Flutter说明](https://7449.github.io/2018/04/17/Android_Flutter_7/)<br>
+[第八章：手势](https://7449.github.io/2018/04/20/Android_Flutter_8/)<br>
+[第九章：动画](https://7449.github.io/2018/04/20/Android_Flutter_9/)<br>
+[第十章：布局约束](https://7449.github.io/2018/04/21/Android_Flutter_10/)<br>
+[第十一章：处理 assets 和 图像](https://7449.github.io/2018/04/22/Android_Flutter_11/)<br>
 
 > 本系列文章更多的可以认为是Flutter的官翻文档并且添加一点自己的想法，作者也知道不少的Flutter论坛已经开始了Flutter的翻译计划
 > 但是为了自己的学习以及加深对Flutter的理解,还是决定自己记录
@@ -34,7 +48,7 @@ tags:
 
 [github提交记录为`9c49255f3eeb4873e6398c805b4bb6b9737be962`](https://github.com/flutter/flutter/commit/9c49255f3eeb4873e6398c805b4bb6b9737be962)
 
-#### 什么是Flutter?
+## 什么是Flutter?
 
 简单来说就是`google`推出的一门跨平台框架,兼容了 ios 和 android，并且为`google`下一个操作系统`Fuchsia`的官方开发框架
 

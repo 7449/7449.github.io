@@ -2,7 +2,7 @@
 layout:     post
 title:      "Flutter项目--初始化项目和闪屏页"
 subtitle:   "初始化一个flutter项目并添加闪屏页"
-date:       2018-4-21
+date:       2018-4-23
 author:     "y"
 header-mask: 0.3
 header-img: "img/header_flutter.png"
@@ -47,6 +47,29 @@ tags:
 而且以后的项目博客都是在`android studio`中完成
 
 选择`Flutter Application`然后填好需要的名称和包名`next`即可
+
+## update
+
+这里推荐一种更为方便的设置启动页的方法：
+
+在`android`中导航到`.../android/app/src/main`，在`res/drawable/launch_background.xml`中已经有一个示例,根据示例可以自定义启动页
+
+当然,这有个缺点就是`ios`和`android`想要相同的效果就要一起替换
+
+具体的可以查看[处理 assets 和 图像](https://7449.github.io/2018/04/22/Android_Flutter_11/)
+
+    import 'package:flutter/material.dart';
+    import 'package:zhihu_zhuan_lan/HomeScreen.dart';
+    
+    // 入口，这里使用MaterialApp作为顶级入口,启动项目的启动页
+    // 推荐使用flutter推荐的启动页方法
+    // 具体可以查看这篇blog：https://7449.github.io/2018/04/22/Android_Flutter_11/
+    void main() => runApp(new MaterialApp(home: new HomeScreen()));
+    
+    // 这只是一种推荐方法,不是很推荐,如果在启动页放广告可以这样弄,但是私以为启动页应该
+    //以最快的速度进入app主页
+    //void main() => runApp(new MaterialApp(home: new SplashScreen()));
+    
 
 ## 项目整理
 
