@@ -56,6 +56,7 @@ tags:
 
 
     import 'package:flutter/material.dart';
+    import 'package:zhihu_zhuan_lan/tab_screen.dart';
     import 'package:zhihu_zhuan_lan/values.dart';
     
     //已知问题:切换抽屉item，虽然`tab`显示的是第一个,页面却一直显示上一次点击的`tab`页数
@@ -72,16 +73,21 @@ tags:
       //Tab管理器
       TabController tabController;
     
+      var tabListener;
+    
       @override
       void initState() {
         super.initState();
         //初始化Tab管理器
         tabController =
             new TabController(vsync: this, length: getTabLength(selectIndex));
+        tabListener = () {};
+        tabController.addListener(tabListener);
       }
     
       @override
       void dispose() {
+        tabController.removeListener(tabListener);
         tabController.dispose();
         super.dispose();
       }
@@ -123,8 +129,10 @@ tags:
                   .of(context)
                   .showSnackBar(new SnackBar(content: new Text('开始加载$text')));
               setState(() {
+                tabController.removeListener(tabListener);
                 tabController =
                     new TabController(vsync: this, length: getTabLength(index));
+                tabController.addListener(tabListener);
                 selectIndex = index;
               });
             });
@@ -135,17 +143,19 @@ tags:
       }
     
       List getBodyView(index) {
-        return getTabTitle(index)
-            .map((text) => new Center(child: new Text(text)))
-            .toList();
+        List<String> tabList = getTabTitle(index);
+        List<Widget> tabViews = [];
+        for (int i = 0; i < tabList.length; i++) {
+          tabViews.add(new TabScreen(suffix: getTabSuffix(index, i)));
+        }
+        return tabViews;
       }
     
       /// 这里没有使用 DefaultTabController,如果Tab的个数是固定的，推荐使用,
       /// 使用起来非常方便
       @override
       Widget build(BuildContext context) {
-        return new MaterialApp(
-            home: new Scaffold(
+        return new Scaffold(
           drawer: new Drawer(child: drawer()),
           appBar: new AppBar(
               title: new Text(drawerTabs[selectIndex]),
@@ -156,8 +166,9 @@ tags:
               )),
           body: new TabBarView(
               controller: tabController, children: getBodyView(selectIndex)),
-        ));
+        );
       }
     }
+
 
 ![_config.yml]({{ site.baseurl }}/img/flutter-zhihu-tab.gif)

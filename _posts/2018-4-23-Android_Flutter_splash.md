@@ -125,9 +125,10 @@ tags:
 整个启动页代码：
 
     import 'package:flutter/material.dart';
-    import 'package:zhihu_zhuan_lan/HomeScreen.dart';
+    import 'package:zhihu_zhuan_lan/home_screen.dart';
     import 'package:zhihu_zhuan_lan/values.dart';
     
+    //废弃
     // 初始化一个闪屏页
     class SplashScreen extends StatefulWidget {
       @override
@@ -141,6 +142,8 @@ tags:
       // 动画管理器
       AnimationController controller;
     
+      var animationStateListener;
+    
       initState() {
         super.initState();
         //初始化动画管理器
@@ -148,8 +151,15 @@ tags:
             duration: const Duration(milliseconds: 1500), vsync: this);
         //初始化动画
         animation = new Tween(begin: 0.0, end: 1.0).animate(controller);
+        animationStateListener = (status) {
+          if (status == AnimationStatus.completed) {
+            Navigator.of(context).pushAndRemoveUntil(
+                new MaterialPageRoute(builder: (context) => new HomeScreen()),
+                (route) => route == null);
+          }
+        };
         //注册动画观察者
-        animation.addStatusListener((status) => animationListener(status));
+        animation.addStatusListener((status) => animationStateListener(status));
         //启动动画
         controller.forward();
       }
@@ -157,13 +167,6 @@ tags:
       /// 观察动画状态,在结束的时候启动到新的页面,
       /// 这里使用的是`pushAndRemoveUntil`而不是`push`
       /// 因为闪屏页跳转之后需要销毁,而`pushAndRemoveUntil`会删除之前的所有页面,只留下跳转的那个
-      animationListener(status) {
-        if (status == AnimationStatus.completed) {
-          Navigator.of(context).pushAndRemoveUntil(
-              new MaterialPageRoute(builder: (context) => new HomeScreen()),
-              (route) => route == null);
-        }
-      }
     
       Widget build(BuildContext context) {
         return new FadeTransition(
@@ -175,8 +178,8 @@ tags:
       }
     
       dispose() {
+        controller.removeStatusListener(animationStateListener);
         controller.dispose();
-        controller.removeStatusListener(animationListener);
         super.dispose();
       }
     }
