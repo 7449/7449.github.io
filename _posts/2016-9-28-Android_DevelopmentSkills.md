@@ -669,14 +669,31 @@ delete: `delete from tab_name where field = value`<br>
 
 ## apk下载完成跳转到安装界面
 
+    /**
+     * 安装apk
+     *
+     * @param context  上下文
+     * @param filePath 下载路径
+     */
     public static void installApp(Context context, String filePath) {
-        File _file = new File(filePath);
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.setDataAndType(Uri.fromFile(_file),"application/vnd.android.package-archive");
-        context.startActivity(intent);
+        if (filePath == null) {
+            return;
+        }
+        if (filePath.endsWith(".apk")) {
+            File _file = new File(filePath);
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                Uri apkUri = FileProvider.getUriForFile(context, AUTHORITY, _file);
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.setDataAndType(apkUri, DATA_TYPE);
+            } else {
+                intent.setDataAndType(Uri.fromFile(_file), DATA_TYPE);
+            }
+            context.startActivity(intent);
+        }
     }
-
+    
 ## 添加删除桌面快捷方式
 
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
