@@ -25,6 +25,8 @@ tags:
 
 ##  update 
 
+`cordova`8.0版本可以支持直接`add`本地插件
+
 cordova 改变了获取插件的方式,如果是本地安装，有两种办法：
 
 * 将cordova的版本限制到 6.5.0
