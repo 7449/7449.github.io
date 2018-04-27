@@ -42,6 +42,11 @@ tags:
 
 > `html`文本暂时没有找到比较好的解决办法,试过`webview``markdown`插件,都不能达到想要的效果,暂时用`text`显示一段简单的文本
 
+
+尝试使用[WebView](https://github.com/dart-flitter/flutter_webview_plugin)这个插件,显示有点问题,图片不能显示,
+而且无法使用`SliverAppBar`，通过修改源码可以实现使用`SliverAppBar`，但是滑动有冲突,
+只能等待`flutter`自身支持加载一段`html`代码
+
 ![_config.yml]({{ site.baseurl }}/img/flutter-zhihu-net-list-detail.gif)
 
 ## 代码
