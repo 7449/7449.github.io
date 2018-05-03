@@ -101,6 +101,8 @@ tags:
 官网的示例很简单,需要注意的是`*.g.dart`,`_$*SerializerMixin`
 和`_$*FromJson`都是自动生成的,只需要按照规则写即可
 
+可以使用`@JsonKey(name: '')`指定名称
+
 下面是一个比较复杂的示例：
 
     import 'package:json_annotation/json_annotation.dart';
