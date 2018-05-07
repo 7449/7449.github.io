@@ -54,6 +54,8 @@ tags:
 
 在`android`中导航到`.../android/app/src/main`，在`res/drawable/launch_background.xml`中已经有一个示例,根据示例可以自定义启动页
 
+`ios`的目录为`.../ios/Runner/Assets.xcassets/LaunchImage.imageset`，替换`LaunchImage.png`即可,如果要添加图片也要在同级目录下的`Contents.json`添加依赖
+
 当然,这有个缺点就是`ios`和`android`想要相同的效果就要一起替换
 
 具体的可以查看[处理 assets 和 图像](https://7449.github.io/2018/04/22/Android_Flutter_11/)
