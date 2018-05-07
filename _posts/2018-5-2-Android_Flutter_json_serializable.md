@@ -16,6 +16,13 @@ tags:
 
 [Flutter示例集合](https://github.com/7449/flutter_example)
 
+#### 项目blog
+
+[初始化项目和闪屏页](https://7449.github.io/2018/04/23/Android_Flutter_splash/)<br>
+[添加Tab和Drawer](https://7449.github.io/2018/04/24/Android_Flutter_drawer/)<br>
+[列表页完善,网络请求](https://7449.github.io/2018/04/24/Android_Flutter_net_list/)<br>
+[列表详情页](https://7449.github.io/2018/04/25/Android_Flutter_net_list_detail/)<br>
+
 ## flutter
 
 [github地址](https://github.com/flutter/flutter)<br>
@@ -38,6 +45,7 @@ tags:
 [第九章：动画](https://7449.github.io/2018/04/20/Android_Flutter_9/)<br>
 [第十章：布局约束](https://7449.github.io/2018/04/21/Android_Flutter_10/)<br>
 [第十一章：处理 assets 和 图像](https://7449.github.io/2018/04/22/Android_Flutter_11/)<br>
+[json序列化](https://7449.github.io/2018/05/02/Android_Flutter_json_serializable/)
 
 ## 介绍
 
@@ -100,6 +108,8 @@ tags:
 
 官网的示例很简单,需要注意的是`*.g.dart`,`_$*SerializerMixin`
 和`_$*FromJson`都是自动生成的,只需要按照规则写即可
+
+可以使用`@JsonKey(name: '')`指定名称
 
 下面是一个比较复杂的示例：
 

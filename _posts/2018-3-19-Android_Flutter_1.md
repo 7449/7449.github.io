@@ -16,6 +16,13 @@ tags:
 
 [Flutter示例集合](https://github.com/7449/flutter_example)
 
+#### 项目blog
+
+[初始化项目和闪屏页](https://7449.github.io/2018/04/23/Android_Flutter_splash/)<br>
+[添加Tab和Drawer](https://7449.github.io/2018/04/24/Android_Flutter_drawer/)<br>
+[列表页完善,网络请求](https://7449.github.io/2018/04/24/Android_Flutter_net_list/)<br>
+[列表详情页](https://7449.github.io/2018/04/25/Android_Flutter_net_list_detail/)<br>
+
 ## flutter
 
 [github地址](https://github.com/flutter/flutter)<br>
@@ -38,6 +45,7 @@ tags:
 [第九章：动画](https://7449.github.io/2018/04/20/Android_Flutter_9/)<br>
 [第十章：布局约束](https://7449.github.io/2018/04/21/Android_Flutter_10/)<br>
 [第十一章：处理 assets 和 图像](https://7449.github.io/2018/04/22/Android_Flutter_11/)<br>
+[json序列化](https://7449.github.io/2018/05/02/Android_Flutter_json_serializable/)
 
 > 本系列文章更多的可以认为是Flutter的官翻文档并且添加一点自己的想法，作者也知道不少的Flutter论坛已经开始了Flutter的翻译计划
 > 但是为了自己的学习以及加深对Flutter的理解,还是决定自己记录
