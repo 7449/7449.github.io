@@ -684,11 +684,11 @@ delete: `delete from tab_name where field = value`<br>
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                Uri apkUri = FileProvider.getUriForFile(context, AUTHORITY, _file);
+                Uri apkUri = FileProvider.getUriForFile(context, "packageName..provider", _file);
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                intent.setDataAndType(apkUri, DATA_TYPE);
+                intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
             } else {
-                intent.setDataAndType(Uri.fromFile(_file), DATA_TYPE);
+                intent.setDataAndType(Uri.fromFile(_file), "application/vnd.android.package-archive");
             }
             context.startActivity(intent);
         }
