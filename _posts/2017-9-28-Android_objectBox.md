@@ -68,9 +68,9 @@ objectBox 生成的`objectbox-models/default.json`，要一直随着代码更新
 
 ## 代码地址
 
-[https://github.com/7449/AndroidDevelop/tree/master/objectBox](https://github.com/7449/AndroidDevelop/tree/master/objectBox)
+[https://github.com/7449/AndroidDevelop/tree/develop/objectbox](https://github.com/7449/AndroidDevelop/tree/develop/objectbox)
 
-[https://github.com/7449/AndroidDevelop/tree/master/objectBoxMultiTable](https://github.com/7449/AndroidDevelop/tree/master/objectBoxMultiTable)
+[https://github.com/7449/AndroidDevelop/tree/develop/objectbox-multi-table](https://github.com/7449/AndroidDevelop/tree/develop/objectbox-multi-table)
 
 ## 准备工作
 

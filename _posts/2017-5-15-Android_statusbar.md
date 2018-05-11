@@ -12,7 +12,7 @@ tags:
 
 ## sample
 
-[https://github.com/7449/AndroidDevelop/tree/master/statusBarTest](https://github.com/7449/AndroidDevelop/tree/master/statusBarTest)
+[https://github.com/7449/AndroidDevelop/tree/develop/test-statusbar](https://github.com/7449/AndroidDevelop/tree/develop/test-statusbar)
 
 
 > 目前只有MIUI和Flyme开放了如何在他们自己的手机上改变状态栏颜色

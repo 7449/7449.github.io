@@ -13,9 +13,11 @@ tags:
 ---
 
 ## Demo地址
-[https://github.com/7449/AndroidDevelop/tree/master/finger](https://github.com/7449/AndroidDevelop/tree/master/finger)
+
+[https://github.com/7449/AndroidDevelop/tree/develop/finger](https://github.com/7449/AndroidDevelop/tree/develop/finger)
 
 ## 注意
+
 必须要了解的是指纹识别是从6.0开始添加的 这样的话，想要使用Api就要把App改到23以上
 
 指纹识别的库都在android.hardware.fingerprint这个包下面

@@ -13,9 +13,10 @@ tags:
 ---
 
 
-## 代码示例：
+## update
 
-[https://github.com/7449/AndroidDevelop/tree/master/lambda](https://github.com/7449/AndroidDevelop/tree/master/lambda)
+`android studio 3.x` 之后已经支持 `java8`
+
 
 ## 加入Lambda依赖
 

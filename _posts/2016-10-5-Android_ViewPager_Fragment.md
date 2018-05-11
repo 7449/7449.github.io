@@ -15,7 +15,7 @@ tags:
 
 ## 代码地址
 
-[ViewPagerFragment](https://github.com/7449/AndroidDevelop/tree/master/viewPagerFragment)
+[ViewPagerFragment](https://github.com/7449/AndroidDevelop/tree/develop/fragment-viewpager)
 
 ## 代码
 

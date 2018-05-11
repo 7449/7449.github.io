@@ -12,7 +12,7 @@ tags:
     - 注解
 ---
 
-通过注解@ViewId()获取Android xml布局文件中的控件，类似于butterknife
+通过注解`@ViewId()`获取`Android xml`布局文件中的控件，类似于`butterknife`
 
 
 

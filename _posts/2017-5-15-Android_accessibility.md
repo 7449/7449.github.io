@@ -12,7 +12,7 @@ tags:
 
 ## sample
 
-[https://github.com/7449/AndroidDevelop/tree/master/accessibilityService](https://github.com/7449/AndroidDevelop/tree/master/accessibilityService)
+[https://github.com/7449/AndroidDevelop/blob/develop/accessibility-service](https://github.com/7449/AndroidDevelop/blob/develop/accessibility-service)
 
 
 ## Accessibility

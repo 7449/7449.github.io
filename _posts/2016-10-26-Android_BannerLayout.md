@@ -29,7 +29,7 @@ tags:
 
 ## 代码示例：
 
-[https://github.com/7449/BannerLayout(https://github.com/7449/BannerLayout)](https://github.com/7449/BannerLayout)
+[BannerLayout](https://github.com/7449/BannerLayout)
 
 # BannerLayout
 

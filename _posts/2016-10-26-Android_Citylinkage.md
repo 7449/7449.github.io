@@ -17,7 +17,7 @@ tags:
 
 #### 代码示例
 
-[https://github.com/7449/AndroidDevelop/tree/master/numberPickerView](https://github.com/7449/AndroidDevelop/tree/master/numberPickerView)
+[https://github.com/7449/AndroidDevelop/tree/develop/view-number-picker](https://github.com/7449/AndroidDevelop/tree/develop/view-number-picker)
 
 #### 效果图
 
@@ -60,7 +60,7 @@ tags:
 
 #### 代码示例
 
-[https://github.com/7449/AndroidDevelop/tree/master/wheelView](https://github.com/7449/AndroidDevelop/tree/master/wheelView)
+[https://github.com/7449/AndroidDevelop/tree/develop/view-wheel](https://github.com/7449/AndroidDevelop/tree/develop/view-wheel)
 
 #### 效果图
 

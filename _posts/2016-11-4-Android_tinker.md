@@ -20,7 +20,7 @@ Tinker是微信官方的Android热补丁解决方案，它支持动态下发代�
 
 github地址：[https://github.com/Tencent/tinker](https://github.com/Tencent/tinker)
 
-我的Demo地址：[https://github.com/7449/AndroidDevelop/tree/master/tinker](https://github.com/7449/AndroidDevelop/tree/master/tinker)
+我的Demo地址：[https://github.com/7449/AndroidDevelop/tree/develop/test-tinker](https://github.com/7449/AndroidDevelop/tree/develop/test-tinker)
 
 ## 介绍
 
@@ -54,29 +54,33 @@ clone地址：[https://github.com/Tencent/tinker.git](https://github.com/Tencent
 
 #### 依赖Tinker的一些必须操作
 
-- 在Demo的build.gradle 的dependencied填写
-
-		classpath 'com.tencent.tinker:tinker-patch-gradle-plugin:1.7.3'
- 示例：	[https://github.com/7449/AndroidDevelop/blob/master/build.gradle](https://github.com/7449/AndroidDevelop/blob/master/build.gradle)
-
-- 在Demo的app目录下的build.gradle填写
+- 在Demo的`build.gradle `的`dependencied`填写
 
 		
-    	apply plugin: 'com.tencent.tinker.patch'
+		classpath 'com.tencent.tinker:tinker-patch-gradle-plugin:1.7.3'
+		
+		
+- 在Demo的app目录下的`build.gradle`填写
 
-	 	compile 'com.tencent.tinker:tinker-android-anno:1.7.3'
-	    compile 'com.tencent.tinker:tinker-android-lib:1.7.3'
-		compile 'com.android.support:multidex:1.0.1'
+
+            apply plugin: 'com.tencent.tinker.patch'
+            
+            compile 'com.tencent.tinker:tinker-android-anno:1.7.3'
+            
+            compile 'com.tencent.tinker:tinker-android-lib:1.7.3'
+            
+            compile 'com.android.support:multidex:1.0.1'
+
 
 >在defaultConfig下 把 multiDexEnabled 设置为ture
 
-然后在官方示例 tinker-sample-android 的app目录下的build.gradle里找到
+然后在官方示例` tinker-sample-android `的`app`目录下的`build.gradle`里找到
 
 		def bakPath = file("${buildDir}/bakApk/")
 
-大概在134行左右 往下的内容全部copy到自己的build.gradle目录下，但是应该会报错，具体需要copy内容请看我的示例代码
+大概在134行左右 往下的内容全部copy到自己的`build.gradle`目录下，但是应该会报错，具体需要copy内容请看我的示例代码
 
-示例：[https://github.com/7449/AndroidDevelop/blob/master/tinker/build.gradle](https://github.com/7449/AndroidDevelop/blob/master/tinker/build.gradle)
+示例：[https://github.com/7449/AndroidDevelop/blob/develop/test-tinker/app/build.gradle](https://github.com/7449/AndroidDevelop/blob/develop/test-tinker/app/build.gradle)
 
 #### 新建application
  
@@ -106,13 +110,13 @@ clone地址：[https://github.com/Tencent/tinker.git](https://github.com/Tencent
 这个时候重新rebuild 一下项目就可以找到那个application了
 
 >示例：
-[https://github.com/7449/AndroidDevelop/blob/master/tinker/src/main/java/com/tinker/App.java](https://github.com/7449/AndroidDevelop/blob/master/tinker/src/main/java/com/tinker/App.java)
+[https://github.com/7449/AndroidDevelop/blob/develop/test-tinker/app/src/main/java/com/tinker/App.java](https://github.com/7449/AndroidDevelop/blob/develop/test-tinker/app/src/main/java/com/tinker/App.java)
 
 >这个时候基本的依赖已经完成了，接下来看如何在代码中实现热修复
 
 ## 测试
 
-根据官方示例我也简单的用一个button来测试效果，先是简单的Toast一个tinker error。
+根据官方示例我也简单的用一个button来测试效果，先是简单的`Toast`一个`tinker error`。
 
       findViewById(R.id.btn_).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,9 +127,9 @@ clone地址：[https://github.com/Tencent/tinker.git](https://github.com/Tencent
         });
 
 
-这个时候运行一下项目，点击一下button，Toast tinker error ，嗯 没问题，接下来你可以拔下数据线操作了
+这个时候运行一下项目，点击一下`button`，`Toast tinker error` ，嗯 没问题，接下来你可以拔下数据线操作了
 
-这个时候看app目录下的buil的目录，应该会有一个tinkerFile文件夹和我们的app目录下的build.gradle 里面的bakPath对应，tinkerFile目录下有两个生成的文件，一个是apk，一个是text，
+这个时候看`app`目录下的`build`的目录，应该会有一个`tinkerFile`文件夹和我们的`app`目录下的`build.gradle `里面的bakPath对应，tinkerFile目录下有两个生成的文件，一个是apk，一个是text，
 
 >Tinker不建议设置为apk结尾，因为某些运营商会劫持apk结尾的文件，这里就是简单的测试下，就没改
 

@@ -147,7 +147,7 @@ JDK设置参考：
 
 > idegen.jar
 
-下载地址：[idegen](https://github.com/7449/AndroidDevelop/blob/master/idegen.jar)
+下载地址：[idegen](https://github.com/7449/AndroidDevelop/blob/develop/aosp/idegen.jar)
 
 编译`AOSP`源码生成的jar，如果想把源码导入`AndroidStudio`或者`IDEA`，有了这个jar，就不必需要花费近乎一个小时的时间去重新编译源码，而可以直接导入IDE
 
