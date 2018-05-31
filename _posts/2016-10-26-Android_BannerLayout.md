@@ -66,14 +66,14 @@ tags:
 
 >gradle
 
-    compile 'com.ydevelop:bannerlayout:1.1.1'
+    compile 'com.ydevelop:bannerlayout:1.1.2'
     
 >maven
 
 	<dependency>
 	  <groupId>com.ydevelop</groupId>
 	  <artifactId>bannerlayout</artifactId>
-	  <version>1.1.1</version>
+	  <version>1.1.2</version>
 	  <type>pom</type>
 	</dependency>
 
@@ -93,7 +93,8 @@ Bean类请实现 [BannerModelCallBack](https://github.com/7449/BannerLayout/blob
 
 如果让`BannerLayout`实现图片的加载记得依赖Glide
 
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     
 或者实现`ImageLoaderManager `
 
@@ -205,6 +206,7 @@ Bean类请实现 [BannerModelCallBack](https://github.com/7449/BannerLayout/blob
 see: [MethodTestActivity](https://github.com/7449/BannerLayout/blob/master/app/src/main/java/com/bannersimple/simple/MethodTestActivity.java)
 
         newBannerLayout
+                .setGuide(true)
                 .setDelayTime(3000)
                 .setErrorImageView(R.mipmap.ic_launcher)
                 .setPlaceImageView(R.mipmap.ic_launcher)
@@ -251,7 +253,8 @@ see: [MethodTestActivity](https://github.com/7449/BannerLayout/blob/master/app/s
 
 [BannerDefaults.java](https://github.com/7449/BannerLayout/blob/master/bannerlayout/src/main/java/com/bannerlayout/widget/BannerDefaults.java)
 
-        app:banner_dots_visible="true"                              
+        app:banner_guide="true"
+        app:banner_dots_visible="true"
         app:banner_page_num_radius="2"                              
         app:banner_page_num_paddingLeft="10"                        
         app:banner_page_num_paddingTop="10"                         
