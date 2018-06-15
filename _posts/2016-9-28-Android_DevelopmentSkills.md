@@ -15,6 +15,10 @@ tags:
 
 ## RN
 
+> android && ios
+
+ `TextInput`的`padding`建议设置为0,否则两个平台的显示效果不同 
+
 > 防止快速重复点击
 
 
