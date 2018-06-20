@@ -16,58 +16,43 @@ tags:
 
 	brew
 	
-    archey			ios-deploy		python3
-    autoconf		libidn2			readline
-    automake		libplist		repo
-    bash			libtasn1		ruby
-    carthage		libtool			sl
-    cocoapods		libunistring		sqlite
-    docker			libusb			thefuck
-    docker-compose		libxml2			ucl
-    docker-machine		libyaml			upx
-    flow			libzip			usbmuxd
-    gdbm			mongodb			watchman
-    gettext			node			wget
-    googler			openssl			xz
-    gradle			pcre			yarn
-    icu4c			pkg-config
-    ideviceinstaller	python
+    archey			ideviceinstaller	pkg-config
+    autoconf		ios-deploy		python
+    automake		libidn2			python3
+    bash			libimobiledevice	python@2
+    carthage		libplist		readline
+    cocoapods		libtasn1		repo
+    dart			libtool			ruby
+    docker			libunistring		sl
+    docker-compose		libusb			sqlite
+    docker-machine		libxml2			thefuck
+    flow			libyaml			ucl
+    gdbm			libzip			upx
+    gettext			lua			usbmuxd
+    googler			mongodb			watchman
+    gradle			node			wget
+    highlight		openssl			xz
+    icu4c			pcre			yarn
 	
 	brew cask 
 
-    alfred                     intellij-idea              shadowsocksx-ng
-    android-file-transfer      istat-menus                skim
-    android-studio             iterm2                     sogouinput
-    aria2gui                   java8                      sourcetree
-    baidunetdisk               jd-gui                     steam
-    battle-net                 kindle                     sublime-text
-    calibre                    kugoumusic                 thunder
-    charles                    licecap                    touch-bar-pong
-    cheatsheet                 macdown                    touchswitcher
-    dbeaver-enterprise         microsoft-office           virtualbox
-    electronic-wechat          neteasemusic               visual-studio-code
-    evernote                   pphelper                   webstorm
-    go2shell                   qq                         youdaodict
-    google-chrome              realm-browser
-    iina                       realm-studio         
-	
-	
-#### old cask app
-
-	alfred                     gifrocket                  qq
-	android-file-transfer      go2shell                   shadowsocksx-ng
-	android-studio             google-chrome              skim
-	aria2gui                   iina                       sogouinput
-	baidunetdisk               intellij-idea              steam
-	battle-net                 istat-menus                sublime-text
-	bilibili                   iterm2                     thunder
-	calibre                    java                       touch-bar-pong
-	charles                    jd-gui                     touch-bar-simulator
-	datagrip                   kindle                     touchswitcher
-	dbeaver-enterprise         licecap                    vmware-fusion8
-	duet                       macdown                    webstorm
-	electronic-wechat          neteasemusic               youdaodict
-	evernote                   pphelper    
+    alfred                     java8                      sketch
+    android-file-transfer      jd-gui                     skim
+    android-studio             kindle                     sogouinput
+    aria2gui                   kugoumusic                 sourcetree
+    baidunetdisk               licecap                    steam
+    battle-net                 macdown                    sublime-text
+    calibre                    microsoft-office           thunder
+    charles                    pphelper                   touch-bar-pong
+    cheatsheet                 qiyimedia                  touchswitcher
+    dbeaver-enterprise         qlcolorcode                virtualbox
+    evernote                   qlimagesize                visual-studio-code
+    go2shell                   qlmarkdown                 webstorm
+    google-chrome              qq                         webtorrent
+    iina                       quickjson                  xmind
+    intellij-idea              quicklook-json             youdaodict
+    istat-menus                react-native-debugger
+    iterm2                     shadowsocksx-ng         
 
 ## 准备：
 
@@ -83,7 +68,6 @@ tips: 硬盘可分出来 10G 左右，做成系统盘。
 
 App Store 搜索 ` macOS High Sierra ` 下载完成之后退出，插上U盘
 
-
 以下是命令的基本语法。
 
 将 volumepath 替换为USB闪存驱动器或其他宗卷的相应路径，并将 installerpath 替换为“安装 OS X”应用的相应路径。
@@ -92,19 +76,9 @@ High Sierra 的语法：
 
 		createinstallmedia --volume volumepath
 
-Sierra 和更早版本的语法：：
-
-		createinstallmedia --volume volumepath --applicationpath installerpath
-
-
 High Sierra 的示例：
 
 	sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/diskName
-
-Sierra 的示例：:
-
-	sudo /Applications/Install\ macOS\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/diskName --applicationpath /Applications/Install\ macOS\ Sierra.app
-
 
 * [创建可引导的 macOS 安装器](https://support.apple.com/zh-cn/HT201372)
 
@@ -136,9 +110,7 @@ Sierra 的示例：:
 
 命令行工具：`xcode-select --install`
 
-
 ## 基础安装
-
 
 #### brew
 
@@ -151,7 +123,6 @@ Sierra 的示例：:
 
 
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
 
 建议直接执行官网提供的命令,`/usr/local` 已在系统 PATH 之中，brew 无须任何配置。
 
@@ -168,7 +139,6 @@ Sierra 的示例：:
 `brew --prefix` :确定 brew 安装位置
 
 `brew doctor`:为了确认 brew 运行时，对系统中各个目录时候有权限等问题，可执行命令诊断
-
 
 以 wget 为例：
 
@@ -211,10 +181,9 @@ Sierra 的示例：:
 	清除下载缓存
 	brew cleanup	
 	
-	
 安装好的 wget 会被安装到 `/usr/local/Cellar/wget/`下。并且将wget命令软链接至` /usr/local/bin` 目录下。这样全局就都可以使用 wget 命令了
 	
-如果 brew 没有想装的软件，可以自己设置：
+如果` brew `没有想装的软件，可以自己设置：
 
 首先找到待安装软件的源码下载地址
 	
@@ -228,7 +197,7 @@ Sierra 的示例：:
 
 	上一步建立成功后，brew 会自动打开新建的formula进行编辑，也可用`brew edit softwareName` 打开formula进行编辑。
 
-brew 自动建立的 formula 已经包含了基本的configure和make install命令，对于大部分软件，不需要进行修改，退出编辑即可。
+`brew `自动建立的 `formula `已经包含了基本的`configure`和`make install`命令，对于大部分软件，不需要进行修改，退出编辑即可。
 
 然后直接输入`brew install softwareName`安装自定义的软件包
 
@@ -305,7 +274,6 @@ zsh替代bash后，以前`~/.bash_profile`的配置应该写入`~/.zshrc`中
 
 比较好的字体：[FiraCode](https://github.com/tonsky/FiraCode)
 
-
 #### iTerm2
 
 	brew cask install iTerm2
@@ -324,7 +292,6 @@ mac终端默认不走代理，例如git clone 的时候就算开vpn 也会很慢
 	alias offvpn="unset ALL_PROXY"
 
 以后想打开代理  直接输入 `openvpen`,关闭输入 `offvpn` 即可
-
 
 或者使用 `brew install proxychains-ng` ,安装好之后在 `/usr/local/etc/proxychains.conf` 下，
 在 `ProxyList` 下面加入代理类型，代理地址和端口
@@ -375,8 +342,6 @@ GUI:
 
 	brew install macvim --with-lua --with-override-system-vim
 
-
-		
 #### repo
 
 可选，AOSP同步需要
@@ -388,7 +353,6 @@ repo由一系列python脚本组成
 #### git
 
 XCODE自带
-
 
 	git config --global user.name "user.name"
 	git config --global user.email "user.email"
