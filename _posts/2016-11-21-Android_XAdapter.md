@@ -26,7 +26,7 @@ tags:
 
 ### gradle
 
->compile 'com.ydevelop:rv-adapter:0.0.1
+>compile 'com.ydevelop:rv-adapter:0.0.3
  
 
 
