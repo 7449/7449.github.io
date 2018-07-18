@@ -440,11 +440,36 @@ tags:
         return FontPaint.measureText(text);
     }
 	
+## shape 渐变圆环
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <shape xmlns:android="http://schemas.android.com/apk/res/android"
+           android:shape="ring"
+           android:thickness="2dp"
+           android:useLevel="false">
+        <gradient
+            android:centerColor="#30ffffff"
+            android:endColor="@android:color/white"
+            android:gradientRadius="20dp"
+            android:startColor="@color/transparent"
+            android:type="sweep"/>
+        <size
+            android:width="40dp"
+            android:height="40dp"/>
+    </shape>
 
 ## 判断是否是平板
 
     public static boolean isTablet(Context context) {
         return (context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+    }
+
+    public static boolean isTablet(Activity activity) {
+        DisplayMetrics dm = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        double diagonalPixels = Math.sqrt(Math.pow(dm.widthPixels, 2) + Math.pow(dm.heightPixels, 2));
+        double screenSize = diagonalPixels / (160 * dm.density);
+        return screenSize >= 6.0D;
     }
 
 ## 获取屏幕尺寸
