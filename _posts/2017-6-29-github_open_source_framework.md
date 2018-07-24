@@ -50,8 +50,24 @@ tags:
 
 拒绝伸手党，从个人做起！
 
-## Android-JAVA
 
+## flutter
+
+[flutter](https://github.com/flutter/flutter):flutter<br>
+[plugins](https://github.com/flutter/plugins):plugins<br>
+[engine](https://github.com/flutter/engine):engine<br>
+[website](https://github.com/flutter/website):website<br>
+[flutter_cache_manager](https://github.com/renefloor/flutter_cache_manager):Generic cache manager for flutter<br>
+[flutter_webview_plugin](https://github.com/dart-flitter/flutter_webview_plugin):flutter_webview_plugin<br>
+
+#### example
+
+[FlutterExampleApps](https://github.com/iampawan/FlutterExampleApps):[Example APPS] Basic Flutter apps, for flutter devs.<br>
+[flutter_architecture_samples](https://github.com/brianegan/flutter_architecture_samples):TodoMVC for Flutter<br>
+[flutter-examples](https://github.com/nisrulz/flutter-examples):[Examples] Simple basic isolated apps, for budding flutter devs.<br>
+[flutter-osc](https://github.com/yubo725/flutter-osc):基于Google Flutter的开源中国客户端<br>
+
+## Android-JAVA
 
 #### rx
 
@@ -106,6 +122,7 @@ tags:
 [AndroidVideoPlayer](https://github.com/xiongwei-git/AndroidVideoPlayer):视频播放器<br>
 [JieCaoVideoPlayer](https://github.com/lipangit/JieCaoVideoPlayer):节操视频播放器，使用比较简单<br>
 [AndroidYouTubePlayer](https://github.com/PierfrancescoSoffritti/AndroidYouTubePlayer):基于WebView的YouTube播放器<br>
+[dkplayer](https://github.com/dueeeke/dkplayer):基于IjkPlayer的视频播放器<br>
 
 [materialish-progress](https://github.com/pnikosis/materialish-progress):Material Design 风格的Progress ，兼容到2.3<br>
 [TSnackBar](https://github.com/AndreiD/TSnackBar):扩展的SnackBar，可从任意位置吐出<br>
@@ -172,6 +189,7 @@ tags:
 [SlideActivity](https://github.com/chenjishi/SlideActivity):侧滑退出Activity<br>
 [SwipeBackLayout](https://github.com/ikew0ng/SwipeBackLayout):侧滑退出Activity<br>
 [BGASwipeBackLayout-Android](https://github.com/bingoogolapple/BGASwipeBackLayout-Android):Android Activity 滑动返回<br>
+[SwipeCardRecyclerView](https://github.com/HalfStackDeveloper/SwipeCardRecyclerView):利用RecyclerView打造的滑动卡片View，支持左滑右滑删除<br>
 
 #### 选择器
 
@@ -227,6 +245,7 @@ tags:
 
 [Luban](https://github.com/Curzibn/Luban):可能是最接近微信朋友圈的图片压缩算法<br>
 [Compressor](https://github.com/zetbaitsu/Compressor): 图片压缩库<br>
+[Biscuit](https://github.com/pruas/Biscuit):一款Android 便捷高效图片压缩库，更多自定义，灵活配置，缩放部分逆向微信朋友圈压缩效果推算得来，效果非常接近！<br>
 
 [fastdex](https://github.com/typ0520/fastdex):加快 apk 的编译速度<br>
 [LayoutCast](https://github.com/mmin18/LayoutCast):加快编译速度<br>
@@ -298,6 +317,7 @@ tags:
 [android-architecture-components](https://github.com/googlesamples/android-architecture-components): 26 sample<br>
 [Calligraphy](https://github.com/chrisjenx/Calligraphy):加载字体<br>
 [Android-BluetoothSPPLibrary](https://github.com/akexorcist/Android-BluetoothSPPLibrary):Android蓝牙封装<br>
+[BluetoothKit](https://github.com/dingjikerbo/BluetoothKit):Android BLE蓝牙通信库<br>
 [ASimpleCache](https://github.com/yangfuhai/ASimpleCache):ASimpleCache 是一个为android制定的 轻量级的 开源缓存框架<br>
 [MasteringAndroidDataBinding](https://github.com/LyndonChin/MasteringAndroidDataBinding):精通 Android Data Binding，介绍了遇到的坑以及解决办法<br>
 [agera](https://github.com/google/agera): 类似于 RxJava 的 异步和响应式程序的框架<br>
@@ -312,6 +332,7 @@ tags:
 [AndroidDecompiler](https://github.com/dirkvranckaert/AndroidDecompiler):反编译<br>
 [AndroidLibs](https://github.com/XXApple/AndroidLibs):Android 开源代码大全<br>
 [RapidView](https://github.com/Tencent/RapidView):用于开发Android客户端界面、逻辑以及功能的开发组件<br>
+[LazyKeyboard](https://github.com/onlyloveyd/LazyKeyboard):自定义键盘<br>
 
 #### sample
 
@@ -363,20 +384,15 @@ tags:
 [react-native-modal-dropdown](https://github.com/sohobloo/react-native-modal-dropdown)下拉选择框<br>
 [react-native-orientation](https://github.com/yamill/react-native-orientation):检测横竖屏<br>
 
-
 [react-redux](https://github.com/reactjs/react-redux):react-redux<br>
 [redux](https://github.com/reactjs/redux):redux<br>
 [redux-logger](https://github.com/evgenyrodionov/redux-logger):redux-logger<br>
 [redux-persist](https://github.com/rt2zz/redux-persist):redux-persist<br>
 [redux-thunk](https://github.com/gaearon/redux-thunk):rredux-thunk<br>
 
-
-
-
 ###### sample
 
 [GitHubPopular](https://github.com/crazycodeboy/GitHubPopular):查看GitHub最受欢迎与最热项目的App<br>
-
 
 #### kotlin
 
@@ -398,13 +414,12 @@ tags:
 [android-dev-bookmarks](https://github.com/zhengxiaopeng/android-dev-bookmarks):Android 开发者的浏览器书签 <br>
 [android-dev-cn](https://github.com/android-cn/android-dev-cn):一些国内 Android 开发者信息<br>
 [android-dev-com](https://github.com/android-cn/android-dev-com):一些国外 Android 开发者信息<br>
-
+[WLeetCode](https://github.com/ImportEffort/WLeetCode):此项目是 leetCode 的解题过程<br>
 
 ## 小程序
 
 [wxParse](https://github.com/icindy/wxParse):小程序富文本解析,支持HTML及markdown<br>
 [awesome-wechat-weapp](https://github.com/justjavac/awesome-wechat-weapp):微信小程序开发资源汇总<br>
-
 
 ## APPLE
 
@@ -418,12 +433,10 @@ tags:
 [Assets.carTool](https://github.com/yuedong56/Assets.carTool):Mac上解压Assets.car文件的小工具<br>
 [AssetsExtractor](https://github.com/pcjbird/AssetsExtractor):Assets提取工具(推荐)<br>
 
-
 #### touchbar
 
 [TouchBarDemoApp](https://github.com/bikkelbroeders/TouchBarDemoApp):包含了集中touchbar<br>
 [zsh-iterm-touchbar](https://github.com/iam4x/zsh-iterm-touchbar):zsh的touchbar加强版<br>
-
 
 ## brew
 
