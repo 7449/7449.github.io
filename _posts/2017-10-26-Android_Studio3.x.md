@@ -55,8 +55,8 @@ tags:
 去掉了`@`编译通过
 
     <style name="BottomToTopAnim" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/bottomview_anim_enter</item>
-        <item name="android:windowExitAnimation">@anim/bottomview_anim_exit</item>
+        <item name="android:windowEnterAnimation">anim/bottomview_anim_enter</item>
+        <item name="android:windowExitAnimation">anim/bottomview_anim_exit</item>
     </style>
     
 #### findViewById
