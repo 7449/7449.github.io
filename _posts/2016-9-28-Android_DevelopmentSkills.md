@@ -189,7 +189,7 @@ tags:
 		        @Override
 		        public boolean onKey(View v, int keyCode, KeyEvent event) {
 		
-		            if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+		            if (keyCode == KeyEvent.KEYCODE_BACK){
 		
 		                // handle back button
 		
