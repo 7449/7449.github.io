@@ -14,10 +14,10 @@ import com.blog.net.Net
 import com.blog.net.NetModel
 import com.blog.net.NetView
 import com.blog.widget.LoadMoreRecyclerView
-import com.xadapter.OnItemClickListener
-import com.xadapter.OnXBindListener
 import com.xadapter.adapter.XRecyclerViewAdapter
 import com.xadapter.holder.XViewHolder
+import com.xadapter.listener.OnItemClickListener
+import com.xadapter.listener.OnXBindListener
 import io.reactivex.jsoup.network.manager.RxJsoupNetWork
 import io.reactivex.jsoup.network.manager.RxJsoupNetWorkListener
 import org.jsoup.nodes.Document
@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         title = "主页"
-        recyclerView = findViewById(R.id.recyclerView) as LoadMoreRecyclerView
-        refreshLayout = findViewById(R.id.refresh_layout) as SwipeRefreshLayout
+        recyclerView = findViewById(R.id.recyclerView)
+        refreshLayout = findViewById(R.id.refresh_layout)
 
         mAdapter = XRecyclerViewAdapter()
         recyclerView.setHasFixedSize(true)
@@ -89,16 +89,16 @@ class MainActivity : AppCompatActivity(),
     }
 
 
-    override fun onXBind(holder: XViewHolder, position: Int, t: NetModel) {
-        holder.setTextView(R.id.blog_list_title, t.title)
-        holder.setTextView(R.id.blog_list_little_title, t.littleTitle)
+    override fun onXBind(holder: XViewHolder, position: Int, entity: NetModel) {
+        holder.setTextView(R.id.blog_list_title, entity.title)
+        holder.setTextView(R.id.blog_list_little_title, entity.littleTitle)
     }
 
-    override fun onItemClick(view: View, position: Int, info: NetModel) {
+    override fun onItemClick(view: View, position: Int, entity: NetModel) {
         val intent = Intent(view.context, DetailActivity().javaClass)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        intent.putExtra("title", info.title)
-        intent.putExtra("detailUrl", info.detailUrl)
+        intent.putExtra("title", entity.title)
+        intent.putExtra("detailUrl", entity.detailUrl)
         startActivity(intent)
     }
 

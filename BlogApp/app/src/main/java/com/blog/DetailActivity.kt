@@ -23,8 +23,8 @@ class DetailActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        webView = findViewById(R.id.webView) as WebView
-        refreshLayout = findViewById(R.id.refresh_layout) as SwipeRefreshLayout
+        webView = findViewById(R.id.webView)
+        refreshLayout = findViewById(R.id.refresh_layout)
         refreshLayout.isEnabled = false
         title = intent.getStringExtra("title")
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)

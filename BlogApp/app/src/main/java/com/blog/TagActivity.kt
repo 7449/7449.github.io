@@ -14,11 +14,11 @@ import com.blog.net.Net
 import com.blog.net.NetView
 import com.blog.net.TagModel
 import com.blog.widget.LoadMoreRecyclerView
-import com.xadapter.OnItemClickListener
 import com.xadapter.adapter.multi.MultiAdapter
 import com.xadapter.adapter.multi.MultiCallBack
 import com.xadapter.adapter.multi.XMultiAdapterListener
 import com.xadapter.holder.XViewHolder
+import com.xadapter.listener.OnItemClickListener
 import io.reactivex.jsoup.network.manager.RxJsoupNetWork
 import io.reactivex.jsoup.network.manager.RxJsoupNetWorkListener
 import org.jsoup.nodes.Document
@@ -41,8 +41,8 @@ class TagActivity : AppCompatActivity(),
         setContentView(R.layout.activity_tag)
         title = "Tag"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        recyclerView = findViewById(R.id.recyclerView) as LoadMoreRecyclerView
-        refreshLayout = findViewById(R.id.refresh_layout) as SwipeRefreshLayout
+        recyclerView = findViewById(R.id.recyclerView)
+        refreshLayout = findViewById(R.id.refresh_layout)
         refreshLayout.isEnabled = false
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
@@ -89,23 +89,23 @@ class TagActivity : AppCompatActivity(),
 
     override fun getGridLayoutManagerSpanSize(itemViewType: Int, gridManager: GridLayoutManager, position: Int): Int = 0
 
-    override fun onXMultiBind(holder: XViewHolder, t: TagModel, itemViewType: Int, position: Int) {
+    override fun onXMultiBind(holder: XViewHolder, entity: TagModel, itemViewType: Int, position: Int) {
         when (itemViewType) {
             MultiCallBack.TYPE_ITEM -> {
-                holder.setTextView(R.id.item_tag_title_item, t.title)
-                holder.setTextView(R.id.item_tag_little_title, t.littleTitle)
+                holder.setTextView(R.id.item_tag_title_item, entity.title)
+                holder.setTextView(R.id.item_tag_little_title, entity.littleTitle)
             }
             1 -> {
-                holder.setTextView(R.id.item_tag_title, t.littleTitle)
+                holder.setTextView(R.id.item_tag_title, entity.littleTitle)
             }
         }
     }
 
-    override fun onItemClick(view: View, position: Int, info: TagModel) {
+    override fun onItemClick(view: View, position: Int, entity: TagModel) {
         val intent = Intent(view.context, DetailActivity().javaClass)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        intent.putExtra("title", info.title)
-        intent.putExtra("detailUrl", info.detailUrl)
+        intent.putExtra("title", entity.title)
+        intent.putExtra("detailUrl", entity.detailUrl)
         startActivity(intent)
     }
 
