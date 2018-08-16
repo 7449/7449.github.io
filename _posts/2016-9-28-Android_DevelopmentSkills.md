@@ -67,6 +67,26 @@ tags:
  然后在`view`里面
  
     <View style={height:this.state.emptyHeight}/>
+    
+## 禁止表情
+
+
+    editText.setFilters(new InputFilter[]{new InputFilter() {
+        Pattern pattern = Pattern.compile("[^a-zA-Z0-9\\u4E00-\\u9FA5_,.?!:;…~_\\-\"\"/@*+'()<>{}/[/]()<>{}\\[\\]=%&$|/♀♂#¥£¢€\"^` ，。？！：；……～“”、“（）”、（——）‘’＠‘·’＆＊＃《》￥《〈〉》〈＄〉［］￡［］｛｝｛｝￠【】【】％〖〗〖〗／〔〕〔〕＼『』『』＾「」「」｜﹁﹂｀．]");
+    
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            Matcher matcher = pattern.matcher(source);
+            if (!matcher.find()) {
+                return null;
+            } else {
+                ToastUtil.show(R.string.annotation_unknown);
+                return "";
+            }
+    
+        }
+    }});
+
 
 ## base64
 
