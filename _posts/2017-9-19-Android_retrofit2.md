@@ -5,7 +5,7 @@ subtitle:   "简单介绍下封装retrofit2"
 date:       2017-9-19
 author:     "y"
 header-mask: 0.3
-header-img: "img/android.png"
+header-img: "img/android.jpg"
 catalog: true
 tags:
     - retrofit2

@@ -5,7 +5,7 @@ subtitle:   "从greenDao转objectBox"
 date:       2017-9-28
 author:     "y"
 header-mask: 0.3
-header-img: "img/android.png"
+header-img: "img/android.jpg"
 catalog: true
 tags:
     - android

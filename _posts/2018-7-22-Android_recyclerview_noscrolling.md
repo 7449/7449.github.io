@@ -5,7 +5,7 @@ subtitle:   "禁止RecyclerView滑动"
 date:       2018-7-22
 author:     "y"
 header-mask: 0.3
-header-img: "img/android.png"
+header-img: "img/android.jpg"
 catalog: true
 tags:
     - android

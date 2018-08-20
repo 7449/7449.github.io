@@ -5,7 +5,7 @@ subtitle:   "针对RxJava多次请求网络接口"
 date:       2017-12-27
 author:     "y"
 header-mask: 0.3
-header-img: "img/android.png"
+header-img: "img/android.jpg"
 catalog: true
 tags:
     - android

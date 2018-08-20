@@ -5,7 +5,7 @@ subtitle:   "记下遇到的问题"
 date:       2017-10-26
 author:     "y"
 header-mask: 0.3
-header-img: "img/android.png"
+header-img: "img/android.jpg"
 catalog: true
 tags:
     - android

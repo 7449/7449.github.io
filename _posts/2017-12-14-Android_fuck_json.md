@@ -5,7 +5,7 @@ subtitle:   "针对不同后台的json数据格式进行处理"
 date:       2017-12-14
 author:     "y"
 header-mask: 0.3
-header-img: "img/android.png"
+header-img: "img/android.jpg"
 catalog: true
 tags:
     - android

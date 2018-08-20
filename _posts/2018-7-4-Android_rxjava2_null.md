@@ -5,7 +5,7 @@ subtitle:   "Null is not a valid element"
 date:       2018-7-4
 author:     "y"
 header-mask: 0.3
-header-img: "img/android.png"
+header-img: "img/android.jpg"
 catalog: true
 tags:
     - android
