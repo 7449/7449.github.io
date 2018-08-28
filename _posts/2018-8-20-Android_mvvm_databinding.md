@@ -56,3 +56,99 @@ tags:
 4. `ViewModel`带来的低耦合非常适用于团队合作
 
 ## databingding
+
+`databinding`是`google`推出的一款扩展`xml`的框架,直接在`gradle`中声明即可
+
+    android {
+        dataBinding {
+            enabled = true
+        }
+        ...
+    }
+    
+   
+举个简单的例子:
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    
+        <data>
+    
+            <variable
+                name="layoutManager"
+                type="android.support.v7.widget.RecyclerView.LayoutManager" />
+        </data>
+    
+        <com.common.widget.LoadMoreRecyclerView
+            android:id="@+id/codekk_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="@{layoutManager}" />
+    
+    </layout>
+
+然后重新`build`一下项目,工具会自动生成相对应的类文件,命名默认为布局文件名 + Binding ，驼峰式命名
+
+例如布局名是`activity_main`,则生成的默认文件名为`ActivityMainBinding`
+
+如上面示例,如果为`recyclerView`设置`LayoutManager`在代码中直接`binding.layoutManager = LinearLayoutManager(this)`即可
+
+但是在使用中还是发现了一个问题,在`item`中设置`View`属性时，还是碰到了延迟的问题，
+在[item_codekk_op_list](https://github.com/7449/Kotlin-Sample-App/blob/master/Codekk/src/main/res/layout/item_codekk_op_list.xml)布局中导入了几个类和一个实体类，
+在`layout`中设置`autoLink`，碰到了`AppCompatTextView`第一页的链接并没有变成`web`链接
+滑动复用之后才会变化,但是在`addData`之后延迟2秒再刷新一下页面，效果就会起效,所以暂时没有找到其他解决办法,这种属性只能在代码中设置
+
+## 结合使用
+
+数据可以使用`LiveData`驱动,`ViewModel`继承`android.arch.lifecycle`下的`ViewModel`即可,这里提一下`google`在里面也实现了一个默认的`AndroidViewModel`
+
+    public class AndroidViewModel extends ViewModel {
+        @SuppressLint("StaticFieldLeak")
+        private Application mApplication;
+    
+        public AndroidViewModel(@NonNull Application application) {
+            mApplication = application;
+        }
+    
+        /**
+         * Return the application.
+         */
+        @SuppressWarnings("TypeParameterUnusedInFormals")
+        @NonNull
+        public <T extends Application> T getApplication() {
+            //noinspection unchecked
+            return (T) mApplication;
+        }
+    }
+    
+这个可以获取一个`Application`对象,个人暂时觉得没有多大用...,如果需要在`ViewModel`中获取`Application`对象则可以用这个,
+不过推荐使用时自己实现一个`ViewModel`，然后结合项目的实际应用实现不同的`ViewModel`
+
+    abstract class NetWorkViewModel<T> : ViewModel(), RxNetWorkListener<T> {
+    
+        val viewModelData: MediatorLiveData<BaseEntity<T>> = MediatorLiveData()
+    
+        override fun onNetWorkError(e: Throwable) {
+        }
+    
+        override fun onNetWorkComplete() {
+        }
+    }
+
+在`activity`或者`fragment`则获取`ViewModel`对象，然后去获取数据或者实现其他功能
+
+    ViewModelProviders.of(this).get(UserViewModel.class)
+    
+按照`googlesample`中的写法则是使用`ViewModel`获取`LiveData`然后注册一个`observe`,这样在`ViewModel`中则直接使用`liveData.setValue()`或者`liveData.postValue()`即可.
+其中的`postValue`适用于子线程中操作数据
+
+如果这里使用`ObservableArrayList`则数据更方便,具体操作可以参考[Kotlin-Sample-App](https://github.com/7449/Kotlin-Sample-App)
+
+## 总结
+
+总的来讲,开发确实越来越方便,不像以前需要考虑到各个方面,这里直接使用即可
+
+但是吐槽一句题外话,使用`kotlin`的时候电脑卡的要死,`java`项目则没有这个问题...
+
