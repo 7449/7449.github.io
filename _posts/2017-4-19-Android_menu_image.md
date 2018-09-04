@@ -112,6 +112,8 @@ Note: Menu items in the Icon Menu (from the Options Menu) cannot display a check
 
 # 修改Toolbar上面的三个点
 
+代码中设置： setOverflowIcon();
+
 写一个`Style` 继承`@android:style/Widget.ActionButton.Overflow`
 
     <style name="toolbar_..." parent="@android:style/Widget.ActionButton.Overflow">
