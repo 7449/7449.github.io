@@ -26,7 +26,7 @@ tags:
 
 ### gradle
 
->api 'com.ydevelop:rv-adapter-kotlin:0.0.6
+>api 'com.ydevelop:rv-adapter:0.0.8
 
 
 ### tips

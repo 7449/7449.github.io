@@ -66,14 +66,14 @@ tags:
 
 >gradle
 
-    api 'com.ydevelop:bannerlayout-kotlin:1.1.2'
+    api 'com.ydevelop:bannerlayout:1.1.3'
     
 >maven
 
 	<dependency>
 	  <groupId>com.ydevelop</groupId>
-	  <artifactId>bannerlayout-kotlin</artifactId>
-	  <version>1.1.2</version>
+	  <artifactId>bannerlayout</artifactId>
+	  <version>1.1.3</version>
 	  <type>pom</type>
 	</dependency>
 
