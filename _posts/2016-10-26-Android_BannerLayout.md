@@ -93,76 +93,57 @@ Bean类请实现 [BannerModelCallBack](https://github.com/7449/BannerLayout/blob
 
 如果让`BannerLayout`实现图片的加载记得依赖Glide
 
-    implementation 'com.github.bumptech.glide:glide:4.7.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
     
 或者实现`ImageLoaderManager `
 
-	public class SimpleManager implements ImageLoaderManager<SimpleBannerModel> {
-	
-	    @NonNull
-	    @Override
-	    public ImageView display(@NonNull ViewGroup container, SimpleBannerModel model) {
-	        ImageView imageView = new ImageView(container.getContext());
-	        // picasso or fresco or universalimageloader
-	        return imageView;
-	    }
-	}
+    class ImageLoaderSimpleManager : ImageLoaderManager<SimpleBannerModel> {
+    
+        override fun display(container: ViewGroup, model: SimpleBannerModel): ImageView {
+            val imageView = ImageView(container.context)
+            val imageLoader = ImageLoader.getInstance()
+            imageLoader.displayImage(model.bannerUrl, imageView)
+            return imageView
+        }
+    }
 	
 示例 :[ImageManagerSimple](https://github.com/7449/BannerLayout/tree/master/app/src/main/java/com/bannersimple/imagemanager)
 
 ## 简易实现:
 
-        banner
-                .initListResources(data)
-               	//if you use glide this step is not necessary
-                .setImageLoaderManager(new SimpleImageManager()) 
-                .switchBanner(true/false);
+    banner.resource(data).switchBanner(true/false);
                 
 ## 垂直滚动
 
-        banner
-                .setVertical(true)
+    banner.setVertical(true)
 
 ## PageChangeListener
 
-        banner
-                .addOnPageChangeListener(
-                        new OnBannerChangeListener() {
-                            @Override
-                            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    bannerLayout.onBannerChangeListener = object : OnBannerChangeListener {
+        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+        }
 
-                            }
+        override fun onPageSelected(position: Int) {
+        }
 
-                            @Override
-                            public void onPageSelected(int position) {
-
-                            }
-
-                            @Override
-                            public void onPageScrollStateChanged(int state) {
-
-                            }
-                        });
+        override fun onPageScrollStateChanged(state: Int) {
+        }
+    }
                         
 ## 点击事件
 
 >如果不传递泛型，返回的model就是当前Bean类，强转即可，建议传递泛型
 
-        banner
-                .setOnClickListener(
-                        new OnBannerClickListener<SimpleBannerModel>() {
-                            @Override
-                            public void onBannerClick(View view, int position, SimpleBannerModel model) {
-
-                            }
-                        });
+    bannerLayout.onBannerClickListener = object : OnBannerClickListener<SimpleBannerModel> {
+        override fun onBannerClick(view: View, position: Int, model: SimpleBannerModel) {
+        }
+    }
 
 ## 提示栏及小圆点、title位置的改变
 
-	setTipsSite() 	 			提示栏在布局中的位置，top,bottom,center三种可选 
-	setDotsSite()	  			小圆点在提示栏的位置，left,center,right三种可选 
-	setTitleSite()  			title在提示栏的位置，left,center,right三种可选 
+	tipsSite 	 			提示栏在布局中的位置，top,bottom,center三种可选 
+	dotsSite	  			小圆点在提示栏的位置，left,center,right三种可选 
+	titleSite  			    title在提示栏的位置，left,center,right三种可选 
 
 	xml:
 		    <com.bannerlayout.widget.BannerLayout
@@ -175,77 +156,44 @@ Bean类请实现 [BannerModelCallBack](https://github.com/7449/BannerLayout/blob
 `viewpager`的垂直这里用的是动画，所以只要选择了垂直滚动，设置动画无效
 
 动画内置的 [ViewPagerTransforms](https://github.com/ToxicBakery/ViewPagerTransforms)，多谢作者
-
 	
-	如果想自定义动画请继承 ABaseTransformer 或者 BannerTransformer 即可;
+	banner.bannerTransformerType = BannerLayout.ANIMATION_CUBE_IN
 	
-	setBannerTransformer(BannerLayout.ANIMATION_CUBE_IN)
+	or
 	
-	或者
-	
-	setBannerTransformer(new ZoomOutSlideTransformer())
+	banner.bannerTransformer = ZoomOutSlideTransformer()
 
 ## 动画集合：
 
-
->自定义动画集合
-
-			 Integer: 0 ~ 17
-	         List<Integer> integerList = new ArrayList<>();
-	       
-			 setBannerSystemTransformerList(transformers);
-
->系统动画集合
-
-			List<BannerTransformer> bannerTransformer = new ArrayList<>();
-			
-			etBannerSystemTransformerList(bannerTransformer);
+    List<BannerTransformer> bannerTransformer = new ArrayList<>();
+    
+    etBannerSystemTransformerList(bannerTransformer);
 
 #### java 方法
 
 see: [MethodTestActivity](https://github.com/7449/BannerLayout/blob/master/app/src/main/java/com/bannersimple/simple/MethodTestActivity.kt)
 
-        newBannerLayout
-                .setGuide(true)
-                .setDelayTime(3000)
-                .setErrorImageView(R.mipmap.ic_launcher)
-                .setPlaceImageView(R.mipmap.ic_launcher)
-                .setDuration(3000)
-                .setViewPagerTouchMode(true)
-                .setVertical(true)
-                .setTitleTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark))
-                .setTitleTextSize(23)
-                .setTipsBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent))
-                .setTipsDotsSelector(R.drawable.banner)
-                .setTipsWidthAndHeight(BannerLayout.MATCH_PARENT, 300)
-                .setTipsSite(BannerLayout.TOP)
-                .setTitleMargin(60, 20)
-                .setTitleSite(BannerLayout.LEFT)
-                .setDotsWidthAndHeight(30, 30)
-                .setDotsSite(BannerLayout.RIGHT)
-                .setNormalRadius(2)
-                .setNormalColor(ContextCompat.getColor(getApplicationContext(), R.color.colorYellow))
-                .setEnabledRadius(2)
-                .setEnabledColor(ContextCompat.getColor(getApplicationContext(), R.color.colorYellow))
-                .setDotsMargin(60, 60)
-                .setBannerTransformer(BannerLayout.ANIMATION_ZOOMOUT)
-                .setBannerTransformer(new ZoomOutSlideTransformer())
-                .setPageNumViewRadius(1)
-                .setPageNumViewMargin(10, 10, 10, 10)
-                .setPageNumViewPadding(10, 10, 10, 10)
-                .setPageNumViewMargin(10)
-                .setPageNumViewPadding(10)
-                .setPageNumViewTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorYellow))
-                .setPageNumViewBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent))
-                .setPageNumViewSite(BannerLayout.PAGE_NUM_VIEW_BOTTOM_CENTER)
-                .setPageNumViewTextSize(22)
-                .setPageNumViewMark(" & ")
-                .initPageNumView()
-                .initTips(true, true, true)
-                .setOnBannerClickListener(this)
-                .addOnPageChangeListener(this)
-                .initListResources(SimpleData.initModel())
-                .switchBanner(true);
+     bannerLayout
+             .apply {
+                 delayTime = 3000
+                 errorImageView = R.mipmap.ic_launcher
+                 placeImageView = R.mipmap.ic_launcher
+                 bannerDuration = 3000
+                 viewPagerTouchMode = true
+                 isVertical = true
+                 titleColor = ContextCompat.getColor(applicationContext, R.color.colorPrimaryDark)
+                 titleSize = 23F
+                 tipsLayoutBackgroundColor = ContextCompat.getColor(applicationContext, R.color.colorAccent)
+                 dotsSelector = R.drawable.banner
+                 tipsWidth = BannerLayout.MATCH_PARENT
+                 tipsHeight = 300
+                 tipsSite = BannerLayout.TOP
+                 ...
+             }
+             .initPageNumView()
+             .initTips()
+             .resource(SimpleData.initModel())
+             .switchBanner(true)
                 
 #### xml 属性
 
