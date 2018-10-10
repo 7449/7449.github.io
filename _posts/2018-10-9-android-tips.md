@@ -61,4 +61,46 @@ tags:
 
 `GsonFormat`之类的节省时间的插件
 
-#### 
+#### 各种优化的小优点
+
+* 这些知识没有开发经验的人几乎不知道,这就是优点,因为没有实际遇到问题,就不会主动去寻找解决问题的办法,而靠着
+死记硬背很容易忘掉
+
+例如
+
+`setBackgroundResource(0)` 可以移除 View 的背景色
+
+`android:padding` 和 `android:clipToPadding="false"`结合使用
+
+`Space`占位,会自动跳过`onDraw`
+
+`TextView.setError()`
+
+
+...
+
+
+等等小知识
+
+#### 系统自带常用工具或者优化的替代类
+
+`android`的`sdk`就自己带了一些常用的方法
+
+例如
+
+`TextUtils.isEmpty()` `TextUtils.concat()` ...
+
+`DateUtils.formatDateTime())`...
+
+替代类
+
+`SparseArray` `SparseBooleanArray` `SparseIntArray` `SimpleArrayMap`
+
+这个时候如果能讲出来这些替代类的优点会更好
+
+例如`SparseArray`是用`integer`去管理`object`对象，它比`HashMap`去通过`Integer`查找`object`时在内存上更具效率,因为它避免了`HashMap`中基本数据类型需要装箱的步骤，其次不使用额外的结构体（Entry)，单个元素的存储成本下降,
+但是`SparseArray`不适用于大量数据的操作,因为它插入操作需要复制数组，增删效率降低
+
+SparseArray`的原理是二分检索法，也因此`key`的类型都是整型,如果`value`是`Boolean`或者其他的也有`SparseBooleanArray`供使用
+
+
