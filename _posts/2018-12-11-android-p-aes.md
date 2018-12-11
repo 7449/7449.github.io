@@ -27,7 +27,7 @@ Android P
 
     // android n
     SecureRandom sr = SecureRandom.getInstance("SHA1PRNG", new CryptoProvider());
-    // android version > n
+    // android version < n
     SecureRandom sr = SecureRandom.getInstance("SHA1PRNG","Crypto");
     
     public final class CryptoProvider extends Provider {
