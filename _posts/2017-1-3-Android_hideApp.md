@@ -32,7 +32,7 @@ hide之后的软件我这里使用循环遍历`PackageManager`然后返回false�
 
 <br>
 
-项目地址：[FuckApp](https://github.com/7449/AndroidDevelop/tree/develop/fuckapp)<br>
+项目地址：[FuckApp](https://github.com/7449/AndroidDevelop/blob/develop/FuckApp)<br>
 
 虚拟机并没有root，所以看个运行效果即可<br>
 

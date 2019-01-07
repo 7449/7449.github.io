@@ -150,4 +150,4 @@ Android P
     }
 
 `InsecureSHA1PRNGKeyDerivator`类太多了，这里就不贴了，可以去[InsecureSHA1PRNGKeyDerivator](https://android.googlesource.com/platform/development/+/master/samples/BrokenKeyDerivation/src/com/example/android/brokenkeyderivation/InsecureSHA1PRNGKeyDerivator.java)
-下载，如果官网链接不上可以去[github](https://github.com/7449/AndroidDevelop/blob/develop/app-modules-sample/commonLibrary/src/main/java/com/common/util/InsecureSHA1PRNGKeyDerivator.java)下载
+下载，如果官网链接不上可以去[github](https://github.com/7449/AndroidDevelop/blob/develop/AppModules/common/src/main/java/com/common/util/InsecureSHA1PRNGKeyDerivator.java)下载

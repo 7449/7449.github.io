@@ -13,7 +13,7 @@ tags:
 
 ## sample
 
-[https://github.com/7449/AndroidDevelop/tree/develop/expandable-list](https://github.com/7449/AndroidDevelop/tree/develop/expandable-list)
+[expandable-list](https://github.com/7449/AndroidDevelop/blob/develop/UtilsSample/ExpandableList)
 
 ## 效果图
 

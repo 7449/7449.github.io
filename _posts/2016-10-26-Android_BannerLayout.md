@@ -87,7 +87,7 @@ tags:
 
 >简单使用方式
 
-Bean类请实现 [BannerModelCallBack](https://github.com/7449/BannerLayout/blob/master/bannerlayout/src/main/java/com/bannerlayout/listener/BannerModelCallBack.kt)
+Bean类请实现 [BannerModelCallBack](https://github.com/7449/BannerLayout/blob/master/bannerlayout/src/main/java/com/bannerlayout/Listener.kt)
 
 具体可参考  [SimpleBannerModel](https://github.com/7449/BannerLayout/blob/master/app/src/main/java/com/bannersimple/bean/SimpleBannerModel.kt)
 
@@ -198,8 +198,6 @@ see: [MethodTestActivity](https://github.com/7449/BannerLayout/blob/master/app/s
 #### xml 属性
 
 > xml default parameter see:
-
-[BannerDefaults.java](https://github.com/7449/BannerLayout/blob/master/bannerlayout/src/main/java/com/bannerlayout/widget/BannerDefaults.kt)
 
         app:banner_guide="true"
         app:banner_dots_visible="true"

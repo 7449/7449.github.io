@@ -196,6 +196,6 @@ Java，Objective-C，Swift，React Native，Xamarin，都支持
     
 最后附上Example链接 
 
-[ExampleRealm](https://github.com/7449/AndroidDevelop/tree/studio3/ExampleRealm)
+[ExampleRealm](https://github.com/7449/AndroidDevelop/blob/develop/react-native/react-native-realm)
 
 

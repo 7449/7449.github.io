@@ -15,7 +15,7 @@ tags:
 
 ## 17.5.8 UpData
 
-[RxBus](https://github.com/7449/RxNetWork/blob/master/RxNetWorkLibrary/src/main/java/io/reactivex/network/bus)
+[RxBus](https://github.com/7449/RxNetWork/blob/master/RxNetWorkLibrary/src/main/java/io/reactivex/network/RxBus.kt)
 
 	public class RxBus {
 	

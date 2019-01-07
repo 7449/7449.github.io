@@ -14,7 +14,7 @@ tags:
 
 ## Demo地址
 
-[https://github.com/7449/AndroidDevelop/tree/develop/finger](https://github.com/7449/AndroidDevelop/tree/develop/finger)
+[finger](https://github.com/7449/AndroidDevelop/blob/develop/UtilsSample/Finger)
 
 ## 注意
 

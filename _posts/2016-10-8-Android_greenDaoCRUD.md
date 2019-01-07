@@ -18,19 +18,9 @@ tags:
 现在主流的`ORM`框架有`OrmLite`,`SugarORM`,`Active Android`,`Realm`以及`GreenDAO`.`greenDao`的性能远远高于同类的`ORM`框架,具体的测试结果官网有。
 
 
-## 2.x示例代码
-[https://github.com/7449/AndroidDevelop/tree/develop/greendao](https://github.com/7449/AndroidDevelop/tree/develop/greendao)
+## 示例代码
+[https://github.com/7449/AndroidDevelop/blob/develop/GreenDao](https://github.com/7449/AndroidDevelop/blob/develop/GreenDao/)
 
-## 3.x示例代码
-[https://github.com/7449/AndroidDevelop/tree/develop/greendao-3.0](https://github.com/7449/AndroidDevelop/tree/develop/greendao-3.0)
-
-## 多表关联示例代码
-
-[https://github.com/7449/AndroidDevelop/tree/develop/greendao-multi-table](https://github.com/7449/AndroidDevelop/tree/develop/greendao-multi-table)
-
-
-## 读写第三方数据表，示例代码
-[https://github.com/7449/AndroidDevelop/tree/develop/greendao-external](https://github.com/7449/AndroidDevelop/tree/develop/greendao-external)
 
 	有时候数据表会由后台分发而不是自动生成，所以这里简单介绍下怎么使用greendao操作这种情况下的数据表
 

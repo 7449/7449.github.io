@@ -20,13 +20,11 @@ Tinker是微信官方的Android热补丁解决方案，它支持动态下发代�
 
 github地址：[https://github.com/Tencent/tinker](https://github.com/Tencent/tinker)
 
-我的Demo地址：[https://github.com/7449/AndroidDevelop/tree/develop/test-tinker](https://github.com/7449/AndroidDevelop/tree/develop/test-tinker)
+[test-tinker](https://github.com/7449/AndroidDevelop/blob/develop/Test/test-tinker)
 
 ## 介绍
 
 >Tinker is a hot-fix solution library for Android, it supports dex, library and resources update without reinstall apk.
-
-
 
 ## wiki地址
 

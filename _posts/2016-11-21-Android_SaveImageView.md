@@ -16,7 +16,7 @@ tags:
 
 ## 示例代码：
 
-[https://github.com/7449/AndroidDevelop/tree/develop/save-image](https://github.com/7449/AndroidDevelop/tree/develop/save-image)
+[save-image](https://github.com/7449/AndroidDevelop/blob/develop/UtilsSample/SaveImage)
 
 >本身没有什么难点，关键是在国内某些机型上面直接获取bitmap会为null,这个时候就要处理一下兼容某些机型了
 

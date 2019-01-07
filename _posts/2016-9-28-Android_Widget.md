@@ -14,7 +14,7 @@ tags:
 
 ## code
 
-[widget](https://github.com/7449/AndroidDevelop/blob/develop/app-modules-sample/commonLibrary/src/main/java/com/common/widget/)
+[widget](https://github.com/7449/AndroidDevelop/blob/develop/AppModules/common/src/main/java/com/common/widget/)
 
 
 ## 高度自适应的imageview

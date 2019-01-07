@@ -17,9 +17,6 @@ tags:
 
 支持下拉刷新加载和添加多个header和footer的RecyclerViewAdapter
 
-
-Blog:[https://7449.github.io/Android_XAdapter/](https://7449.github.io/2016/11/12/Android_XAdapter/)
-
 # 截图
 
 ![](https://github.com/7449/XAdapter/blob/master/xadapter.gif)

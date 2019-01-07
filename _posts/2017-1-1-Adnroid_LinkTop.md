@@ -13,7 +13,7 @@ tags:
 
 ## sample
 
-[https://github.com/7449/AndroidDevelop/tree/develop/linktop](https://github.com/7449/AndroidDevelop/tree/develop/linktop)
+[linktop](https://github.com/7449/AndroidDevelop/blob/develop/UtilsSample/LinkTop/)
 
 ## 效果图
 

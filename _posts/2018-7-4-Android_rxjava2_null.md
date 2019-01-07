@@ -14,7 +14,7 @@ tags:
 
 ## 示例
 
-[SampleRxJava2Null](https://github.com/7449/AndroidDevelop/blob/develop/app-modules-sample/app/src/main/java/com/sample/SampleRxJava2Null.java)
+[SampleRxJava2Null](https://github.com/7449/AndroidDevelop/blob/develop/AppModules/app/src/main/java/com/sample/SampleRxJava2Null.java)
 
 ## 前言
 

@@ -12,13 +12,6 @@ tags:
     - android
 ---
 
-
-
-
-## 代码地址：
-
-[banner](https://github.com/7449/AndroidDevelop/tree/develop/banner "Android Banner的封装")
-
 ## 改进版 bannerLayout（强烈建议使用此版本）：
 
 [BannerLayout](https://github.com/7449/BannerLayout "Android Banner的封装")
