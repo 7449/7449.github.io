@@ -32,6 +32,23 @@ tags:
 检查安装包是否是DeBug版，如果包含`Android DeBug`字样则为测试版
 
 	jarsigner -verify -verbose -certs apkfile
+
+## build.json
+
+这里推荐一种更为方便的打包方式：
+
+根目录下创建`build.json`，然后 使用`cordova build android --release` 即可
+
+    {
+      "android": {
+        "release": {
+          "keystore": "jks",
+          "storePassword": "",
+          "alias": "",
+          "password": ""
+        }
+      }
+    }
 	
 	
 #### gradle配置打包(推荐)
