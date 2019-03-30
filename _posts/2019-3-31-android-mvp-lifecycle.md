@@ -261,11 +261,16 @@ tags:
         protected abstract fun initPresenter(): P
         override fun onDestroy() {
             super.onDestroy()
+            lifecycle.removeObserver(presenter)
             presenter.onDestroy()
         }
     }
     
 主要就是添加`lifecycle.addObserver(presenter)`这样行了,`Lifecycle`库使用起来还是很方便的
+
+记得在`onDestroy`中取消订阅`lifecycle.removeObserver(presenter)`
+
+这里要注意的是`Fragment`中需要在`onDestroy`中取消而不是`onDestroyView`中取消,否则接收不到消息
 
 这个时候更新下`BasePresenterImpl`来实现`RxJava`的自动取消订阅功能
 
