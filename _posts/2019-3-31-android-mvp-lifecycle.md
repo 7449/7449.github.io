@@ -14,6 +14,8 @@ tags:
 
 > 这里不讲`MVP`和`MVVM`的优缺点，只讲一下如何将老项目的`MVP`非侵入式简单替换到可监控生命周期的方法
 
+相关代码示例地址：[MVPLifecycle](https://github.com/android-develop-team/AndroidDevelop/blob/develop/MVPLifecycle)
+
 对于如何写`MVP`项目可参考以前的老博客
 
 [Android中MVP的使用](https://7449.github.io/2016/10/08/Android_MVP/)
