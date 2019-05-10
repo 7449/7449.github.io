@@ -39,7 +39,7 @@ exclude: ['.gitignore', 'README.md']
 markdown: kramdown
 kramdown:
   input: GFM
-permalink: /:year/:month/:day/:title
+permalink: /:year/:month/:day/:title.html
 
 plugins: [jekyll-paginate]
 
