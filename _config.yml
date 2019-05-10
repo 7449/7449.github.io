@@ -1,77 +1,46 @@
-# Site settings
-title: y Blog
-SEOTitle: y的博客 | y Blog
-header-img: img/home-bg.jpg
-email: yuebigmeow@gmail.com
-description: "this is my blog"
-keyword: ""
-url: "https:7449.github.io"              # your host, for absolute URL
-baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
+title: '新世纪韭菜的博客'
+description: '......'
+keyword: 'android, react-native, flutter, cordova'
+url: ''
+baseurl: ''
 
+nav:
+  home: '/'
+  tags: '/tags.html'
 
-zhihu_username:     feiq
-github_username:    7449
+footer:
+  since: 2016
 
+author: '新世纪韭菜'
+bio: '移动端开发者'
+avatar: '/assets/img/profile.jpeg'
 
+search: true
 
-# Build settings
-# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
-highlighter: rouge
-permalink: pretty
-paginate: 10
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
-anchorjs: false                          # if you want to customize anchor. check out line:181 of `post.html`
+nightMode: true
 
+mathjax: true
 
+theme-color: 'pink'
 
-# Gems
-# from PR#40, to support local preview for Jekyll 3.0
-plugins: [jekyll-paginate]
+postPatterns: 'circuitBoard'
 
+sns:
+  zhihu: '//zhihu.com/people/feiq/activities'
+  github: '//github.com/7449'
 
+recommend-tags: true
+recommend-condition-size: 12
 
-# Markdown settings
-# replace redcarpet to kramdown,
-# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
-# document: http://jekyllrb.com/docs/configuration/#kramdown
+paginate: 20
+paginate_path: 'page:num'
+exclude: ['.gitignore', 'README.md']
+
 markdown: kramdown
 kramdown:
-  input: GFM                            # use Github Flavored Markdown !important
+  input: GFM
+permalink: /:year/:month/:day/:title
 
-# Baidu Analytics 
+plugins: [jekyll-paginate]
+
 ba_track_id: 5edf92f51848209f68f95c841d40a5f0
-
-# youyan
-# youyan: 2131088
-
-# Sidebar settings
-sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "写写代码，听听歌"
-sidebar-avatar: /img/avatar.png      # use absolute URL, seeing it's used in both `/` and `/about/`
-
-
-
-# Featured Tags
-featured-tags: true                     # whether or not using Feature-Tags
-featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
-
-
-
-# Progressive Web Apps
-chrome-tab-theme-color: "#000000"
-service-worker: true
-
-
-
-# Friends
-friends: [
-    {
-        title: "",
-        href: ""
-    },{
-        title: "",
-        href: ""
-    }
-]
-
-

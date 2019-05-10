@@ -1,14 +1,13 @@
 {% if site.ba_track_id %}
 <script>
-    var _baId = '{{ site.ba_track_id }}';
-    var _hmt = _hmt || [];
+    const _baId = '{{ site.ba_track_id }}';
+    const _hmt = _hmt || [];
     (function () {
-        var hm = document.createElement("script");
+        const hm = document.createElement("script");
         hm.src = "//hm.baidu.com/hm.js?" + _baId;
-        var s = document.getElementsByTagName("script")[0];
+        const s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
-
 </script>
 {% endif %}
 
