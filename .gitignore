@@ -17,6 +17,4 @@ npm-debug.log
 build
 captures
 .externalNativeBuild
-app/build.gradle
-/BlogApp/gradle.properties
-/BlogApp/local.properties
+.jekyll-cache
