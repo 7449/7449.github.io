@@ -27,12 +27,7 @@ catalina
 
 然后按照指示，重装的时候选择系统盘重装，至于格盘，看个人选择
 
-
-## 重装完成
-
-重装完成之后，开机什么都不要干，立马用硬盘做一次 `Time Machine`,留一个干净的系统备份，往后只要系统出问题，直接用备份恢复
-
-这里建议首先把隐藏的文件显示出来:
+这里建议重装系统完成之后首先把隐藏的文件显示出来:
 
 	显示：defaults write com.apple.finder AppleShowAllFiles -bool true; 
 	     KillAll Finder
@@ -42,8 +37,6 @@ catalina
 ## xcode
 
 > 如果不安装的话，安装`brew`的时候会自动安装命令行工具
-
-直接在AppStore安装即可，
 
 命令行工具：`xcode-select --install`
 
@@ -108,27 +101,19 @@ catalina
 	
 #### [homebrew-cask](https://github.com/caskroom/homebrew-cask)
 
+搜索直接使用 `brew search` 即可
+
     brew cask install # 下载安装软件
     brew cask uninstall # 卸载软件
-    brew cask search # 模糊搜索软件，如果不加软件名，就列出所有它支持的软件
     brew cask info # 显示这个软件的详细信息，如果已经用cask安装了，也会显示其安装目录信息等
     brew cask list 列出本机按照过的软件列表
-    brew cask cleanup #  清除下载的缓存以及各种链接信息
 
-brew cask 是在 brew 的基础上一个增强的工具，用来安装Mac上的Gui程序应用包（.dmg/.pkg）, 比如qq
-
-####  brew cask upgrade
-
-cask 没有升级功能，所以有人推出了 upgrade 用来升级 cask 安装的软件
+####  [brew cask upgrade](https://github.com/buo/homebrew-cask-upgrade)
 
     brew tap buo/cask-upgrade
-
-Upgrade outdated apps:
-
+    
     brew cu
-
-Upgrade a specific app:
-
+    
     brew cu [CASK]
 
 #### zsh
@@ -137,9 +122,7 @@ Upgrade a specific app:
 
 catalina默认是zsh,无须再次配置
 
-* [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-
-> zsh复杂的配置使人望而却步，所以 oh-my-zsh 应运而生..
+[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
@@ -166,8 +149,7 @@ mac终端默认不走代理，例如git clone 的时候就算开vpn 也会很慢
 
 以后想打开代理  直接输入 `openvpen`,关闭输入 `offvpn` 即可
 
-或者使用 `brew install proxychains-ng` ,安装好之后在 `/usr/local/etc/proxychains.conf` 下，
-在 `ProxyList` 下面加入代理类型，代理地址和端口
+或者使用 `brew install proxychains-ng` ,安装好之后在 `/usr/local/etc/proxychains.conf` 下，在 `ProxyList` 下面加入代理类型，代理地址和端口
 
 	socks5 127.0.0.1 1080
 	
@@ -180,26 +162,20 @@ test:
 
 #### [the fuck](https://github.com/nvbn/thefuck)
 
-简单来说就是当输入命令行时，可自行提示你是不是输入某一个参数，举个例子：git stat,这个时候肯定出错，如果再输入 fuck，他会主动提示你，当然 fuck 也可以改成自己习惯的别名.
-
-brew安装：
-
 	brew install thefuck
 	
 	eval $(thefuck --alias)
 	eval $(thefuck --alias name) // 别名
 
-#### go2Shell
+#### [go2Shell](http://zipzapmac.com/Go2Shell)
 
 	brew cask install go2Shell
 	
 可以直接添加在 Finder 上，点击直接在 shell 打开选中的文件夹目录。
 
-如果使用 iTerm2,不要使用 App Store版，版本过旧，不会主动跳转到 相应的文件路径
-
 按住`command`,然后拖动图标到`Finder`的状态栏或者打开自行安装
 
-#### Vim
+#### [vim](https://www.vim.org/)
 
 系统自带，但是版本较低
 
@@ -213,15 +189,9 @@ GUI:
 
 #### repo
 
-可选，AOSP同步需要
-
-repo由一系列python脚本组成
-
 	brew install repo
 	
 #### git
-
-XCODE自带
 
 	git config --global user.name "user.name"
 	git config --global user.email "user.email"
@@ -243,11 +213,11 @@ ssh-keygen：
 
 	brew cask install alfred
 	
-#### python
+#### [python](https://www.python.org/)
 
 	brew install python
 	
-#### adoptopenjdk
+#### [adoptopenjdk](https://github.com/AdoptOpenJDK)
 
 	brew cask install adoptopenjdk8
 
@@ -255,7 +225,7 @@ ssh-keygen：
 
 扩展系统自带搜索功能
 
-#### jekyll
+#### [jekyll](https://github.com/jekyll/jekyll)
 
 首先 git 必须安装
 
@@ -275,7 +245,7 @@ ssh-keygen：
 
 #### adb  gradle
 
-* 路径如果害怕自己填写错误，可以直接拖动到 `.bash_profile`
+* 路径如果害怕自己填写错误，可以直接拖动到 `.zshrc`
 
 进入根目录的`.zshrc`,如果没有就自己创建
 
