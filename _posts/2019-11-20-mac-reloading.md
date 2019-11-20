@@ -2,79 +2,20 @@
 layout:     post
 title:      "记重装MAC的流程以及需要安装的软件"
 subtitle:   "记下来避免忘记"
-date:       2017-7-4
+date:       2019-11-20
 tags:
     - mac
 ---
-
-
-## update
-
-	brew
-	
-    archey			ideviceinstaller	pkg-config
-    autoconf		ios-deploy		python
-    automake		libidn2			python3
-    bash			libimobiledevice	python@2
-    carthage		libplist		readline
-    cocoapods		libtasn1		repo
-    dart			libtool			ruby
-    docker			libunistring		sl
-    docker-compose		libusb			sqlite
-    docker-machine		libxml2			thefuck
-    flow			libyaml			ucl
-    gdbm			libzip			upx
-    gettext			lua			usbmuxd
-    googler			mongodb			watchman
-    gradle			node			wget
-    highlight		openssl			xz
-    icu4c			pcre			yarn
-	
-	brew cask 
-
-    alfred                     java8                      sketch
-    android-file-transfer      jd-gui                     skim
-    android-studio             kindle                     sogouinput
-    aria2gui                   kugoumusic                 sourcetree
-    baidunetdisk               licecap                    steam
-    battle-net                 macdown                    sublime-text
-    calibre                    microsoft-office           thunder
-    charles                    pphelper                   touch-bar-pong
-    cheatsheet                 qiyimedia                  touchswitcher
-    dbeaver-enterprise         qlcolorcode                virtualbox
-    evernote                   qlimagesize                visual-studio-code
-    go2shell                   qlmarkdown                 webstorm
-    google-chrome              qq                         webtorrent
-    iina                       quickjson                  xmind
-    intellij-idea              quicklook-json             youdaodict
-    istat-menus                react-native-debugger
-    iterm2                     shadowsocksx-ng         
-
-## 准备：
 
 * 一台可联网的MAC
 * 一块硬盘（可无，备份用）
 * 系统盘：还是建议做个备份盘，在线恢复是连接美国的服务器，比较慢。
 
-tips: 硬盘可分出来 10G 左右，做成系统盘。
-
 #### 做系统盘
 
-* 17.9.26 : 新版本MacOs发布
+catalina
 
-App Store 搜索 ` macOS High Sierra ` 下载完成之后退出，插上U盘
-
-以下是命令的基本语法。
-
-将 volumepath 替换为USB闪存驱动器或其他宗卷的相应路径，并将 installerpath 替换为“安装 OS X”应用的相应路径。
-
-High Sierra 的语法：
-
-		createinstallmedia --volume volumepath
-
-High Sierra 的示例：
-
-	sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/diskName
+    sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume 
 
 * [创建可引导的 macOS 安装器](https://support.apple.com/zh-cn/HT201372)
 
@@ -106,35 +47,23 @@ High Sierra 的示例：
 
 命令行工具：`xcode-select --install`
 
+## [shadowsocksx-ng-r](https://github.com/qinyuhang/ShadowsocksX-NG-R)
+
+[download](https://github.com/qinyuhang/ShadowsocksX-NG-R/releases/download/1.4.4-r8/ShadowsocksX-NG-R8.dmg)
+
 ## 基础安装
 
-#### brew
+#### [brew](https://github.com/Homebrew/brew)
 
-[homebrew-core](https://github.com/Homebrew/homebrew-core)
-
-[brew](https://github.com/Homebrew/brew)
-
-
-安装[brew.sh](https://brew.sh/index_zh-cn.html),往后 只要是 brew 有的软件，尽量使用 brew 安装或者更新卸载。例如：git,java,google-chrome
-
+安装[brew.sh](https://brew.sh/index_zh-cn.html)
 
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-建议直接执行官网提供的命令,`/usr/local` 已在系统 PATH 之中，brew 无须任何配置。
+`brew --prefix`:确定brew安装位置
 
-如果想自定义安装地址：
+`brew --cacche`:确定缓存位置
 
-	git clone https://github.com/Homebrew/legacy-homebrew.git
-	
-添加到环境变量
-
-	export PATH=${PATH}:brewAddress/bin
-	
-执行`source .bash_profile` 使其即时生效
-
-`brew --prefix` :确定 brew 安装位置
-
-`brew doctor`:为了确认 brew 运行时，对系统中各个目录时候有权限等问题，可执行命令诊断
+`brew doctor`:为了确认brew运行时，对系统中各个目录时候有权限等问题，可执行命令诊断
 
 以 wget 为例：
 
@@ -177,31 +106,7 @@ High Sierra 的示例：
 	清除下载缓存
 	brew cleanup	
 	
-安装好的 wget 会被安装到 `/usr/local/Cellar/wget/`下。并且将wget命令软链接至` /usr/local/bin` 目录下。这样全局就都可以使用 wget 命令了
-	
-如果` brew `没有想装的软件，可以自己设置：
-
-首先找到待安装软件的源码下载地址
-	
-	softwareAddress
-
-建立自己的formula
-
-	brew create softwareAddress
-
-编辑formula
-
-	上一步建立成功后，brew 会自动打开新建的formula进行编辑，也可用`brew edit softwareName` 打开formula进行编辑。
-
-`brew `自动建立的 `formula `已经包含了基本的`configure`和`make install`命令，对于大部分软件，不需要进行修改，退出编辑即可。
-
-然后直接输入`brew install softwareName`安装自定义的软件包
-
-#### brew cask
-
-> 需要注意的是，目前`brew`已经默认附带了`cask`，因此不用刻意去更新`cask`
-
-[homebrew-cask](https://github.com/caskroom/homebrew-cask):github地址，下载软件可在里面自行搜索，没有或者版本较低的可 pull requests;
+#### [homebrew-cask](https://github.com/caskroom/homebrew-cask)
 
     brew cask install # 下载安装软件
     brew cask uninstall # 卸载软件
@@ -210,21 +115,13 @@ High Sierra 的示例：
     brew cask list 列出本机按照过的软件列表
     brew cask cleanup #  清除下载的缓存以及各种链接信息
 
-
-brew cask 是在 brew 的基础上一个增强的工具，用来安装Mac上的Gui程序应用包（.dmg/.pkg）, 比如qq。
-
-它先下载解压到统一的目录中（Library/Caches/Homebrew/Cask），省掉了自己去下载、解压、安装，
-
-同样，卸载相当容易与干净。
-
-然后再软链到~/Applications/目录下, 非常方便，而且还包含很多在 AppStore 里没有的常用软件。
-
+brew cask 是在 brew 的基础上一个增强的工具，用来安装Mac上的Gui程序应用包（.dmg/.pkg）, 比如qq
 
 ####  brew cask upgrade
 
-* cask 没有升级功能，所以有人推出了 upgrade 用来升级 cask 安装的软件
+cask 没有升级功能，所以有人推出了 upgrade 用来升级 cask 安装的软件
 
-        brew tap buo/cask-upgrade
+    brew tap buo/cask-upgrade
 
 Upgrade outdated apps:
 
@@ -238,25 +135,9 @@ Upgrade a specific app:
 
 可选另外一种：[fish-shell](https://github.com/fish-shell/fish-shell)
 
-zsh替代bash后，以前`~/.bash_profile`的配置应该写入`~/.zshrc`中
-
-系统自带了 zsh,但是不是最新版的，如果想使用最新版可自行下载：
-
-    brew install zsh
-		
-安装完成后，新版的zsh是安装到`/usr/local/bin`下的,修改`/etc/shells`,在最下面重启一行写入`/usr/local/bin/zsh`
-
-改完之后执行`chsh -s /usr/local/bin/zsh` 就OK了
-		
-系统自带：
-
-    chsh -s /bin/zsh
-		
-重启terminal
-
+catalina默认是zsh,无须再次配置
 
 * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-
 
 > zsh复杂的配置使人望而却步，所以 oh-my-zsh 应运而生..
 
@@ -266,14 +147,11 @@ zsh替代bash后，以前`~/.bash_profile`的配置应该写入`~/.zshrc`中
 
     sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
-
 比较好的字体：[FiraCode](https://github.com/tonsky/FiraCode)
 
-#### iTerm2
+#### [iTerm2](http://www.iterm2.com/downloads.html)
 
 	brew cask install iTerm2
-	
-官方地址：[iTerm2](http://www.iterm2.com/downloads.html)
 
 [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
 
@@ -281,7 +159,7 @@ zsh替代bash后，以前`~/.bash_profile`的配置应该写入`~/.zshrc`中
 
 mac终端默认不走代理，例如git clone 的时候就算开vpn 也会很慢，开启代理方式如下
 
-以shadowsocksx为例，添加在 `~/.bash_profile` 或者 `~/.zshrc`：
+以shadowsocksx为例，添加在 `~/.zshrc`：
 
 	alias openvpn="export ALL_PROXY=socks5://127.0.0.1:1080" 
 	alias offvpn="unset ALL_PROXY"
@@ -300,9 +178,7 @@ test:
 	openvpn
 	curl ip.cn
 
-#### the fuck
-
-[GitHubAddress](https://github.com/nvbn/thefuck)
+#### [the fuck](https://github.com/nvbn/thefuck)
 
 简单来说就是当输入命令行时，可自行提示你是不是输入某一个参数，举个例子：git stat,这个时候肯定出错，如果再输入 fuck，他会主动提示你，当然 fuck 也可以改成自己习惯的别名.
 
@@ -313,7 +189,6 @@ brew安装：
 	eval $(thefuck --alias)
 	eval $(thefuck --alias name) // 别名
 
-
 #### go2Shell
 
 	brew cask install go2Shell
@@ -323,7 +198,6 @@ brew安装：
 如果使用 iTerm2,不要使用 App Store版，版本过旧，不会主动跳转到 相应的文件路径
 
 按住`command`,然后拖动图标到`Finder`的状态栏或者打开自行安装
-
 
 #### Vim
 
@@ -356,23 +230,16 @@ cd ~
 
 ssh-keygen：
 
-* 用`shadowsocks`加速 `git clone`
+用`shadowsocks`加速 `git clone`
 
+    git config --global http.proxy 'socks5://127.0.0.1:1080' 
+    git config --global https.proxy 'socks5://127.0.0.1:1080'
 
-		git config --global http.proxy 'socks5://127.0.0.1:1080' 
-		git config --global https.proxy 'socks5://127.0.0.1:1080'
-
-
-#### sublimetext
-
-[sublimetext](http://www.sublimetext.com/3)
+#### [sublimetext](http://www.sublimetext.com/3)
 
 	brew cask install sublime-text
 	
-	
-#### Alfred
-
-[alfred](https://www.macupdate.com/app/mac/34344/alfred)
+#### [alfred](https://www.macupdate.com/app/mac/34344/alfred)
 
 	brew cask install alfred
 	
@@ -380,19 +247,11 @@ ssh-keygen：
 
 	brew install python
 	
-#### jdk
+#### adoptopenjdk
 
-	brew cask install java
+	brew cask install adoptopenjdk8
 
-* 目前 brew 默认的是 java9 ，如果想安装 java8 请执行
-
-    brew tap caskroom/versions
-
-    brew cask install java8
-
-#### Flashlight
-
-[Flashlight](https://github.com/nate-parrott/Flashlight)
+#### [Flashlight](https://github.com/nate-parrott/Flashlight)
 
 扩展系统自带搜索功能
 
@@ -402,9 +261,7 @@ ssh-keygen：
 
 安装[brew](https://brew.sh/index_zh-cn.html)用来安装`ruby`
 
-千万记住不能使用自带的`ruby`，使用自带的`ruby`安装`jekyll`时会报错...
-
-安装ruby
+安装ruby(macos已经默认自带了ruby,但是建议使用自己安装的)
 
 	brew install ruby
 
@@ -412,17 +269,15 @@ ssh-keygen：
 
 	sudo gem install jekyll
 	
-启动：
+启动
 
 	jekyll server
 
-
 #### adb  gradle
-
 
 * 路径如果害怕自己填写错误，可以直接拖动到 `.bash_profile`
 
-进入根目录的`.bash_profile`,如果没有就自己创建
+进入根目录的`.zshrc`,如果没有就自己创建
 
 > sdk
 
@@ -434,9 +289,6 @@ gradle可以直接使用`brew`安装
 
 	export PATH=${PATH}:/Applications/Android\ Studio.app/Contents/gradle/gradle-3.2/bin
 	
-保存之后退出执行`source .bash_profile`
-
-
 #### vps
 
 直接打开 `vps`，如果`git`配置了的话根目录会出现`.ssh`目录，如果没有就自行建立，
@@ -447,9 +299,7 @@ gradle可以直接使用`brew`安装
     Port                  port
     User                  userName
 
-
 以后链接`VPS`直接在命令行输入`ssh name`，就会提醒你输入密码链接
-
 
 #### OS X  NTFS 移动硬盘中文件呈灰白色且无法读取
 
@@ -469,3 +319,14 @@ gradle可以直接使用`brew`安装
 
 然后重新拔插，在`Volumes`可以找到该硬盘
 
+#### brew 安装
+
+    brew install aria2 cocoapods jenkins cmake curl-openssl ffmpeg go gradle mysql node p7zip php python repo ruby sbt thefuck tomcat unrar unzip watchman wget yarn you-get youtube-dl
+    
+#### brew cask 安装(不用VPN)
+
+    brew cask install android-file-transfer android-studio google-chrome iina qq sogouinput tencent-lemon xiami youdaodict
+
+#### brew cask 安装(需要VPN)
+
+    brew cask install adoptopenjdk alfred charles cyberduck dozer go2shell intellij-idea istat-menus iterm2 jd-gui keka licecap macdown phpstorm react-native-debugger steam sublime-text touchswitcher vmware-fusion webstorm;
