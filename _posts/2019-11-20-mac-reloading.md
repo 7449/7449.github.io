@@ -140,14 +140,14 @@ catalina默认是zsh,无须再次配置
 
 #### 终端开启代理
 
-mac终端默认不走代理，例如git clone 的时候就算开vpn 也会很慢，开启代理方式如下
+mac终端默认不走代理，例如git clone的时候就算开vpn也会很慢，开启代理方式如下
 
 以shadowsocksx为例，添加在 `~/.zshrc`：
 
 	alias openvpn="export ALL_PROXY=socks5://127.0.0.1:1080" 
 	alias offvpn="unset ALL_PROXY"
 
-以后想打开代理  直接输入 `openvpen`,关闭输入 `offvpn` 即可
+以后想打开代理直接输入 `openvpen`,关闭输入 `offvpn` 即可
 
 或者使用 `brew install proxychains-ng` ,安装好之后在 `/usr/local/etc/proxychains.conf` 下，在 `ProxyList` 下面加入代理类型，代理地址和端口
 
@@ -171,7 +171,7 @@ test:
 
 	brew cask install go2Shell
 	
-可以直接添加在 Finder 上，点击直接在 shell 打开选中的文件夹目录。
+可以直接添加在`Finder`上，点击直接在`shell`打开选中的文件夹目录。
 
 按住`command`,然后拖动图标到`Finder`的状态栏或者打开自行安装
 
