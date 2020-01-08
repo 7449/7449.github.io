@@ -188,7 +188,7 @@ tags:
     
 只是简单的显示一个`toolbar`和一个可点击的`button`
 
-这里并没有很好的例子去学习,如果想深入了解可以通过[Widget目录](https://7449.github.io/2018/04/12/Android_Flutter_5/)查看
+这里并没有很好的例子去学习,如果想深入了解可以通过[Widget目录](https://7449.github.io/2018/04/12/android_flutter_5.html)查看
 第五章也只是提供一个通往官网的链接
 
 #### 增删组件
