@@ -94,4 +94,4 @@ xcode,as或者IDEA或者vscode，并且推荐使用`brew`安装所需的依赖�
 
 如果没有问题将会在模拟器或者真机上出现如下画面：
 
-![_config.yml]({{ site.baseurl }}/assets/screenshot/17/flutter_first_install_app.png)
+![_config.yml]({{ site.baseurl }}/assets/screenshot/18/flutter_first_install_app.png)
