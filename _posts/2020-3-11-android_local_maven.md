@@ -11,9 +11,8 @@ tags:
 
 ## `Module`之间无依赖
 
-* 在多`Module`项目中如果一开始各个`Module`都是以`ARouter`或者`EventBus`之类的联系,这样本地打`aar`是没有任何问题,因为`Module`
+在多`Module`项目中如果一开始各个`Module`都是以`ARouter`或者`EventBus`之类的联系,这样本地打`aar`是没有任何问题,因为`Module`
 之间没有任何依赖,都是一个单独的模块,如果这样为了减少编译时间`Module`可以直接打成`aar`,具体如下:
-
 
     apply plugin: 'maven'
     
@@ -37,9 +36,8 @@ tags:
 
 ## `Module`之间有依赖
 
-* 如果多个`Module`之间相互依赖的话,打成`aar`使用的使用会遇到以下错误
+如果多个`Module`之间相互依赖的话,打成`aar`使用的使用会遇到以下错误
 
-    
     Error:Failed to resolve:LIBRARY_NAME:unspecified
     
 提示找不到该依赖,具体有兴趣可以查看`aar`的`pom`文件,打`aar`的时候没有把代码打进去,而是直接依赖的`Module`名字,这样肯定会找不到需要的代码
