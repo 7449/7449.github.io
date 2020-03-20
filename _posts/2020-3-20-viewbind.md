@@ -1,12 +1,37 @@
 ---
 layout:     post
 title:      "使用ViewBinding代替ButterKnife"
-subtitle:   "View Binding"
-date:       2019-10-30
+subtitle:   "View Binding(更新对ViewBind使用)"
+date:       2020-3-20
 tags:
-    - ViewBinding
+    - ViewBind
     - android
 ---
+
+[ViewBindingSample](https://www.github.com/7449/codeKK-Android)
+
+简单封装:
+
+[BaseViewBindActivity](https://github.com/7449/codeKK-Android/blob/master/app/src/main/java/com/codekk/ui/base/BaseViewBindActivity.kt)
+
+[BaseViewBindFragment](https://github.com/7449/codeKK-Android/blob/master/app/src/main/java/com/codekk/ui/base/BaseViewBindFragment.kt)
+
+## ViewBind 使用
+
+0.不用再写布局了...
+
+1.必须为`include`标签命名一个`id`,而`include`里面的`View`使用则是`viewBind.includeBind.id`,麻烦
+
+2.`BK`是自动生成的文件,`ViewBind`也是,不过是由`IDE`深度集成支持的
+
+3.和`DataBinding`比较,个人觉得区别不大...仅仅是`xml`文件不使用标签的形式而已,至少目前是这样的...
+
+4.和`kotlin`一样,`IDE`深度集成的优点和`BK`相比就是就算不重新`Build`也支持`viewBind.id`,命名上也是驼峰式命名,如果不适应`kotlin`在`xml`中`id`命名驼峰式,可以用`ViewBind`
+
+5.谈不上优劣,目前个人觉得`viewBind.id`有点麻烦,相比`kotlin`来说,`kotlin`创建一个`Map`在类中还是比较方面...
+
+6.`kotlin`的问题是如果`xml`多了命名有重复,容易引入错误的布局类,而`ViewBind`不存在这种情况,因为它是为每个布局文件都生成了一个类
+
 
 `ViewBinding`是`google`新支持的一项用以取代`ButterKnife`的一种工具
 
