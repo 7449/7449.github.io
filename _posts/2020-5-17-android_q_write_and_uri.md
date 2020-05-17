@@ -29,7 +29,7 @@ tags:
             @Suppress("DEPRECATION")
             Environment.getExternalStoragePublicDirectory(relativePath).path
         } else {
-            if (externalCacheDir == null) cacheDir.path else externalCacheDir?.path.orEmpty()
+            externalCacheDir?.path ?: cacheDir.path
         }
         return File(path, fileName)
     }
