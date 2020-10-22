@@ -93,47 +93,48 @@ tags:
 
 其编译如下,可以看到，IDE已经为我们自动生成了缓存
 
-   public static final class ViewHolder extends androidx.recyclerview.widget.RecyclerView.ViewHolder implements LayoutContainer {
-      private HashMap _$_findViewCache;
 
-      @NotNull
-      public View getContainerView() {
-         View var10000 = this.itemView;
-         Intrinsics.checkNotNullExpressionValue(var10000, "itemView");
-         return var10000;
-      }
+       public static final class ViewHolder extends androidx.recyclerview.widget.RecyclerView.ViewHolder implements LayoutContainer {
+          private HashMap _$_findViewCache;
 
-      public ViewHolder(@NotNull View itemView) {
-         Intrinsics.checkNotNullParameter(itemView, "itemView");
-         super(itemView);
-      }
+          @NotNull
+          public View getContainerView() {
+             View var10000 = this.itemView;
+             Intrinsics.checkNotNullExpressionValue(var10000, "itemView");
+             return var10000;
+          }
 
-      public View _$_findCachedViewById(int var1) {
-         if (this._$_findViewCache == null) {
-            this._$_findViewCache = new HashMap();
-         }
+          public ViewHolder(@NotNull View itemView) {
+             Intrinsics.checkNotNullParameter(itemView, "itemView");
+             super(itemView);
+          }
 
-         View var2 = (View)this._$_findViewCache.get(var1);
-         if (var2 == null) {
-            View var10000 = this.getContainerView();
-            if (var10000 == null) {
-               return null;
-            }
+          public View _$_findCachedViewById(int var1) {
+             if (this._$_findViewCache == null) {
+                this._$_findViewCache = new HashMap();
+             }
 
-            var2 = var10000.findViewById(var1);
-            this._$_findViewCache.put(var1, var2);
-         }
+             View var2 = (View)this._$_findViewCache.get(var1);
+             if (var2 == null) {
+                View var10000 = this.getContainerView();
+                if (var10000 == null) {
+                   return null;
+                }
 
-         return var2;
-      }
+                var2 = var10000.findViewById(var1);
+                this._$_findViewCache.put(var1, var2);
+             }
 
-      public void _$_clearFindViewByIdCache() {
-         if (this._$_findViewCache != null) {
-            this._$_findViewCache.clear();
-         }
+             return var2;
+          }
 
-      }
-   }
+          public void _$_clearFindViewByIdCache() {
+             if (this._$_findViewCache != null) {
+                this._$_findViewCache.clear();
+             }
+
+          }
+       }
 
 ## 示警
 
